@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @mentorship.client %>
+</p>
+
+<p>
+  <strong>Coach:</strong>
+  <%= @mentorship.coach %>
+</p>
+
+<%= link_to 'Edit', edit_mentorship_path(@mentorship) %> |
+<%= link_to 'Back', mentorships_path %>
