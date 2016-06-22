@@ -1,4 +1,9 @@
 FactoryGirl.define do
+  factory :plan do
+    client 1
+    title "MyString"
+    content "MyText"
+  end
   factory :mentorship do
     client 1
     coach 1
