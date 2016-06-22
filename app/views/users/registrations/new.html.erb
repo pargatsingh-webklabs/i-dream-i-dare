@@ -3,6 +3,15 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
+  <!-- Added custom fields for Coach and Admin booleans below: -->
+
+   <div class="field">
+    <%= f.label :is_a_coach %><br />
+    <%= f.text_field :is_a_coach %>
+  </div>
+
+  <!-- /////////////////////////////////////////////////////// -->
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
