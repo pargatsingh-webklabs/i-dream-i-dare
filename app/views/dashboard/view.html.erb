@@ -21,3 +21,31 @@ not signed in
 <%= current_user.first_name %> <%= current_user.last_name %> 
 
 <a href='/users/sign_out' data-method='delete'>Sign out</a>
+
+<!-- ADMIN DASHBOARD -->
+
+<%= @coaches each do |x| %>
+
+  <%= x.first_name %>
+
+  <%
+
+<% end %>
+
+<!-- COACH DASHBOARD -->
+
+<%= @clients each do |x| %>
+
+<!-- spit out links for each client -->
+
+<% end %>
+
+<!-- CLIENT DASHBOARD -->
+
+<%= @messages each do |x| %>
+
+
+<% end %>
+
+
+
