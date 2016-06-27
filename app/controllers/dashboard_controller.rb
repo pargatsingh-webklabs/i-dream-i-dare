@@ -1,10 +1,10 @@
 class DashboardController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:index]
 
-  def dashboard
+  def view
 
     if user_signed_in?
-      redirect_to("/user/dashboard")
+      
     else redirect_to("/")
     
     #TODO: Add Flash error message if redirected to index due to not being logged in.

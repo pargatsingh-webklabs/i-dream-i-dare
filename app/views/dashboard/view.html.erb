@@ -1,14 +1,11 @@
-<h1>THIS IS YOUR</h1>
-
 <% if current_user.is_an_admin? %>
-  <h1>ADMIN</h1>
+  <h1>This is your ADMIN dashboard</h1>
 <% elsif current_user.is_a_coach? %>
-  <h1>COACH</h1>
+  <h1>This is your COACH dashboard</h1>
 <% else %>
-  <h1>CLIENT</h1>
+  <h1>This is your CLIENT dashboard</h1>
 <% end%>
 
-<h1>DASHBOARD!</h1>
 
 
 
