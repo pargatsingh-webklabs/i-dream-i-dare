@@ -1,4 +1,4 @@
-# This file is an extension to Devise's auth, to include our custom "first_name", "last_name", is_a_coach" and "is_an_admin" columns for the User model. Also, see config/routes.rb for additional modifications.
+# This file is an extension to the Devise gem's auth, to include our custom "first_name", "last_name", is_a_coach" and "is_an_admin" columns for the User model. Also, see config/routes.rb for additional modifications.
 #Reference:
 #http://jacopretorius.net/2014/03/adding-custom-fields-to-your-devise-user-model-in-rails-4.html 
 

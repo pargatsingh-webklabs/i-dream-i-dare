@@ -1,1 +1,9 @@
 <h1>THIS IS YOUR DASHBOARD!</h1>
+
+
+
+<%unless current_user.blank? -%>
+signed in
+<%else -%>
+not signed in
+<%end-%>

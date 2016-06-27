@@ -1,8 +1,21 @@
 <h1>INDEX VIEW</h1>
 
-<a href='/user/dashboard'>Go to My Dashboard</a>
+<% if user_signed_in? %>
 
-<a href='/users/sign_out' data-method='delete'>Sign out</a>
+  <a href='/user/dashboard'>Go to My Dashboard</a>
+
+  <a href='/users/sign_out' data-method='delete'>Sign out</a>
+
+<% else %>
+
+  <a href="http://localhost:3000/users/sign_in">Sign In</a>
+
+<% end %>
+
+
+
+
+
 
 
 <!-- Link below to external blog site: -->
