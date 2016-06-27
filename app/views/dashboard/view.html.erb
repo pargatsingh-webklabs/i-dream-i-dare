@@ -1,9 +1,23 @@
-<h1>THIS IS YOUR DASHBOARD!</h1>
+<h1>THIS IS YOUR</h1>
+
+<% if current_user.is_an_admin? %>
+  <h1>ADMIN</h1>
+<% elsif current_user.is_a_coach? %>
+  <h1>COACH</h1>
+<% else %>
+  <h1>CLIENT</h1>
+<% end%>
+
+<h1>DASHBOARD!</h1>
 
 
 
 <%unless current_user.blank? -%>
-signed in
+signed in as
 <%else -%>
 not signed in
 <%end-%>
+
+<%= current_user.first_name %> <%= current_user.last_name %> 
+
+<a href='/users/sign_out' data-method='delete'>Sign out</a>
