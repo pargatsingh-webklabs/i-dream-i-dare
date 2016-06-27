@@ -1,5 +1,6 @@
 <h1>INDEX VIEW</h1>
 
+
 <% if user_signed_in? %>
 
   <a href='/user/dashboard'>Go to My Dashboard</a>
@@ -9,6 +10,8 @@
 <% else %>
 
   <a href="http://localhost:3000/users/sign_in">Sign In</a>
+
+  <a href="http://localhost:3000/users/sign_up">Sign Up</a>
 
 <% end %>
 
@@ -20,5 +23,6 @@
 
 <!-- Link below to external blog site: -->
 
-<a href='https://www.blogger.com/home'>Blog</a>
+<a href="https://www.blogger.com/home">Blog</a>
 
+<a href="http://localhost:3000/about">About</a>
