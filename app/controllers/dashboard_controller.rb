@@ -3,22 +3,111 @@ class DashboardController < ApplicationController
 
   def view
 
+    #////////All Users
+
     if user_signed_in?
+
+      get_user_messages
       
-    else redirect_to("/")
-    
+      
+      #-----------------
+
+      #////////Coaches
+
+      if current_user.is_a_coach? 
+
+        get_mentorships_for_coach
+        get_clients
+
+      #////////Admin:
+
+      elsif current_user.is_an_admin?
+
+        get_all_coaches
+        get_all_clients
+        get_all_mentorships
+        get_all_plans
+
+      #////////Clients:
+
+      else 
+
+        get_mentorship
+        get_coach
+
+      end
+
+      #------------------
+
+    else redirect_to("/") 
+
     #TODO: Add Flash error message if redirected to index due to not being logged in.
+    
     end
   end
 
-  # # TODO: Insert logic to figure out if user is coach, client, or admin. Create instance variables for each scenario. Refactor. EXAMPLE BELOW: 
-  #   @
+#//////////////All Users:
 
-  #   @business = current_user.businesses.find_by_id(params[:business_id])
-  #   @clients = @business.clients
-  #   if @business.nil?
-  #     redirect_to("/businesses/view")
-  #   end
+  def get_user_messages
     
-  # end
+    @incoming_messages = Message.where("to" => current_user.id)
+    @outgoing_messages = Message.where("from" => current_user.id) 
+
+  end
+
+#//////////////Coaches:
+
+  def get_clients
+
+    @mentorships = Mentorship.where("coach" => current_user.id)
+    @clients = Client.where()
+
+  end
+
+  def get_mentorships_for_coach
+
+    @mentorships = Mentorship.where("coach" => current_user.id)
+
+  end
+
+#//////////////Clients:
+
+  def get_mentorship
+
+    @mentorship = Mentorship.where("client" => current_user.id)
+    
+  end
+
+  def get_coach
+
+    @coach = User.where("id" => @mentorship.coach)
+    
+  end
+
+#//////////////Admin:
+
+  def get_all_coaches
+
+    @all_coaches = Coach.all
+
+  end
+
+  def get_all_clients
+
+    @all_clients = Client.all
+
+  end
+
+  def get_all_mentorships
+
+    @all_mentorships = Mentorship.all
+
+  end
+
+  def get_all_plans
+
+    @all_plans = Plan.all
+
+  end
+
 end

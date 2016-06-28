@@ -1,13 +1,3 @@
-
-
-
-
-
-
-
-
-
-
 <%unless current_user.blank? -%>
 signed in as
 <%else -%>
@@ -18,39 +8,22 @@ not signed in
 
 <a href='/users/sign_out' data-method='delete'>Sign out</a>
 
-<!-- ADMIN DASHBOARD -->
-<% if current_user.is_an_admin? %>
-
-  <h1>This is your ADMIN dashboard</h1>
-
-  <% @coaches each do |x| %>
-
-    <%= x.first_name %>
-
-    <%
-
-  <% end %>
+<!-- ........... -->
 
 
-<!-- COACH DASHBOARD -->
-<% elsif current_user.is_a_coach? %>
-
-  <h1>This is your COACH dashboard</h1>
-
-  <% @clients each do |x| %>
-
-  <!-- spit out links for each client -->
-
-  <% end %>
 
 
-<!-- CLIENT DASHBOARD -->
-<% else %>
+
+
+
+
+
+<!-- ........... -->
+
+
   <h1>This is your CLIENT dashboard</h1>
     <% @messages each do |x| %>
-    <%= coach = @coaches.find_by_id(x.from) %>
-    <%= coach.first_name %> <%= coach.last_name %>
-    <%= x.content
+    <%= x.content %>
 
   <% end %>
 
