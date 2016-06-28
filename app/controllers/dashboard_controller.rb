@@ -69,7 +69,7 @@ class DashboardController < ApplicationController
 
     @mentorships.each do |x|
     
-      @clients << Client.where(:id => x.client)
+      @clients << User.where(:id => x.client)
 
     end  
 
