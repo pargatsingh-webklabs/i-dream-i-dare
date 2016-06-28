@@ -1,10 +1,4 @@
-<%unless current_user.blank? -%>
-signed in as
-<%else -%>
-not signed in
-<%end-%>
-
-<%= current_user.first_name %> <%= current_user.last_name %> 
+Welcome, <%= current_user.first_name %> <%= current_user.last_name %>! 
 
 <a href='/users/sign_out' data-method='delete'>Sign out</a>
 
@@ -19,15 +13,17 @@ not signed in
 
 
 <!-- ........... -->
+INCOMING MESSAGES:
+<% @incoming_messages.each do |m| %>
+  <li><%= m.content %></li>
+  <li><%= m.from %></li>
+<% end %> 
 
+OUTGOING MESSAGES:
+<% @outgoing_messages.each do |m| %>
+  <li><%= m.content %></li>
+  <li><%= m.to %></li>
+<% end %> 
 
-  <h1>This is your CLIENT dashboard</h1>
-    <% @messages each do |x| %>
-    <%= x.content %>
-
-  <% end %>
-
-
-<% end%>
 
 
