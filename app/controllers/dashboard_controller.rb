@@ -79,17 +79,17 @@ class DashboardController < ApplicationController
 
   def get_client_mentorships
 
-    @mentorship = Mentorship.where("client" => current_user.id)
+    @mentorships_for_client = Mentorship.where("client" => current_user.id)
     
   end
 
   def get_client_coaches
 
-    @coaches = []
+    @coaches_for_client = []
 
-    @mentorship.each do |x|
+    @mentorships_for_client.each do |x|
 
-      @coaches << x.coach
+      @coaches_for_client << x.coach
 
     end
     
@@ -99,13 +99,13 @@ class DashboardController < ApplicationController
 
   def get_all_coaches
 
-    @all_coaches = Coach.all
+    @all_coaches = User.where(:is_a_coach)
 
   end
 
   def get_all_clients
 
-    @all_clients = Client.all
+    @all_clients = User.where(:is_a_coach => false, :is_an_admin => false)
 
   end
 
@@ -118,6 +118,12 @@ class DashboardController < ApplicationController
   def get_all_plans
 
     @all_plans = Plan.all
+
+  end
+
+  def get_all_messages
+
+    @all_messages = Message.all
 
   end
 
