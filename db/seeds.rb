@@ -154,3 +154,25 @@ p5.content = "These are the details of your #2 plan, Client 3."
 p5.save
 
 # ////////
+
+am1 = AdminMessage.new
+am1.from_name = "Lindsey Lohan"
+am1.from_email = "real_ll@gmail.com"
+am1.content = "My friends tell me I need some guidance. Help?"
+am1.save
+
+am2 = AdminMessage.new
+am2.from_name = "Ghost of Steve Jobs"
+am2.from_email = "@gmail.com"
+am2.content = "Do you work with folks on the other side?"
+am2.save
+
+am3 = AdminMessage.new
+am3.from_name = "David Cameron"
+am3.from_email = "wavy_davey@gmail.com"
+am3.content = "So, this whole Brexit thing has got me considering my options. Where to now? Email me when you can! Thx."
+am3.save
+
+
+
+# /////////

@@ -98,6 +98,12 @@ class DashboardController < ApplicationController
 
 #//////////////Admin:
 
+  def get_all_admin_messages
+
+    @all_admin_messages = AdminMessage.all
+
+  end
+
   def get_all_coaches
 
     @all_coaches = User.where(:is_a_coach => true)
