@@ -2,19 +2,82 @@ Welcome, <%= current_user.first_name %> <%= current_user.last_name %>!
 
 <a href='/users/sign_out' data-method='delete'>Sign out</a>
 
+
 <!-- ADMIN DASHBOARD -->
+<!-- ####################################### -->
+
 <% if current_user.is_an_admin? %>
 
   <h1>This is your ADMIN dashboard</h1>
 
-  <% @coaches.each do |x| %>
 
-    <%= x.first_name %>
+    ----------------------------------<br>
+
+    <h2>All coaches</h2>
+
+  <% @all_coaches.each do |x| %>
+
+    <li><%= x.first_name %> <%= x.last_name %> ... <%= x.email %></li>
+
+    ----------------------------------<br>
+
+  <% end %>
+
+
+  <h2>All clients</h2>
+  
+  <% @all_clients.each do |y| %>
+
+    <li><%= y.first_name %> <%= y.last_name %></li>
+
+    ----------------------------------<br>
+
+  <% end %>
+
+
+  <h2>All mentorships</h2>
+  
+  <% @all_mentorships.each do |z| %>
+
+    <li>Coach # <%= z.coach %> & Client # <%= z.client %></li>
+
+    ----------------------------------<br>
+
+  <% end %>
+
+
+  <h2>All plans</h2>
+  
+  <% @all_plans.each do |z| %>
+
+    <li>Client # <%= z.client %></li>
+
+    <li>Title: <%= z.title %></li>
+
+    <li>Content: <%= z.content %></li>
+
+    ----------------------------------<br>
+
+  <% end %>
+
+
+  <h2>All messages</h2>
+  
+  <% @all_messages.each do |m| %>
+
+    <li>From User # <%= m.from %></li>
+
+    <li>To User # <%= m.to %></li>
+
+    <li>Message: <%= m.content %></li>
+
+    ----------------------------------<br>
 
   <% end %>
 
 
 <!-- COACH DASHBOARD -->
+<!-- ####################################### -->
 
 <% elsif current_user.is_a_coach? %>
 
@@ -29,11 +92,14 @@ Welcome, <%= current_user.first_name %> <%= current_user.last_name %>!
   <% end %>
 
 <% end %>
-<!-- CLIENT DASHBOARD -->
 
-Client Dashboard: 
+
+<!-- CLIENT DASHBOARD -->
+<!-- ####################################### -->
 
 <% if current_user.is_a_coach == false && current_user.is_an_admin == false %>
+
+  <h1>This is your CLIENT dashboard</h1>
 
   <% @mentorships_for_client.each do |x| %>
 
@@ -49,10 +115,13 @@ Client Dashboard:
 
 <% else %>
 
-
 <% end %>
 
+
 <!-- ALL USERS' MESSAGES -->
+<!-- ####################################### -->
+
+<% if current_user.is_an_admin == false %>
 
   INCOMING MESSAGES:
   <% @incoming_messages.each do |m| %>
@@ -66,6 +135,6 @@ Client Dashboard:
     <li><%= m.to %></li>
   <% end %> 
 
-
+<% end %>
 
 

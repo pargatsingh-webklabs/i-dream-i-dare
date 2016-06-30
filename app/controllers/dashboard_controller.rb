@@ -27,6 +27,7 @@ class DashboardController < ApplicationController
         get_all_clients
         get_all_mentorships
         get_all_plans
+        get_all_messages
 
       #////////Clients:
 
@@ -50,8 +51,8 @@ class DashboardController < ApplicationController
 
   def get_user_messages
     
-    @incoming_messages = Message.where("to" => current_user.id)
-    @outgoing_messages = Message.where("from" => current_user.id) 
+    @incoming_messages = Message.where(:to => current_user.id)
+    @outgoing_messages = Message.where(:from => current_user.id) 
 
   end
 
@@ -59,7 +60,7 @@ class DashboardController < ApplicationController
 
   def get_mentorships_for_coach
 
-    @mentorships = Mentorship.where("coach" => current_user.id)
+    @mentorships = Mentorship.where(:coach => current_user.id)
 
   end
 
@@ -79,7 +80,7 @@ class DashboardController < ApplicationController
 
   def get_client_mentorships
 
-    @mentorships_for_client = Mentorship.where("client" => current_user.id)
+    @mentorships_for_client = Mentorship.where(:client => current_user.id)
     
   end
 
@@ -99,7 +100,7 @@ class DashboardController < ApplicationController
 
   def get_all_coaches
 
-    @all_coaches = User.where(:is_a_coach)
+    @all_coaches = User.where(:is_a_coach => true)
 
   end
 
