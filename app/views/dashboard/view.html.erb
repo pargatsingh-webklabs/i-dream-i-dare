@@ -13,8 +13,6 @@ Welcome, <%= current_user.first_name %> <%= current_user.last_name %>!
   ----------------------------------<br>
 
   <h2>Admin messages</h2> 
-
-  AdminMessage from_name:string from_email:string content:text
   
   <% @all_admin_messages.each do |a| %>
 
@@ -27,10 +25,6 @@ Welcome, <%= current_user.first_name %> <%= current_user.last_name %>!
     ----------------------------------<br>
 
   <% end %>
-
-
-    ----------------------------------<br>
-
 
 
   <h2>All coaches</h2>
@@ -107,11 +101,12 @@ Welcome, <%= current_user.first_name %> <%= current_user.last_name %>!
 
   <% @clients.each do |x| %>
 
+    <!-- Spit out links for each client here -->
+
     <li><%= x.first_name %> <%= x.last_name %></li>
     ----------------------------------<br>
-    <li><%= x
 
-  <!-- spit out links for each client -->
+
 
   <% end %>
 

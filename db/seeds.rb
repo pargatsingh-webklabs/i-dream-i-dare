@@ -9,10 +9,10 @@
 # ///// ADMIN
 
 z = User.new 
-z.first_name = "Adam"
-z.last_name = "Admin"
-z.email ="admin@gmail.com"
-z.password = "password"
+z.first_name = "Nash"
+z.last_name = "Mahupete"
+z.email ="NMahupete@qliomaha.com "
+z.password = "nashty"
 z.is_a_coach = false
 z.is_an_admin = true
 z.save

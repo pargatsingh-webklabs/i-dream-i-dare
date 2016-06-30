@@ -22,7 +22,8 @@ class DashboardController < ApplicationController
       #////////Admin:
 
       elsif current_user.is_an_admin?
-
+        
+        get_all_admin_messages
         get_all_coaches
         get_all_clients
         get_all_mentorships
