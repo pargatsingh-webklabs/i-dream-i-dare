@@ -9,8 +9,6 @@ Rails.application.routes.draw do
 
   get "/user/dashboard" => "dashboard#view"
 
-  get "/user/dashboard" => "dashboard#get_user_messages"
-
   get "/about" => "pages#about"
 
 
