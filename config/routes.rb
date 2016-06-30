@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :admin_messages
   resources :plans
   resources :mentorships
   resources :messages

@@ -1,4 +1,9 @@
 FactoryGirl.define do
+  factory :admin_message do
+    from_name "MyString"
+    from_email "MyString"
+    content "MyText"
+  end
   factory :plan do
     client 1
     title "MyString"
