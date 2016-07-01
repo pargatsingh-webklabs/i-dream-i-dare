@@ -9,9 +9,6 @@ Rails.application.routes.draw do
 
   get "/user/dashboard" => "dashboard#view"
 
-  get "/about" => "pages#about"
-
-
   #/////////////////////////////
 
   #Concerning: devise_for :users, :controllers => { registrations: 'registrations' }
