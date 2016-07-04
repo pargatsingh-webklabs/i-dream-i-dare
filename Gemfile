@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 ruby "2.3.0"
 
+gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
 gem "autoprefixer-rails"
 gem "delayed_job_active_record"
