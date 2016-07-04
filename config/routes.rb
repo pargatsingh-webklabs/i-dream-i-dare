@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :admin_messages
   resources :plans
   resources :mentorships
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   get "/user/dashboard" => "dashboard#view"
+
 
   #/////////////////////////////
 
