@@ -65,17 +65,29 @@ class DashboardController < ApplicationController
 
   end
 
-  def get_clients_for_coach
+  # def get_clients_for_coach
 
-    @clients = []
+  #   @clients = []
+
+  #   @mentorships.each do |x|
+    
+  #     @clients << User.where(:id => x.client)
+
+  #   end  
+
+  # end
+
+
+  def get_clients_for_coach
 
     @mentorships.each do |x|
     
-      @clients << User.where(:id => x.client)
+      @clients = User.where(:id => x.client)
 
     end  
 
   end
+
 
 #//////////////Clients:
 
