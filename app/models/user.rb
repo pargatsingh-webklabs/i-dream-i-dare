@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   
-  if current_user.try(:admin?)
-  # do something
-  end
+  # if current_user.try(:admin?)
+  # # do something
+  # end
 
 end
