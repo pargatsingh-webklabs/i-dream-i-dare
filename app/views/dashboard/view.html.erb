@@ -10,107 +10,14 @@
 
 <% if current_user.is_an_admin? %>
 
-  <h1>This is your ADMIN dashboard</h1>
-
-  ----------------------------------<br>
-
-  <h2>Admin messages</h2> 
-  
-  <% @all_admin_messages.each do |a| %>
-
-    <li>From: <%= a.from_name %></li>
-
-    <li>Email: <%= a.from_email %></li>
-
-    <li>Message: <%= a.content %></li>
-
-    ----------------------------------<br>
-
-  <% end %>
-
-
-  <h2>All coaches</h2>
-
-  <% @all_coaches.each do |x| %>
-
-    <li><%= x.first_name %> <%= x.last_name %> ... <%= x.email %></li>
-
-    ----------------------------------<br>
-
-  <% end %>
-
-
-  <h2>All clients</h2>
-  
-  <% @all_clients.each do |y| %>
-
-    <li><%= y.first_name %> <%= y.last_name %></li>
-
-    ----------------------------------<br>
-
-  <% end %>
-
-
-  <h2>All mentorships</h2>
-  
-  <% @all_mentorships.each do |z| %>
-
-    <li>Coach # <%= z.coach %> & Client # <%= z.client %></li>
-
-    ----------------------------------<br>
-
-  <% end %>
-
-
-  <h2>All plans</h2>
-  
-  <% @all_plans.each do |z| %>
-
-    <li>Client # <%= z.client %></li>
-
-    <li>Title: <%= z.title %></li>
-
-    <li>Content: <%= z.content %></li>
-
-    ----------------------------------<br>
-
-  <% end %>
-
-
-  <h2>All messages</h2>
-  
-  <% @all_messages.each do |m| %>
-
-    <li>From User # <%= m.from %></li>
-
-    <li>To User # <%= m.to %></li>
-
-    <li>Message: <%= m.content %></li>
-
-    ----------------------------------<br>
-
-  <% end %>
-
+  <%= render(:partial => "admin_dash") %> 
 
 <!-- COACH DASHBOARD -->
 <!-- ####################################### -->
 
 <% elsif current_user.is_a_coach? %>
 
-  <h1>This is your COACH dashboard</h1>
-
-  Clients:
-
-  <% @clients.each do |x| %>
-
-    <!-- Spit out links for each client here -->
-
-    <li><%= x.first_name %> <%= x.last_name %></li>
-    ----------------------------------<br>
-
-
-
-  <% end %>
+  <%= render(:partial => "coach_dash") %>
 
 <% end %>
 
@@ -120,21 +27,7 @@
 
 <% if current_user.is_a_coach == false && current_user.is_an_admin == false %>
 
-  <h1>This is your CLIENT dashboard</h1>
-
-  <% @mentorships_for_client.each do |x| %>
-
-    <%= x.coach %>
-
-  <% end %>
-
-  <% @coaches_for_client.each do |y| %>
-
-    <%= y.id %>
-
-  <% end %>
-
-<% else %>
+  
 
 <% end %>
 
@@ -142,7 +35,7 @@
 <!-- ALL USERS' MESSAGES -->
 <!-- ####################################### -->
 
-<!-- (ADMIN only recieves admin_messages) -->
+<!-- (only ADMIN recieves admin_messages) -->
 
 <% if current_user.is_an_admin == false %>
 

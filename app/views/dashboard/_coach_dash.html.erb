@@ -1,0 +1,14 @@
+<h1><%= current_user.first_name %>'s COACH Dashboard</h1>
+
+  Clients:
+
+  <% @clients.each do |x| %>
+
+    <!-- Spit out links for each client here -->
+
+    <li><%= x.first_name %> <%= x.last_name %></li>
+    ----------------------------------<br>
+
+
+
+  <% end %>

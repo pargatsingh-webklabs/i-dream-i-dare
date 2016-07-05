@@ -1,0 +1,13 @@
+<h1><%= current_user.first_name %>'s Dashboard</h1>
+
+<% @mentorships_for_client.each do |x| %>
+
+  <%= x.coach %>
+
+<% end %>
+
+<% @coaches_for_client.each do |y| %>
+
+  <%= y.id %>
+
+<% end %>
