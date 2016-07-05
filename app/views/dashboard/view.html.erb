@@ -27,7 +27,7 @@
 
 <% if current_user.is_a_coach == false && current_user.is_an_admin == false %>
 
-  
+  <%= render(:partial => "client_dash") %>
 
 <% end %>
 
@@ -35,9 +35,7 @@
 <!-- ALL USERS' MESSAGES -->
 <!-- ####################################### -->
 
-<!-- (only ADMIN recieves admin_messages) -->
-
-<% if current_user.is_an_admin == false %>
+<!-- (only ADMIN recieves admin_messages in addition to these) -->
 
   INCOMING MESSAGES:
   <% @incoming_messages.each do |m| %>
@@ -51,6 +49,5 @@
     <li><%= m.to %></li>
   <% end %> 
 
-<% end %>
 
 
