@@ -11,7 +11,7 @@
 z = User.new 
 z.first_name = "Nash"
 z.last_name = "Mahupete"
-z.email ="NMahupete@qliomaha.com "
+z.email ="nmahupete@qliomaha.com "
 z.password = "nashty"
 z.is_a_coach = false
 z.is_an_admin = true
@@ -66,6 +66,24 @@ c.is_a_coach = false
 c.is_an_admin = false
 c.save
 
+d = User.new 
+d.first_name = "Martin"
+d.last_name = "Client-Scorsese"
+d.email ="client4@gmail.com"
+d.password = "password"
+d.is_a_coach = false
+d.is_an_admin = false
+d.save
+
+e = User.new 
+e.first_name = "Bernie"
+e.last_name = "Clientbern"
+e.email ="client5@gmail.com"
+e.password = "password"
+e.is_a_coach = false
+e.is_an_admin = false
+e.save
+
 # ////// MENTORSHIPS
 
 m1 = Mentorship.new
@@ -82,6 +100,16 @@ m3 = Mentorship.new
 m3.client = c.id
 m3.coach = y.id
 m3.save
+
+m4 = Mentorship.new
+m4.client = d.id
+m4.coach = y.id
+m4.save
+
+m5 = Mentorship.new
+m5.client = e.id
+m5.coach = y.id
+m5.save
 
 # /////// MESSAGES
 

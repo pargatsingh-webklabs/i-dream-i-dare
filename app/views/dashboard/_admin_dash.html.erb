@@ -5,11 +5,8 @@
   <h2>Admin messages</h2> 
   
   <% @all_admin_messages.each do |a| %>
-
     <li>From: <%= a.from_name %></li>
-
     <li>Email: <%= a.from_email %></li>
-
     <li>Message: <%= a.content %></li>
 
     ----------------------------------<br>
@@ -20,7 +17,6 @@
   <h2>All coaches</h2>
 
   <% @all_coaches.each do |x| %>
-
     <li><%= x.first_name %> <%= x.last_name %> ... <%= x.email %></li>
 
     ----------------------------------<br>
@@ -31,7 +27,6 @@
   <h2>All clients</h2>
   
   <% @all_clients.each do |y| %>
-
     <li><%= y.first_name %> <%= y.last_name %></li>
 
     ----------------------------------<br>
@@ -42,7 +37,6 @@
   <h2>All mentorships</h2>
   
   <% @all_mentorships.each do |z| %>
-
     <li>Coach # <%= z.coach %> & Client # <%= z.client %></li>
 
     ----------------------------------<br>
@@ -53,11 +47,8 @@
   <h2>All plans</h2>
   
   <% @all_plans.each do |z| %>
-
     <li>Client # <%= z.client %></li>
-
     <li>Title: <%= z.title %></li>
-
     <li>Content: <%= z.content %></li>
 
     ----------------------------------<br>
@@ -68,11 +59,8 @@
   <h2>All messages</h2>
   
   <% @all_messages.each do |m| %>
-
     <li>From User # <%= m.from %></li>
-
     <li>To User # <%= m.to %></li>
-
     <li>Message: <%= m.content %></li>
 
     ----------------------------------<br>

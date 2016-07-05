@@ -1,41 +1,27 @@
-<%= current_user.first_name %> <%= current_user.last_name %>'s Dashboard 
+
+-----------------------------------------
+
+------------TODO: Move these links to the partials:
 
 <a href='edit_user_registration_path'>Edit User</a>
 
 <a href='/users/sign_out' data-method='delete'>Sign out</a>
 
-
-<!-- ADMIN DASHBOARD -->
-<!-- ####################################### -->
+-------------------------
 
 <% if current_user.is_an_admin? %>
 
   <%= render(:partial => "admin_dash") %> 
 
-<!-- COACH DASHBOARD -->
-<!-- ####################################### -->
-
 <% elsif current_user.is_a_coach? %>
-
   <%= render(:partial => "coach_dash") %>
-
 <% end %>
-
-
-<!-- CLIENT DASHBOARD -->
-<!-- ####################################### -->
 
 <% if current_user.is_a_coach == false && current_user.is_an_admin == false %>
-
   <%= render(:partial => "client_dash") %>
-
 <% end %>
 
-
-<!-- ALL USERS' MESSAGES -->
-<!-- ####################################### -->
-
-<!-- (only ADMIN recieves admin_messages in addition to these) -->
+<!-- (ADMIN recieves admin_messages in addition to these below) -->
 
   INCOMING MESSAGES:
   <% @incoming_messages.each do |m| %>
