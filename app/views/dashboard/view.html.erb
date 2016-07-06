@@ -1,14 +1,3 @@
-
------------------------------------------
-
-------------TODO: Move these links to the partials:
-
-<a href='edit_user_registration_path'>Edit User</a>
-
-<a href='/users/sign_out' data-method='delete'>Sign out</a>
-
--------------------------
-
 <% if current_user.is_an_admin? %>
 
   <%= render(:partial => "admin_dash") %> 

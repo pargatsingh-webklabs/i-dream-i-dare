@@ -4,19 +4,22 @@
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
       <span class="icon-toggle"></span>
     </button>
-    <a class="navbar-brand" href="#"><%= current_user.first_name %>'s COACH Dashboard</a>
+    <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-user"> </span>    <%= current_user.first_name %>'s COACH Dashboard</a>
   </div>
   <div class="navbar-collapse collapse">
     <ul class="nav navbar-nav pull-right">
       
       <li class="dropdown">
         <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
-          <strong>Admin</strong> <span class="caret"></span></a>
+          <strong>Tools</strong> <span class="caret"></span></a>
         <ul id="g-account-menu" class="dropdown-menu" role="menu">
-          <li><a href="#">My Profile</a></li>
+
+          <!-- / TOOLS Drop Down Menu Items-->
+          <li><a href='/users/sign_out' data-method='delete'>Sign out</a></li>
+        <!-- / TOOLS Drop Down Menu Items-->
+
         </ul>
       </li>
-      <li><a href="#">Log out</a></li>
     </ul>
   </div>
 </div>
@@ -33,7 +36,7 @@
         <li class="nav-header"></li>
 
 
-<!-- for EACH CLIENT (@clients) do |client|: -->
+<!-- Client List -->
 
         <% @clients.each do |client| %>
 
@@ -42,25 +45,32 @@
 
         <% end %>
 
+<!-- / Client List -->
+
       </ul>
+
     </div><!-- /span-3 -->
     <div class="col-md-10">
         <!-- Right -->
 
         <a title="New Plan" data-toggle="modal" href="#addWidgetModal" class="btn btn-primary pull-left"><span class="glyphicon glyphicon-plus-sign"></span> NEW PLAN</a>
 
-        <a title="New Message" data-toggle="modal" href="#addWidgetModal" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus-sign"></span> NEW MESSAGE</a><br><hr>
+        <a title="New Message" data-toggle="modal" href="#addWidgetModal" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-send"></span> NEW MESSAGE</a><br><hr>
       
       
     <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-5">
+
         <div class="well">Inbox Messages <span class="badge pull-right">3</span></div>
               
-                <div class="panel">
+                <div class="panel"><!--panel-->
                     <div class="panel-heading">
                       <i class="icon icon-chevron-up chevron"></i>
                       <i class="icon icon-wrench pull-right"></i> Quick Start
                   </div>
+
+                  <!--/panel content
+
                   <div class="panel-content">
                     
                       <div class="btn-group btn-group-justified">
@@ -81,7 +91,10 @@
                           <p>Help</p>
                         </a>
                       </div>
-                  </div><!--/panel content-->
+                  </div>
+
+                  /panel content-->
+
               </div><!--/panel-->
               
               
