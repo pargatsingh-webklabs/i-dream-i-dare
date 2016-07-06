@@ -1,4 +1,5 @@
-<!-- Header -->
+<!-- HEADER -->
+
 <div id="top-nav" class="navbar navbar-inverse navbar-static-top">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -23,9 +24,12 @@
     </ul>
   </div>
 </div>
-<!-- /Header -->
 
-<!-- Main -->
+<!-- /HEADER -->
+
+
+<!-- MAIN -->
+
 <div class="container">
 <div class="row">
   <div class="col-md-2">
@@ -36,7 +40,7 @@
         <li class="nav-header"></li>
 
 
-<!-- Client List -->
+      <!-- Client List -->
 
         <% @clients.each do |client| %>
 
@@ -45,7 +49,7 @@
 
         <% end %>
 
-<!-- / Client List -->
+      <!-- / Client List -->
 
       </ul>
 
@@ -53,14 +57,30 @@
     <div class="col-md-10">
         <!-- Right -->
 
-        <a title="New Plan" data-toggle="modal" href="#addWidgetModal" class="btn btn-primary pull-left"><span class="glyphicon glyphicon-plus-sign"></span> NEW PLAN</a>
+        <a title="New Plan" data-toggle="modal" href="TODO" class="btn btn-primary pull-left"><span class="glyphicon glyphicon-leaf"></span> NEW PLAN</a>
 
-        <a title="New Message" data-toggle="modal" href="#addWidgetModal" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-send"></span> NEW MESSAGE</a><br><hr>
+        <a title="New Message" data-toggle="modal" href="TODO" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-send"></span> NEW MESSAGE</a><br><hr>
       
     <!-- Middle Column, where the PLANS live. -->
 
     <div class="row">
           <div class="col-md-5">
+
+          <div class="panel panel-default">
+                  <div class="panel-heading"><strong>PLANS</strong></div>
+                  <div class="panel-body">
+
+                  <strong><center> The DREAM </center></strong>
+                  Cold-pressed hammock wolf, yuccie polaroid church-key fanny pack whatever pour-over lumbersexual seitan flannel. Leggings disrupt heirloom typewriter, venmo quinoa listicle williamsburg PBR&B next level salvia godard occupy cray fanny pack. Swag butcher four dollar toast lumbersexual normcore aesthetic viral, fap church-key. Mustache literally YOLO authentic, squid pork belly kogi put a bird on it seitan kombucha post-ironic try-hard poutine fashion axe. Literally VHS leggings, yr asymmetrical williamsburg food truck fap. Kogi gochujang pork belly scenester synth, fap freegan sustainable 90's artisan cred affogato lo-fi selvage. Kale chips +1 swag echo park.<br><br>
+                  
+                  <strong><center> The DARE </center></strong>
+                  8-bit hoodie godard flannel meditation truffaut. Deep v sartorial paleo, art party leggings quinoa retro artisan intelligentsia normcore VHS truffaut cred. Godard master cleanse yuccie etsy typewriter. Kale chips mixtape ethical, craft beer retro humblebrag flannel. Readymade beard disrupt drinking vinegar photo booth pork belly. Meditation pug salvia franzen gastropub williamsburg. Photo booth cred pabst, banjo yr beard trust fund cardigan selvage wolf tumblr banh mi kogi taxidermy knausgaard.<br><br>
+
+                  <strong><center> The DO </center></strong>
+                  Try-hard pinterest butcher food truck. 3 wolf moon franzen irony tilde, paleo mlkshk semiotics ugh everyday carry normcore. Pork belly taxidermy pitchfork artisan, umami forage green juice 90's shoreditch affogato stumptown. Before they sold out art party four loko chartreuse artisan. Plaid tumblr pop-up, art party church-key sartorial 3 wolf moon marfa put a bird on it chartreuse tattooed. Cold-pressed bespoke synth, raw denim crucifix viral tousled meggings echo park butcher. Try-hard aesthetic food truck freegan.<br><br>
+
+                  </div>
+                </div>
 
           <!-- Simple module for Inbox messages, with a badge alert -->
 
@@ -139,16 +159,29 @@
 <!-- THIS IS THE RIGHT COLUMN, WHERE THE MESSAGE HISTORY LIVES -->
 
           <div class="col-md-7">
-        <div class="panel panel-default">
-                  <div class="panel-heading">Bootstrap 3</div>
+
+    <!-- THIS is a simple module, which will be used for the middle and right columns. -->
+
+        <div class="row">
+          <div class="col-span">
+
+          <div class="panel panel-default">
+                  <div class="panel-heading"><strong>MESSAGES</strong></div>
                   <div class="panel-body">
-                  This is a dashboard-style layout that uses Bootstrap 3 RC. You can follow the ongoing pre-release discussions about Bootstrap 3.0 on this <a href="https://github.com/twitter/bootstrap/pull/6342">GitHub thread</a>.
-                  <br><br>
-                  This Bootstrap 3 dashboard layout is compliments of <a href="http://bootply.com">Bootply</a>.
+                  
+                  This conversation will be automated.
+                  
+                    </div>
                   </div>
                 </div>
-              
-                <div class="panel panel-default">
+
+
+    <!-- / The simple module -->
+
+
+    <!-- THIS is a Form module -->
+
+      <!--        <div class="panel panel-default">
                   <div class="panel-heading">
                         <div class="panel-title">
                         <i class="glyphicon glyphicon-chevron-up chevron"></i>
@@ -200,11 +233,15 @@
                         
                       </form>
                 
-                
-                  </div><!--/panel content-->
-                </div><!--/panel-->
+                  </div>
+                </div> -->
+
+    <!-- / The Form module -->
+
+
+                <!-- Panel with circle informatic -->
               
-                <div class="panel panel-default">
+                <!-- <div class="panel panel-default">
                   <div class="panel-heading"><div class="panel-title">Engagement</div></div>
                   <div class="panel-body pull-center">  
                     
@@ -215,42 +252,63 @@
                     <img src="http://placehold.it/90X90/EEEEEE/222" class="img-circle">
                     
                   </div>
-               </div><!--/panel-->
+               </div> -->
+
+               <!--/Panel with circles-->
+
               
-              
+              <!-- Social Media Icons -->
+
                 <i class="icon-bar-chart icon-3x"></i>
                 <i class="icon-plus icon-3x"></i>
                 <i class="icon-facebook icon-3x"></i>
                 <i class="icon-beaker icon-3x"></i>
                 <i class="icon-twitter icon-3x"></i>
                 
+              <!-- / Social Media Icons -->
               
-      </div><!--/col-span-6-->
+      </div><!--/col-->
      
       </div><!--/row-->
-    </div><!--/col-span-9-->
-</div>
-</div>
-<!-- /Main -->
 
-<footer>
-  
-</footer>
+    </div><!--/col-->
 
-<div class="modal" id="addWidgetModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title">Add Widget</h4>
+</div>
+
+</div>
+
+<!-- / Main -->
+
+
+<!-- Footer -->
+
+  <footer>
+    
+    
+
+  </footer>
+
+<!-- / Footer -->
+
+
+<!-- Module for user to add widgets -->
+
+  <!-- <div class="modal" id="addWidgetModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4 class="modal-title">Add Widget</h4>
+        </div>
+        <div class="modal-body">
+          <p>Add a widget stuff here..</p>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn" data-dismiss="modal">Close</a>
+          <a href="#" class="btn btn-primary">Save changes</a>
+        </div>
       </div>
-      <div class="modal-body">
-        <p>Add a widget stuff here..</p>
-      </div>
-      <div class="modal-footer">
-        <a href="#" class="btn" data-dismiss="modal">Close</a>
-        <a href="#" class="btn btn-primary">Save changes</a>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dalog -->
-</div><!-- /.modal -->
+    </div>
+  </div> -->
+
+<!-- / Module for user to add widgets -->
