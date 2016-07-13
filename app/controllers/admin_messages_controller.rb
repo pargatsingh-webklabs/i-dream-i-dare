@@ -1,5 +1,11 @@
 class AdminMessagesController < ApplicationController
+  skip_before_filter :authenticate_user!, only: [:landing_page]
   before_action :set_admin_message, only: [:show, :edit, :update, :destroy]
+
+  # GET /
+  def landing_page
+    @admin_message = AdminMessage.new
+  end
 
   # GET /admin_messages
   def index
