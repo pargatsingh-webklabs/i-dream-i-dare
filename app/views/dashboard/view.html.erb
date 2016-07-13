@@ -1,3 +1,36 @@
+<!-- HEADER -->
+
+<div id="top-nav" class="navbar navbar-inverse navbar-static-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="icon-toggle"></span>
+    </button>
+    <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-user"> </span>    <%= current_user.first_name %>'s COACH Dashboard</a>
+  </div>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav pull-right">
+      
+      <li class="dropdown">
+        <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
+          <strong>Tools</strong> <span class="caret"></span></a>
+        <ul id="g-account-menu" class="dropdown-menu" role="menu">
+
+          <!-- / TOOLS Drop Down Menu Items-->
+          <li><a href='/users/sign_out' data-method='delete'>Sign out</a></li>
+        <!-- / TOOLS Drop Down Menu Items-->
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- /HEADER -->
+
+<!-- /////////////////////////////////////////////////////////////// -->
+
+<!-- Logic to render dashboard according to user type (Coach, Client, Admin) -->
+
 <% if current_user.is_an_admin? %>
 
   <%= render(:partial => "admin_dash") %> 
@@ -10,7 +43,9 @@
   <%= render(:partial => "client_dash") %>
 <% end %>
 
-<!-- (ADMIN recieves admin_messages in addition to these below) -->
+<!-- /Logic to render dashboard according to user type (Coach, Client, Admin) -->
+
+<!-- Messages (SIMPLE OUTPUT INTO LIST, to be migrated into the message div), for each user type (ADMIN recieves admin_messages in addition to these below) -->
 
   INCOMING MESSAGES:
   <% @incoming_messages.each do |m| %>
@@ -23,6 +58,23 @@
     <li><%= m.content %></li>
     <li><%= m.to %></li>
   <% end %> 
+
+<!-- / Messages -->
+
+<!-- /////////////////////////////////////////////////////////////// -->
+
+
+
+<!-- Footer -->
+
+  <footer>THIS IS THE FOOTER, I Dream I Dare
+    
+    
+
+  </footer>
+
+<!-- / Footer -->
+
 
 
 
