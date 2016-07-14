@@ -78,10 +78,11 @@
                   
                   <div class="panel-body">
 
-                    sorted_messages = []
-                    <% @outgoing_messages.each do |out|
-                      out.
-                  
+                    <%= current_user.first_name %>
+
+                    <% @user_messages.flatten.each do |m| %>
+                    <%= m.content %>
+                    <% end %>
                   
                   </div>
           </div>
