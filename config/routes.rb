@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :mentorships
   resources :messages
   devise_for :users, :controllers => { registrations: 'registrations' }
+  
   # ---------This is the old root, sans new admin message form:
 
   # root to: "home#index"

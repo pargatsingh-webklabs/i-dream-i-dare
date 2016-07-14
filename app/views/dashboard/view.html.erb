@@ -5,7 +5,7 @@
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
       <span class="icon-toggle"></span>
     </button>
-    <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-user"> </span>    <%= current_user.first_name %>'s COACH Dashboard</a>
+    <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-user"> </span>    <%= current_user.first_name %>'s Dashboard</a>
   </div>
   <div class="navbar-collapse collapse">
     <ul class="nav navbar-nav pull-right">
@@ -27,6 +27,9 @@
 
 <!-- /HEADER -->
 
+
+
+
 <!-- /////////////////////////////////////////////////////////////// -->
 
 <!-- Logic to render dashboard according to user type (Coach, Client, Admin) -->
@@ -47,19 +50,19 @@
 
 <!-- Messages (SIMPLE OUTPUT INTO LIST, to be migrated into the message div), for each user type (ADMIN recieves admin_messages in addition to these below) -->
 
-  INCOMING MESSAGES:
-  <% @incoming_messages.each do |m| %>
+<% @user_messages = Message.where(:to => current_user.id) %>
+
+  USER MESSAGES:
+  <% @user_messages.each do |m| %>
     <li><%= m.content %></li>
     <li><%= m.from %></li>
-  <% end %> 
-
-  OUTGOING MESSAGES:
-  <% @outgoing_messages.each do |m| %>
-    <li><%= m.content %></li>
-    <li><%= m.to %></li>
-  <% end %> 
+  <% end %>
 
 <!-- / Messages -->
+
+
+
+
 
 <!-- /////////////////////////////////////////////////////////////// -->
 
@@ -67,10 +70,10 @@
 
 <!-- Footer -->
 
-  <footer>THIS IS THE FOOTER, I Dream I Dare
-    
-    
+  <footer>
 
+    This is the FOOTER of the I Dream I Dare web application.
+    
   </footer>
 
 <!-- / Footer -->

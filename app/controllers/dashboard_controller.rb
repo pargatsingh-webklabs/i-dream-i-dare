@@ -51,10 +51,9 @@ class DashboardController < ApplicationController
 #//////////////All Users:
 
   def get_user_messages
-    
-    @incoming_messages = Message.where(:to => current_user.id)
-    @outgoing_messages = Message.where(:from => current_user.id) 
 
+    @user_messages = Message.where(:to => current_user.id)
+    
   end
 
 #//////////////Coaches:

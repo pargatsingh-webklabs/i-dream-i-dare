@@ -1,5 +1,7 @@
-<h1>INDEX VIEW</h1>
+<h1>I DREAM I DARE LANDING PAGE</h1>
 
+<h4>Welcome! Today is <%= @day_of_week %> <%= @month %>/
+<%= @day_number %>, <%= @year %></h4>
 
 <% if user_signed_in? %>
 
@@ -16,20 +18,13 @@
 <% end %>
 
 
-<!-- Link below to external blog site: -->
+<!-- Link below to external blog site: TODO: Build a site-integrated Blog for Nash-->
 
 <a href="https://www.blogger.com/home">Blog</a>
 
 
-
 <!-- Web form to send a new admin message: -->
 
-<%= link_to 'New Admin message', new_admin_message_path %>
-
-<!-- Still playing with this: -->
-
-<div>
 <%= render 'form' %>
-</div>
 
-<!-- / Still playing -->
+<!-- / New Admin Message form -->

@@ -4,6 +4,12 @@ class AdminMessagesController < ApplicationController
 
   # GET /
   def landing_page
+    time = Time.new
+    days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+    @day_of_week = days[time.wday] 
+    @month = time.month
+    @day_number = time.day
+    @year = time.year
     @admin_message = AdminMessage.new
   end
 
