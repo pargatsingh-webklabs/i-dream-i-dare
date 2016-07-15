@@ -104,7 +104,7 @@ a:focus {
   background-color: rgba(255, 255, 255, 0.3);
 }
 .navbar-custom .nav li.active a:hover {
-  color: white;
+  color: white; 
 }
 @media (min-width: 768px) {
   .navbar-custom {
@@ -145,6 +145,27 @@ a:focus {
 }
 .intro .intro-body .intro-text {
   font-size: 18px;
+}
+.outgoing-bubble {
+  background-color: powderblue;
+  text-align: left;
+  padding: 5px;
+  margin: 2px;
+  width: 60%;
+  float: left;
+  border-radius: 25px;
+}
+.incoming-bubble {
+  background-color: lightgreen;
+  text-align: right;
+  padding: 5px;
+  margin: 2px;
+  width: 60%;
+  float: right;
+  border-radius: 25px;
+}
+.bubble-spacer {
+  padding: 20px;
 }
 @media (min-width: 768px) {
   .intro {

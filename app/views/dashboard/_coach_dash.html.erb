@@ -78,10 +78,29 @@
                   
                   <div class="panel-body">
 
-                    <%= current_user.first_name %>
-
                     <% @user_messages.flatten.each do |m| %>
-                    <%= m.content %>
+                      
+
+                        <% if m.from == current_user.id %>
+
+                          <div class="outgoing-bubble">
+                          <%= m.content %>
+                          </div>
+
+                          <div class="bubble-spacer">
+                          </div>
+
+                        <% else %>
+
+                          <div class="incoming-bubble">
+                          <%= m.content %>
+                          </div>
+
+                          <div class="bubble-spacer">
+                          </div>
+                          
+                        <% end %>
+
                     <% end %>
                   
                   </div>

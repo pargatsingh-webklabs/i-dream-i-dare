@@ -116,20 +116,26 @@ m5.save
 w1 = Message.new
 w1.to = a.id
 w1.from = x.id
-w1.content = "Hey, client 1- This is coach 1."
+w1.content = "Hey, did you get a chance to look at the goals for next week?"
 w1.save
 
 w2 = Message.new
 w2.to = x.id
 w2.from = a.id
-w2.content = "Hey, coach 1- This is client 1."
+w2.content = "Yes- That all looks good to me!"
 w2.save
 
-w3 = Message.new
-w3.to = b.id
-w3.from = x.id
-w3.content = "Hey, client 2- This is coach 1."
-w3.save
+w1b = Message.new
+w1b.to = a.id
+w1b.from = x.id
+w1b.content = "Please let me know how things go on Wednesday! Keep in touch. :)"
+w1b.save
+
+w2b = Message.new
+w2b.to = x.id
+w2b.from = a.id
+w2b.content = "You've got it! Thanks for the support."
+w2b.save
 
 w4 = Message.new
 w4.to = x.id
