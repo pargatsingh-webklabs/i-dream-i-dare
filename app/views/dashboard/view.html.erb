@@ -48,25 +48,8 @@
 
 <!-- /Logic to render dashboard according to user type (Coach, Client, Admin) -->
 
-<!-- Messages (SIMPLE OUTPUT INTO LIST, to be migrated into the message div), for each user type (ADMIN recieves admin_messages in addition to these below) -->
-
-<% @user_messages = Message.where(:to => current_user.id) %>
-
-  USER MESSAGES:
-  <% @user_messages.each do |m| %>
-    <li><%= m.content %></li>
-    <li><%= m.from %></li>
-  <% end %>
-
-<!-- / Messages -->
-
-
-
-
 
 <!-- /////////////////////////////////////////////////////////////// -->
-
-
 
 <!-- Footer -->
 

@@ -52,8 +52,13 @@ class DashboardController < ApplicationController
 
   def get_user_messages
 
-    @user_messages = Message.where(:to => current_user.id)
+    a = Message.where(to: current_user.id) 
+    b = Message.where(from: current_user.id)
     
+    @user_messages = []
+    @user_messages << a.flatten
+    @user_messages << b.flatten
+
   end
 
 #//////////////Coaches:
