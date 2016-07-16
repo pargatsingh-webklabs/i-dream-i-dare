@@ -55,9 +55,13 @@ class DashboardController < ApplicationController
     a = Message.where(to: current_user.id) 
     b = Message.where(from: current_user.id)
     
-    @user_messages = []
-    @user_messages << a.flatten
-    @user_messages << b.flatten
+    messages = []
+    messages << a.flatten
+    messages << b.flatten
+
+ 
+
+    @user_messages = messages.flatten.sort_by {|m| m.updated_at }
 
   end
 
