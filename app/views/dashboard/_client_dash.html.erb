@@ -10,26 +10,37 @@
         <li class="nav-header"></li>
 
 
-      <!-- Client List -->
+      <!-- Coach List -->
 
         <% @coaches_for_client.each do |coach| %>
 
 
         <!-- If active user, change background color of pill. -->
 
-
-          <li><a href="/FILL THIS IN WITH PATH TO VIEW" target="ext"><%= coach.first_name %> <%= coach.last_name %></a></li>
-          <li class="divider"></li>
+          
+            <li><a href="/FILL THIS IN WITH PATH TO VIEW" target="ext"><%= coach.first_name %> <%= coach.last_name %></a></li>
+            <li class="divider"></li>
+         
 
         <% end %>
 
-      <!-- / Client List -->
+      <!-- / Coach List -->
 
       </ul>
 
     </div><!-- /span-3 -->
+
     <div class="col-md-10">
-        <!-- Right -->
+
+        <!-- Inspirational Banner -->
+
+          <div class="client-dashboard-banner">
+
+            BANNER BANNER BANNER!
+            
+          </div>
+
+        <!--/ Inspirational Banner -->
 
         <a title="New Plan" data-toggle="modal" href="TODO" class="btn btn-primary pull-left"><span class="glyphicon glyphicon-leaf"></span> NEW PLAN</a>
 
