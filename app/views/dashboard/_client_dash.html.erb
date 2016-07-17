@@ -1,9 +1,138 @@
+<!-- MAIN -->
 
-<% @mentorships_for_client.each do |x| %>
-  <%= x.coach %>
-<% end %>
+<div class="container">
+<div class="row">
+  <div class="col-md-2">
+      <!-- Left -->
+      <strong>Coaches</strong>
+      <hr>
+      <ul class="nav nav-pills nav-stacked">
+        <li class="nav-header"></li>
 
-<% @coaches_for_client.each do |y| %>
-  <%= y.id %>
-<% end %>
 
+      <!-- Client List -->
+
+        <% @coaches_for_client.each do |coach| %>
+
+
+        <!-- If active user, change background color of pill. -->
+
+
+          <li><a href="/FILL THIS IN WITH PATH TO VIEW" target="ext"><%= coach.first_name %> <%= coach.last_name %></a></li>
+          <li class="divider"></li>
+
+        <% end %>
+
+      <!-- / Client List -->
+
+      </ul>
+
+    </div><!-- /span-3 -->
+    <div class="col-md-10">
+        <!-- Right -->
+
+        <a title="New Plan" data-toggle="modal" href="TODO" class="btn btn-primary pull-left"><span class="glyphicon glyphicon-leaf"></span> NEW PLAN</a>
+
+        <a title="New Message" data-toggle="modal" href="TODO" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-send"></span> NEW MESSAGE</a><br><hr>
+      
+    <!-- Middle Column, where the PLANS live. -->
+
+    <div class="row">
+          <div class="col-md-5">
+
+          <div class="panel panel-default">
+                  <div class="panel-heading"><strong>PLANS</strong></div>
+                  <div class="panel-body">
+
+                  <strong><center> The DREAM </center></strong>
+                  Cold-pressed hammock wolf, yuccie polaroid church-key fanny pack whatever pour-over lumbersexual seitan flannel. Leggings disrupt heirloom typewriter, venmo quinoa listicle williamsburg PBR&B next level salvia godard occupy cray fanny pack. Swag butcher four dollar toast lumbersexual normcore aesthetic viral, fap church-key.<br><br>
+                  
+                  <strong><center> The DARE </center></strong>
+                  8-bit hoodie godard flannel meditation truffaut. Deep v sartorial paleo, art party leggings quinoa retro artisan intelligentsia normcore VHS truffaut cred. Godard master cleanse yuccie etsy typewriter. Kale chips mixtape ethical, craft beer retro humblebrag flannel.<br><br>
+
+                  <strong><center> The DO </center></strong>
+                  Try-hard pinterest butcher food truck. 3 wolf moon franzen irony tilde, paleo mlkshk semiotics ugh everyday carry normcore. Pork belly taxidermy pitchfork artisan, umami forage green juice 90's shoreditch affogato stumptown. Before they sold out art party four loko chartreuse artisan. Plaid tumblr pop-up, art party church-key sartorial 3 wolf moon marfa put a bird on it chartreuse tattooed.<br><br>
+
+                  </div>
+                </div>
+
+            </div>
+
+<!-- THIS IS THE RIGHT COLUMN, WHERE THE ACTIVE CLIENT'S MESSAGE HISTORY LIVES -->
+
+<!-- //////////////////////////////////////////////////////////// -->
+
+<!-- OBJECTIVE, in Pseudo-Code: loop through the @incoming_messages and @outgoing_messages, and place the objects into a hash. Sort them by timestamp, and spit them out (float)LEFT for outgoing and (float)RIGHT for incoming.  
+
+
+<!-- //////////////////////////////////////////////////////////// -->
+
+
+          <div class="col-md-7">
+
+    <!-- THIS is a simple module, which will be used for the middle and right columns. -->
+
+        <div class="row">
+          <div class="col-span">
+
+          <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <strong>MESSAGES</strong>
+                  </div>
+                  
+                  <div class="panel-body">
+
+                    <% @user_messages.each do |m| %>
+                      
+
+                        <% if m.from == current_user.id %>
+
+                          <div class="outgoing-bubble">
+                          <%= m.content %>
+                          </div>
+
+                          <div class="bubble-spacer">
+                          </div>
+
+                        <% else %>
+
+                          <div class="incoming-bubble">
+                          <%= m.content %>
+                          </div>
+
+                          <div class="bubble-spacer">
+                          </div>
+                          
+                        <% end %>
+
+                    <% end %>
+                  
+                  </div>
+          </div>
+          </div>
+        </div>
+
+
+    <!-- / The simple module -->
+
+              <!-- Social Media Icons -->
+
+                <i class="icon-bar-chart icon-3x"></i>
+                <i class="icon-plus icon-3x"></i>
+                <i class="icon-facebook icon-3x"></i>
+                <i class="icon-beaker icon-3x"></i>
+                <i class="icon-twitter icon-3x"></i>
+                
+              <!-- / Social Media Icons -->
+              
+      </div><!--/col-->
+     
+      </div><!--/row-->
+
+    </div><!--/col-->
+
+</div>
+
+</div>
+
+<!-- / Main

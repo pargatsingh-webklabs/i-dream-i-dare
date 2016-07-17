@@ -97,7 +97,9 @@ class DashboardController < ApplicationController
 
   def get_client_coaches
 
-    @mentorships_for_client.each do |x|
+    mentorships = Mentorship.where(:client => current_user.id)
+
+    mentorships.each do |x|
 
       @coaches_for_client = User.where(:id => x.coach)
 
