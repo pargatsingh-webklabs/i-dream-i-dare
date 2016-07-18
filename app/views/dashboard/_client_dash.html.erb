@@ -16,11 +16,10 @@
 
 
         <!-- If active user, change background color of pill. -->
-
           
-            <li><a href="/FILL THIS IN WITH PATH TO VIEW" target="ext"><%= coach.first_name %> <%= coach.last_name %></a></li>
+            <ul class= "tab">
+              <a href="/FILL THIS IN WITH PATH TO VIEW" target="ext"><%= coach.first_name %> <%= coach.last_name %></a></ul>
             <li class="divider"></li>
-         
 
         <% end %>
 
@@ -32,20 +31,38 @@
 
     <div class="col-md-10">
 
+        <!-- Buttons from Coach dash -->
+<!-- 
+        <a title="New Plan" data-toggle="modal" href="TODO" class="btn btn-primary pull-left"><span class="glyphicon glyphicon-leaf"></span> NEW PLAN</a> -->
+
+        <a title="New Message" data-toggle="modal" href="TODO" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-send"></span> NEW MESSAGE</a><br><hr>
+
+        <!--/ Buttons from Coach dash -->
+
+
         <!-- Inspirational Banner -->
+<!-- HEIGHT OF IMAGE NEEDS TO BE 250px, and width should be 800px to accomodate larger screens.-->
 
           <div class="client-dashboard-banner">
-
-            BANNER BANNER BANNER!
+            <div class="dashboard-banner-text">
+                There is no passion to be found
+              
+                playing small - in settling for 
+                
+                a life that is less than the one 
+                
+                you are capable of living.
+                <br>
+                <br>
+                <strong>-Nelson Mandela
+                </strong>
+            </div>
             
           </div>
 
         <!--/ Inspirational Banner -->
-
-        <a title="New Plan" data-toggle="modal" href="TODO" class="btn btn-primary pull-left"><span class="glyphicon glyphicon-leaf"></span> NEW PLAN</a>
-
-        <a title="New Message" data-toggle="modal" href="TODO" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-send"></span> NEW MESSAGE</a><br><hr>
       
+
     <!-- Middle Column, where the PLANS live. -->
 
     <div class="row">
@@ -71,19 +88,17 @@
 
 <!-- THIS IS THE RIGHT COLUMN, WHERE THE ACTIVE CLIENT'S MESSAGE HISTORY LIVES -->
 
-<!-- //////////////////////////////////////////////////////////// -->
+<!-- /////////////////////////////////// -->
 
 <!-- OBJECTIVE, in Pseudo-Code: loop through the @incoming_messages and @outgoing_messages, and place the objects into a hash. Sort them by timestamp, and spit them out (float)LEFT for outgoing and (float)RIGHT for incoming.  
 
-
-<!-- //////////////////////////////////////////////////////////// -->
-
+<!-- //////////////////////////////////// -->
 
           <div class="col-md-7">
 
     <!-- THIS is a simple module, which will be used for the middle and right columns. -->
 
-        <div class="row">
+       
           <div class="col-span">
 
           <div class="panel panel-default">
@@ -121,7 +136,7 @@
                   </div>
           </div>
           </div>
-        </div>
+     
 
 
     <!-- / The simple module -->
