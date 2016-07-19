@@ -16,7 +16,6 @@ class DashboardController < ApplicationController
 
       if current_user.is_a_coach? 
 
-        get_mentorships_for_coach
         get_clients_for_coach
 
       #////////Admin:
@@ -67,17 +66,13 @@ class DashboardController < ApplicationController
 
 #//////////////Coaches:
 
-  def get_mentorships_for_coach
-
-    @mentorships = Mentorship.where(:coach => current_user.id)
-
-  end
-
   def get_clients_for_coach
+
+    mentorships = Mentorship.where(:coach => current_user.id)
 
     c = []
 
-    @mentorships.each do |x|
+    mentorships.each do |x|
     
       c << User.where(:id => x.client)
 
