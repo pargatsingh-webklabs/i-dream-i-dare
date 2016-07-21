@@ -29,6 +29,11 @@
 
     </div><!-- /span-3 -->
 
+<!-- /////////TESTING?///////// -->
+    <div id="current_client"></div>
+     <!-- /////////TESTING?///////// -->
+
+
     <div class="col-md-10">
 
         <!-- Buttons from Coach dash -->
@@ -61,7 +66,6 @@
           </div>
 
         <!--/ Inspirational Banner -->
-      
 
     <!-- Middle Column, where the PLANS live. -->
 
@@ -134,10 +138,28 @@
                     <% end %>
                   
                   </div>
+
+                  <!-- ////////////////////////////// -->
+
+                  <div id="sendMessage" class="mike">
+                    <%= form_tag("send_message/" + @client.id.to_s) do %>
+                      <p> 
+                      <textarea name="message_content" rows="2" cols="70" value="<%= params[:message_content] %>">
+                      </textarea>
+                      </p>   
+
+                      <input class="send_button" type="submit" value="send"></p>
+
+                    <% end %>
+                  </div>
+
+                  <!-- /////////////////////////////////// -->
+
           </div>
           </div>
      
 
+          
 
     <!-- / The simple module -->
 

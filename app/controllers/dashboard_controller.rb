@@ -64,6 +64,12 @@ class DashboardController < ApplicationController
 
   end
 
+# //////////The following action will grab the User object being currently viewed on Client or Coach Dashboard:
+
+def currently_viewed_user
+    @currently_viewed_user = User.find_by_id(params[:id])
+  end
+
 #//////////////Coaches:
 
   def get_clients_for_coach
