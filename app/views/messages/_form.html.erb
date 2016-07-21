@@ -11,16 +11,16 @@
     </div>
   <% end %>
 
+
+  <!-- TODO: Change this "TO" info to add @currently_viewed_user.id -->
+
+  <% @message.from = current_user.id %>
+
+  <% @message.to = current_user.id %> 
+
+
   <div class="field">
-    <%= f.label :from %><br>
-    <%= f.number_field :from %>
-  </div>
-  <div class="field">
-    <%= f.label :to %><br>
-    <%= f.number_field :to %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br>
+    <% f.label :content %><br>
     <%= f.text_area :content %>
   </div>
   <div class="actions">

@@ -8,6 +8,8 @@ class DashboardController < ApplicationController
     if user_signed_in?
 
       get_user_messages
+
+      get_new_message
       
       
       #-----------------
@@ -61,6 +63,12 @@ class DashboardController < ApplicationController
  
 
     @user_messages = messages.flatten.sort_by {|m| m.updated_at }
+
+  end
+
+  def get_new_message
+
+    @message = Message.new
 
   end
 
