@@ -186,6 +186,22 @@ a:focus {
   float: right;
   border-radius: 10px;
 }
+#message_content {
+  width: 100%;
+  height: 100px;
+}
+#admin_message_content {
+  width: 50%;
+  height: 100px;
+}
+#admin_message_from_email {
+  width: 30%;
+  height: auto;
+}
+#admin_message_from_name {
+  width: 30%;
+  height: auto;
+}
 .bubble-spacer {
   padding: 20px;
 }
