@@ -17,6 +17,7 @@ gem "rack-canonical-host"
 gem "rails", "~> 4.2.0"
 gem "recipient_interceptor"
 gem "sass-rails", "~> 5.0"
+gem 'compass-rails'
 gem "sprockets", ">= 3.0.0"
 gem "sprockets-es6"
 gem "title"
