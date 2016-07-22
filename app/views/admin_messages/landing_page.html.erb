@@ -1,30 +1,14 @@
+<div class="whole-page">
+
 <%= render 'landing_page_info_content' %>
 
 <h4>Welcome! Today is <%= @day_of_week %> <%= @month %>/
 <%= @day_number %>, <%= @year %></h4>
-
-<% if user_signed_in? %>
-
-  <a href='/user/dashboard'>Go to My Dashboard</a>
-
-  <a href='/users/sign_out' data-method='delete'>Sign out</a>
-
-<% else %>
-
-  <a href="http://localhost:3000/users/sign_in">Sign In</a>
-
-  <a href="http://localhost:3000/users/sign_up">Sign Up</a>
-
-<% end %>
-
-
-<!-- Link below to external blog site: TODO: Build a site-integrated Blog for Nash-->
-
-<a href="https://www.blogger.com/home">Blog</a>
-
 
 <!-- Web form to send a new admin message: -->
 
 <%= render 'form' %>
 
 <!-- / New Admin Message form -->
+
+</div>

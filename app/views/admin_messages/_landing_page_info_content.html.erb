@@ -1,12 +1,36 @@
-<div class="whole-page">
   <div class="landing-page-branding">
+
     Dream Catcher LLC
-    <div class="landing-page-logo">
-    </div>
-           
+
+  </div>
+  
+  <div class="landing-page-logo">
+    <!-- LOGO IS HERE, 70px square -->
+  </div>
+
+  <div class="landing-page-branding-sub-line">  
+
     | i dream | i dare | i do
 
   </div>
+
+<% if user_signed_in? %>
+
+  <a href='/user/dashboard'>Go to My Dashboard</a>
+
+  <a href='/users/sign_out' data-method='delete'>Sign out</a>
+
+<% else %>
+
+  <a href="http://localhost:3000/users/sign_in">Sign In</a>
+
+  <a href="http://localhost:3000/users/sign_up">Sign Up</a>
+
+<% end %>
+
+<!-- Link below to external blog site: TODO: Build a site-integrated Blog for Nash-->
+
+<a href="https://www.blogger.com/home">Blog</a>
 
 
 <div class="landing-text-center-strong">
@@ -57,5 +81,3 @@ Experienced, enthusiastic and driven coaches.
 Competent coaches aiding individuals to generalize skills and become independent. 
 
 </div>
-</div>
-
