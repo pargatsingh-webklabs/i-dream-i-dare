@@ -56,6 +56,19 @@ a:focus {
 .light {
   font-weight: 400;
 }
+.logo {
+  
+}
+.landing-page-logo {
+  background-image: url("i_d_logo.png");
+  background-color: transparent;
+  height: 70px;
+  width: auto;
+  background-repeat: no-repeat;
+  margin-bottom: 15px;
+  margin-left:200px;
+  background-size: contain;
+}
 .client-dashboard-banner {
   background-image: url("inspire_surfer.png");
   background-color: transparent;
