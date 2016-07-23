@@ -1,83 +1,120 @@
-  <div class="landing-page-branding">
+<div class="landing-page-branding transparent-black-background">
 
-    Dream Catcher LLC
+  Dream Catcher, LLC
 
-  </div>
+</div>
   
-  <div class="landing-page-logo">
-    <!-- LOGO IS HERE, 70px square -->
-  </div>
 
-  <div class="landing-page-branding-sub-line">  
+<!-- <div class="landing-page-logo">
+    LOGO IS HERE, 70px square
+</div> -->
 
-    | i dream | i dare | i do
 
-  </div>
+<div class="landing-page-branding-sub-line transparent-black-background">  
 
-<% if user_signed_in? %>
+  | i dream | i dare | i do 
 
-  <a href='/user/dashboard'>Go to My Dashboard</a>
+</div>
 
-  <a href='/users/sign_out' data-method='delete'>Sign out</a>
 
-<% else %>
+<!-- DATE, IF DESIRED -->
 
-  <a href="http://localhost:3000/users/sign_in">Sign In</a>
+ <!--  <div class="date">
+    <h4><%= @day_of_week %> <%= @month %>/ <%= @day_number %>, <%= @year %></h4>
+  </div> -->
 
-  <a href="http://localhost:3000/users/sign_up">Sign Up</a>
+<!-- / DATE -->
 
-<% end %>
+
+<!-- LOGOUT/IN, ETC. LINKS -->
+
+<div class="landing-page-spacer-30">
+</div>
+
+<div class="landing-page-links landing-content">
+
+  <% if user_signed_in? %>
+
+    <a href='/user/dashboard'>My Dashboard</a>
+
+    <div class="horizontal-spacer-6">
+    </div>
+
+    <a href='/users/sign_out' data-method='delete'>Sign out</a>
+
+    <div class="horizontal-spacer-6">
+    </div>
+
+  <% else %>
+
+    <a href="http://localhost:3000/users/sign_in">Sign In</a>
+
+    <div class="horizontal-spacer-6">
+    </div>
+
+    <a href="http://localhost:3000/users/sign_up">Sign Up</a>
+
+    <div class="horizontal-spacer-6">
+    </div>
+
+  <% end %>
 
 <!-- Link below to external blog site: TODO: Build a site-integrated Blog for Nash-->
 
 <a href="https://www.blogger.com/home">Blog</a>
 
-
-<div class="landing-text-center-strong">
-  Why The Dream Catcher Experience?
 </div>
 
+<!-- / LOGOUT/IN, ETC. LINKS -->
 
-<div class="landing-text-body">
-Everyone has dreams. Whether those dreams are about developing in business or about this vast experience we call growing in life; we all have dreams!
-There are gaps between your dreams and where you are today. Dream Catcher closes those gaps. 
-The Dream Catcher experience is an expert guided proven and effective coaching program tailored to your specific Leadership or Life needs. 
+
+<!-- MAIN CONTENT, INFO -->
+
+<div class="landing-content">
+
+
+  <div class="landing-text-center-strong">
+
+    The "WHY"
+
+  </div>
+
+
+  <div class="landing-text-body">
+
+  Everyone has dreams. Whether those<br>dreams are about developing in business<br>or about this vast experience we call<br>growing in life; we all have dreams!<br><br>There are gaps between your dreams<br>and where you are today.<br>Dream Catcher closes those gaps.<br>The Dream Catcher experience is an expert-guided,<br>proven and effective coaching program<br>tailored to your specific<br>Leadership or Life needs. 
+
+  </div>
+
+
+  <div class="landing-text-center-strong">
+
+    "WHAT" is This?
+
+  </div>
+
+
+  <div class="landing-text-body">
+
+    A dream is not what you wake up from.<br>A real dream is what wakes you up.<br>The Dream Catcher experience will<br>furnish you and/or your business<br>with simple (no jargon),<br>yet immediately actionable steps.<br><br>We propel others by the realization of their<br>fullest potential as individuals and leaders.<br>Dream, Dare, Do!
+
+  </div>
+
+
+  <div class="landing-text-center-strong">
+
+    "WHO" We Are
+
+  </div>
+
+
+  <div class="landing-text-body">
+
+    Specialists in Leadership and Life Coaching<br>Pragmatic and transparent coaching experts<br>Experienced, enthusiastic and driven coaches<br>Competent coaches aiding individuals<br>in generalizing skills and becoming independent 
+
+  </div>
+
+
 </div>
 
-
-<div class="landing-text-center-strong">
-
-  Your Dream Catcher Experience
-
-</div>
-
-
-<div class="landing-text-body">
-
-  A dream is not what you wake up from.  A real dream is what wakes you up.
-  
-  The Dream Catcher experience will furnish you and/or your business with simple (no jargon), yet immediately actionable steps.   
-  
-  We propel others by realization of their fullest potential, as individuals and leaders. Dream Dare Do!
-
-</div>
-
-
-<div class="landing-text-center-strong">
-
-  We Are
-
-</div>
-
-
-<div class="landing-text-body">
-
-Specialists in Leadership and Life Coaching.
-
-Pragmatic and transparent coaching experts 
-
-Experienced, enthusiastic and driven coaches. 
-
-Competent coaches aiding individuals to generalize skills and become independent. 
-
-</div>
+<!-- MAIN CONTENT, INFO -->

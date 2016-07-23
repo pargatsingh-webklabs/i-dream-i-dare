@@ -1,14 +1,17 @@
 <div class="whole-page">
 
+<!-- Main content of Landing Page -->
+
 <%= render 'landing_page_info_content' %>
 
-<h4>Welcome! Today is <%= @day_of_week %> <%= @month %>/
-<%= @day_number %>, <%= @year %></h4>
+<!-- / Main content of Landing Page -->
+
+</div>
 
 <!-- Web form to send a new admin message: -->
-
-<%= render 'form' %>
+<div class="new-admin-message-form">
+  <%= render 'form' %>
+</div>
 
 <!-- / New Admin Message form -->
 
-</div>

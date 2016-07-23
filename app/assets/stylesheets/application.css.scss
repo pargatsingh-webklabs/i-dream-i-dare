@@ -65,6 +65,28 @@ a:focus {
   text-align: center;
   color: white;  
 }
+.date {
+  font-size: 1.0em;
+}
+.landing-page-links {
+  font-size: 1.6em;
+}
+.horizontal-spacer-6 {
+  margin: 10px;
+  display: inline;
+}
+.landing-content {
+  background-color: black;
+  opacity: 0.6;
+  padding-bottom: 30px;
+}
+.transparent-black-background {
+  background-color: black;
+  opacity: 0.6;
+}
+.new-admin-message-form {
+  text-align: center;
+}
 .landing-page-logo {
   background-image: url("I_D_Logo_white_only.png");
   background-color: transparent;
@@ -73,6 +95,7 @@ a:focus {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+  margin: auto;
 }
 .landing-page-branding {
   font-size: 4em; 
@@ -82,12 +105,12 @@ a:focus {
 }
 .landing-text-center-strong {
   text-align: center;
-  padding-top: 10px;
+  padding-top: 60px;
+  font-size: 1.8em;
 }
 .landing-text-body {
-  padding: 10px 10% 0px 10%;
-  text-indent: 20px;
-  text-align: justify;
+  text-align: center;
+  font-size: 1.5em;
 }
 .client-dashboard-banner {
   background-image: url("inspire_surfer.png");
