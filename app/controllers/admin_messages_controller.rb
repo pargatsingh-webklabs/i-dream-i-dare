@@ -2,6 +2,13 @@ class AdminMessagesController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:landing_page]
   before_action :set_admin_message, only: [:show, :edit, :update, :destroy]
 
+  # /////////////////////////////
+
+  before_filter :check_access, :only => :show
+
+  # /////////////////////////////
+
+
   # GET /
   def landing_page
     time = Time.new
@@ -56,6 +63,18 @@ class AdminMessagesController < ApplicationController
     @admin_message.destroy
     redirect_to admin_messages_url, notice: 'Admin message was successfully destroyed.'
   end
+
+# /////////////This is my before filter that prevents unauth access to view admin messages.////////////////////
+
+  protected
+
+  def check_access
+    redirect_to 'landing_page' unless current_user.is_an_admin?
+  end
+
+# ////////////////////////////////
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
