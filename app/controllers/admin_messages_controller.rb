@@ -1,10 +1,14 @@
 class AdminMessagesController < ApplicationController
-  skip_before_filter :authenticate_user!, only: [:landing_page]
+  skip_before_filter :authenticate_user!, only: [:root_path]
   before_action :set_admin_message, only: [:show, :edit, :update, :destroy]
 
   # /////////////////////////////
 
-  before_filter :check_access, :only => :show
+
+  # before_filter :signed_in_user
+  before_filter :authorized_user, only: :show
+  before_filter :admin_user, only: [:show, :index, :edit, :update, :destroy]
+
 
   # /////////////////////////////
 
@@ -68,9 +72,21 @@ class AdminMessagesController < ApplicationController
 
   protected
 
-  def check_access
-    redirect_to 'landing_page' unless current_user.is_an_admin?
+  def authorized_user
+
+# Use this template:
+  # @group = Group.find(params[:id])
+  # redirect_to(root_path) if @group.members.find_by_member_id(current_user).nil?
+
   end
+
+  def admin_user
+    redirect_to 'index' unless current_user != nil && current_user.is_an_admin?
+  end
+
+  # Also, try: 
+
+  # flash[:notice] = "You may only view your own products."
 
 # ////////////////////////////////
 
