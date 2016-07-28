@@ -6,6 +6,7 @@ class PlansController < ApplicationController
 
   # before_filter :signed_in_user
   before_filter :authorized_user, only: :show
+  before_filter :authorized_coach, only: [:show, :edit, :update, :destroy]
   before_filter :admin_user, only: [:show, :index, :edit, :update, :destroy]
 
 
@@ -57,13 +58,19 @@ class PlansController < ApplicationController
     redirect_to plans_url, notice: 'Plan was successfully destroyed.'
   end
 
-    protected
+
+  protected
 
   def authorized_user
 
-# Use this template:
-  # @group = Group.find(params[:id])
-  # redirect_to(root_path) if @group.members.find_by_member_id(current_user).nil?
+    redirect_to "/user/dashboard" unless current_user != nil && current_user.id == Plan.find_by_id(params[:id]).client
+  end
+
+  def authorized_coach
+    
+    # redirect_to 'dashboard/view' unless current_user != nil && 
+
+    # current_user.id == Mentorship.where(User.find_by_id(Plan.find_by_id(params[:id]).client).id)
 
   end
 
