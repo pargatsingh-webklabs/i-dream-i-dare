@@ -3,7 +3,7 @@ class PlansController < ApplicationController
    before_action :set_plan, only: [:show, :edit, :update, :destroy]
    before_action :find_mentorship
 
-  # /////////////////////////////
+  # /////////////////////////////Prevents unauthorized access to others' PLANS:
 
   before_filter :authorized_user, only: :show
   before_filter :authorized_coach_or_admin, only: [:edit, :update, :destroy]

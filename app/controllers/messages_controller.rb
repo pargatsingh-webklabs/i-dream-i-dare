@@ -1,6 +1,14 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
 
+  # /////////////////////////////Prevents unauthorized access to others' MESSAGES:
+
+  before_filter :authorized_user_or_admin, only: [:show]
+  before_filter :admin_user, only: [:index, :edit, :update, :destroy]
+
+  
+  # /////////////////////////////
+
   # GET /messages
   def index
     @messages = Message.all
@@ -46,6 +54,16 @@ class MessagesController < ApplicationController
   end
 
   private
+
+    def authorized_user_or_admin
+      redirect_to "/hit_auth_user_or_admin_filter" unless @message.to == current_user.id || @message.from == current_user.id || current_user.is_an_admin?
+    end
+    
+    def admin_user
+      redirect_to "/hit_admin_user_filter" unless current_user.is_an_admin?
+    end
+
+
     # Use callbacks to share common setup or constraints between actions.
     def set_message
       @message = Message.find(params[:id])
