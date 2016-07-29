@@ -1,6 +1,7 @@
 class AdminMessagesController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:root_path]
   before_action :set_admin_message, only: [:show, :edit, :update, :destroy]
+  
 
   # /////////////////////////////
 

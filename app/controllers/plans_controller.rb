@@ -1,17 +1,15 @@
 class PlansController < ApplicationController
-  before_action :confirm_logged_in
-  before_action :set_plan, only: [:show, :edit, :update, :destroy]
+
+   before_action :set_plan, only: [:show, :edit, :update, :destroy]
 
   # /////////////////////////////
 
-  before_filter :nil_check
   before_filter :authorized_user, only: :show
-  before_filter :authorized_coach, only: [:show, :edit, :update, :destroy]
-  before_filter :admin_user, only: [:show, :index, :edit, :update, :destroy]
+  before_filter :authorized_coach_or_admin, only: [:edit, :update, :destroy]
+  before_filter :admin_user, only: [:index]
 
-
+  
   # /////////////////////////////
-
 
 
   # GET /plans
@@ -58,37 +56,36 @@ class PlansController < ApplicationController
     redirect_to plans_url, notice: 'Plan was successfully destroyed.'
   end
 
-  # Can only be called within this controller
+
+  # Can only be called within this controller////////////////
   protected 
 
 
-  
-  def nil_check
-    
-    # Find the current user's mentorship.
-    @mentorship = Mentorship.where(client => current_user.id)
-
-    redirect_to "/hit_auth_user_filter_nil_check" if @mentorship == nil
-
-  end  
 
   def authorized_user
 
     # Does the plan belong to the current user?
-    redirect_to "/hit_auth_user_filter" if @plan.client != current_user.id && @mentorship.coach != current_user.id && current_user.is_an_admin != true
+    redirect_to "/hit_auth_user_filter" unless @plan.client == current_user.id || @mentorship != nil && @mentorship.coach == current_user.id || current_user.is_an_admin?
 
   end
 
-  def authorized_coach
+  def authorized_coach_or_admin
 
-    # Is the coach of the plan's owner the current user?
-    redirect_to "/hit_auth_coach_filter" if @mentorship.coach != current_user.id && current_user.is_an_admin != true
+    # Is the coach of the plan's owner the current user, or is the current user an admin?
+    
+
+    if @mentorship != nil
+      redirect_to "/hit_auth_coach_filter" unless  @mentorship.coach == current_user.id || current_user.is_an_admin?
+    else
+      redirect_to "/hit_auth_coach_filter_nil"
+    end
 
   end
 
   def admin_user
+
     # Is the current user an admin?
-    redirect_to "/hit_auth_admin_filter" if current_user.is_an_admin != true
+    redirect_to "/hit_auth_admin_filter" unless current_user.is_an_admin == true
 
   end
 
@@ -99,6 +96,10 @@ class PlansController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_plan
       @plan = Plan.find(params[:id])
+    end
+
+    def find_mentorship
+      @mentorship = Mentorship.find_by_client(current_user.id)
     end
 
     # Only allow a trusted parameter "white list" through.
