@@ -1,5 +1,6 @@
 class MentorshipsController < ApplicationController
   before_action :set_mentorship, only: [:show, :edit, :update, :destroy]
+  before_filter :admin_user
 
   # GET /mentorships
   def index
@@ -46,6 +47,10 @@ class MentorshipsController < ApplicationController
   end
 
   private
+
+    def admin_user
+      redirect_to "/hit_admin_user_filter" unless current_user.is_an_admin?
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_mentorship
       @mentorship = Mentorship.find(params[:id])
