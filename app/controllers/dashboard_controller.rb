@@ -86,6 +86,8 @@ class DashboardController < ApplicationController
 
     @clients = c.flatten 
 
+    # Set Active client to the first client in @clients arr, using session var.
+
     @indexed_messages_to_client = {}
     @indexed_messages_from_client = {}
 
@@ -97,8 +99,10 @@ class DashboardController < ApplicationController
       @indexed_messages_from_client[c.id] = b
 
     end
-  
+
   end
+
+  
 
 #//////////////Clients:
 

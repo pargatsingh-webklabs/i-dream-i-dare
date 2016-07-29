@@ -40,7 +40,7 @@
   <%= render(:partial => "admin_dash") %> 
 
 <% elsif current_user.is_a_coach? %>
-  <%= render(:partial => "coach_dash") %>
+  <%= render(:partial => "coach_dash", :locals => { :parameters => params } ) %>
 <% end %>
 
 <% if current_user.is_a_coach == false && current_user.is_an_admin == false %>

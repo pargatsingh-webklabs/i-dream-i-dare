@@ -17,16 +17,8 @@
 
         <!-- If active user, change background color of pill. -->
 
-          <li><a href="/clients/<%=client.id%>" target="ext"><%= client.first_name %> <%= client.last_name %></a></li>
+          <li><a href="/user/dashboard/<%=client.id%>" target="ext"><%= client.first_name %> <%= client.last_name %></a></li>
           <li class="divider"></li>
-
-          <% @indexed_messages_to_client[client.id].each do |x|%>
-          <%= x.content %>
-          <% end %>
-          
-          <% @indexed_messages_from_client[client.id].each do |x|%>
-          <%= x.content %>
-          <% end %>
 
         <% end %>
 
@@ -89,6 +81,28 @@
                   </div>
                   
                   <div class="panel-body">
+
+                  <!-- //////////////////////////////////// -->
+
+                    <% @active_client_id = params[:active_client] %>
+
+                    <% @clients.each do |client| %>
+                    
+                      <% unless @indexed_messages_to_client[@active_client_id].nil? %>
+                        <% @indexed_messages_to_client[@active_client_id].each do |x|%>
+                          <%= x.content %>
+                        <% end %>
+                      <% end %>
+                      
+                      <% unless @indexed_messages_from_client[@active_client_id].nil? %>
+                        <% @indexed_messages_to_client[@active_client_id].each do |x|%>
+                          <%= x.content %>
+                        <% end %>
+                      <% end %>
+
+                    <% end %>
+
+                  <!-- ///////////////////////////////////// -->
 
                     <% @user_messages.each do |m| %>
                       
