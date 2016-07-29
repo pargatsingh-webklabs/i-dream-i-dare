@@ -17,8 +17,7 @@
 
         <!-- If active user, change background color of pill. -->
 
-
-          <li><a href="/FILL THIS IN WITH PATH TO VIEW" target="ext"><%= client.first_name %> <%= client.last_name %></a></li>
+          <li><a href="/clients/<%=client.id%>" target="ext"><%= client.first_name %> <%= client.last_name %></a></li>
           <li class="divider"></li>
 
         <% end %>

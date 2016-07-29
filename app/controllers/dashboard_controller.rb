@@ -60,8 +60,6 @@ class DashboardController < ApplicationController
     messages << a.flatten
     messages << b.flatten
 
- 
-
     @user_messages = messages.flatten.sort_by {|m| m.updated_at }
 
   end
@@ -74,8 +72,8 @@ class DashboardController < ApplicationController
 
 # //////////The following action will grab the User object being currently viewed on Client or Coach Dashboard:
 
-def currently_viewed_user
-    @currently_viewed_user = User.find_by_id(params[:id])
+def make_active(x_id)
+    @active_client = User.find_by_id(x_id)
   end
 
 #//////////////Coaches:
@@ -93,6 +91,8 @@ def currently_viewed_user
     end
 
     @clients = c.flatten  
+
+    @active_client = @clients[0]
 
   end
 

@@ -1,15 +1,11 @@
 class AdminMessagesController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:root_path]
   before_action :set_admin_message, only: [:show, :edit, :update, :destroy]
-  
-
-  # /////////////////////////////
 
 
-  # before_filter :signed_in_user
-  before_filter :authorized_user, only: :show
+  # ///////////////////////////// ALL actions aside from create are ADMIN-only.
+
   before_filter :admin_user, only: [:show, :index, :edit, :update, :destroy]
-
 
   # /////////////////////////////
 
@@ -72,14 +68,6 @@ class AdminMessagesController < ApplicationController
 # /////////////This is my before filter that prevents unauth access to view admin messages.////////////////////
 
   protected
-
-  def authorized_user
-
-# Use this template:
-  # @group = Group.find(params[:id])
-  # redirect_to(root_path) if @group.members.find_by_member_id(current_user).nil?
-
-  end
 
   def admin_user
     redirect_to 'index' unless current_user != nil && current_user.is_an_admin?
