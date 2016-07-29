@@ -20,6 +20,14 @@
           <li><a href="/clients/<%=client.id%>" target="ext"><%= client.first_name %> <%= client.last_name %></a></li>
           <li class="divider"></li>
 
+          <% @indexed_messages_to_client[client.id].each do |x|%>
+          <%= x.content %>
+          <% end %>
+          
+          <% @indexed_messages_from_client[client.id].each do |x|%>
+          <%= x.content %>
+          <% end %>
+
         <% end %>
 
       <!-- / Client List -->
@@ -32,7 +40,8 @@
 
         <a title="New Plan" data-toggle="modal" href="TODO" class="btn btn-primary pull-left"><span class="glyphicon glyphicon-leaf"></span> NEW PLAN</a>
 
-        <a title="New Message" data-toggle="modal" href="TODO" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-send"></span> NEW MESSAGE</a><br><hr>
+        <br>
+        <hr>
       
     <!-- Middle Column, where the PLANS live. -->
 

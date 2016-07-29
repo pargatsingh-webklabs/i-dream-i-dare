@@ -18,7 +18,7 @@ class DashboardController < ApplicationController
 
       if current_user.is_a_coach? 
 
-        get_clients_for_coach
+        get_clients_and_indexed_messages_for_coach
 
       #////////Admin:
 
@@ -70,15 +70,9 @@ class DashboardController < ApplicationController
 
   end
 
-# //////////The following action will grab the User object being currently viewed on Client or Coach Dashboard:
-
-def make_active(x_id)
-    @active_client = User.find_by_id(x_id)
-  end
-
 #//////////////Coaches:
 
-  def get_clients_for_coach
+  def get_clients_and_indexed_messages_for_coach
 
     mentorships = Mentorship.where(:coach => current_user.id)
 
@@ -90,10 +84,20 @@ def make_active(x_id)
 
     end
 
-    @clients = c.flatten  
+    @clients = c.flatten 
 
-    @active_client = @clients[0]
+    @indexed_messages_to_client = {}
+    @indexed_messages_from_client = {}
 
+    @clients.each do |c|
+      a = @user_messages.select { |x| x.to == c.id}
+      @indexed_messages_to_client[c.id] = a
+
+      b = @user_messages.select { |x| x.from == c.id}
+      @indexed_messages_from_client[c.id] = b
+
+    end
+  
   end
 
 #//////////////Clients:
