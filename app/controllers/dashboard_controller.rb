@@ -3,7 +3,7 @@ class DashboardController < ApplicationController
 
   def view
 
-    # ACCESS to params[:active_client_id], from the view.
+    # Note: We have ACCESS to params[:active_client_id], if used, from the view.
 
     #////////All Users
 
@@ -20,7 +20,7 @@ class DashboardController < ApplicationController
 
       if current_user.is_a_coach? 
 
-        get_all_client_objects_and_active_client_messages_for_coach
+        get_all_mentorships_and_active_client_plans_and_messages_for_coach
 
       #////////Admin:
 
@@ -51,6 +51,8 @@ class DashboardController < ApplicationController
     end
   end
 
+ # //////////////////////////////////////////////////////
+
 #//////////////All Users:
 
   def get_user_messages
@@ -72,9 +74,14 @@ class DashboardController < ApplicationController
 
   end
 
+# //////////////////////////////////////////////////////
+
+
 #//////////////Coaches:
 
-  def get_all_client_objects_and_active_client_messages_for_coach
+  def get_all_mentorships_and_active_client_plans_and_messages_for_coach
+
+    # GETS ALL CLIENT OBJECTS, stored as @clients:
 
     mentorships = Mentorship.where(:coach => current_user.id)
 
@@ -92,9 +99,31 @@ class DashboardController < ApplicationController
 
     @clients = c.flatten 
 
-    # //////////////////////////////////////////////////////
+   # ///////////////////////////////////ACTIVE PLANS
 
+   # If an active user designation is not being made, params[:active_client_id] is nil, and we do nothing. 
+    # Otherwise, the @active_client_id is used with current_user.id to find all related messages. @all_active_user_plans_sorted_by_timestamp is the resulting collection.
+
+
+    if params[:active_client_id].nil?
+
+      # DO NOTHING
+      
+    else  
     
+      @active_client_id = params[:active_client_id]
+
+      @all_active_user_plans_sorted_by_timestamp = Plan.where(:client => @active_client_id)
+
+      @all_active_user_plans_sorted_by_timestamp = @all_active_user_plans_sorted_by_timestamp.sort
+    
+
+    end
+
+   # ///////////////////////////////////ACTIVE MESSAGES
+
+    # If an active user designation is not being made, params[:active_client_id] is nil, and we do nothing. 
+    # Otherwise, the @active_client_id is used with current_user.id to find all related messages. @all_active_user_messages_sorted_by_timestamp is the resulting collection.
 
     if params[:active_client_id].nil?
 
@@ -102,26 +131,25 @@ class DashboardController < ApplicationController
       
     else  
       
-
       @active_client_id = params[:active_client_id]
       active_messages = []
 
-      messages_to_active_client = @user_messages.select { |x| x.to == @active_client_id}
+      @outgoing = Message.where(:to => @active_client_id, :from => current_user.id)
 
-      messages_from_active_client = @user_messages.select { |x| x.from == @active_client_id}
-      
+      @incoming = Message.where(:from => @active_client_id, :to => current_user.id)
 
+      @all_active_user_messages_sorted_by_timestamp = []
 
-      active_messages << messages_to_active_client 
-      active_messages << messages_from_active_client
+      @all_active_user_messages_sorted_by_timestamp << @outgoing
+      @all_active_user_messages_sorted_by_timestamp << @incoming
 
-  pry    
-
-      @active_messages = active_messages.flatten.sort_by {|m| m.updated_at }
-
-    end
+      @all_active_user_messages_sorted_by_timestamp = @all_active_user_messages_sorted_by_timestamp.flatten.sort
+      end
 
   end
+
+ # //////////////////////////////////////////////////////
+
 
 #//////////////Clients:
 

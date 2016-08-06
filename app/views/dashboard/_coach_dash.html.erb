@@ -17,7 +17,7 @@
 
         <!-- If active user, change background color of pill. -->
 
-          <li><a href="/user/dashboard/<%=client.id%>" target="ext"><%= client.first_name %> <%= client.last_name %></a></li>
+          <li><a href="/user/dashboard/<%=client.id%>"><%= client.first_name %> <%= client.last_name %></a></li>
           <li class="divider"></li>
 
         <% end %>
@@ -37,26 +37,31 @@
       
     <!-- Middle Column, where the PLANS live. -->
 
-    <div class="row">
-          <div class="col-md-5">
+    
 
-          <div class="panel panel-default">
-                  <div class="panel-heading"><strong>PLANS</strong></div>
+        
+
+          <div class="row">
+            <div class="col-md-5">
+              <% @all_active_user_plans_sorted_by_timestamp.each do |plan| %>
+              <div class="panel panel-default">
+                  <div class="panel-heading">
+
+                    <strong><%= plan.title %></strong>
+                    <br>
+                    Updated at: <%= plan.updated_at.to_formatted_s %>
+
+                  </div>
+
                   <div class="panel-body">
 
-                  <strong><center> The DREAM </center></strong>
-                  Cold-pressed hammock wolf, yuccie polaroid church-key fanny pack whatever pour-over lumbersexual seitan flannel. Leggings disrupt heirloom typewriter, venmo quinoa listicle williamsburg PBR&B next level salvia godard occupy cray fanny pack. Swag butcher four dollar toast lumbersexual normcore aesthetic viral, fap church-key.<br><br>
-                  
-                  <strong><center> The DARE </center></strong>
-                  8-bit hoodie godard flannel meditation truffaut. Deep v sartorial paleo, art party leggings quinoa retro artisan intelligentsia normcore VHS truffaut cred. Godard master cleanse yuccie etsy typewriter. Kale chips mixtape ethical, craft beer retro humblebrag flannel.<br><br>
-
-                  <strong><center> The DO </center></strong>
-                  Try-hard pinterest butcher food truck. 3 wolf moon franzen irony tilde, paleo mlkshk semiotics ugh everyday carry normcore. Pork belly taxidermy pitchfork artisan, umami forage green juice 90's shoreditch affogato stumptown. Before they sold out art party four loko chartreuse artisan. Plaid tumblr pop-up, art party church-key sartorial 3 wolf moon marfa put a bird on it chartreuse tattooed.<br><br>
+                    <%= plan.content %>
 
                   </div>
                 </div>
-
+               <% end %>
             </div>
+
 
 <!-- THIS IS THE RIGHT COLUMN, WHERE THE ACTIVE CLIENT'S MESSAGE HISTORY LIVES -->
 
@@ -81,23 +86,10 @@
                   </div>
                   
                   <div class="panel-body">
-
-                  <!-- //////////////////////////////////// -->
-
-                  <%= @messages_to_active_client %>
-                  <%= @messages_from_active_client %>
-
                   
-                  <%= @active_client_id %>
+                  <% if @all_active_user_messages_sorted_by_timestamp.empty? == false %>
 
-                  <!-- ///////////////////////////////////// -->
-
-                  
-                  <!-- Make sure that @active_messages is not NIL before this line. -->
-
-                  <% if @active_messages.nil? == false %>
-
-                      <% @active_messages.each do |m| %>
+                      <% @all_active_user_messages_sorted_by_timestamp.each do |m| %>
                       
                         <% if m.nil? == false %>
 
@@ -134,7 +126,6 @@
           </div>
           </div>
         </div>
-
 
     <!-- / The simple module -->
 
