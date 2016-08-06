@@ -84,52 +84,53 @@
 
                   <!-- //////////////////////////////////// -->
 
-                    <% @active_client_id = params[:active_client] %>
+                  <%= @messages_to_active_client %>
+                  <%= @messages_from_active_client %>
 
-                    <% @clients.each do |client| %>
-                    
-                      <% unless @indexed_messages_to_client[@active_client_id].nil? %>
-                        <% @indexed_messages_to_client[@active_client_id].each do |x|%>
-                          <%= x.content %>
-                        <% end %>
-                      <% end %>
-                      
-                      <% unless @indexed_messages_from_client[@active_client_id].nil? %>
-                        <% @indexed_messages_to_client[@active_client_id].each do |x|%>
-                          <%= x.content %>
-                        <% end %>
-                      <% end %>
-
-                    <% end %>
+                  
+                  <%= @active_client_id %>
 
                   <!-- ///////////////////////////////////// -->
 
-                    <% @user_messages.each do |m| %>
+                  
+                  <!-- Make sure that @active_messages is not NIL before this line. -->
+
+                  <% if @active_messages.nil? == false %>
+
+                      <% @active_messages.each do |m| %>
                       
+                        <% if m.nil? == false %>
 
-                        <% if m.from == current_user.id %>
+                          <% if m.from == current_user.id %>
 
-                          <div class="outgoing-bubble">
-                          <%= m.content %>
-                          </div>
+                            <div class="outgoing-bubble">
+                            <%= m.content %>
+                            </div>
 
-                          <div class="bubble-spacer">
-                          </div>
+                            <div class="bubble-spacer">
+                            </div>
+
+                          <% else %>
+
+                            <div class="incoming-bubble">
+                            <%= m.content %>
+                            </div>
+
+                            <div class="bubble-spacer">
+                            </div>
+                            
+                          <% end %>
 
                         <% else %>
-
-                          <div class="incoming-bubble">
-                          <%= m.content %>
-                          </div>
-
-                          <div class="bubble-spacer">
-                          </div>
-                          
                         <% end %>
 
-                    <% end %>
+                      <% end %>
+
+                  <% else %>
+                  <% end %>
                   
                   </div>
+
           </div>
           </div>
         </div>

@@ -3,6 +3,8 @@ class DashboardController < ApplicationController
 
   def view
 
+    # ACCESS to params[:active_client_id], from the view.
+
     #////////All Users
 
     if user_signed_in?
@@ -18,7 +20,7 @@ class DashboardController < ApplicationController
 
       if current_user.is_a_coach? 
 
-        get_clients_and_indexed_messages_for_coach
+        get_all_client_objects_and_active_client_messages_for_coach
 
       #////////Admin:
 
@@ -72,37 +74,54 @@ class DashboardController < ApplicationController
 
 #//////////////Coaches:
 
-  def get_clients_and_indexed_messages_for_coach
+  def get_all_client_objects_and_active_client_messages_for_coach
 
     mentorships = Mentorship.where(:coach => current_user.id)
 
     c = []
-
-    mentorships.each do |x|
     
-      c << User.where(:id => x.client)
+    if mentorships.empty? == false
+
+      mentorships.each do |x|
+    
+        c << User.where(:id => x.client)
+
+      end
 
     end
 
     @clients = c.flatten 
 
-    # Set Active client to the first client in @clients arr, using session var.
+    # //////////////////////////////////////////////////////
 
-    @indexed_messages_to_client = {}
-    @indexed_messages_from_client = {}
+    
 
-    @clients.each do |c|
-      a = @user_messages.select { |x| x.to == c.id}
-      @indexed_messages_to_client[c.id] = a
+    if params[:active_client_id].nil?
 
-      b = @user_messages.select { |x| x.from == c.id}
-      @indexed_messages_from_client[c.id] = b
+      # DO NOTHING
+      
+    else  
+      
+
+      @active_client_id = params[:active_client_id]
+      active_messages = []
+
+      messages_to_active_client = @user_messages.select { |x| x.to == @active_client_id}
+
+      messages_from_active_client = @user_messages.select { |x| x.from == @active_client_id}
+      
+
+
+      active_messages << messages_to_active_client 
+      active_messages << messages_from_active_client
+
+  pry    
+
+      @active_messages = active_messages.flatten.sort_by {|m| m.updated_at }
 
     end
 
   end
-
-  
 
 #//////////////Clients:
 
