@@ -37,8 +37,12 @@ class DashboardController < ApplicationController
 
       else 
 
+        get_client_plans
         get_client_mentorships
         get_client_coaches
+        get_default_active_user
+
+
 
       end
 
@@ -95,9 +99,11 @@ class DashboardController < ApplicationController
 
       end
 
-    end
+      @clients = c.flatten
 
-    @clients = c.flatten 
+    else
+
+    end
 
    # ///////////////////////////////////ACTIVE PLANS
 
@@ -168,8 +174,29 @@ class DashboardController < ApplicationController
       @coaches_for_client = User.where(:id => x.coach)
 
     end
-    
+
   end
+
+  def get_default_active_user
+
+    if @coaches_for_client.empty? == false
+
+      @active_client_id = @coaches_for_client[0].id
+
+    else
+
+      # DO NOTHING
+
+    end
+
+  end
+
+  def get_client_plans
+
+    @client_plans = Plan.where(:client => current_user.id)
+
+  end
+
 
 #//////////////Admin:
 

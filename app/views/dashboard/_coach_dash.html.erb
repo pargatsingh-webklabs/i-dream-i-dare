@@ -11,14 +11,18 @@
 
 
       <!-- Client List -->
+      
+        <% @clients.each do |c| %>
 
-        <% @clients.each do |client| %>
-
-
-        <!-- If active user, change background color of pill. -->
-
-          <li><a href="/user/dashboard/<%=client.id%>"><%= client.first_name %> <%= client.last_name %></a></li>
-          <li class="divider"></li>
+        <!-- TODO: If active user, change background color of pill. -->
+          
+            <li>
+              <a href="/user/dashboard/<%=c.id%>">
+                <%= c.first_name %> <%= c.last_name %>
+              </a>
+            </li>
+            
+            <li class="divider"></li>
 
         <% end %>
 
@@ -37,12 +41,10 @@
       
     <!-- Middle Column, where the PLANS live. -->
 
-    
-
-        
-
           <div class="row">
             <div class="col-md-5">
+
+            <% if @all_active_user_plans_sorted_by_timestamp.nil? == false %>
               <% @all_active_user_plans_sorted_by_timestamp.each do |plan| %>
               <div class="panel panel-default">
                   <div class="panel-heading">
@@ -60,7 +62,10 @@
                   </div>
                 </div>
                <% end %>
-            </div>
+            <% else %>
+              <!-- DO NOTHING -->
+            <% end %>
+          </div>
 
 
 <!-- THIS IS THE RIGHT COLUMN, WHERE THE ACTIVE CLIENT'S MESSAGE HISTORY LIVES -->
@@ -87,7 +92,7 @@
                   
                   <div class="panel-body">
                   
-                  <% if @all_active_user_messages_sorted_by_timestamp.empty? == false %>
+                  <% if @all_active_user_messages_sorted_by_timestamp.nil? == false %>
 
                       <% @all_active_user_messages_sorted_by_timestamp.each do |m| %>
                       

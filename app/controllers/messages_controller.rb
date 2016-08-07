@@ -3,8 +3,8 @@ class MessagesController < ApplicationController
 
   # /////////////////////////////Prevents unauthorized access to others' MESSAGES:
 
-  before_filter :authorized_user_or_admin, only: [:show]
-  before_filter :admin_user, only: [:index, :edit, :update, :destroy]
+  before_filter :authorized_user_or_admin, only: [:show, :edit, :update]
+  before_filter :admin_user, only: [:index, :destroy]
 
   
   # /////////////////////////////
@@ -32,7 +32,7 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
 
     if @message.save
-      redirect_to @message, notice: 'Message was successfully created.'
+      redirect_to "/user/dashboard", notice: 'Message was successfully created.'
     else
       render :new
     end
@@ -41,7 +41,7 @@ class MessagesController < ApplicationController
   # PATCH/PUT /messages/1
   def update
     if @message.update(message_params)
-      redirect_to @message, notice: 'Message was successfully updated.'
+      redirect_to "/user/dashboard", notice: 'Message was successfully updated.'
     else
       render :edit
     end
@@ -50,17 +50,17 @@ class MessagesController < ApplicationController
   # DELETE /messages/1
   def destroy
     @message.destroy
-    redirect_to messages_url, notice: 'Message was successfully destroyed.'
+    redirect_to "/user/dashboard", notice: 'Message was successfully destroyed.'
   end
 
   private
 
     def authorized_user_or_admin
-      redirect_to "/hit_auth_user_or_admin_filter" unless @message.to == current_user.id || @message.from == current_user.id || current_user.is_an_admin?
+      redirect_to "/422" unless @message.to == current_user.id || @message.from == current_user.id || current_user.is_an_admin?
     end
     
     def admin_user
-      redirect_to "/hit_admin_user_filter" unless current_user.is_an_admin?
+      redirect_to "/422" unless current_user.is_an_admin?
     end
 
 

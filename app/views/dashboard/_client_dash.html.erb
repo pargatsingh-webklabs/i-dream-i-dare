@@ -43,10 +43,13 @@
     <div class="col-md-10">
 
         <!-- Buttons from Coach dash -->
-<!-- 
-        <a title="New Plan" data-toggle="modal" href="TODO" class="btn btn-primary pull-left"><span class="glyphicon glyphicon-leaf"></span> NEW PLAN</a> -->
 
-        <a title="New Message" data-toggle="modal" href="TODO" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-send"></span> NEW MESSAGE</a><br><hr>
+        <!-- 
+        <a title="New Plan" data-toggle="modal" href="TODO" class="btn btn-primary pull-left"><span class="glyphicon glyphicon-leaf"></span> NEW PLAN</a> 
+
+        <a title="New Message" data-toggle="modal" href="TODO" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-send"></span> NEW MESSAGE</a><br><hr> -->
+        <br><hr>
+        
 
         <!--/ Buttons from Coach dash -->
 
@@ -70,28 +73,34 @@
 
         <!--/ Inspirational Banner -->
 
-    <!-- Middle Column, where the PLANS live. -->
+    <!-- Middle Column, where the PLANS live. Held in @client_plans from controller.-->
 
     <div class="row">
-          <div class="col-md-5">
+            <div class="col-md-5">
 
-          <div class="panel panel-default">
-                  <div class="panel-heading"><strong>PLANS</strong></div>
+            <% if @client_plans.nil? == false %>
+              <% @client_plans.each do |plan| %>
+              <div class="panel panel-default">
+                  <div class="panel-heading">
+
+                    <strong><%= plan.title %></strong>
+                    <br>
+                    Updated at: <%= plan.updated_at.to_formatted_s %>
+
+                  </div>
+
                   <div class="panel-body">
 
-                  <strong><center> The DREAM </center></strong>
-                  Cold-pressed hammock wolf, yuccie polaroid church-key fanny pack whatever pour-over lumbersexual seitan flannel. Leggings disrupt heirloom typewriter, venmo quinoa listicle williamsburg PBR&B next level salvia godard occupy cray fanny pack. Swag butcher four dollar toast lumbersexual normcore aesthetic viral, fap church-key.<br><br>
-                  
-                  <strong><center> The DARE </center></strong>
-                  8-bit hoodie godard flannel meditation truffaut. Deep v sartorial paleo, art party leggings quinoa retro artisan intelligentsia normcore VHS truffaut cred. Godard master cleanse yuccie etsy typewriter. Kale chips mixtape ethical, craft beer retro humblebrag flannel.<br><br>
-
-                  <strong><center> The DO </center></strong>
-                  Try-hard pinterest butcher food truck. 3 wolf moon franzen irony tilde, paleo mlkshk semiotics ugh everyday carry normcore. Pork belly taxidermy pitchfork artisan, umami forage green juice 90's shoreditch affogato stumptown. Before they sold out art party four loko chartreuse artisan. Plaid tumblr pop-up, art party church-key sartorial 3 wolf moon marfa put a bird on it chartreuse tattooed.<br><br>
+                    <%= plan.content %>
 
                   </div>
                 </div>
+               <% end %>
+            <% else %>
+              <!-- DO NOTHING -->
+            <% end %>
+          </div>
 
-            </div>
 
 <!-- THIS IS THE RIGHT COLUMN, WHERE THE ACTIVE CLIENT'S MESSAGE HISTORY LIVES -->
 
@@ -162,13 +171,13 @@
     <!-- / The simple module -->
 
               <!-- Social Media Icons -->
-
+              <div>
                 <i class="icon-bar-chart icon-3x"></i>
                 <i class="icon-plus icon-3x"></i>
                 <i class="icon-facebook icon-3x"></i>
                 <i class="icon-beaker icon-3x"></i>
                 <i class="icon-twitter icon-3x"></i>
-                
+              <div>  
               <!-- / Social Media Icons -->
               
       </div><!--/col-->
