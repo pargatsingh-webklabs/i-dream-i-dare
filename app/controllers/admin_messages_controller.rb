@@ -3,8 +3,6 @@ class AdminMessagesController < ApplicationController
   before_action :set_admin_message, only: [:show, :edit, :update, :destroy]
 
 
-  # ///////////////////////////// ALL actions aside from create are ADMIN-only.
-
   before_filter :admin_user, only: [:show, :index, :edit, :update, :destroy]
 
   # /////////////////////////////
@@ -44,7 +42,7 @@ class AdminMessagesController < ApplicationController
     @admin_message = AdminMessage.new(admin_message_params)
 
     if @admin_message.save
-      redirect_to @admin_message, notice: 'Admin message was successfully created.'
+      redirect_to "/", notice: 'Admin message was successfully created.'
     else
       render :new
     end

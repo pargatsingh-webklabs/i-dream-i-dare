@@ -10,18 +10,29 @@
       <ul class="nav nav-pills nav-stacked">
         <li class="nav-header"></li>
 
+        <div class="i-dream-i-dare-dashboard-branding">
+          i dream i dare
+        </div>
+
 
       <!-- Coach List -->
 
-        <% @coaches_for_client.each do |coach| %>
+
+        <% if @coaches_for_client.nil? == false %>
+
+          <% @coaches_for_client.each do |coach| %>
 
 
-        <!-- If active user, change background color of pill. -->
-          
-            <ul class= "tab">
-              <%= coach.first_name %> <%= coach.last_name %></ul>
-            <li class="divider"></li>
+          <!-- If active user, change background color of pill. -->
+            
+              <ul class= "tab">
+                <%= coach.first_name %> <%= coach.last_name %></ul>
+              <li class="divider"></li>
 
+          <% end %>
+
+        <% else %>
+           <!-- DO NOTHING -->
         <% end %>
 
       <!-- / Coach List -->
@@ -29,16 +40,6 @@
       </ul>
 
     </div><!-- /span-3 -->
-
-
-    <!-- /////////TESTING?///////// -->
-
-    <div id="current_client">
-      <!-- <%= @currently_viewed_user %> -->
-    </div>
-
-     <!-- /////////TESTING?///////// -->
-
 
     <div class="col-md-10">
 
@@ -85,8 +86,11 @@
 
                     <strong><%= plan.title %></strong>
                     <br>
-                    Updated at: <%= plan.updated_at.to_formatted_s %>
 
+                    <div class="updated-timestamp">
+                      <%= plan.updated_at.to_formatted_s %>
+                    </div>
+                    
                   </div>
 
                   <div class="panel-body">

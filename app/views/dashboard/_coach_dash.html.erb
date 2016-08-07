@@ -11,6 +11,7 @@
 
 
       <!-- Client List -->
+        <% if @clients.nil? == false %>
       
         <% @clients.each do |c| %>
 
@@ -24,6 +25,10 @@
             
             <li class="divider"></li>
 
+          <% end %>
+
+        <% else %>
+
         <% end %>
 
       <!-- / Client List -->
@@ -33,8 +38,11 @@
     </div><!-- /span-3 -->
     <div class="col-md-10">
         <!-- Right -->
+        <div class="i-dream-i-dare-dashboard-branding">
+          <div class="glyphicon glyphicon-leaf" id="leaf-branding"></div> i dream i dare
+        </div>
 
-        <a title="New Plan" data-toggle="modal" href="TODO" class="btn btn-primary pull-left"><span class="glyphicon glyphicon-leaf"></span> NEW PLAN</a>
+
 
         <br>
         <hr>
@@ -51,7 +59,9 @@
 
                     <strong><%= plan.title %></strong>
                     <br>
-                    Updated at: <%= plan.updated_at.to_formatted_s %>
+                    <div class="updated-timestamp">
+                      <%= plan.updated_at.to_formatted_s %>
+                    </div>
 
                   </div>
 
@@ -65,7 +75,23 @@
             <% else %>
               <!-- DO NOTHING -->
             <% end %>
-          </div>
+
+         
+
+          <!-- //////////////"Add Plan" form.//////////////// -->
+
+            <div class="panel panel-default">
+
+                <div class="panel-body">
+                  <div class="add-plan-form"> 
+                    <%= render template: "plans/new" %>
+                  </div>
+                </div>
+            </div>    
+
+          <!-- ////////////////////////////// -->
+
+           </div>
 
 
 <!-- THIS IS THE RIGHT COLUMN, WHERE THE ACTIVE CLIENT'S MESSAGE HISTORY LIVES -->
@@ -87,7 +113,7 @@
 
           <div class="panel panel-default">
                   <div class="panel-heading">
-                    <strong>MESSAGES</strong>
+                    <strong>Messages:</strong>
                   </div>
                   
                   <div class="panel-body">
@@ -133,6 +159,19 @@
         </div>
 
     <!-- / The simple module -->
+
+    <!-- ////////////////////////////// -->
+
+            <div class="panel panel-default">
+
+                <div class="panel-body">
+                  <div class="send-message-form"> 
+                    <%= render template: "messages/new" %>
+                  </div>
+                </div>
+            </div>    
+
+<!-- ////////////////////////////// -->
 
               <!-- Social Media Icons -->
 

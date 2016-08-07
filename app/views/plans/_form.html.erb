@@ -11,10 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :client %><br>
-    <%= f.number_field :client %>
+  <div class=hide-this>
+    <div class="field">
+      <%= f.number_field :client, :value => @active_user_id %>
+    </div>
   </div>
+
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>

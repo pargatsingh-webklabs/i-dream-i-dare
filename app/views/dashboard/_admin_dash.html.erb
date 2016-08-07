@@ -1,3 +1,17 @@
+  <div class="red-text">
+    <h1>ADMINISTRATIVE DASHBOARD</h1>
+  </div>
+  <div class="red-text-list">
+    <h4>
+      <a href="/admin_messages">|   Admin Messages   |</a>
+      <a href="/mentorships">|   Mentorships Index   |</a>
+      <a href="/plans">|   Plans Index   |</a>
+      <a href="/messages">|   All User Messages Index   |</a>
+      <a href="/permissions">|   Edit User Permissions   |</a>
+      
+  </div>
+
+
   ----------------------------------<br>
  
   <h2>Admin messages</h2> 
@@ -18,7 +32,7 @@
   <h2>All coaches</h2>
 
   <% @all_coaches.each do |x| %>
-    <li><%= x.first_name %> <%= x.last_name %> ... <%= x.email %></li>
+    <li>ID:<%= x.id %>, <%= x.first_name %> <%= x.last_name %><%= x.email %></li>
 
     ----------------------------------<br>
 
@@ -28,13 +42,11 @@
   <h2>All clients</h2>
   
   <% @all_clients.each do |y| %>
-    <li><%= y.first_name %> <%= y.last_name %></li>
+    <li>ID:<%= y.id %>, <%= y.first_name %> <%= y.last_name %><%= y.email %></li>
 
     ----------------------------------<br>
 
   <% end %>
-
-  <a href="/users">All Users Index</a><br>
 
   //////////////////////////////////////////
 

@@ -5,13 +5,12 @@ class PlansController < ApplicationController
 
   # /////////////////////////////Prevents unauthorized access to others' PLANS:
 
-  before_filter :authorized_user, only: :show
-  before_filter :authorized_coach_or_admin, only: [:edit, :update, :destroy]
+  before_filter :authorized_user, only: [:edit, :update, :show]
+  before_filter :authorized_coach_or_admin, only: :destroy
   before_filter :admin_user, only: [:index]
 
   
   # /////////////////////////////
-
 
   # GET /plans
   def index
@@ -36,7 +35,8 @@ class PlansController < ApplicationController
     @plan = Plan.new(plan_params)
 
     if @plan.save
-      redirect_to @plan, notice: 'Plan was successfully created.'
+
+      redirect_to "/user/dashboard/#{@plan.client}", notice: 'Plan was successfully created.'
     else
       render :new
     end
@@ -45,7 +45,7 @@ class PlansController < ApplicationController
   # PATCH/PUT /plans/1
   def update
     if @plan.update(plan_params)
-      redirect_to @plan, notice: 'Plan was successfully updated.'
+      redirect_to "/user/dashboard/#{@plan.client}", notice: 'Plan was successfully updated.'
     else
       render :edit
     end
@@ -54,7 +54,7 @@ class PlansController < ApplicationController
   # DELETE /plans/1
   def destroy
     @plan.destroy
-    redirect_to plans_url, notice: 'Plan was successfully destroyed.'
+    redirect_to "/user/dashboard/#{@plan.client}", notice: 'Plan was successfully destroyed.'
   end
 
 

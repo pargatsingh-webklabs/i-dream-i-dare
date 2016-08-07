@@ -20,7 +20,9 @@ Rails.application.routes.draw do
 
   get "/user/dashboard" => "dashboard#view"
 
-  get "user/dashboard/:active_client_id" => "dashboard#view"
+  get "user/dashboard/:active_user_id" => "dashboard#view"
+
+  get "/permissions" => "dashboard#admin_edit_permissions"
 
 
   #/////////////////////////////

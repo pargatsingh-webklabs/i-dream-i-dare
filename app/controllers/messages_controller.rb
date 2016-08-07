@@ -32,7 +32,7 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
 
     if @message.save
-      redirect_to "/user/dashboard", notice: 'Message was successfully created.'
+      redirect_to "/user/dashboard/#{@message.to}", notice: 'Message was successfully created.'
     else
       render :new
     end
@@ -41,7 +41,7 @@ class MessagesController < ApplicationController
   # PATCH/PUT /messages/1
   def update
     if @message.update(message_params)
-      redirect_to "/user/dashboard", notice: 'Message was successfully updated.'
+      redirect_to "/user/dashboard/#{@message.to}", notice: 'Message was successfully updated.'
     else
       render :edit
     end
@@ -50,7 +50,7 @@ class MessagesController < ApplicationController
   # DELETE /messages/1
   def destroy
     @message.destroy
-    redirect_to "/user/dashboard", notice: 'Message was successfully destroyed.'
+    redirect_to "/user/dashboard/#{@message.to}", notice: 'Message was successfully destroyed.'
   end
 
   private

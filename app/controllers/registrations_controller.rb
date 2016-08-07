@@ -4,13 +4,37 @@
 
 class RegistrationsController < Devise::RegistrationsController
 
+  # The following line prevents new sign-ups for everyone. 
+  # TODO: Make a pop-up alert that accepts a password to sign up for a user account.
+  # For now, there are open sign-ups.
+
+  # ////////////////////////////////////////Uncomment this if you want to close all sign-ups.
+
+  # prepend_before_filter :authenticate_scope!, :except => [:cancel]
+
+  # ///////////////////////////// 
+
+  before_filter :admin_user, only: [:show, :index, :edit, :update, :destroy]
+
+  # /////////////////////////////
+
+
   private
 
+  # Taken from each of the following actions (sign_up_params, and account_update_params): 
+  #             :is_a_coach, :is_an_admin,
+
+  def admin_user
+    redirect_to "/" unless current_user != nil && current_user.is_an_admin?
+  end
+
   def sign_up_params
-    params.require(:user).permit(:first_name, :last_name, :is_a_coach, :is_an_admin, :email, :password, :password_confirmation)
+    # See above for removed parameters
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
   end
 
   def account_update_params
-    params.require(:user).permit(:first_name, :last_name, :is_a_coach, :is_an_admin, :email, :password, :password_confirmation, :current_password)
+    # See above for removed parameters
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password)
   end
 end

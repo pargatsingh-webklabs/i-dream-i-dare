@@ -15,21 +15,11 @@
           <div class="form-group">
             <%= f.text_field :last_name, placeholder: "Last Name", class: "form-control" %>
           </div>
-
-          <div class="form-group">
-            <%= f.label :is_a_coach%>
-            <%= f.check_box :is_a_coach, class: "form-control" %>
-          </div>
-
-          <div class="field">
-            <%= f.label :is_an_admin%>
-            <%= f.check_box :is_an_admin, class: "form-control" %>
-          </div>
-
+            <hr>
           <div class="form-group">
             <%= f.email_field :email, placeholder: "Email Address", class: "form-control" %>
           </div>
-
+            <hr>
           <div class="form-group">
             <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control" %>
           </div>
@@ -40,7 +30,7 @@
               <p class="help-block"><%= @minimum_password_length %> characters minimum</p>
             <% end %>
           </div>
-
+             <hr><br><hr>
           <div class="actions">
             <%= f.submit "Sign up", class: "btn btn-success btn-lg btn-block" %>
           </div>
