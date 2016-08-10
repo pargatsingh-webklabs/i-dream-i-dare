@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 ruby "2.3.0"
 
+gem 'heroku-postgres'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
 gem "autoprefixer-rails"

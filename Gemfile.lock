@@ -108,6 +108,7 @@ GEM
       dotenv (= 2.1.1)
       railties (>= 4.0, < 5.1)
     erubis (2.7.0)
+    excon (0.46.0)
     execjs (2.7.0)
     factory_girl (4.7.0)
       activesupport (>= 3.0.0)
@@ -123,6 +124,9 @@ GEM
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     hashdiff (0.3.0)
+    heroku-postgres (1.0.0)
+      excon (~> 0.45)
+      json (~> 1.8)
     high_voltage (3.0.0)
     honeybadger (2.6.0)
     i18n (0.7.0)
@@ -294,6 +298,7 @@ DEPENDENCIES
   factory_girl_rails
   flutie
   formulaic
+  heroku-postgres
   high_voltage
   honeybadger
   jquery-rails
