@@ -3,4 +3,4 @@ Rails.application.initialize!
 
 # http://stackoverflow.com/questions/1949229/change-a-rails-application-to-production
 
-ENV['RAILS_ENV'] ||= 'production'
+# ENV['RAILS_ENV'] ||= 'production'
