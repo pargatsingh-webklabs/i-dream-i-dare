@@ -61,7 +61,7 @@ a:focus {
   font-weight: 400;
 }
 .whole-page {
-  background-image: url("cloud_and_sun.png");
+  background-image: url(asset-path("cloud_and_sun.png"));
   background-attachment: fixed;
   background-repeat: none;
   background-size: cover;
@@ -95,7 +95,7 @@ a:focus {
   
 }
 .landing-page-logo {
-  background-image: url("I_D_Logo_white_only.png");
+  background-image: url(asset-path("I_D_Logo_white_only.png"));
   background-color: transparent;
   height: 75px;
   width: 75px;
@@ -120,7 +120,7 @@ a:focus {
   font-size: 1.5em;
 }
 .client-dashboard-banner {
-  background-image: url("inspire_surfer.png");
+  background-image: url(asset-path("inspire_surfer.png"));
   background-color: transparent;
   height: 250px;
   width: auto;
