@@ -24,7 +24,8 @@ Rails.application.routes.draw do
 
   get "/permissions" => "dashboard#admin_edit_permissions"
 
-
+  get "/" => "admin_messages#landing_page"
+  
   #/////////////////////////////
 
   #Concerning: devise_for :users, :controllers => { registrations: 'registrations' }
