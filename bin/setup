@@ -19,3 +19,28 @@ mkdir -p .git/safe
 # Only if this isn't CI
 # if [ -z "$CI" ]; then
 # fi
+
+# FROM SMS-CRM Project:
+
+
+# if heroku join --app sms-crm-staging &> /dev/null; then
+#   git remote add staging git@heroku.com:sms-crm-staging.git || true
+#   printf 'You are a collaborator on the "sms-crm-staging" Heroku app
+# '
+# else
+#   printf 'Ask for access to the "sms-crm-staging" Heroku app
+# '
+# fi
+
+          
+# if heroku join --app sms-crm-production &> /dev/null; then
+#   git remote add production git@heroku.com:sms-crm-production.git || true
+#   printf 'You are a collaborator on the "sms-crm-production" Heroku app
+# '
+# else
+#   printf 'Ask for access to the "sms-crm-production" Heroku app
+# '
+# fi
+
+
+#           git config heroku.remote staging
