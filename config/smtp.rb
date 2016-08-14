@@ -7,3 +7,4 @@ SMTP_SETTINGS = {
   port: "587",
   user_name: ENV.fetch("SMTP_USERNAME")
 }
+ 
