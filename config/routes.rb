@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   # ---------------Dashboard
 
+  get "/blog" => "home#blog"
+
   get "/user/dashboard" => "dashboard#view"
 
   get "user/dashboard/:active_user_id" => "dashboard#view"
@@ -25,7 +27,7 @@ Rails.application.routes.draw do
   get "/permissions" => "dashboard#admin_edit_permissions"
 
   get "/" => "admin_messages#landing_page"
-  
+
   #/////////////////////////////
 
   #Concerning: devise_for :users, :controllers => { registrations: 'registrations' }
