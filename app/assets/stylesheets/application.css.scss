@@ -122,22 +122,24 @@ a:focus {
 .client-dashboard-banner {
   background-image: url(asset-path("inspire_surfer.png"));
   background-color: transparent;
-  height: 250px;
+  height: 100%;
   width: auto;
   background-repeat: no-repeat;
-  margin-bottom: 15px;
+  margin-bottom: 5%;
   background-size:100%;
+
 }
 .dashboard-banner-text {
   color: white;
   background: black;
   width: 50%;
   opacity: 0.6;
-  padding: 60px 60px 0px 60px;
-  margin-left: 30px;
-  height: 250px;
+  margin-left: 20%;
+  height: 100%;
   font-style: italic;
-  font-size: 1.3em;
+  font-size : 2.0vw;
+  padding: 1.2em;
+  overflow: hidden;
 }
 .red-text {
   color: red;
@@ -257,7 +259,7 @@ a:focus {
   font-size: 18px;
 }
 .i-dream-i-dare-dashboard-branding {
-  font-size: 4.0em;
+  font-size: 2.5em;
   padding: 0;
   margin: 0;
   height: 0px;
