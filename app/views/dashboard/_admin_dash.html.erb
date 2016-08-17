@@ -11,6 +11,18 @@
       
   </div>
 
+<h2>All Users:</h2>
+  
+  <% @users.each do |u| %>
+
+  ----------------------------------<br>
+
+    <li>ID: <%= u.id %></li>
+    <li><h3><%= u.first_name %> <%= u.last_name %></h3></li>
+    <li>Email: <%= u.email %></li>
+    <li>Coach Priviliges: <%= u.is_a_coach? %><a href="/toggle_coach/<%= u.id %>">---TOGGLE!</a></li>
+    <li>Admin Priviliges: <%= u.is_an_admin? %><a href="/toggle_admin/<%= u.id %>">---TOGGLE!</a></li>
+    <% end %>
 
   ----------------------------------<br>
  

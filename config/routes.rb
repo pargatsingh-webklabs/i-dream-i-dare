@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   # ------------This is the newer root, with the new admin message form:
 
   root to: "admin_messages#landing_page"
-
+  
 
   # ---------------Dashboard
 
@@ -24,7 +24,9 @@ Rails.application.routes.draw do
 
   get "user/dashboard/:active_user_id" => "dashboard#view"
 
-  get "/permissions" => "dashboard#admin_edit_permissions"
+  get "/toggle_coach/:target_user_id" => "dashboard#admin_toggle_coach_permissions"
+
+  get "/toggle_admin/:target_user_id" => "dashboard#admin_toggle_admin_permissions"
 
   get "/" => "admin_messages#landing_page"
 

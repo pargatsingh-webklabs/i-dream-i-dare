@@ -34,6 +34,7 @@ class DashboardController < ApplicationController
         get_all_mentorships
         get_all_plans
         get_all_messages
+        get_all_users
 
       #////////Clients:
 
@@ -207,10 +208,28 @@ class DashboardController < ApplicationController
 
 #//////////////Admin:
 
-  def admin_edit_permissions
+  def admin_toggle_coach_permissions
 
-    get_all_users
+    if current_user.is_an_admin?
+      user = User.find_by_id(params[:target_user_id])
+      if user.is_a_coach?
+        user.is_a_coach = false
+      else 
+        # user.is_a_coach = true
+        user.update_attribute :coach, true
+      end
+    else    
+      redirect_to("/")
+    end
+  end
 
+  def admin_toggle_admin_permissions
+
+    if current_user.is_an_admin?
+      params[:target_user_id]
+    else 
+      redirect_to("/")
+    end
   end
 
   def get_all_admin_messages
@@ -249,6 +268,7 @@ class DashboardController < ApplicationController
 
   end
 
+  # ADMIN ACTION ONLY!
   def get_all_users
 
     @users = User.all
