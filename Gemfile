@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "2.3.0"
+ruby "2.3.1"
 
 gem 'heroku-postgres'
 gem 'bootstrap-sass', '~> 3.3.6'
@@ -47,7 +47,7 @@ group :development, :staging do
 end
 
 group :test do
-  gem "capybara-webkit"
+  # gem "capybara-webkit"
   gem "database_cleaner"
   gem "formulaic"
   gem "launchy"
