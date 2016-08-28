@@ -14,7 +14,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   # ///////////////////////////// 
 
-  before_filter :admin_user, only: [:show, :index, :edit, :update, :destroy]
+  before_filter :admin_user, only: [:show, :index]
 
   # /////////////////////////////
 
