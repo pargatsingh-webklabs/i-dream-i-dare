@@ -88,12 +88,14 @@ class PlansController < ApplicationController
   def authorized_coach_or_admin
 
     # Is the coach of the plan's owner the current user, or is the current user an admin?
-    
+  
 
     if @mentorship.present?
-      redirect_to "/hit_auth_coach_filter" unless  @mentorship.coach == current_user.id || current_user.is_an_admin?
-    else
-      redirect_to "/hit_auth_coach_filter_nil"
+      redirect_to "/hit_auth_coach_filter" unless  @mentorship.coach == current_user.id
+    end
+      # DO AN ADMIN CHECK....
+    if @current_user.is_an_admin?
+      
     end
 
   end
