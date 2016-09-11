@@ -5,7 +5,7 @@
   <div class="col-md-2">
 
       <!-- Left -->
-      <strong>My Mentor</strong>
+      <strong>My Coach</strong>
       <hr>
       <ul class="nav nav-pills nav-stacked">
         <li class="nav-header"></li>
@@ -104,8 +104,27 @@
                 </div>
                <% end %>
             <% else %>
-              <!-- DO NOTHING -->
+                  <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <br>
+                  </div>
+                  <div class="panel-body">
+                    You have no current plans.
+                  </div>
             <% end %>
+
+            <!-- //////////////"Add Plan" form.//////////////// -->
+
+            <div class="panel panel-default">
+
+                <div class="panel-body">
+                  <div class="add-plan-form"> 
+                    <%= render template: "plans/new" %>
+                  </div>
+                </div>
+            </div>    
+
+          <!-- ////////////////////////////// -->
           </div>
 
 

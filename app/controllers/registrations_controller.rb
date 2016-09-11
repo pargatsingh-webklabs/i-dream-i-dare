@@ -14,7 +14,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   # ///////////////////////////// 
 
-  before_filter :admin_user, only: [:show, :index]
+  before_filter :admin_or_current_user, only: [:show, :index, :update, :destroy]
 
   # /////////////////////////////
 
@@ -24,17 +24,23 @@ class RegistrationsController < Devise::RegistrationsController
   # Taken from each of the following actions (sign_up_params, and account_update_params): 
   #             :is_a_coach, :is_an_admin,
 
-  def admin_user
-    redirect_to "/" unless current_user != nil && current_user.is_an_admin?
+  def admin_or_current_user
+    if current_user != nil
+      redirect_to "/" unless current_user.is_an_admin? || @user.id == current_user.id
+    else
+      redirect_to "/"
+    end
   end
+
+  # TODO: Make these functions set the admin and coach permissions to false.
 
   def sign_up_params
     # See above for removed parameters
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :is_an_admin, :is_a_coach)
   end
 
   def account_update_params
     # See above for removed parameters
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password, :is_an_admin, :is_a_coach)
   end
 end

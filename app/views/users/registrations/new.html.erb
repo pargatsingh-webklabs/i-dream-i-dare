@@ -26,6 +26,7 @@
 
           <div class="form-group">
             <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password", class: "form-control" %>
+
             <% if @validatable %>
               <p class="help-block"><%= @minimum_password_length %> characters minimum</p>
             <% end %>

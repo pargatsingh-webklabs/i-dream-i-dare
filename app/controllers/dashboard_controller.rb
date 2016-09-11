@@ -187,7 +187,7 @@ class DashboardController < ApplicationController
 
   def get_default_active_user
 
-    if @coaches_for_client.empty? == false
+    if @coaches_for_client != nil && @coaches_for_client.empty? == false
 
       @active_user_id = @coaches_for_client[0].id
 
