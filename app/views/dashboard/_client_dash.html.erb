@@ -17,20 +17,33 @@
 
         <% if @coaches_for_client.nil? == false %>
 
-          <% @coaches_for_client.each do |coach| %>
+          <% @coaches_for_client.each do |c| %>
 
 
           <!-- If active user, change background color of pill. -->
+            <li>
+              <a href="/user/dashboard/<%=c.id%>">
+                <%= c.first_name %> <%= c.last_name %>
+              </a>
+            </li>
             
-              <ul class= "tab">
-                <%= coach.first_name %> <%= coach.last_name %></ul>
-              <li class="divider"></li>
+            <li class="divider"></li>
 
+            
           <% end %>
 
         <% else %>
-           <!-- DO NOTHING -->
+          Contact Admin <br>  to get a Coach.
         <% end %>
+
+
+        <!-- DEBUGGING: DISPLAYS ACTIVE USER IDs -->
+
+          Current User: <%= current_user.id %><br>
+          Active User: <%= @active_user_id %>
+
+        <!-- / DEBUGGING -->
+
 
       <!-- / Coach List -->
 
@@ -140,45 +153,56 @@
 
     <!-- THIS is a simple module, which will be used for the middle and right columns. -->
 
-       
+       <div class="row">
           <div class="col-span">
 
           <div class="panel panel-default">
                   <div class="panel-heading">
-                    <strong>MESSAGES</strong>
+                    <strong>Messages:</strong>
                   </div>
                   
                   <div class="panel-body">
+                  
+                  <% if @all_active_user_messages_sorted_by_timestamp.nil? == false %>
 
-                    <% @user_messages.each do |m| %>
+                      <% @all_active_user_messages_sorted_by_timestamp.each do |m| %>
                       
+                        <% if m.nil? == false %>
 
-                        <% if m.from == current_user.id %>
+                          <% if m.from == current_user.id %>
 
-                          <div class="outgoing-bubble">
-                          <%= m.content %>
-                          </div>
+                            <div class="outgoing-bubble">
+                            <%= m.content %>
+                            </div>
 
-                          <div class="bubble-spacer">
-                          </div>
+                            <div class="bubble-spacer">
+                            </div>
+
+                          <% else %>
+
+                            <div class="incoming-bubble">
+                            <%= m.content %>
+                            </div>
+
+                            <div class="bubble-spacer">
+                            </div>
+                            
+                          <% end %>
 
                         <% else %>
-
-                          <div class="incoming-bubble">
-                          <%= m.content %>
-                          </div>
-
-                          <div class="bubble-spacer">
-                          </div>
-                          
                         <% end %>
 
-                    <% end %>
+                      <% end %>
+
+                  <% else %>
+                  <% end %>
                   
                   </div>
 
           </div>
           </div>
+        </div>
+
      
 <!-- ////////////////////////////// -->
 

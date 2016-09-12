@@ -41,9 +41,8 @@ class DashboardController < ApplicationController
       else 
 
         get_client_plans
-        get_client_mentorships
-        get_client_coaches
-        get_default_active_user
+        get_client_mentorships_and_coaches
+        get_default_active_user_and_messages
 
       end
 
@@ -158,7 +157,7 @@ class DashboardController < ApplicationController
       @all_active_user_messages_sorted_by_timestamp << @incoming
 
       @all_active_user_messages_sorted_by_timestamp = @all_active_user_messages_sorted_by_timestamp.flatten.sort
-      end
+    end
 
   end
 
@@ -167,37 +166,55 @@ class DashboardController < ApplicationController
 
 #//////////////Clients:
 
-  def get_client_mentorships
+  def get_client_mentorships_and_coaches
+
+    @coaches_for_client = []
 
     @mentorships_for_client = Mentorship.where(:client => current_user.id)
+
+    @mentorships_for_client.each do |x|
+
+      @coaches_for_client << User.where(:id => x.coach)
+
+      @coaches_for_client = @coaches_for_client.flatten
     
-  end
-
-  def get_client_coaches
-
-    mentorships = Mentorship.where(:client => current_user.id)
-
-    mentorships.each do |x|
-
-      @coaches_for_client = User.where(:id => x.coach)
-
-    end
+      end
 
   end
 
-  def get_default_active_user
+  def get_default_active_user_and_messages
 
-    if @coaches_for_client != nil && @coaches_for_client.empty? == false
+      if params[:active_user_id].nil?
 
-      @active_user_id = @coaches_for_client[0].id
+        if @coaches_for_client != nil && @coaches_for_client.empty? == false
 
-    else
+          @active_user_id = @coaches_for_client[0].id
 
-      # DO NOTHING
+        else
 
-    end
+          @active_user_id = current_user.id
+
+        end
+
+      else  
+      
+        @active_user_id = params[:active_user_id]
+        active_messages = []
+
+        @outgoing = Message.where(:to => @active_user_id, :from => current_user.id)
+
+        @incoming = Message.where(:from => @active_user_id, :to => current_user.id)
+
+        @all_active_user_messages_sorted_by_timestamp = []
+
+        @all_active_user_messages_sorted_by_timestamp << @outgoing
+        @all_active_user_messages_sorted_by_timestamp << @incoming
+
+        @all_active_user_messages_sorted_by_timestamp = @all_active_user_messages_sorted_by_timestamp.flatten.sort
+      end
 
   end
+
 
   def get_client_plans
 
