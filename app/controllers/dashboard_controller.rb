@@ -211,12 +211,11 @@ class DashboardController < ApplicationController
   def admin_toggle_coach_permissions
 
     if current_user.is_an_admin?
-      user = User.find_by_id(params[:target_user_id])
-      if user.is_a_coach?
-        user.is_a_coach = false
+      @user = User.find_by_id(params[:target_user_id])
+      if @user.is_a_coach = true || @user.is_a_coach = nil 
+        @user.update_attribute :is_a_coach, false
       else 
-        # user.is_a_coach = true
-        user.update_attribute :coach, true
+        @user.update_attribute :is_a_coach, true
       end
     else    
       redirect_to("/")
@@ -225,8 +224,14 @@ class DashboardController < ApplicationController
 
   def admin_toggle_admin_permissions
 
-    if current_user.is_an_admin?
-      params[:target_user_id]
+    if current_user.is_an_admin? 
+      @user = User.find_by_id(params[:target_user_id])
+      if @user.is_an_admin? || @user.is_an_admin = nil
+        @user.update_attribute :is_an_admin, false
+      else 
+       
+        @user.update_attribute :is_an_admin, true
+      end
     else 
       redirect_to("/")
     end

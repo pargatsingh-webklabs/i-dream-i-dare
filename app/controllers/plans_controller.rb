@@ -32,7 +32,9 @@ class PlansController < ApplicationController
   # POST /plans
   def create
     @plan = Plan.new(plan_params)
-
+    if current_user.is_an_admin = false && current_user.is_a_coach = false
+      @plan.client = current_user.id
+    end
     if @plan.save
 
       redirect_to "/user/dashboard/#{@plan.client}", notice: 'Plan was successfully created.'
