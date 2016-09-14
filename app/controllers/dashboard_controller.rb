@@ -2,7 +2,7 @@ class DashboardController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:index]
 
   def view
-
+ 
     # Note: We have ACCESS to params[:active_user_id], if used, from the view.
 
     #////////All Users
@@ -225,11 +225,22 @@ class DashboardController < ApplicationController
 
 #//////////////Admin:
 
+  def admin_activate_user
+
+    if current_user.is_an_admin?
+      @user = User.find_by_id(params[:target_user_id])
+        @user.update_attribute :is_a_coach, false
+        @user.update_attribute :is_an_admin, false
+    else    
+      redirect_to("/")
+    end
+  end
+
   def admin_toggle_coach_permissions
 
     if current_user.is_an_admin?
       @user = User.find_by_id(params[:target_user_id])
-      if @user.is_a_coach = true || @user.is_a_coach = nil 
+      if @user.is_a_coach == true || @user.is_a_coach == nil 
         @user.update_attribute :is_a_coach, false
       else 
         @user.update_attribute :is_a_coach, true
@@ -243,7 +254,7 @@ class DashboardController < ApplicationController
 
     if current_user.is_an_admin? 
       @user = User.find_by_id(params[:target_user_id])
-      if @user.is_an_admin? || @user.is_an_admin = nil
+      if @user.is_an_admin == true || @user.is_an_admin == nil
         @user.update_attribute :is_an_admin, false
       else 
        

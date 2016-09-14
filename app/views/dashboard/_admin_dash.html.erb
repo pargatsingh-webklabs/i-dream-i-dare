@@ -18,13 +18,20 @@
     <li>ID: <%= u.id %></li>
     <li><h3><%= u.first_name %> <%= u.last_name %></h3></li>
     <li>Email: <%= u.email %></li>
-    <li><%= u.first_name %> is a Coach? <%= u.is_a_coach? %><a href="/toggle_coach/<%= u.id %>"><---TOGGLE Privileges</a></li>
-    <li><%= u.first_name %> is an Admin? <%= u.is_an_admin? %><a href="/toggle_admin/<%= u.id %>"><---TOGGLE Privileges</a></li>
-      <% if u.is_an_admin? %>
-        <strong>WARNING: If you are <%= u.first_name %>, toggling your Admin priviliges<br>
-        will lock you out of the system immediately.</strong><br>
-      <% end %>
+     
+    <% if u.is_a_coach == nil || u.is_an_admin == nil%>
+      <li><a href="/activate_user/<%= u.id %>"><font color="orange">ACTIVATE USER (sets both admin and coach to false)</font></a></li>
+
+    <% else %>
+      <li><%= u.first_name %> is a Coach? <%= u.is_a_coach %><a href="/toggle_coach/<%= u.id %>"><---TOGGLE</a></li>
+      <li><%= u.first_name %> is an Admin? <%= u.is_an_admin %><a href="/toggle_admin/<%= u.id %>"><---TOGGLE</a></li>
     <% end %>
+    
+    <% if u.is_an_admin? %>
+        <font color="red"><strong>WARNING: If you are <%= u.first_name %>, toggling your Admin priviliges<br>
+        will lock you out of the system immediately.</strong></font><br>
+    <% end %>
+  <% end %>
 
   ----------------------------------<br>
  

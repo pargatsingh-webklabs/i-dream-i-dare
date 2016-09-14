@@ -28,6 +28,8 @@ Rails.application.routes.draw do
 
   get "/toggle_admin/:target_user_id" => "dashboard#admin_toggle_admin_permissions"
 
+  get "activate_user/:target_user_id" => "dashboard#admin_activate_user"
+
   get "/" => "admin_messages#landing_page"
 
   #/////////////////////////////
