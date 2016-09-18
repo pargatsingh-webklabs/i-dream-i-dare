@@ -59,10 +59,29 @@
                   <div class="panel-heading">
 
                     <strong><%= plan.title %></strong>
-                    <br>
-                    <div class="updated-timestamp">
-                      <%= plan.updated_at.to_formatted_s %>
+                    <div class="edit-delete-plan-buttons">
+
+                      <a href="http://localhost:3000/plans/<%=plan.id%>/edit">
+                        <div class="glyphicon glyphicon-pencil"></div>
+                      </a>
+                      
+                      <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/plans/<%=plan.id%>">
+                        <div class="glyphicon glyphicon-remove">
+                        </div>
+                      </a>
+                      
                     </div>
+                    <br>
+
+                    <div class="created-timestamp">
+                      <%= localize(Time.at(plan.created_at), :format => :default) %>
+                    </div>
+                    
+                    <% if plan.created_at != plan.updated_at %>
+                      <div class="updated-timestamp">
+                        UPDATED AT: <%= localize(Time.at(plan.updated_at), :format => :default) %>
+                      </div>
+                    <% end %>
 
                   </div>
 

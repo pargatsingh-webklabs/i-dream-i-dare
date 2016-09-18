@@ -5,8 +5,8 @@ class PlansController < ApplicationController
 
   # /////////////////////////////Prevents unauthorized access to others' PLANS:
 
-  before_filter :authorized_user, only: [:edit, :update, :show]
-  before_filter :authorized_coach_or_admin, only: :destroy
+  before_filter :authorized_user, only: [:edit, :update, :show, :destroy]
+  # before_filter :authorized_coach_or_admin, only:
   before_filter :admin_user, only: [:index]
 
   # /////////////////////////////
@@ -67,7 +67,7 @@ class PlansController < ApplicationController
   def authorized_user
 
     if @mentorship.present?
-      redirect_to "/hit_auth_user_filter_on_client_check" unless @plan.client == current_user.id
+      redirect_to "/hit_auth_user_filter_on_client_check" unless @plan.client == current_user.id || @clientsIds.include?(@plan.client) 
 
     elsif @coach_mentorships.present?
 

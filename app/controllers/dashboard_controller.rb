@@ -10,9 +10,7 @@ class DashboardController < ApplicationController
     if user_signed_in?
 
       get_user_messages
-
       get_new_message
-
       get_new_plan
       
       
@@ -91,24 +89,29 @@ class DashboardController < ApplicationController
 
   def get_all_mentorships_and_active_client_plans_and_messages_for_coach
 
-    # GETS ALL CLIENT OBJECTS, stored as @clients:
+    # GETS ALL CLIENT OBJECTS, stored as @clients
+    # GETS ALL CLIENT IDS, stored as @clientsIds
 
     mentorships = Mentorship.where(:coach => current_user.id)
-
     c = []
     
     if mentorships.empty? == false
 
       mentorships.each do |x|
     
-        c << User.where(:id => x.client)
+        u = User.where(:id => x.client)
+        c << u
+        cIds << u.id
 
       end
-
+      
+      @clientsIds = cIds.flatten
       @clients = c.flatten
 
     else
 
+      # do nothing
+      
     end
 
    # ///////////////////////////////////ACTIVE PLANS

@@ -475,3 +475,15 @@ img::-moz-selection {
 body {
   webkit-tap-highlight-color: rgba(255, 255, 255, 0.2);
 }
+.edit-delete-plan-buttons {
+  float: right;
+}
+.panel-title {
+  float: left;
+}
+.created-timestamp {
+  font-size: 0.8em;
+}
+.updated-timestamp {
+  font-size: 0.8em;
+}
