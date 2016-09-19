@@ -5,7 +5,16 @@
   <div class="col-md-2">
 
       <!-- Left -->
-      <strong>My Coach</strong>
+      <% if @coaches_for_client.nil? == false %>
+        <% if @coaches_for_client.count > 1 %>
+          <strong>My Coaches</strong>
+        <% else %>
+          <strong>My Coach</strong>
+        <% end %>
+      <% else %>
+        <strong>My Coach</strong>
+      <% end %>
+      
       <hr>
       <ul class="nav nav-pills nav-stacked">
         <li class="nav-header"></li>
@@ -14,36 +23,34 @@
 
       <!-- Coach List -->
 
-
         <% if @coaches_for_client.nil? == false %>
 
           <% @coaches_for_client.each do |c| %>
 
+          <!-- If active user, changes background color of pill. -->
 
-          <!-- If active user, change background color of pill. -->
-            <li>
-              <a href="/user/dashboard/<%=c.id%>">
-                <%= c.first_name %> <%= c.last_name %>
-              </a>
-            </li>
+            <% if @active_user_id != nil && @active_user_id == c.id %>
+              <li class="active-user-list-item">
+                <a href="/user/dashboard/<%=c.id%>">
+                  <%= c.first_name %> <%= c.last_name %>
+                </a>
+              </li>
+
+            <% else %>
+              <li class="inactive-user-list-item">
+                <a href="/user/dashboard/<%=c.id%>">
+                  <%= c.first_name %> <%= c.last_name %>
+                </a>
+              </li>
+            <% end %>
             
             <li class="divider"></li>
-
             
           <% end %>
 
         <% else %>
           Contact Admin <br>  to get a Coach.
         <% end %>
-
-
-        <!-- DEBUGGING: DISPLAYS ACTIVE USER IDs -->
-
-          Current User: <%= current_user.id %><br>
-          Active User: <%= @active_user_id %>
-
-        <!-- / DEBUGGING -->
-
 
       <!-- / Coach List -->
 
@@ -103,11 +110,11 @@
                     <strong><%= plan.title %></strong>
                     <div class="edit-delete-plan-buttons">
 
-                      <a href="http://localhost:3000/plans/<%=plan.id%>/edit">
+                      <a href="/plans/<%=plan.id%>/edit">
                         <div class="glyphicon glyphicon-pencil"></div>
                       </a>
                       
-                      <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/plans/<%=plan.id%>">
+                      <a data-confirm="Are you sure that you want to DELETE this Plan?" rel="nofollow" data-method="delete" href="/plans/<%=plan.id%>">
                         <div class="glyphicon glyphicon-remove">
                         </div>
                       </a>
@@ -147,13 +154,16 @@
             <!-- //////////////"Add Plan" form.//////////////// -->
 
             <div class="panel panel-default">
+              <div class="panel-heading">
+                    <strong>Create a New Plan</strong>
+              </div>
 
-                <div class="panel-body">
-                  <div class="add-plan-form"> 
-                    <%= render template: "plans/new/" %>
-                  </div>
+              <div class="panel-body">
+                <div class="add-plan-form"> 
+                  <%= render template: "plans/new/" %>
                 </div>
-            </div>    
+              </div>
+            </div>  
 
           <!-- ////////////////////////////// -->
           </div>
@@ -176,7 +186,11 @@
 
           <div class="panel panel-default">
                   <div class="panel-heading">
-                    <strong>Messages:</strong>
+                    <% if @active_user != nil %>
+                     
+                      <strong>Direct Messages with <%= @active_user.first_name %>:</strong>
+                    <% end %>
+
                   </div>
                   
                   <div class="panel-body">
@@ -225,12 +239,14 @@
 <!-- ////////////////////////////// -->
 
             <div class="panel panel-default">
-
-                <div class="panel-body">
-                  <div class="send-message-form"> 
-                    <%= render template: "messages/new" %>
-                  </div>
+              <div class="panel-heading">
+                    <strong>Create a New Direct Message</strong>
+              </div>
+              <div class="panel-body">
+                <div class="send-message-form"> 
+                  <%= render template: "messages/new" %>
                 </div>
+              </div>
             </div>    
 
 <!-- ////////////////////////////// -->

@@ -4,31 +4,52 @@
 <div class="row">
   <div class="col-md-2">
       <!-- Left -->
-      <strong>Clients</strong>
+      <% if @clients.nil? == false %>
+        <% if @clients.count > 1 %>
+          <strong>My Clients</strong>
+        <% else %>
+          <strong>My Client</strong>
+        <% end %>
+      <% else %>
+        <strong>My Client</strong>
+      <% end %>
+      
       <hr>
       <ul class="nav nav-pills nav-stacked">
         <li class="nav-header"></li>
 
 
       <!-- Client List -->
+
         <% if @clients.nil? == false %>
       
         <% @clients.each do |c| %>
 
-        <!-- TODO: If active user, change background color of pill. -->
-          
-            <li>
-              <a href="/user/dashboard/<%=c.id%>">
-                <%= c.first_name %> <%= c.last_name %>
-              </a>
-            </li>
+        <!-- If active user, changes background color of pill. -->
+
+
+
+            <% if @active_user_id != nil && @active_user_id == c.id %>
+              <li class="active-user-list-item">
+                <a href="/user/dashboard/<%=c.id%>">
+                  <%= c.first_name %> <%= c.last_name %>
+                </a>
+              </li>
+
+            <% else %>
+              <li class="inactive-user-list-item">
+                <a href="/user/dashboard/<%=c.id%>">
+                  <%= c.first_name %> <%= c.last_name %>
+                </a>
+              </li>
+            <% end %>
             
             <li class="divider"></li>
 
           <% end %>
 
         <% else %>
-
+          You have no Clients.
         <% end %>
 
       <!-- / Client List -->
@@ -60,12 +81,12 @@
 
                     <strong><%= plan.title %></strong>
                     <div class="edit-delete-plan-buttons">
-
-                      <a href="http://localhost:3000/plans/<%=plan.id%>/edit">
+      <!-- TODO: Edit function needs work. When edited by a coach, the Plan's CLIENT attribute is reset to NULL. -->
+                      <!-- <a href="/plans/<%=plan.id%>/edit">
                         <div class="glyphicon glyphicon-pencil"></div>
-                      </a>
+                      </a> -->
                       
-                      <a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/plans/<%=plan.id%>">
+                      <a data-confirm="Are you sure that you want to DELETE this Plan?" rel="nofollow" data-method="delete" href="/plans/<%=plan.id%>">
                         <div class="glyphicon glyphicon-remove">
                         </div>
                       </a>
@@ -93,7 +114,13 @@
                 </div>
                <% end %>
             <% else %>
-              <!-- DO NOTHING -->
+              <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <br>
+                  </div>
+                  <div class="panel-body">
+                    This client has no current plans.
+                  </div>
             <% end %>
 
          
@@ -101,12 +128,15 @@
           <!-- //////////////"Add Plan" form.//////////////// -->
 
             <div class="panel panel-default">
+              <div class="panel-heading">
+                    <strong>Create a New Plan</strong>
+              </div>
 
-                <div class="panel-body">
-                  <div class="add-plan-form"> 
-                    <%= render template: "plans/new" %>
-                  </div>
+              <div class="panel-body">
+                <div class="add-plan-form"> 
+                  <%= render template: "plans/new" %>
                 </div>
+              </div>
             </div>    
 
           <!-- ////////////////////////////// -->
@@ -133,7 +163,14 @@
 
           <div class="panel panel-default">
                   <div class="panel-heading">
-                    <strong>Messages:</strong>
+                    <% if @active_user != nil %>
+                     
+                      <strong>Direct Messages with <%= @active_user.first_name %>:</strong>
+                    <% end %>
+
+
+
+
                   </div>
                   
                   <div class="panel-body">
@@ -183,6 +220,9 @@
     <!-- ////////////////////////////// -->
 
             <div class="panel panel-default">
+              <div class="panel-heading">
+                    <strong>Create a New Direct Message</strong>
+              </div>
 
                 <div class="panel-body">
                   <div class="send-message-form"> 

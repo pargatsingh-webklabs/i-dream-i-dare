@@ -94,12 +94,13 @@ class DashboardController < ApplicationController
 
     mentorships = Mentorship.where(:coach => current_user.id)
     c = []
-    
+    cIds = []
+
     if mentorships.empty? == false
 
       mentorships.each do |x|
     
-        u = User.where(:id => x.client)
+        u = User.find_by_id(x.client)
         c << u
         cIds << u.id
 
@@ -122,13 +123,13 @@ class DashboardController < ApplicationController
 
     if params[:active_user_id].nil?
 
-
+      
       # DO NOTHING
       
     else  
     
       @active_user_id = params[:active_user_id]
-
+      @active_user = User.find_by_id(params[:active_user_id])
       @all_active_user_plans_sorted_by_timestamp = Plan.where(:client => @active_user_id)
 
       @all_active_user_plans_sorted_by_timestamp = @all_active_user_plans_sorted_by_timestamp.sort
@@ -202,6 +203,7 @@ class DashboardController < ApplicationController
       else  
       
         @active_user_id = params[:active_user_id]
+        @active_user = User.find_by_id(params[:active_user_id])
         active_messages = []
 
         @outgoing = Message.where(:to => @active_user_id, :from => current_user.id)

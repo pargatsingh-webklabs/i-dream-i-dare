@@ -27,6 +27,7 @@ class PlansController < ApplicationController
 
   # GET /plans/1/edit
   def edit
+
   end
 
   # POST /plans
@@ -58,11 +59,8 @@ class PlansController < ApplicationController
     redirect_to "/user/dashboard/#{@plan.client}", notice: 'Plan was successfully destroyed.'
   end
 
-
   # Can only be called within this controller////////////////
   protected 
-
-
 
   def authorized_user
 
@@ -86,29 +84,12 @@ class PlansController < ApplicationController
 
   end
 
-  def authorized_coach_or_admin
-
-    # Is the coach of the plan's owner the current user, or is the current user an admin?
-  
-
-    if @mentorship.present?
-      redirect_to "/hit_auth_coach_filter" unless  @mentorship.coach == current_user.id
-    end
-      # DO AN ADMIN CHECK....
-    if @current_user.is_an_admin?
-      
-    end
-
-  end
-
   def admin_user
     # Is the current user an admin?
     redirect_to "/hit_auth_admin_filter" unless current_user.is_an_admin == true
   end
 
-
 # ////////////////////////////////
-
 
   private
     # Use callbacks to share common setup or constraints between actions.
