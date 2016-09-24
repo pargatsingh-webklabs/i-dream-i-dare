@@ -9,10 +9,15 @@
     config/locales/en.yml. For more see:
     https://github.com/calebthompson/title#usage
   %>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
   <title><%= title %></title>
   <%= stylesheet_link_tag :application, media: "all" %>
   <%= csrf_meta_tags %>
+
+  <link rel="stylesheet" type="text/css" href="css/custom.css.scss">
 </head>
+
 <body class="<%= body_class %>">
   <%= render "flashes" -%>
 
@@ -22,5 +27,6 @@
   
   <%= render "javascript" %>
   <%= render "css_overrides" %>
+
 </body>
 </html>

@@ -23,21 +23,19 @@
 
         <% if @clients.nil? == false %>
       
-        <% @clients.each do |c| %>
+          <% @clients.each do |c| %>
 
         <!-- If active user, changes background color of pill. -->
 
-
-
-            <% if @active_user_id != nil && @active_user_id == c.id %>
-              <li class="active-user-list-item">
+            <% if @active_user.id != nil && @active_user.id == c.id %>
+              <li class="btn-default" id="active-user-in-list">
                 <a href="/user/dashboard/<%=c.id%>">
                   <%= c.first_name %> <%= c.last_name %>
                 </a>
               </li>
 
             <% else %>
-              <li class="inactive-user-list-item">
+              <li class="btn-default">
                 <a href="/user/dashboard/<%=c.id%>">
                   <%= c.first_name %> <%= c.last_name %>
                 </a>

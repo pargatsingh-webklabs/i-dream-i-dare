@@ -322,7 +322,7 @@ a:focus {
   margin-top: 15px;
   padding: 7px 16px;
   border: 2px solid white;
-  border-radius: 100% !important;
+  border-radius: 0px !important;
   font-size: 40px;
   color: white;
   background: transparent;
@@ -488,11 +488,8 @@ body {
 .updated-timestamp {
   font-size: 0.8em;
 }
-.inactive-user-list-item{
+.user-list-item{
   background-color: #646464; 
-}
-.active-user-list-item{
-  background-color: #e0e0e0; 
 }
 #plan_content {
   width: 100%;
@@ -505,4 +502,27 @@ body {
 .plans-edit {
   text-align: center;
 }
+
+.btn {
+  border-radius: 0px;
+}
+
+/*!
+//////////////////////I Dream I Dare 1.5/////////////////////////////////////
+*/
+
+.nav li a:hover {
+    text-decoration: none;
+    background-color: grey;
+    color: white;
+}
+.nav-pills li a {
+    border-radius: 0px;
+    
+}
+/*! THIS COLORS THE ACTIVE ITEM IN THE LIST ON LEFT OF DASH */
+#active-user-in-list.btn-default{
+  background-color: white;
+}
+
 
