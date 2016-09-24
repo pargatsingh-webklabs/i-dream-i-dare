@@ -27,7 +27,7 @@
 
         <!-- If active user, changes background color of pill. -->
 
-            <% if @active_user.id != nil && @active_user.id == c.id %>
+            <% if @active_user_id != nil && @active_user.id == c.id %>
               <li class="btn-default" id="active-user-in-list">
                 <a href="/user/dashboard/<%=c.id%>">
                   <%= c.first_name %> <%= c.last_name %>
