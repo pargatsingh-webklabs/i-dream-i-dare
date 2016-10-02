@@ -34,6 +34,8 @@ Rails.application.routes.draw do
 
   get "/" => "admin_messages#landing_page"
 
+  get "/groups/group_dashboard" => "groups#dashboard"
+
   #/////////////////////////////
 
   #Concerning: devise_for :users, :controllers => { registrations: 'registrations' }
