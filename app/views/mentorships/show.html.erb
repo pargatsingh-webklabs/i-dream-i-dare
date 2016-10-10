@@ -1,4 +1,15 @@
 <p id="notice"><%= notice %></p>
+<div class="list_coaches">
+  <br />COACHES-> <br />
+  <% @all_coaches.each do |coach| %>
+    <%= coach.id %> = <%= coach.first_name %> <%= coach.last_name %><br />
+  <% end %>
+</div>
+<div class="list_clients">
+  <br />CLIENTS-> <br />
+  <% @all_clients.each do |client| %>
+    <%= client.id %> = <%= client.first_name %> <%= client.last_name %><br />
+  <% end %>
 
 <p>
   <strong>Client:</strong>

@@ -282,7 +282,7 @@ class DashboardController < ApplicationController
 
   end
 
-  def get_all_clients
+  def get_all_clients 
 
     @all_clients = User.where(:is_a_coach => false, :is_an_admin => false)
 

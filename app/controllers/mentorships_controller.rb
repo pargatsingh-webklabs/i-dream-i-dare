@@ -5,19 +5,27 @@ class MentorshipsController < ApplicationController
   # GET /mentorships
   def index
     @mentorships = Mentorship.all
+    get_all_coaches
+    get_all_clients 
   end
 
   # GET /mentorships/1
   def show
+    get_all_coaches
+    get_all_clients 
   end
 
   # GET /mentorships/new
   def new
     @mentorship = Mentorship.new
+    get_all_coaches
+    get_all_clients 
   end
 
   # GET /mentorships/1/edit
   def edit
+    get_all_coaches
+    get_all_clients 
   end
 
   # POST /mentorships
@@ -60,4 +68,16 @@ class MentorshipsController < ApplicationController
     def mentorship_params
       params.require(:mentorship).permit(:client, :coach)
     end
+
+    def get_all_coaches
+
+    @all_coaches = User.where(:is_a_coach => true)
+
+  end
+
+  def get_all_clients 
+
+    @all_clients = User.where(:is_a_coach => false, :is_an_admin => false)
+
+  end
 end
