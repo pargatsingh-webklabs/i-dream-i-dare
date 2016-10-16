@@ -1,4 +1,4 @@
-class GroupsController < ApplicationController
+  class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
 
   # GET /groups
@@ -18,6 +18,20 @@ class GroupsController < ApplicationController
   # GET /groups/1/edit
   def edit
   end
+
+  #GET /groups/group_dashboard
+  def dashboard
+    @user_created_groups = Group.find(:all, :conditions => { :created_by => current_user.id})
+    @user_group_memberships = GroupMembership.find(:all, :conditions => { :user_id => current_user.id})
+
+    if @user_group_memberships != null
+      groups = []
+      @user_group_memberships.each do |m|
+        Group.find(:all, :conditions => { :group_id => m.id})
+      end
+      @user_member_groups = groups.flatten
+    end
+  end 
 
   # POST /groups
   def create
