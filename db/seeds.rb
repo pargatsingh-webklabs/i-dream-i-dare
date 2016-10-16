@@ -207,6 +207,70 @@ am3.from_email = "wavy_davey@gmail.com"
 am3.content = "So, this whole Brexit thing has got me considering my options. Where to now? Email me when you can! Thx."
 am3.save
 
+# ///// GROUPS
 
+g1 = Group.new
+g1.name = "Folks Who Like Stuff"
+g1.created_by = a.id
+g1.type = "public"
+g1.save
+
+g2 = Group.new
+g2.name = "Bears who wear Hats"
+g2.created_by = c.id
+g2.type = "public"
+g2.save
+
+g3 = Group.new
+g3.name = "What About Boats and Manta Rays?"
+g3.created_by = c.id
+g3.type = "private"
+g3.save
+
+# ///// GROUP MEMBERSHIPS
+
+gb1 = GroupMembership.new
+gb1.user_id = c.id
+gb1.group_id = g1.id
+gb1.invited_by = a.id
+gb1.save 
+
+gb2 = GroupMembership.new
+gb2.user_id = a.id
+gb2.group_id = g2.id
+gb2.invited_by = c.id
+gb2.save 
+
+gb3 = GroupMembership.new
+gb3.user_id = b.id
+gb3.group_id = g3.id
+gb3.invited_by = c.id
+gb3.save 
+
+# ///// GROUP MESSAGES
+
+gm1 = GroupMessage.new
+gm1.from = a.id
+gm1.group_id = g1.id
+gm1.content = "I like stuff that's round."
+gm1.save
+
+gm2 = GroupMessage.new
+gm2.from = c.id
+gm2.group_id = g1.id
+gm2.content = "Faulkner is a bit annoying, no?"
+gm2.save
+
+gm3 = GroupMessage.new
+gm3.from = a.id
+gm3.group_id = g3.id
+gm3.content = "This private group is VERY exclusive."
+gm3.save
+
+gm4 = GroupMessage.new
+gm4.from = c.id
+gm4.group_id = g3.id
+gm4.content = "Yeah, it kinda is!"
+gm4.save
 
 # /////////
