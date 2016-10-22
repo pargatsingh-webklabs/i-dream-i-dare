@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   resources :group_memberships
-  resources :groups
   resources :admin_messages
   resources :plans
   resources :mentorships
