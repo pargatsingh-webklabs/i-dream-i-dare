@@ -1,2 +1,62 @@
 dashboard/admin_activate_user
 SUCCESS!
+
+[ GROUP DASH PARTIAL ] <br />
+Access:  
+My [Created] Groups:
+  <ul>
+    <% @my_groups.each do |g| %>
+        <li><%= g.name %></li>
+    <% end %>
+  </ul>
+
+--------------
+
+  My Joined Groups:
+  <ul>
+    <% @joined_groups.each do |g| %>
+        <li><%= g.name %></li>
+    <% end %>
+  </ul>
+
+  -------------
+
+  ---------
+
+  My Group Invites:
+  <ul>
+    <% @invited_groups.each do |g| %>
+        <li><%= g.name %></li>
+    <% end %>
+  </ul>
+
+  ------------
+
+My Network:
+  <ul>
+    <% @user_network_members.each do |g| %>
+        <li><%= g %></li>
+    <% end %>
+  </ul>
+
+  -------------
+
+My Groups:
+  <ul>
+    <% if @group_network_members != nil %>
+      <% @group_network_members.each do |g| %>
+        <li><%= g.name %></li>
+      <% end %>
+    <% end %>
+  </ul>
+
+  -------------
+
+My Groups:
+  <ul>
+    <% @joined_groups.each do |g| %>
+        <li><%= g.name %></li>
+    <% end %>
+  </ul>
+
+  -------------

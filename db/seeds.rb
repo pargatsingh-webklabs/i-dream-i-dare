@@ -211,20 +211,23 @@ am3.save
 
 g1 = Group.new
 g1.name = "Folks Who Like Stuff"
-g1.created_by = a.id
-g1.type = "public"
+g1.description = "If you like stuff, this group is for you."
+g1.creator = a.id
+g1.privacy = "public"
 g1.save
 
 g2 = Group.new
 g2.name = "Bears who wear Hats"
-g2.created_by = c.id
-g2.type = "public"
+g2.description = "What are they trying to prove?"
+g2.creator = c.id
+g2.privacy = "public"
 g2.save
 
 g3 = Group.new
 g3.name = "What About Boats and Manta Rays?"
-g3.created_by = c.id
-g3.type = "private"
+g3.description = "Water, and things that are in the water. Discuss!"
+g3.creator = c.id
+g3.privacy = "private"
 g3.save
 
 # ///// GROUP MEMBERSHIPS

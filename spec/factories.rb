@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  # factory :group do
+    
+  # end
   factory :group_message do
     
   end
@@ -7,11 +10,11 @@ FactoryGirl.define do
     group_id "MyString"
     invited_by 1
   end
-  factory :group do
-    name "MyString"
-    created_by 1
-    type ""
-  end
+  # factory :group do
+  #   name "MyString"
+  #   created_by 1
+  #   type ""
+  # end
   factory :admin_message do
     from_name "MyString"
     from_email "MyString"

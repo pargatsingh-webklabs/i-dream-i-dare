@@ -1,11 +1,11 @@
-!-- HEADER -->
+<!-- HEADER -->
 
 <div id="top-nav" class="navbar navbar-inverse navbar-static-top">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" data-position="fixed">
       <span class="icon-toggle"></span>
     </button>
-    <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-user"> </span>    <%= current_user.first_name %>'s Dashboard</a>
+    <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-user"> </span>    <%= current_user.first_name %>'s Group Dashboard</a>
   </div>
   <div class="navbar-collapse collapse">
     <ul class="nav navbar-nav pull-right">
@@ -19,7 +19,6 @@
           <li><a href='/users/edit'>Edit my Account</a></li>
           <li><a href='/users/sign_out' data-method='delete'>Sign out</a></li>
         <!-- / TOOLS Drop Down Menu Items-->
-
         </ul>
       </li>
     </ul>
@@ -29,28 +28,12 @@
 <!-- /HEADER -->
 
 
+<!-- /////////////////////////////////////////////////////////////// -->
 
+  <%= render(:partial => "group_dash") %>
 
 <!-- /////////////////////////////////////////////////////////////// -->
 
-<!-- Logic to render dashboard according to user type (Coach, Client, Admin) -->
-
-<% if current_user.is_an_admin? %>
-
-  <%= render(:partial => "admin_dash") %> 
-
-<% elsif current_user.is_a_coach? %>
-  <%= render(:partial => "coach_dash", :locals => { :parameters => params } ) %>
-<% end %>
-
-<% if current_user.is_a_coach == false && current_user.is_an_admin == false %>
-  <%= render(:partial => "client_dash") %>
-<% end %>
-
-<!-- /Logic to render dashboard according to user type (Coach, Client, Admin) -->
-
-
-<!-- /////////////////////////////////////////////////////////////// -->
 
 <!-- Footer -->
 

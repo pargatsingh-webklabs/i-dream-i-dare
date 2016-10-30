@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :groups
   resources :group_memberships
   resources :admin_messages
   resources :plans
@@ -20,6 +21,10 @@ Rails.application.routes.draw do
 
   get "user/dashboard/:active_user_id" => "dashboard#view"
 
+  get "group/dashboard" => "dashboard#group_view"
+
+  get "group/dashboard/:active_group_id" => "dashboard#group_view"
+
   get "/toggle_coach/:target_user_id" => "dashboard#admin_toggle_coach_permissions"
 
   get "/toggle_admin/:target_user_id" => "dashboard#admin_toggle_admin_permissions"
@@ -27,8 +32,6 @@ Rails.application.routes.draw do
   get "activate_user/:target_user_id" => "dashboard#admin_activate_user"
 
   get "/" => "admin_messages#landing_page"
-
-  get "/groups/group_dashboard" => "groups#dashboard"
 
   #/////////////////////////////
 

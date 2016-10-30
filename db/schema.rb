@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161015220525) do
+ActiveRecord::Schema.define(version: 20161022153645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,22 +46,24 @@ ActiveRecord::Schema.define(version: 20161015220525) do
     t.integer  "invited_by"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean  "confirmed"
   end
 
   create_table "group_messages", force: :cascade do |t|
     t.integer  "from"
     t.integer  "group_id"
-    t.text     "content"
+    t.string   "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "groups", force: :cascade do |t|
+    t.integer  "creator"
+    t.string   "privacy"
     t.string   "name"
-    t.integer  "created_by"
-    t.string   "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "mentorships", force: :cascade do |t|
