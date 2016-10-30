@@ -5,6 +5,45 @@ class DashboardController < ApplicationController
 
   # Delivers the group dashboard
   def group_view
+
+
+    # Note: We have ACCESS to params[:active_user_id], if used, from the view.
+
+    #////////All Users
+
+    if user_signed_in?
+      get_user_messages
+      get_new_message
+      get_new_plan
+
+      #////////Coaches
+      if current_user.is_a_coach? 
+        get_all_mentorships_and_active_client_plans_and_messages_for_coach
+
+      #////////Admin:
+      elsif current_user.is_an_admin?
+        get_all_admin_messages
+        get_all_coaches
+        get_all_clients
+        get_all_mentorships
+        get_all_plans
+        get_all_messages
+        get_all_users
+
+      #////////Clients:
+      else 
+        get_client_plans
+        get_client_mentorships_and_coaches
+        get_default_active_user_and_messages
+      end
+
+    else redirect_to("/") 
+    #TODO: Add Flash error message if redirected to index due to not being logged in.
+    end
+  
+
+ # //////////////////////////////////////////////////////
+
     get_my_groups
     get_joined_groups
     get_group_invites 
@@ -12,7 +51,7 @@ class DashboardController < ApplicationController
     get_new_group_membership
     get_coach_and_client_network_members
     get_new_group
-    get_active_group
+    get_active_group_id
     get_members_of_active_group
   end
   
@@ -22,7 +61,7 @@ class DashboardController < ApplicationController
     get_group_members(params[:group_id])
   end
 
-    def get_group_messages(group_id)
+  def get_group_messages(group_id)
     @group_messages = GroupMessage.where(:group_id => params[group_id])
   end
 
@@ -71,8 +110,7 @@ class DashboardController < ApplicationController
 
   # Gets public info for Users
   def get_members_of_active_group
-    
-    @members_of_active_group = 
+    # @members_of_active_group = 
   end
 
   def get_my_groups
@@ -95,7 +133,7 @@ class DashboardController < ApplicationController
     group_invites = GroupMembership.where(:user_id => current_user.id)
     group_invites.each do |i|
       if i.confirmed == false
-      invited << Group.find_by_id(i.group_id)
+        invited << Group.find_by_id(i.group_id)
       end
     end
     @invited_groups = invited

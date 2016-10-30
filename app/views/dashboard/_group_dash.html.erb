@@ -6,9 +6,11 @@
   <div class="col-md-2">
 
       <!-- Group List -->
-
+    <% if @my_groups.empty? && @joined_groups.empty? && @invited_groups.empty? %>
+      <strong>No Groups</strong>
+    <% else %>
       <!-- My (Created by Me) Groups -->
-      <% if @my_groups.nil? == false %>
+      <% if @my_groups.empty? == false %>
         <strong>My Groups</strong>
         <hr>
         <ul class="nav nav-pills nav-stacked">
@@ -18,23 +20,24 @@
             <!-- If active user, changes background color of pill. -->
             <% if @active_group != nil && @active_group == g.id %>
               <li class="btn-default" id="active-user-in-list">
-                <a href="group/dashboard/<% g.id %>">
+                <a href="/group/dashboard/<%= g.id %>">
                   <%= g.name %>
                 </a>
               </li>
             <% else %>
               <li class="btn-default">
-                <a href="group/dashboard/<% g.id %>">
+                <a href="/group/dashboard/<%= g.id %>">
                   <%= g.name %>
                 </a>
               </li>
             <% end %>         
               <li class="divider"></li>
             <% end %>
+
       <% end %>
 
       <!-- My Joined Groups -->
-      <% if @joined_groups.nil? == false %>
+      <% if @joined_groups.empty? == false %>
         <strong>My Joined Groups</strong>
         <hr>
         <ul class="nav nav-pills nav-stacked">
@@ -44,13 +47,13 @@
             <!-- If active user, changes background color of pill. -->
             <% if @active_group != nil && @active_group == g.id %>
               <li class="btn-default" id="active-user-in-list">
-                <a href="group/dashboard/<% g.id %>">
+                <a href="/group/dashboard/<%= g.id %>">
                   <%= g.name %>
                 </a>
               </li>
             <% else %>
               <li class="btn-default">
-                <a href="group/dashboard/<% g.id %>">
+                <a href="/group/dashboard/<%= g.id %>">
                   <%= g.name %>
                 </a>
               </li>
@@ -60,7 +63,7 @@
       <% end %>
 
       <!-- My Group Invitations -->
-      <% if @invited_groups.nil? == false %>
+      <% if @invited_groups.empty? == false %>
         <strong>My Invitations</strong>
         <hr>
         <ul class="nav nav-pills nav-stacked">
@@ -70,13 +73,13 @@
             <!-- If active user, changes background color of pill. -->
             <% if @active_group != nil && @active_group == g.id %>
               <li class="btn-default" id="active-user-in-list">
-                <a href="group/dashboard/<% g.id %>">
+                <a href="/group/dashboard/<%= g.id %>">
                   <%= g.name %>
                 </a>
               </li>
             <% else %>
               <li class="btn-default">
-                <a href="group/dashboard/<% g.id %>">
+                <a href="/group/dashboard/<%= g.id %>">
                   <%= g.name %>
                 </a>
               </li>
@@ -84,7 +87,7 @@
               <li class="divider"></li>
             <% end %>
       <% end %>
-
+    <% end %>
       <!-- / Group List -->
 
       </ul>
@@ -125,29 +128,34 @@
     <!-- Middle Column = list of users in @active_group -->
 
     <div class="row">
-            <div class="col-md-5">
-            <% if @active_group_id.nil? == false %>
+          <div class="col-md-2">
+            <% if @active_group_id.nil? == false && @members_of_active_group.nil? == false%>
               <% @members_of_active_group.each do |m| %>
                 <div class="panel panel-default">
                   <div class="panel-heading">
                     <strong>
                       <%= m.name %>
                     </strong>
-                    <br>
+                  </div>
+                </div>
+                <br>
               <% end %>
             <% else %>
-                  <div class="panel panel-default">
+              <% if @active_group.nil? == false %>
+                <div class="panel panel-default">
                   <div class="panel-heading">
                     <br>
                   </div>
                   <div class="panel-body">
-                    You have no current plans.
+                    The Group <%= @active_group.name %> has no Members
                   </div>
+                </div>
+              <% end %>
             <% end %>
 
             <!-- //////////////"Add Plan" form.//////////////// -->
 
-            <div class="panel panel-default">
+             <div class="panel panel-default">
               <div class="panel-heading">
                     <strong>Create a New Plan</strong>
               </div>
@@ -169,9 +177,9 @@
 
 <!-- OBJECTIVE, in Pseudo-Code: loop through the @incoming_messages and @outgoing_messages, and place the objects into a hash. Sort them by timestamp, and spit them out (float)LEFT for outgoing and (float)RIGHT for incoming.  
 
-<!-- //////////////////////////////////// -->
+<!- //////////////////////////////////// -->
 
-          <div class="col-md-7">
+      <div class="col-md-7">
 
     <!-- THIS is a simple module, which will be used for the middle and right columns. -->
 
@@ -255,7 +263,7 @@
                 <i class="icon-facebook icon-3x"></i>
                 <i class="icon-beaker icon-3x"></i>
                 <i class="icon-twitter icon-3x"></i>
-              <div>  
+              </div>  
               <!-- / Social Media Icons -->
               
       </div><!--/col-->
