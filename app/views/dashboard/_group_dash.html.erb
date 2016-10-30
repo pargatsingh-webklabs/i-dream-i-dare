@@ -129,55 +129,24 @@
 
     <div class="row">
           <div class="col-md-2">
-            <% if @active_group_id.nil? == false && @members_of_active_group.nil? == false%>
-              <% @members_of_active_group.each do |m| %>
-                <div class="panel panel-default">
-                  <div class="panel-heading">
+
+
+            <% if @active_group_id.nil? == false && @members_of_active_group.nil? == false %>
+              <% @members_of_active_group.each do |m| %>           
                     <strong>
                       <%= m.name %>
                     </strong>
-                  </div>
-                </div>
-                <br>
+                <hr>
               <% end %>
             <% else %>
-              <% if @active_group.nil? == false %>
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <br>
-                  </div>
-                  <div class="panel-body">
-                    The Group <%= @active_group.name %> has no Members
-                  </div>
-                </div>
-              <% end %>
+              <strong>This Group has no Members</strong>
+              <hr>
             <% end %>
-
-            <!-- //////////////"Add Plan" form.//////////////// -->
-
-             <div class="panel panel-default">
-              <div class="panel-heading">
-                    <strong>Create a New Plan</strong>
-              </div>
-
-              <div class="panel-body">
-                <div class="add-plan-form"> 
-                  <%= render template: "plans/new/" %>
-                </div>
-              </div>
-            </div>  
 
           <!-- ////////////////////////////// -->
           </div>
 
-
-<!-- THIS IS THE RIGHT COLUMN, WHERE THE ACTIVE CLIENT'S MESSAGE HISTORY LIVES -->
-
-<!-- /////////////////////////////////// -->
-
-<!-- OBJECTIVE, in Pseudo-Code: loop through the @incoming_messages and @outgoing_messages, and place the objects into a hash. Sort them by timestamp, and spit them out (float)LEFT for outgoing and (float)RIGHT for incoming.  
-
-<!- //////////////////////////////////// -->
+<!-- //////////////////////////////////// -->
 
       <div class="col-md-7">
 
@@ -242,7 +211,7 @@
 
             <div class="panel panel-default">
               <div class="panel-heading">
-                    <strong>Create a New Direct Message</strong>
+                    <strong>Create a New Group Message</strong>
               </div>
               <div class="panel-body">
                 <div class="send-message-form"> 

@@ -158,12 +158,26 @@ class DashboardController < ApplicationController
   def get_coach_and_client_network_members
     network = []
     network_members_public_data = []
-    mentorships = Mentorship.where(:coach == current_user.id || :client == current_user.id)
-    mentorships.each do |m|
-      network << User.find_by_id(m.id)
-    end
-    network.each do |n|
-      network_members_public_data << [n.id]
+    network_mentorships = Mentorship.where(:coach == current_user.id || :client == current_user.id)
+
+    if network_mentorships.empty? == false
+      network_mentorships.each do |m|
+          a_net = User.find_by_id(m.coach) 
+          b_net = User.find_by_id(m.client)
+          if a_net != nil && a_net.id != current_user.id
+            network << a_net
+          end
+          if b_net != nil && a_net.id != current_user.id
+            network << b_net
+          end
+      end
+      if network.empty? == false && network.nil? == false
+
+        network.each do |n|
+          id = n.id
+          network_members_public_data << id
+        end
+      end
     end
     @user_network_members = network_members_public_data
   end

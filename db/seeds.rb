@@ -235,20 +235,38 @@ g3.save
 gb1 = GroupMembership.new
 gb1.user_id = c.id
 gb1.group_id = g1.id
-gb1.invited_by = a.id
+gb1.invited_by = c.id
 gb1.save 
 
 gb2 = GroupMembership.new
-gb2.user_id = a.id
+gb2.user_id = b.id
 gb2.group_id = g2.id
-gb2.invited_by = c.id
+gb2.invited_by = b.id
 gb2.save 
 
 gb3 = GroupMembership.new
-gb3.user_id = b.id
+gb3.user_id = a.id
 gb3.group_id = g3.id
-gb3.invited_by = c.id
+gb3.invited_by = a.id
 gb3.save 
+
+gb4 = GroupMembership.new
+gb4.user_id = a.id
+gb4.group_id = g1.id
+gb4.invited_by = c.id
+gb4.save 
+
+gb5 = GroupMembership.new
+gb5.user_id = a.id
+gb5.group_id = g2.id
+gb5.invited_by = b.id
+gb5.save 
+
+gb6 = GroupMembership.new
+gb6.user_id = b.id
+gb6.group_id = g3.id
+gb6.invited_by = a.id
+gb6.save 
 
 # ///// GROUP MESSAGES
 
