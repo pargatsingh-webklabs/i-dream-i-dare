@@ -1,4 +1,9 @@
 FactoryGirl.define do
+  factory :group_message do
+    group_id 1
+    from 1
+    content "MyString"
+  end
   # factory :group do
     
   # end

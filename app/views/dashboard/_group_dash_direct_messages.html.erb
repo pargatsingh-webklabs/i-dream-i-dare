@@ -1,0 +1,66 @@
+<% if @active_user != nil %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+
+                       
+        <strong>Your Direct Messages with <%= @active_user.first_name %>:</strong>
+      
+
+    </div>
+                    
+    <div class="panel-body">
+
+      <% if @all_active_user_messages_sorted_by_timestamp.nil? == false %>
+
+        <% @all_active_user_messages_sorted_by_timestamp.each do |m| %>
+          
+          <% if m.nil? == false %>
+
+            <% if m.from == current_user.id %>
+
+              <div class="outgoing-bubble">
+                <%= m.content %>
+              </div>
+
+              <div class="bubble-spacer">
+              </div>
+
+            <% else %>
+
+              <div class="incoming-bubble">
+                <%= m.content %>
+              </div>
+
+              <div class="bubble-spacer">
+              </div>
+                
+            <% end %>
+
+          <% else %>
+          
+          <% end %>
+
+        <% end %>
+
+      <% else %>
+
+      <% end %>
+      
+    </div>
+
+  </div>
+       
+  <!-- ////////////////////////////// -->
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <strong>Post New Message to Group</strong>
+    </div>
+
+    <div class="panel-body">
+      <div class="send-message-form"> 
+        <%= render template: "group_messages/new" %>
+      </div>
+    </div>
+  </div>   
+<% end %>

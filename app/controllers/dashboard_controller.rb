@@ -7,42 +7,42 @@ class DashboardController < ApplicationController
   def group_view
 
 
-    # Note: We have ACCESS to params[:active_user_id], if used, from the view.
+ #    # Note: We have ACCESS to params[:active_user_id], if used, from the view.
 
-    #////////All Users
+ #    #////////All Users
 
-    if user_signed_in?
-      get_user_messages
-      get_new_message
-      get_new_plan
+ #    if user_signed_in?
+ #      get_user_messages
+ #      get_new_message
+ #      get_new_plan
 
-      #////////Coaches
-      if current_user.is_a_coach? 
-        get_all_mentorships_and_active_client_plans_and_messages_for_coach
+ #      #////////Coaches
+ #    if current_user.is_a_coach? 
+ #       get_all_mentorships_and_active_client_plans_and_messages_for_coach
 
-      #////////Admin:
-      elsif current_user.is_an_admin?
-        get_all_admin_messages
-        get_all_coaches
-        get_all_clients
-        get_all_mentorships
-        get_all_plans
-        get_all_messages
-        get_all_users
+ #      #////////Admin:
+ #    elsif current_user.is_an_admin?
+ #        get_all_admin_messages
+ #        get_all_coaches
+ #        get_all_clients
+ #        get_all_mentorships
+ #        get_all_plans
+ #        get_all_messages
+ #        get_all_users
 
-      #////////Clients:
-      else 
-        get_client_plans
-        get_client_mentorships_and_coaches
-        get_default_active_user_and_messages
-      end
+ #      #////////Clients:
+ #      else 
+ #        get_client_plans
+ #        get_client_mentorships_and_coaches
+ #        get_default_active_user_and_messages
+ #      end
 
-    else redirect_to("/") 
-    #TODO: Add Flash error message if redirected to index due to not being logged in.
-    end
+ #    else redirect_to("/") 
+ #    #TODO: Add Flash error message if redirected to index due to not being logged in.
+ #    end
   
 
- # //////////////////////////////////////////////////////
+ # # //////////////////////////////////////////////////////
 
     get_my_groups
     get_joined_groups
@@ -257,6 +257,9 @@ class DashboardController < ApplicationController
   end
   def get_new_message
     @message = Message.new
+  end
+  def get_new_group_message
+    @group_message = GroupMessage.new
   end
   def get_new_plan
     @plan = Plan.new

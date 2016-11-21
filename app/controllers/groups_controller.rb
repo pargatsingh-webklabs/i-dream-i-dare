@@ -14,6 +14,7 @@ class GroupsController < ApplicationController
   def new
     @group = Group.new
   end
+  
 
   # GET /groups/1/edit
   def edit

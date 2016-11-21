@@ -1,4 +1,34 @@
+<!-- TEST AREA FOR TABS -->
 
+
+<div style="margin-left:25px;">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="/user/dashboard" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+    <li role="presentation"><a href="/group/dashboard" aria-controls="profile" role="tab" data-toggle="tab">Groups</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+
+
+
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="groups">
+
+
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<!-- END of TEST AREA -->
 <!-- MAIN -->
 
 <div class="container">
@@ -34,7 +64,7 @@
               <li class="divider"></li>
             <% end %>
 
-      <% end %>
+      
 
       <!-- My Joined Groups -->
       <% if @joined_groups.empty? == false %>
@@ -102,7 +132,7 @@
 
           <!-- Individual = This dashboard,
           and Group = Group Dashboard -->
-          <a href="/group/dashboard">GROUPS</a>
+          <a href="/user/dashboard">HOME</a>
         <!--/ Navigation Tabs -->
 
 
@@ -155,77 +185,29 @@
        <div class="row">
           <div class="col-span">
 
-          <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <% if @active_user != nil %>
-                     
-                      <strong>Direct Messages with <%= @active_user.first_name %>:</strong>
-                    <% end %>
+<!-- DIRECT MESSAGES -->
 
-                  </div>
-                  
-                  <div class="panel-body">
-                  
-                  <% if @all_active_user_messages_sorted_by_timestamp.nil? == false %>
+  <%= render(:partial => "group_dash_direct_messages") %>
 
-                      <% @all_active_user_messages_sorted_by_timestamp.each do |m| %>
-                      
-                        <% if m.nil? == false %>
+<!-- End DIRECT MESSAGES -->
 
-                          <% if m.from == current_user.id %>
 
-                            <div class="outgoing-bubble">
-                            <%= m.content %>
-                            </div>
+<!-- GROUP MESSAGES -->
 
-                            <div class="bubble-spacer">
-                            </div>
+  <%= render(:partial => "group_messages") %>
 
-                          <% else %>
-
-                            <div class="incoming-bubble">
-                            <%= m.content %>
-                            </div>
-
-                            <div class="bubble-spacer">
-                            </div>
-                            
-                          <% end %>
-
-                        <% else %>
-                        <% end %>
-
-                      <% end %>
-
-                  <% else %>
-                  <% end %>
-                  
-                  </div>
-
-          </div>
-          </div>
-        </div>
-
-     
-<!-- ////////////////////////////// -->
-
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                    <strong>Create a New Group Message</strong>
-              </div>
-              <div class="panel-body">
-                <div class="send-message-form"> 
-                  <%= render template: "messages/new" %>
-                </div>
-              </div>
-            </div>    
+<!-- End GROUP MESSAGES -->
 
 <!-- ////////////////////////////// -->
           
+    <% end %> <!-- END of "IF USER IS A MEMBER OF ANY GROUPS..." -->
+
+<!-- ////////////////////////////// -->
 
     <!-- / The simple module -->
 
               <!-- Social Media Icons -->
+
               <div>
                 <i class="icon-bar-chart icon-3x"></i>
                 <i class="icon-plus icon-3x"></i>
@@ -233,6 +215,7 @@
                 <i class="icon-beaker icon-3x"></i>
                 <i class="icon-twitter icon-3x"></i>
               </div>  
+
               <!-- / Social Media Icons -->
               
       </div><!--/col-->

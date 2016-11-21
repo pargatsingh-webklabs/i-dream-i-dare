@@ -1,3 +1,7 @@
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="/user/dashboard" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+    <li role="presentation"><a href="/group/dashboard" aria-controls="profile" role="tab" data-toggle="tab">Groups</a></li>
+  </ul>
 <!-- MAIN -->
 
 <div class="container">
@@ -57,14 +61,14 @@
     </div><!-- /span-3 -->
    
     <div class="col-md-10">
-        <!-- Navigation Tabs -->
-          
-          <!-- TODO: TABS: Individual, Group -->
+            <!-- Navigation Tabs -->
+      
+      <!-- TODO: TABS: Individual, Group -->
 
-          <!-- Individual = This dashboard,
-          and Group = Group Dashboard -->
-
-        <!--/ Navigation Tabs -->
+      <!-- Individual = This dashboard,
+      and Group = Group Dashboard -->
+      <a href="/group/dashboard">GROUPS</a>
+    <!--/ Navigation Tabs -->
       
     <!-- Middle Column, where the PLANS live. -->
 
@@ -145,74 +149,68 @@
 
 <!-- //////////////////////////////////////////////////////////// -->
 
-<!-- OBJECTIVE, in Pseudo-Code: loop through the @incoming_messages and @outgoing_messages, and place the objects into a hash. Sort them by timestamp, and spit them out (float)LEFT for outgoing and (float)RIGHT for incoming.  
+<!-- OBJECTIVE, in Pseudo-Code: loop through the @incoming_messages and @outgoing_messages, and place the objects into a hash. Sort them by timestamp, and spit them out (float)LEFT for outgoing and (float)RIGHT for incoming. -->
 
 
 <!-- //////////////////////////////////////////////////////////// -->
 
 
-          <div class="col-md-7">
+      <div class="col-md-7">
 
     <!-- THIS is a simple module, which will be used for the middle and right columns. -->
 
         <div class="row">
           <div class="col-span">
 
-          <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <% if @active_user != nil %>
-                     
-                      <strong>Direct Messages with <%= @active_user.first_name %>:</strong>
-                    <% end %>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <% if @active_user != nil %>     
+                  <strong>Direct Messages with <%= @active_user.first_name %>:</strong>
+                <% end %>
 
 
 
 
-                  </div>
+              </div>
                   
-                  <div class="panel-body">
+              <div class="panel-body">
                   
-                  <% if @all_active_user_messages_sorted_by_timestamp.nil? == false %>
+                <% if @all_active_user_messages_sorted_by_timestamp.nil? == false %>
 
-                      <% @all_active_user_messages_sorted_by_timestamp.each do |m| %>
+                  <% @all_active_user_messages_sorted_by_timestamp.each do |m| %>
                       
-                        <% if m.nil? == false %>
+                    <% if m.nil? == false %>
 
-                          <% if m.from == current_user.id %>
+                      <% if m.from == current_user.id %>
 
-                            <div class="outgoing-bubble">
-                            <%= m.content %>
-                            </div>
+                        <div class="outgoing-bubble">
+                          <%= m.content %>
+                        </div>
 
-                            <div class="bubble-spacer">
-                            </div>
+                        <div class="bubble-spacer">
+                        </div>
 
-                          <% else %>
+                      <% else %>
 
-                            <div class="incoming-bubble">
-                            <%= m.content %>
-                            </div>
+                        <div class="incoming-bubble">
+                          <%= m.content %>
+                        </div>
 
-                            <div class="bubble-spacer">
-                            </div>
+                        <div class="bubble-spacer">
+                        </div>
                             
-                          <% end %>
-
-                        <% else %>
-                        <% end %>
-
                       <% end %>
 
-                  <% else %>
+                    <% else %>
+                    <% end %>
                   <% end %>
+
+                <% else %>
+                <% end %>
                   
-                  </div>
+              </div> <!-- End of PANEL-BODY -->
 
-          </div>
-          </div>
-        </div>
-
-    <!-- / The simple module -->
+            </div> <!-- End of PANEL-DEFAULT -->
 
     <!-- ////////////////////////////// -->
 
@@ -227,6 +225,12 @@
                   </div>
                 </div>
             </div>    
+
+<!-- ////////////////////////////// -->
+
+  
+        </div> <!-- End of ROW -->
+      </div> <!-- End of COL-7 -->
 
 <!-- ////////////////////////////// -->
 

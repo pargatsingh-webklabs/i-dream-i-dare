@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <div class=hide-this>
+  <div class="hide-this">
     <div class="field">
       <% if current_user.is_a_coach? || current_user.is_an_admin? %>
         <%= f.number_field :client, :value => @active_user_id %>

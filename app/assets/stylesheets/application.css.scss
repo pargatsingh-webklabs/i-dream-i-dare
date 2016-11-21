@@ -10,11 +10,11 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 body {
-  width: 100%;
-  height: 100%;
-  font-family: "Lora", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #a6a6a6;
-  background-color: #000000;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-size: 1rem;
+    line-height: 2.0;
+    color: #373a3c;
+    background-color: #fff;
 }
 .dropdown-toggle {
   margin-right: 60px;
@@ -120,14 +120,7 @@ a:focus {
   font-size: 1.5em;
 }
 .client-dashboard-banner {
-  background-image: url(asset-path("inspire_surfer.png"));
-  background-color: transparent;
-  height: 100%;
-  width: auto;
-  background-repeat: no-repeat;
-  margin-bottom: 5%;
-  background-size:100%;
-
+  
 }
 .dashboard-banner-text {
   color: white;
@@ -522,7 +515,9 @@ body {
 }
 /*! THIS COLORS THE ACTIVE ITEM IN THE LIST ON LEFT OF DASH */
 #active-user-in-list.btn-default{
-  background-color: white;
+      text-decoration: none;
+    background-color: #373a3c;
+    color: white;
 }
 
 

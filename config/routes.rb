@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :group_messages
   resources :groups
   resources :group_memberships
   resources :admin_messages
