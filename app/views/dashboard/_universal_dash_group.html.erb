@@ -1,0 +1,181 @@
+<!-- Nav tabs -->
+
+<div style="margin-left:25px;">
+  <ul class="nav nav-tabs">
+    <li><a href="/user/dashboard" style="font-size: 1.6em;">HOME</a></li>
+    <li class="active"><a href="/user/group-dashboard" style="font-size: 1.6em;">GROUPS</a></li>
+  </ul>
+</div> 
+
+<!-- End of Nav Tabs -->
+
+<div class="simple-spacer" style="margin-top: 20px;"/>
+
+  <!-- MAIN -->
+  <div class="container">
+  <div class="row">
+    <div class="col-md-2">
+
+        <!-- Group List -->
+      <% if @my_groups == nil && @joined_groups == nil && @invited_groups == nil %>
+        <strong style="font-size: 1.6em;">No Groups</strong>
+        <hr>
+      <% else %>
+        <!-- My (Created by Me) Groups -->
+        <% if @my_groups.nil? == false %>
+          <strong style="font-size: 1.6em;">My Groups</strong>
+          <hr>
+          <ul class="nav nav-pills nav-stacked">
+            <li class="nav-header">
+            </li>
+            <% @my_groups.each do |g| %>
+              <!-- If active group, changes background color of pill. -->
+              <% if @active_group != nil && @active_group.id == g.id %>
+                <li class="btn-default" id="active-user-in-list">
+                  <a href="/user/group-dashboard/<%= g.id %>">
+                    <%= g.name %>
+                  </a>
+                </li>
+              <% else %>
+                <li class="btn-default">
+                  <a href="/user/group-dashboard/<%= g.id %>">
+                    <%= g.name %>
+                  </a>
+                </li>
+              <% end %>         
+                <li class="divider"></li>
+              <% end %>
+
+
+        <!-- My Joined Groups -->
+        <strong style="font-size: 1.3em;">My Joined Groups</strong>
+        <hr>
+        <% if @joined_groups.empty? == false %>
+          <ul class="nav nav-pills nav-stacked">
+            <li class="nav-header">
+            </li>
+            <% @joined_groups.each do |g| %>
+              <!-- If active user, changes background color of pill. -->
+              <% if @active_group != nil && @active_group == g.id %>
+                <li class="btn-default" id="active-user-in-list">
+                  <a href="/user/group-dashboard/<%= g.id %>">
+                    <%= g.name %>
+                  </a>
+                </li>
+              <% else %>
+                <li class="btn-default">
+                  <a href="/user/group-dashboard/<%= g.id %>">
+                    <%= g.name %>
+                  </a>
+                </li>
+              <% end %>         
+                <li class="divider"></li>
+              <% end %>
+        <% end %>
+
+        <!-- My Group Invitations -->
+        <strong style="font-size: 1.3em;">Group Invites</strong>
+        <hr>
+        <% if @invited_groups.empty? == false %>
+          <ul class="nav nav-pills nav-stacked">
+            <li class="nav-header">
+            </li>
+            <% @invited_groups.each do |g| %>
+              <!-- If active user, changes background color of pill. -->
+              <% if @active_group != nil && @active_group == g.id %>
+                <li class="btn-default" id="active-user-in-list">
+                  <a href="/user/group-dashboard/<%= g.id %>">
+                    <%= g.name %>
+                  </a>
+                </li>
+              <% else %>
+                <li class="btn-default">
+                  <a href="/user/group-dashboard/<%= g.id %>">
+                    <%= g.name %>
+                  </a>
+                </li>
+              <% end %>         
+                <li class="divider"></li>
+              <% end %>
+        <% end %>
+      <% end %>
+        <!-- / Group List -->
+
+        </ul>
+
+      </div><!-- /span-3 -->
+
+      <div class="col-md-10">
+
+
+      <!-- Middle Column = list of users in @active_group -->
+
+      <div class="row">
+            <div class="col-md-2">
+
+            <strong style="font-size: 1.3em;">Group Members</strong>
+
+
+
+<!-- ////////////// -->
+
+
+
+
+              <% if @group_network_members != nil %>
+                <% @group_network_members.each do |m| %>         
+                      <strong>
+                        <%= m[1] %>
+                        <%= m[2] %>
+                      </strong>
+                  <hr>
+                <% end %>
+              <% else %>
+                <strong>This Group has no Members</strong>
+                <hr>
+              <% end %>
+
+            <!-- ////////////////////////////// -->
+            </div>
+
+  <!-- //////////////////////////////////// -->
+
+        <div class="col-md-7">
+
+      <!-- THIS is a simple module, which will be used for the middle and right columns. -->
+
+         <div class="row">
+            <div class="col-span">
+
+  <!-- DIRECT MESSAGES -->
+
+    <%= render(:partial => "group_dash_direct_messages") %>
+
+  <!-- End DIRECT MESSAGES -->
+
+
+  <!-- GROUP MESSAGES -->
+
+    <%= render(:partial => "group_messages") %>
+
+  <!-- End GROUP MESSAGES -->
+
+  <!-- ////////////////////////////// -->
+            
+      <% end %> <!-- END of "IF USER IS A MEMBER OF ANY GROUPS..." -->
+
+  <!-- ////////////////////////////// -->
+
+      <!-- / The simple module -->               
+                
+        </div><!--/col-->
+       
+        </div><!--/row-->
+
+      </div><!--/col-->
+
+  </div>
+
+  </div>
+
+  <!-- / Main -->

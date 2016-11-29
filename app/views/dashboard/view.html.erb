@@ -1,5 +1,4 @@
 <!-- HEADER -->
-
 <div id="top-nav" class="navbar navbar-inverse navbar-static-top">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" data-position="fixed">
@@ -28,13 +27,9 @@
 
 <!-- /HEADER -->
 
-
-
-
 <!-- /////////////////////////////////////////////////////////////// -->
 
 <!-- Logic to render dashboard according to user type (Coach, Client, Admin) -->
-
 <% if current_user.is_an_admin? %>
 
   <%= render(:partial => "admin_dash") %> 
@@ -61,7 +56,6 @@
   </footer>
 
 <!-- / Footer -->
-
 
 
 

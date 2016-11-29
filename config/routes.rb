@@ -20,11 +20,11 @@ Rails.application.routes.draw do
 
   get "/user/dashboard" => "dashboard#view"
 
-  get "user/dashboard/:active_user_id" => "dashboard#view"
+  get "/user/dashboard/:active_user_id" => "dashboard#view"
 
-  get "group/dashboard" => "dashboard#group_view"
+  get "/user/group-dashboard" => "dashboard#group_view"
 
-  get "group/dashboard/:active_group_id" => "dashboard#group_view"
+  get "user/group-dashboard/:active_group_id" => "dashboard#group_view"
 
   get "/toggle_coach/:target_user_id" => "dashboard#admin_toggle_coach_permissions"
 

@@ -1,90 +1,88 @@
-<!-- Nav tabs -->
-
-<div style="margin-left:25px;">
-  <ul class="nav nav-tabs">
-    <li class="active"><a href="/user/dashboard" style="font-size: 1.6em;">HOME</a></li>
-    <li><a href="/user/group-dashboard" style="font-size: 1.6em;">GROUPS</a></li>
-  </ul>
-</div> 
-
-<!-- End of Nav Tabs -->
-
-<div class="simple-spacer" style="margin-top: 20px;"/>
-
- <!-- MAIN -->
+START COACH DASH HOME PARTIAL
+<!-- MAIN -->
 
   <div class="container">
-    <div class="row">
-      <div class="col-md-2">
-
+  <div class="row">
+    <div class="col-md-2">
         <!-- Left -->
-        <% if @coaches_for_client.nil? == false %>
-          <% if @coaches_for_client.count > 1 %>
-            <strong style="font-size: 1.6em;">My Coaches</strong>
+        <% if @clients.nil? == false %>
+          <% if @clients.count > 1 %>
+            <strong>My Clients</strong>
           <% else %>
-            <strong style="font-size: 1.6em;">My Coach</strong>
+            <strong>My Client</strong>
           <% end %>
-          <hr>
-          <ul class="nav nav-pills nav-stacked">
+        <% else %>
+          <strong>My Client</strong>
+        <% end %>
+        
+        <hr>
+        <ul class="nav nav-pills nav-stacked">
           <li class="nav-header"></li>
 
-          
 
-        <!-- Coach List -->
+        <!-- Client List -->
 
-          <% @coaches_for_client.each do |c| %>
+          <% if @clients.nil? == false %>
+        
+            <% @clients.each do |c| %>
 
-            <!-- If active user, changes background color of pill. -->
+          <!-- If active user, changes background color of pill. -->
 
-            <% if @active_user_id != nil && @active_user_id == c.id %>
+              <% if @active_user_id != nil && @active_user.id == c.id %>
                 <li class="btn-default" id="active-user-in-list">
                   <a href="/user/dashboard/<%=c.id%>">
                     <%= c.first_name %> <%= c.last_name %>
                   </a>
                 </li>
 
-            <% else %>
-              <li class="btn-default">
-                <a href="/user/dashboard/<%=c.id%>">
-                  <%= c.first_name %> <%= c.last_name %>
-                </a>
-              </li>
-            <% end %>
+              <% else %>
+                <li class="btn-default">
+                  <a href="/user/dashboard/<%=c.id%>">
+                    <%= c.first_name %> <%= c.last_name %>
+                  </a>
+                </li>
+              <% end %>
               
               <li class="divider"></li>
-              
-          <% end %> <!-- End of Each COACH DO -->
 
-          <% else %> <!-- If @coaches_for_client == nil -->
-            Contact Admin <br>  to get a Coach.
+            <% end %>
+
+          <% else %>
+            You have no Clients.
           <% end %>
 
-        <!-- / Coach List -->
+        <!-- / Client List -->
 
         </ul>
 
       </div><!-- /span-3 -->
-
-      <!-- Large Right Column -->
-
+     
       <div class="col-md-10">
+              <!-- Navigation Tabs -->
+        
+        <!-- TODO: TABS: Individual, Group -->
 
-      <!-- Middle Column, where the PLANS live. [ @client_plans ]-->
+        <!-- Individual = This dashboard,
+        and Group = Group Dashboard -->
+        <a href="/group/dashboard">GROUPS</a>
+      <!--/ Navigation Tabs -->
+        
+      <!-- Middle Column, where the PLANS live. -->
 
-      <div class="row">
+            <div class="row">
               <div class="col-md-5">
 
-              <% if @client_plans.nil? == false %>
-                <% @client_plans.each do |plan| %>
-                  <div class="panel panel-default">
+              <% if @all_active_user_plans_sorted_by_timestamp.nil? == false %>
+                <% @all_active_user_plans_sorted_by_timestamp.each do |plan| %>
+                <div class="panel panel-default">
                     <div class="panel-heading">
 
                       <strong><%= plan.title %></strong>
                       <div class="edit-delete-plan-buttons">
-
-                        <a href="/plans/<%=plan.id%>/edit">
+        <!-- TODO: Edit function needs work. When edited by a coach, the Plan's CLIENT attribute is reset to NULL. -->
+                        <!-- <a href="/plans/<%=plan.id%>/edit">
                           <div class="glyphicon glyphicon-pencil"></div>
-                        </a>
+                        </a> -->
                         
                         <a data-confirm="Are you sure that you want to DELETE this Plan?" rel="nofollow" data-method="delete" href="/plans/<%=plan.id%>">
                           <div class="glyphicon glyphicon-remove">
@@ -114,16 +112,18 @@
                   </div>
                  <% end %>
               <% else %>
-                    <div class="panel panel-default">
+                <div class="panel panel-default">
                     <div class="panel-heading">
                       <br>
                     </div>
                     <div class="panel-body">
-                      You have no current plans.
+                      This client has no current plans.
                     </div>
               <% end %>
 
-              <!-- //////////////"Add Plan" form.//////////////// -->
+           
+
+            <!-- //////////////"Add Plan" form.//////////////// -->
 
               <div class="panel panel-default">
                 <div class="panel-heading">
@@ -132,44 +132,50 @@
 
                 <div class="panel-body">
                   <div class="add-plan-form"> 
-                    <%= render template: "plans/new/" %>
+                    <%= render template: "plans/new" %>
                   </div>
                 </div>
-              </div>  
+              </div>    
 
             <!-- ////////////////////////////// -->
-            </div>
+
+             </div>
 
 
   <!-- THIS IS THE RIGHT COLUMN, WHERE THE ACTIVE CLIENT'S MESSAGE HISTORY LIVES -->
 
-  <!-- /////////////////////////////////// -->
+  <!-- //////////////////////////////////////////////////////////// -->
 
-  <!-- //////////////////////////////////// -->
+  <!-- OBJECTIVE, in Pseudo-Code: loop through the @incoming_messages and @outgoing_messages, and place the objects into a hash. Sort them by timestamp, and spit them out (float)LEFT for outgoing and (float)RIGHT for incoming. -->
+
+
+  <!-- //////////////////////////////////////////////////////////// -->
+
 
         <div class="col-md-7">
 
-         <div class="row">
-          <div class="col-span">
+      <!-- THIS is a simple module, which will be used for the middle and right columns. -->
 
-            <% if @active_user != nil %>
+          <div class="row">
+            <div class="col-span">
 
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  
-                         
+                  <% if @active_user != nil %>     
                     <strong>Direct Messages with <%= @active_user.first_name %>:</strong>
+                  <% end %>
 
-                  
+
+
 
                 </div>
-                      
+                    
                 <div class="panel-body">
-                      
+                    
                   <% if @all_active_user_messages_sorted_by_timestamp.nil? == false %>
 
                     <% @all_active_user_messages_sorted_by_timestamp.each do |m| %>
-                          
+                        
                       <% if m.nil? == false %>
 
                         <% if m.from == current_user.id %>
@@ -184,49 +190,47 @@
                         <% else %>
 
                           <div class="incoming-bubble">
-                          <%= m.content %>
+                            <%= m.content %>
                           </div>
 
                           <div class="bubble-spacer">
                           </div>
-                                
+                              
                         <% end %>
 
                       <% else %>
                       <% end %>
-
                     <% end %>
 
                   <% else %>
                   <% end %>
-                      
-                </div> <!-- END of Panel-Body -->
+                    
+                </div> <!-- End of PANEL-BODY -->
 
-              </div> <!-- END of Panel -->
-         
-  <!-- ////////////////////////////// -->
+              </div> <!-- End of PANEL-DEFAULT -->
+
+      <!-- ////////////////////////////// -->
 
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <strong>Create a New Direct Message</strong>
+                      <strong>Create a New Direct Message</strong>
                 </div>
 
-                <div class="panel-body">
-                  <div class="send-message-form"> 
-                    <%= render template: "messages/new" %>
+                  <div class="panel-body">
+                    <div class="send-message-form"> 
+                      <%= render template: "messages/new" %>
+                    </div>
                   </div>
-                </div>
               </div>    
 
   <!-- ////////////////////////////// -->
 
-            <% end %> <!-- END of IF @active_user != nil -->
-
-          </div> <!-- END of Col-Span -->
-        </div> <!-- END of Row -->
+    
+          </div> <!-- End of ROW -->
+        </div> <!-- End of COL-7 -->
 
   <!-- ////////////////////////////// -->
-
+                
         </div><!--/col-->
        
         </div><!--/row-->
@@ -238,3 +242,4 @@
   </div>
 
   <!-- / Main -->
+END COACH DASH HOME PARTIAL

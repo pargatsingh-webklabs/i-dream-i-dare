@@ -1,122 +1,97 @@
 class DashboardController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:index]
 
+
   # /////////////////////////// GROUP DASHBOARD /////////////////////////////
 
-  # Delivers the group dashboard
+  # ROUTE:     get "/user/group-dashboard"                  => "dashboard#group_view"
+  # SECONDARY: get "/user/group-dashboard/:active_group_id" => "dashboard#group_view"
+
   def group_view
-
-
- #    # Note: We have ACCESS to params[:active_user_id], if used, from the view.
-
- #    #////////All Users
-
- #    if user_signed_in?
- #      get_user_messages
- #      get_new_message
- #      get_new_plan
-
- #      #////////Coaches
- #    if current_user.is_a_coach? 
- #       get_all_mentorships_and_active_client_plans_and_messages_for_coach
-
- #      #////////Admin:
- #    elsif current_user.is_an_admin?
- #        get_all_admin_messages
- #        get_all_coaches
- #        get_all_clients
- #        get_all_mentorships
- #        get_all_plans
- #        get_all_messages
- #        get_all_users
-
- #      #////////Clients:
- #      else 
- #        get_client_plans
- #        get_client_mentorships_and_coaches
- #        get_default_active_user_and_messages
- #      end
-
- #    else redirect_to("/") 
- #    #TODO: Add Flash error message if redirected to index due to not being logged in.
- #    end
-  
-
- # # //////////////////////////////////////////////////////
-
-    get_my_groups
-    get_joined_groups
-    get_group_invites 
-    get_new_group_message
-    get_new_group_membership
-    get_coach_and_client_network_members
-    get_new_group
-    get_active_group_id
-    get_members_of_active_group
+    get_my_groups # -- Gets @my_groups (Groups created by the current user)
+    get_joined_groups # -- Gets @joined_groups (Groups current user is a member of)
+    get_group_invites # -- Gets @invited_groups (Groups current user has yet to Confirm membership to)
+    get_new_group_message # -- Gets @new_group_membership
+    get_new_group_membership # -- Gets @new_group_membership
+    get_coach_and_client_network_members # -- Gets @user_network_members (an Array of Arrays, each of which consist of (at indexes): [ [0] = id, [1] = first_name, [2] = last_name ] )
+    get_new_group # -- Gets @new_group
+    get_active_group_id_and_all_group_messages # -- Gets @active_group_id & @all_active_group_messages_sorted_by_timestamp
+    get_active_group # -- Gets @active_group (Group object)
+    get_group_network_members # -- Gets entire list of @group_network_members (an Array of Arrays, each of which consist of (at indexes): [ [0] = id, [1] = first_name, [2] = last_name ] )
+    get_members_of_active_group # -- Gets entire list of @active_group_members (an Array of Arrays, each of which consist of (at indexes): [ [0] = id, [1] = first_name, [2] = last_name ] )
   end
   
-  # TODO: These Need Work!----------------------------------
-  def get_group_messages_and_members(group_id)
-    get_group_messages(params[:group_id])
-    get_group_members(params[:group_id])
-  end
-
-  def get_group_messages(group_id)
-    @group_messages = GroupMessage.where(:group_id => params[group_id])
-  end
-
-  def get_group_members(group_id)
-    memberships = Membership.where(:group_id => params[group_id])
+  def get_members_of_active_group
+    memberships = GroupMembership.where(:group_id => @active_group_id)
     members = []
     owner = []
-    memberships.each do |m|
-      members << m.user_id
-      owner << m.invited_by
+    if memberships != nil 
+      memberships.each do |m|
+        members << m.user_id
+        owner << m.invited_by
+      end
+      if members != nil
+        active_group_members_public_data = []
+
+        members.each do |m|
+          m = User.find_by_id(m)
+          public_data = []
+          public_data << m.id
+          public_data << m.first_name 
+          public_data << m.last_name
+          active_group_members_public_data << public_data
+        end
+      end
+      if owner != nil
+        active_group_owner_public_data = []
+
+        owner.each do |o|
+          o = User.find_by_id(o)
+          public_data = []
+          public_data << o.id
+          public_data << o.first_name 
+          public_data << o.last_name
+          active_group_owner_public_data << public_data.uniq
+        end
+      end 
+
+      @active_group_members = active_group_members_public_data
+      @active_group_owner = active_group_owner_public_data
     end
-    # @group_members = User.where(:id => &&&&&&&)
-    # @group_creator = User.where(:id => &&&&&&&)
   end
 
-  # ----------------------------------------------------
+  # ///////////////////////////////////// ACTIVE GROUP
 
-  def get_active_group_id
-    if params[:active_group_id].nil?
-      # DO NOTHING
+  def get_active_group_id_and_all_group_messages
+    if params[:active_group_id] == nil
+      if @my_groups != nil
+        @active_group_id = @my_groups[0].id
+
+      else @joined_groups != nil
+        @active_group_id = @joined_groups[0].id
+
+      end
     else
     @active_group_id = params[:active_group_id] 
+    active_messages = []
+      @all_active_group_messages = GroupMessage.where(:group_id => @active_group_id)
+      
+      @all_active_group_messages_sorted_by_timestamp = @all_active_group_messages.flatten.sort
+    end
   end
 
-  # ///////////////////////////////////ACTIVE MESSAGES
-
-    # If an active user designation is not being made, params[:active_user_id] is nil, and we do nothing. 
-    # Otherwise, the @active_user_id is used with current_user.id to find all related messages. @all_active_user_messages_sorted_by_timestamp is the resulting collection.
-    if params[:active_user_id].nil?
-      # DO NOTHING
-    else  
-      @active_user_id = params[:active_user_id]
-      active_messages = []
-      @outgoing = Message.where(:to => @active_user_id, :from => current_user.id)
-      @incoming = Message.where(:from => @active_user_id, :to => current_user.id)
-      @all_active_user_messages_sorted_by_timestamp = []
-      @all_active_user_messages_sorted_by_timestamp << @outgoing
-      @all_active_user_messages_sorted_by_timestamp << @incoming
-      @all_active_user_messages_sorted_by_timestamp = @all_active_user_messages_sorted_by_timestamp.flatten.sort
-    end
-
+  def get_active_group
+    @active_group = Group.find_by_id(@active_group_id)
   end
 
  # //////////////////////////////////////////////////////
-
-
-  # Gets public info for Users
-  def get_members_of_active_group
-    # @members_of_active_group = 
-  end
 
   def get_my_groups
     @my_groups = Group.where(:creator => current_user.id)
   end
   
+
+  # COMBINE THESE TWO METHODS:---------------------------->
   def get_joined_groups
     joined = []
     group_memberships = GroupMembership.where(:user_id => current_user.id)
@@ -131,13 +106,17 @@ class DashboardController < ApplicationController
   def get_group_invites
     invited = []
     group_invites = GroupMembership.where(:user_id => current_user.id)
-    group_invites.each do |i|
-      if i.confirmed == false
-        invited << Group.find_by_id(i.group_id)
+    if group_invites != nil 
+      group_invites.each do |i|
+        if i.confirmed == false
+          invited << Group.find_by_id(i.group_id)
+        end
       end
     end
     @invited_groups = invited
   end
+
+  # -------------------------------------------------------->
   
   def get_new_group_message
     @new_group_message = GroupMessage.new
@@ -174,36 +153,52 @@ class DashboardController < ApplicationController
       if network.empty? == false && network.nil? == false
 
         network.each do |n|
-          id = n.id
-          network_members_public_data << id
+          public_data = []
+          public_data << n.id
+          public_data << n.first_name 
+          public_data << n.last_name
+          network_members_public_data << public_data
         end
       end
+      @user_network_members = network_members_public_data
     end
-    @user_network_members = network_members_public_data
   end
 
   def get_group_network_members
-    network = []
-    network_members_public_data = []
+    group_network = []
     memberships = GroupMembership.where(:user_id == current_user.id || :invited_by == current_user.id)
-    memberships.each do |m|
-      if m.confirmed == true
-        user = User.where(:id == m.user_id || :id == m.invited_by)
-        users << user
+
+    if memberships.empty? == false
+      users = []
+      memberships.each do |m|
+        if m.confirmed == true
+          user = User.where(:id == m.user_id || :id == m.invited_by)
+          users << user
+        end
       end
-    end
-    users.each do |u|
-      if u.id != current_user.id
-        network_members_public_data << u.id
+      users.each do |u|
+        public_data = []
+        if u.id != current_user.id
+          public_data << u.id
+          public_data << u.first_name
+          public_data << u.last_name
+          group_network << public_data
+        end
       end
-    end
-    @group_network_members = network_members_public_data
+      @group_network_members = group_network
+    end  
   end
 
+  
 
   # /////////////////////////////////////////////////////////////////////////
 
+
+
   # ////////////////////////////// USER DASHBOARDS //////////////////////////
+
+  # ROUTE:     get "/user/dashboard"                 => "dashboard#view"
+  # SECONDARY: get "/user/dashboard/:active_user_id" => "dashboard#view"
 
   def view
  
@@ -215,7 +210,6 @@ class DashboardController < ApplicationController
       get_user_messages
       get_new_message
       get_new_plan
-
       #////////Coaches
       if current_user.is_a_coach? 
         get_all_mentorships_and_active_client_plans_and_messages_for_coach
@@ -345,14 +339,14 @@ class DashboardController < ApplicationController
 
       if params[:active_user_id].nil?
         if @coaches_for_client != nil && @coaches_for_client.empty? == false
-          @active_user_id = @coaches_for_client[0].id
-        else
-          @active_user_id = current_user.id
+          @active_user = @coaches_for_client[0]
+          @active_user_id = @active_user.id
         end
-
       else  
         @active_user_id = params[:active_user_id]
         @active_user = User.find_by_id(params[:active_user_id])
+      end
+
         active_messages = []
         @outgoing = Message.where(:to => @active_user_id, :from => current_user.id)
         @incoming = Message.where(:from => @active_user_id, :to => current_user.id)
@@ -360,9 +354,8 @@ class DashboardController < ApplicationController
         @all_active_user_messages_sorted_by_timestamp << @outgoing
         @all_active_user_messages_sorted_by_timestamp << @incoming
         @all_active_user_messages_sorted_by_timestamp = @all_active_user_messages_sorted_by_timestamp.flatten.sort
-      end
+      
   end
-
 
   def get_client_plans
     @client_plans = Plan.where(:client => current_user.id)

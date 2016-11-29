@@ -38,7 +38,7 @@ class PlansController < ApplicationController
     end
     if @plan.save
 
-      redirect_to "/user/dashboard/#{@plan.client}", notice: 'Plan was successfully created.'
+      redirect_to "/user/dashboard", notice: 'Plan was successfully created.'
     else
       render :new
     end
@@ -47,7 +47,7 @@ class PlansController < ApplicationController
   # PATCH/PUT /plans/1
   def update
     if @plan.update(plan_params)
-      redirect_to "/user/dashboard/#{@plan.client}", notice: 'Plan was successfully updated.'
+      redirect_to "/user/dashboard", notice: 'Plan was successfully updated.'
     else
       render :edit
     end
@@ -56,7 +56,7 @@ class PlansController < ApplicationController
   # DELETE /plans/1
   def destroy
     @plan.destroy
-    redirect_to "/user/dashboard/#{@plan.client}", notice: 'Plan was successfully destroyed.'
+    redirect_to "/user/dashboard/", notice: 'Plan was successfully destroyed.'
   end
 
   # Can only be called within this controller////////////////
