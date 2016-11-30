@@ -9,7 +9,7 @@ class DashboardController < ApplicationController
 
   def group_view
     get_my_groups # -- Gets @my_groups (Groups created by the current user)
-    get_joined_groups # -- Gets @joined_groups (Groups current user is a member of)
+    get_joined_groups # -- Gets @joined_groups (Groups current user is a member of through invitation from someone else)
     get_group_invites # -- Gets @invited_groups (Groups current user has yet to Confirm membership to)
     get_new_group_message # -- Gets @new_group_membership
     get_new_group_membership # -- Gets @new_group_membership
@@ -17,8 +17,9 @@ class DashboardController < ApplicationController
     get_new_group # -- Gets @new_group
     get_active_group_id_and_all_group_messages # -- Gets @active_group_id & @all_active_group_messages_sorted_by_timestamp
     get_active_group # -- Gets @active_group (Group object)
-    get_group_network_members # -- Gets entire list of @group_network_members (an Array of Arrays, each of which consist of (at indexes): [ [0] = id, [1] = first_name, [2] = last_name ] )
+    get_all_network_members_through_groups # -- Gets entire list of @group_network_members (an Array of Arrays, each of which consist of (at indexes): [ [0] = id, [1] = first_name, [2] = last_name ] )
     get_members_of_active_group # -- Gets entire list of @active_group_members (an Array of Arrays, each of which consist of (at indexes): [ [0] = id, [1] = first_name, [2] = last_name ] )
+    get_new_message
   end
   
   def get_members_of_active_group
@@ -97,7 +98,8 @@ class DashboardController < ApplicationController
     group_memberships = GroupMembership.where(:user_id => current_user.id)
     group_memberships.each do |m|
       if m.confirmed == true  
-        joined << Group.find_by_id(i.group_id)
+        g = Group.find_by_id(m.group_id)
+        joined << g
       end
     end
     @joined_groups = joined
@@ -164,32 +166,48 @@ class DashboardController < ApplicationController
     end
   end
 
-  def get_group_network_members
-    group_network = []
-    memberships = GroupMembership.where(:user_id == current_user.id || :invited_by == current_user.id)
+  # Gets Public Info for everyone current_user is connected to through all groups
+  def get_all_network_members_through_groups
+    @all_current_users_groups = []
+    if @my_groups.empty? == false
+      @my_groups.each do |mg|
+        @all_current_users_groups << mg
+      end
+    end
+    if @joined_groups.empty? == false
+      @joined_groups.each do |jg|
+        @all_current_users_groups << jg 
+      end
+    end
 
-    if memberships.empty? == false
-      users = []
-      memberships.each do |m|
-        if m.confirmed == true
-          user = User.where(:id == m.user_id || :id == m.invited_by)
-          users << user
-        end
+    # Remove all dupes from this array (@all_current_users_groups).
+    @all_memberships_in_current_users_network = []
+    @all_current_users_groups.each do |group|
+      membership = GroupMembership.where(:group_id => group.id)
+      @all_memberships_in_current_users_network << membership.flatten
+    end
+    users = []
+    @all_memberships_in_current_users_network = @all_memberships_in_current_users_network.flatten
+    @all_users_in_current_users_network = []
+    @all_memberships_in_current_users_network.each do |membership|
+      if membership.confirmed == true
+        user = User.find_by_id(membership.user_id)
+        users << user
       end
-      users.each do |u|
-        public_data = []
-        if u.id != current_user.id
-          public_data << u.id
-          public_data << u.first_name
-          public_data << u.last_name
-          group_network << public_data
-        end
+    end
+    network = []
+    users.each do |u|
+      public_data = []
+      if u.id != current_user.id
+        public_data << u.id
+        public_data << u.first_name
+        public_data << u.last_name
+        network << public_data
       end
-      @group_network_members = group_network
-    end  
+    end
+    
+    @all_users_in_current_users_network << network
   end
-
-  
 
   # /////////////////////////////////////////////////////////////////////////
 

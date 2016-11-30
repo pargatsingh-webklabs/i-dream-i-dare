@@ -1,46 +1,51 @@
 <% if @active_group != nil %>
+<strong style="font-size: 2.5em;"><%= @active_group.name %></strong>
   <div class="panel panel-default">
     <div class="panel-heading">                  
-        <strong>ACTIVE GROUP <%= @active_group %>:</strong>
+        <strong><%= @active_group.description %>:</strong>
     </div>
-                    
-    <div class="panel-body">
 
-      <% if @all_active_group_messages_sorted_by_timestamp.nil? == false %>
 
-        <% @all_active_group_messages_sorted_by_timestamp.each do |m| %>
-          
-          <% if m.nil? == false %>
+        <div class="col-span">               
+          <div class="panel-body">
 
-            <% if m.from == current_user.id %>
+            <% if @all_active_group_messages_sorted_by_timestamp.nil? == false %>
 
-              <div class="outgoing-bubble">
-                <%= m.content %>
-              </div>
+              <% @all_active_group_messages_sorted_by_timestamp.each do |m| %>
+                
+                <% if m.nil? == false %>
 
-              <div class="bubble-spacer">
-              </div>
+                  <% if m.from == current_user.id %>
+
+                    <div class="outgoing-bubble">
+                      <%= m.content %>
+                    </div>
+
+                    <div class="bubble-spacer">
+                    </div>
+
+                  <% else %>
+
+                    <div class="incoming-bubble">
+                      <%= m.content %>
+                    </div>
+
+                    <div class="bubble-spacer">
+                    </div>
+                      
+                  <% end %>
+
+                <% else %>
+                
+                <% end %>
+
+              <% end %>
 
             <% else %>
 
-              <div class="incoming-bubble">
-                <%= m.content %>
-              </div>
-
-              <div class="bubble-spacer">
-              </div>
-                
             <% end %>
+          </div>
 
-          <% else %>
-          
-          <% end %>
-
-        <% end %>
-
-      <% else %>
-
-      <% end %>
       
     </div>
 

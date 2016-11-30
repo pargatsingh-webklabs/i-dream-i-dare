@@ -114,16 +114,9 @@
             <div class="col-md-2">
 
             <strong style="font-size: 1.3em;">Group Members</strong>
-
-
-
-<!-- ////////////// -->
-
-
-
-
-              <% if @group_network_members != nil %>
-                <% @group_network_members.each do |m| %>         
+              <% if @active_group_members != nil && @active_group_members.empty? == false %>
+                <% @active_group_members.each do |m| %>  
+                 <hr>      
                       <strong>
                         <%= m[1] %>
                         <%= m[2] %>
@@ -135,30 +128,20 @@
                 <hr>
               <% end %>
 
-            <!-- ////////////////////////////// -->
             </div>
 
   <!-- //////////////////////////////////// -->
 
         <div class="col-md-7">
 
-      <!-- THIS is a simple module, which will be used for the middle and right columns. -->
-
          <div class="row">
             <div class="col-span">
-
-  <!-- DIRECT MESSAGES -->
-
-    <%= render(:partial => "group_dash_direct_messages") %>
-
-  <!-- End DIRECT MESSAGES -->
-
 
   <!-- GROUP MESSAGES -->
 
     <%= render(:partial => "group_messages") %>
 
-  <!-- End GROUP MESSAGES -->
+<!-- End GROUP MESSAGES -->
 
   <!-- ////////////////////////////// -->
             

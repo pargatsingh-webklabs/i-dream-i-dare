@@ -24,7 +24,7 @@ class GroupMessagesController < ApplicationController
     @group_message = GroupMessage.new(group_message_params)
 
     if @group_message.save
-      redirect_to "/group/dashboard/#{@group_message.group_id}", notice: 'Group message was successfully created.'
+      redirect_to "/user/group-dashboard/#{@group_message.group_id}", notice: 'Group message was successfully created.'
     else
       render :new
     end
@@ -33,7 +33,7 @@ class GroupMessagesController < ApplicationController
   # PATCH/PUT /group_messages/1
   def update
     if @group_message.update(group_message_params)
-      redirect_to "/group/dashboard/#{@group_message.group_id}", notice: 'Group message was successfully updated.'
+      redirect_to "/user/group-dashboard/#{@group_message.group_id}", notice: 'Group message was successfully updated.'
     else
       render :edit
     end
