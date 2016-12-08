@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "2.3.1"
+ruby "2.3.3"
 
 gem 'heroku-postgres'
 gem 'bootstrap-sass', '~> 3.3.6'
@@ -23,8 +23,32 @@ gem "sprockets", ">= 3.0.0"
 gem "sprockets-es6"
 gem "title"
 gem "uglifier"
+# --------------------------
+  # gem "quiet_assets"
+  # gem "spring"
+  # gem "spring-commands-rspec"
+  # gem "web-console"
+  # gem "awesome_print"
+  # gem "bullet"
+  # gem "bundler-audit", ">= 0.5.0", require: false
+  # gem "dotenv-rails"
+  # gem "factory_girl_rails", require: false
+  # gem "pry-byebug"
+  # gem "pry-rails"
+  # gem "rspec-rails", "~> 3.4.0"
+  # gem "rack-mini-profiler", require: false
+  # gem "database_cleaner"
+  # gem "formulaic"
+  # gem "launchy"
+  # gem "shoulda-matchers"
+  # gem "simplecov", require: false
+  # gem "timecop"
+  # gem "webmock"
+  # gem "rails_stdout_logging"
+  # gem "rack-timeout"
+  # gem "rails_12factor"
+  #----------------------------------
 
- 
 group :development do
   gem "quiet_assets"
   gem "spring"
