@@ -65,12 +65,11 @@ class DashboardController < ApplicationController
 
   def get_active_group_id_and_all_group_messages
     if params[:active_group_id] == nil
-      if @my_groups != nil
+      if @my_groups.empty? == false       
         @active_group_id = @my_groups[0].id
-
-      else @joined_groups != nil
+      end
+      if @joined_groups.empty? == false
         @active_group_id = @joined_groups[0].id
-
       end
     else
     @active_group_id = params[:active_group_id] 
