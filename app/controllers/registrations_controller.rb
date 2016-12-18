@@ -18,6 +18,16 @@ class RegistrationsController < Devise::RegistrationsController
 
   # /////////////////////////////
 
+  protected
+    def after_sign_up_path_for(resource)
+      signed_in_root_path(resource)
+    end
+
+    def after_update_path_for(resource)
+      signed_in_root_path(resource)
+    end
+    
+  # ///////////////////////////
 
   private
 
@@ -26,11 +36,12 @@ class RegistrationsController < Devise::RegistrationsController
 
   def admin_or_current_user
     if current_user != nil
-      redirect_to "/" unless current_user.is_an_admin? || @user.id == current_user.id
+      redirect_to "/user/dashboard" unless current_user.is_an_admin? || @user.id == current_user.id
     else
-      redirect_to "/"
+      redirect_to "/user/dashboard"
     end
   end
+
 
   # TODO: Make these functions set the admin and coach permissions to false.
 

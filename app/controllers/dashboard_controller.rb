@@ -8,10 +8,12 @@ class DashboardController < ApplicationController
   # SECONDARY: get "/user/group-dashboard/:active_group_id" => "dashboard#group_view"
 
   def group_view
+    redirect_to "/landing_page" unless user_signed_in?
+
     get_my_groups # -- Gets @my_groups (Groups created by the current user)
     get_joined_groups # -- Gets @joined_groups (Groups current user is a member of through invitation from someone else)
     get_group_invites # -- Gets @invited_groups (Groups current user has yet to Confirm membership to)
-    get_new_group_message # -- Gets @new_group_membership
+    get_new_group_message # -- Gets @new_group_message
     get_new_group_membership # -- Gets @new_group_membership
     get_coach_and_client_network_members # -- Gets @user_network_members (an Array of Arrays, each of which consist of (at indexes): [ [0] = id, [1] = first_name, [2] = last_name ] )
     get_new_group # -- Gets @new_group
@@ -26,39 +28,43 @@ class DashboardController < ApplicationController
     memberships = GroupMembership.where(:group_id => @active_group_id)
     members = []
     owner = []
-    if memberships != nil 
+    public_data = []
+    if memberships.empty? == false 
       memberships.each do |m|
+
         members << m.user_id
         owner << m.invited_by
       end
-      if members != nil
-        active_group_members_public_data = []
-
-        members.each do |m|
-          m = User.find_by_id(m)
-          public_data = []
-          public_data << m.id
-          public_data << m.first_name 
-          public_data << m.last_name
+    end
+    if members.empty? == false
+      # all_active_user_plans_sorted_by_timestamp
+      active_group_members_public_data = []
+      members.each do |m|
+        if m != nil
+          user = User.find_by_id(m)  
+          public_data << user.id
+          public_data << user.first_name 
+          public_data << user.last_name
           active_group_members_public_data << public_data
         end
       end
-      if owner != nil
-        active_group_owner_public_data = []
-
-        owner.each do |o|
-          o = User.find_by_id(o)
-          public_data = []
-          public_data << o.id
-          public_data << o.first_name 
-          public_data << o.last_name
-          active_group_owner_public_data << public_data.uniq
-        end
-      end 
-
-      @active_group_members = active_group_members_public_data
-      @active_group_owner = active_group_owner_public_data
     end
+
+    if owner.empty? == false
+      active_group_owner_public_data = []
+      owner.each do |o|
+        if o != nil
+          owner = User.find_by_id(o)
+          public_data << owner.id
+          public_data << owner.first_name 
+          public_data << owner.last_name
+          active_group_owner_public_data << public_data
+        end
+      end
+    end 
+
+    @active_group_members = active_group_members_public_data
+    @active_group_owner = active_group_owner_public_data
   end
 
   # ///////////////////////////////////// ACTIVE GROUP
@@ -81,7 +87,9 @@ class DashboardController < ApplicationController
   end
 
   def get_active_group
-    @active_group = Group.find_by_id(@active_group_id)
+    if @active_group_id != nil
+      @active_group = Group.find_by_id(@active_group_id)
+    end
   end
 
  # //////////////////////////////////////////////////////
@@ -218,7 +226,9 @@ class DashboardController < ApplicationController
   # SECONDARY: get "/user/dashboard/:active_user_id" => "dashboard#view"
 
   def view
- 
+
+    redirect_to "/landing_page" unless user_signed_in?
+
     # Note: We have ACCESS to params[:active_user_id], if used, from the view.
 
     #////////All Users
@@ -248,7 +258,6 @@ class DashboardController < ApplicationController
         get_default_active_user_and_messages
       end
 
-    else redirect_to("/") 
     #TODO: Add Flash error message if redirected to index due to not being logged in.
     end
   end
@@ -303,38 +312,32 @@ class DashboardController < ApplicationController
     end
 
    # ///////////////////////////////////ACTIVE PLANS
-
-   # If an active user designation is not being made, params[:active_user_id] is nil, and we do nothing. 
-    # Otherwise, the @active_user_id is used with current_user.id to find all related messages. @all_active_user_plans_sorted_by_timestamp is the resulting collection.
-
     if params[:active_user_id].nil?
-
-      # DO NOTHING
-      
+      if @clients != nil && @clients.empty? == false
+        @active_user = @clients[0]
+        @active_user_id = @active_user.id
+      end
     else  
       @active_user_id = params[:active_user_id]
       @active_user = User.find_by_id(params[:active_user_id])
-      @all_active_user_plans_sorted_by_timestamp = Plan.where(:client => @active_user_id)
-      @all_active_user_plans_sorted_by_timestamp = @all_active_user_plans_sorted_by_timestamp.sort
     end
+    @all_active_user_plans_sorted_by_timestamp = Plan.where(:client => @active_user_id)
+    @all_active_user_plans_sorted_by_timestamp = @all_active_user_plans_sorted_by_timestamp.sort
+
 
    # ///////////////////////////////////ACTIVE MESSAGES
 
-    # If an active user designation is not being made, params[:active_user_id] is nil, and we do nothing. 
-    # Otherwise, the @active_user_id is used with current_user.id to find all related messages. @all_active_user_messages_sorted_by_timestamp is the resulting collection.
-    if params[:active_user_id].nil?
-      # DO NOTHING
-    else  
+    # @all_active_user_messages_sorted_by_timestamp is the resulting collection.
+    if params[:active_user_id] != nil
       @active_user_id = params[:active_user_id]
-      active_messages = []
-      @outgoing = Message.where(:to => @active_user_id, :from => current_user.id)
-      @incoming = Message.where(:from => @active_user_id, :to => current_user.id)
-      @all_active_user_messages_sorted_by_timestamp = []
-      @all_active_user_messages_sorted_by_timestamp << @outgoing
-      @all_active_user_messages_sorted_by_timestamp << @incoming
-      @all_active_user_messages_sorted_by_timestamp = @all_active_user_messages_sorted_by_timestamp.flatten.sort
     end
-
+    active_messages = []
+    @outgoing = Message.where(:to => @active_user_id, :from => current_user.id)
+    @incoming = Message.where(:from => @active_user_id, :to => current_user.id)
+    @all_active_user_messages_sorted_by_timestamp = []
+    @all_active_user_messages_sorted_by_timestamp << @outgoing
+    @all_active_user_messages_sorted_by_timestamp << @incoming
+    @all_active_user_messages_sorted_by_timestamp = @all_active_user_messages_sorted_by_timestamp.flatten.sort
   end
 
  # //////////////////////////////////////////////////////

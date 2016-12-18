@@ -233,6 +233,12 @@ g3.save
 # ///// GROUP MEMBERSHIPS
 
 gb1 = GroupMembership.new
+gb1.user_id = x.id
+gb1.group_id = g1.id
+gb1.invited_by = c.id
+gb1.save 
+
+gb1 = GroupMembership.new
 gb1.user_id = c.id
 gb1.group_id = g1.id
 gb1.invited_by = c.id
@@ -267,6 +273,12 @@ gb6.user_id = b.id
 gb6.group_id = g3.id
 gb6.invited_by = a.id
 gb6.save 
+
+gb7 = GroupMembership.new
+gb7.user_id = y.id
+gb7.group_id = g1.id
+gb7.invited_by = c.id
+gb7.save 
 
 # ///// GROUP MESSAGES
 

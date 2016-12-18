@@ -30,7 +30,7 @@
             </li>
             <% @my_groups.each do |g| %>
               <!-- If active group, changes background color of pill. -->
-              <% if @active_group != nil && @active_group.id == g.id %>
+              <% if @active_group_id != nil && @active_group_id == g.id %>
                 <li class="btn-default" id="active-user-in-list">
                   <a href="/user/group-dashboard/<%= g.id %>">
                     <%= g.name %>
@@ -56,7 +56,7 @@
             </li>
             <% @joined_groups.each do |g| %>
               <!-- If active user, changes background color of pill. -->
-              <% if @active_group != nil && @active_group == g.id %>
+              <% if @active_group_id != nil && @active_group_id == g.id %>
                 <li class="btn-default" id="active-user-in-list">
                   <a href="/user/group-dashboard/<%= g.id %>">
                     <%= g.name %>
@@ -82,7 +82,7 @@
             </li>
             <% @invited_groups.each do |g| %>
               <!-- If active user, changes background color of pill. -->
-              <% if @active_group != nil && @active_group == g.id %>
+              <% if @active_group_id != nil && @active_group_id == g.id %>
                 <li class="btn-default" id="active-user-in-list">
                   <a href="/user/group-dashboard/<%= g.id %>">
                     <%= g.name %>
