@@ -2,6 +2,12 @@ Rails.application.routes.draw do
 
   get 'alerts/reply'
 
+  resource :alerts do
+    collection do
+      post 'reply'
+    end
+  end
+
   resources :group_messages
   resources :groups
   resources :group_memberships
