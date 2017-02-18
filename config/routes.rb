@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'alerts/reply'
+
   resources :group_messages
   resources :groups
   resources :group_memberships
