@@ -3,16 +3,13 @@ class AlertsController < ApplicationController
  skip_before_filter :authenticate_user!, :only => "reply"
  
   def reply
-  	debugger;
     message_body = params["Body"]
     from_number = params["From"]
-    debugger;
     boot_twilio
-     debugger;
     sms = @client.messages.create(
-      from: Rails.application.config.secrets.twilio_number,
+      from: Rails.application.secrets.twilio_number,
       to: from_number,
-      body: "Hello, this is the Dreamcatcher alert system. Your number is #{from_number}."
+      body: "Hello, this is a test of the Dreamcatcher alert system. Your number is #{from_number}. Please text (402)769-2709 to re-test this application's reply."
     )
     
   end
@@ -20,9 +17,23 @@ class AlertsController < ApplicationController
   private
  
   def boot_twilio
-  	 debugger;
-    account_sid = Rails.application.config.secrets.twilio_sid
-    auth_token = Rails.application.config.secrets.twilio_token
+    account_sid = Rails.application.secrets.twilio_sid 
+    auth_token = Rails.application.secrets.twilio_token 
     @client = Twilio::REST::Client.new account_sid, auth_token
   end
+
+# def reply
+
+#   account_sid = "AC7f31bedb178e5c29681712d702181f29" # Your Account SID from www.twilio.com/console
+#   auth_token = "0b67f2ae87cae02e784c98378a806368"   # Your Auth Token from www.twilio.com/console
+
+#   @client = Twilio::REST::Client.new account_sid, auth_token
+#   message = @client.account.messages.create(:body => "Hello from Ruby",
+#       :to => "+14022133739",    # Replace with your phone number
+#       :from => "+14027692709")  # Replace with your Twilio number
+
+#   puts message.sid
+# end
+
+
 end

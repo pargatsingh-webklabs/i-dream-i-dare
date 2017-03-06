@@ -4,6 +4,7 @@
 *.swp
 *.dump
 /.bundle
+/.env
 /.env.local
 /coverage/*
 /db/*.sqlite3

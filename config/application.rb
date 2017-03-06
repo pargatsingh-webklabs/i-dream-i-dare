@@ -10,6 +10,12 @@ require "sprockets/railtie"
 Bundler.require(*Rails.groups)
 module IDreamIDare
   class Application < Rails::Application
+
+    # # ------------------------------------------------------
+    # # Used for testing Twilio, enabling print to console:
+    # config.web_console.whitelisted_ips = 'XXX.XXX.XX'
+    # # ------------------------------------------------------
+
     config.quiet_assets = true
     config.generators do |generate|
       generate.helper false

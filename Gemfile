@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "2.3.3"
+ruby "2.4.0"
 
 gem 'heroku-postgres'
 gem 'bootstrap-sass', '~> 3.3.6'
@@ -23,6 +23,7 @@ gem "sprockets", ">= 3.0.0"
 gem "sprockets-es6"
 gem "title"
 gem "uglifier"
+gem "twilio-ruby"
 # --------------------------
   # gem "quiet_assets"
   # gem "spring"

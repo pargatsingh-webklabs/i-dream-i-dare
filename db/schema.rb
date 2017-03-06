@@ -49,21 +49,6 @@ ActiveRecord::Schema.define(version: 20161022153645) do
     t.boolean  "confirmed"
   end
 
-Mike Burns(105), 
-Amy Jones(33), 
-Alex coachly(2), 
-Bethany(3), 
-Kristin Custer(49), 
-Ebenezer Mahupete(59), 
-Amber King(104), 
-Michala Witas(38)
-
-g = GroupMembership.where(:user_id => 38)
-g.each do |g|
-  g.delete
-end
-
-
   create_table "group_messages", force: :cascade do |t|
     t.integer  "from"
     t.integer  "group_id"
