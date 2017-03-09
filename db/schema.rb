@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161022153645) do
+ActiveRecord::Schema.define(version: 20170309031534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 20161022153645) do
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "alerts", force: :cascade do |t|
+    t.string   "alert_title"
+    t.text     "alert_body"
+    t.string   "alert_type"
+    t.integer  "alert_to"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
