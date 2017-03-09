@@ -2,6 +2,28 @@ class AlertsController < ApplicationController
   skip_before_filter :verify_authenticity_token
  skip_before_filter :authenticate_user!, :only => "reply"
  
+  def create_alert
+    my_alert = Alert.new
+    my_alert.alert_title = params["Title"]
+    my_alert.alert_body = params["Body"]
+    my_alert.alert_type = params["Type"]
+    my_alert.alert_to = params["To"]
+    my_alert.scheduled_alert = params["Schedule"]
+    my_alert.save
+    send_sms_alert(params[:my_alert])
+  end
+
+  def send_sms_alert
+    sms_alert = params[:my_alert]
+    debugger;
+    boot_twilio
+    sms = @client.messages.create(
+      from: Rails.application.secrets.twilio_number,
+      to: from_number,
+      body: "Hello, this is a test of the Dreamcatcher alert system. Please text (402)769-2709 to re-test this application's reply."
+  end
+
+  # For testing the Alert System
   def reply
     message_body = params["Body"]
     from_number = params["From"]
@@ -13,7 +35,7 @@ class AlertsController < ApplicationController
     )
     
   end
- 
+
   private
  
   def boot_twilio
