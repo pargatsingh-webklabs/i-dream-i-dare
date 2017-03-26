@@ -16,7 +16,7 @@ class AlertsController < ApplicationController
     boot_twilio
     sms = @client.messages.create(
       from: Rails.application.secrets.twilio_number,
-      to: sms_to
+      to: sms_to,
       body: my_alert.alert_body)
   end
 

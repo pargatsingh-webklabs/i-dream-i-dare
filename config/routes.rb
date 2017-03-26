@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resource :alerts do
     collection do
       post 'reply'
+      post 'create_alert'
     end
   end
 
