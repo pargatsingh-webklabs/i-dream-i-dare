@@ -7,20 +7,17 @@ class AlertsController < ApplicationController
     my_alert.alert_title = params["Title"]
     my_alert.alert_body = params["Body"]
     my_alert.alert_type = params["Type"]
-    my_alert.alert_to = params["To"]
+    my_alert.alert_to = params["To"] # This is a user_id, to be looked up in Users for the phone number to send the sms.
     my_alert.scheduled_alert = params["Schedule"]
     my_alert.save
-    send_sms_alert(params[:my_alert])
-  end
-
-  def send_sms_alert
-    sms_alert = params[:my_alert]
-    debugger;
+  # Separate these into two actions, after testing. This immediately sends out all alerts, but we need to be looking at the scheduled_alert field.
+    alert_user = User.find(my_alert.alert_to)
+    sms_to = alert_user.sms_phone_number
     boot_twilio
     sms = @client.messages.create(
       from: Rails.application.secrets.twilio_number,
-      to: from_number,
-      body: "Hello, this is a test of the Dreamcatcher alert system. Please text (402)769-2709 to re-test this application's reply."
+      to: sms_to
+      body: my_alert.alert_body)
   end
 
   # For testing the Alert System
