@@ -1,12 +1,9 @@
 class AdminMessagesController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:root_path]
   before_action :set_admin_message, only: [:show, :edit, :update, :destroy]
-
-
   before_filter :admin_user, only: [:show, :index, :edit, :update, :destroy]
 
   # /////////////////////////////
-
 
   # GET /
   def landing_page
@@ -21,7 +18,13 @@ class AdminMessagesController < ApplicationController
 
   # GET /admin_messages
   def index
-    @admin_messages = AdminMessage.all
+    render layout: "admin"
+    @all_admin_messages = []
+    all_messages = AdminMessage.all
+    all_messages.each do |m|
+      @all_admin_messages << m.id
+    pry
+    end
   end
 
   # GET /admin_messages/1

@@ -1,31 +1,38 @@
 class MentorshipsController < ApplicationController
   before_action :set_mentorship, only: [:show, :edit, :update, :destroy]
   before_filter :admin_user
+  layout "admin"
 
   # GET /mentorships
   def index
-    @mentorships = Mentorship.all
-    get_all_coaches
-    get_all_clients 
+    get_all_coaches_and_clients
+    @all_mentorships = Mentorship.all
+    @public_mentorship_data = []
+    if @all_mentorships.empty? == false
+      @all_mentorships.each do |m|
+        mentorship_relation = []
+        mentorship_relation << m.id
+        mentorship_relation << coach = @all_coaches.find_by_id(m.coach)
+        mentorship_relation <<  client = @all_clients.find_by_id(m.client)
+      @public_mentorship_data << mentorship_relation
+      end
+    end
   end
 
   # GET /mentorships/1
   def show
-    get_all_coaches
-    get_all_clients 
+    get_all_coaches_and_clients
   end
 
   # GET /mentorships/new
   def new
     @mentorship = Mentorship.new
-    get_all_coaches
-    get_all_clients 
+    get_all_coaches_and_clients
   end
 
   # GET /mentorships/1/edit
   def edit
-    get_all_coaches
-    get_all_clients 
+    get_all_coaches_and_clients
   end
 
   # POST /mentorships
@@ -69,15 +76,8 @@ class MentorshipsController < ApplicationController
       params.require(:mentorship).permit(:client, :coach)
     end
 
-    def get_all_coaches
-
-    @all_coaches = User.where(:is_a_coach => true)
-
-  end
-
-  def get_all_clients 
-
-    @all_clients = User.where(:is_a_coach => false, :is_an_admin => false)
-
-  end
+    def get_all_coaches_and_clients
+      @all_coaches = User.where(:is_a_coach => true)
+      @all_clients = User.where(:is_a_coach => false, :is_an_admin => false)
+    end
 end

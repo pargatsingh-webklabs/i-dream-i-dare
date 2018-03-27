@@ -8,7 +8,6 @@ class PlansController < ApplicationController
   before_filter :authorized_user, only: [:edit, :update, :show, :destroy]
   # before_filter :authorized_coach_or_admin, only:
   before_filter :admin_user, only: [:index]
-
   # /////////////////////////////
 
   # GET /plans

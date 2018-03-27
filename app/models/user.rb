@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   before_save :set_default_permissions
-
+  scope :ordered_by_name, -> { order(first_name: :asc) }
  private
 
    def set_default_permissions

@@ -24,6 +24,7 @@ gem "sprockets-es6"
 gem "title"
 gem "uglifier"
 gem "twilio-ruby"
+gem 'active_model_serializers', '~> 0.10.0'
 # --------------------------
   # gem "quiet_assets"
   # gem "spring"

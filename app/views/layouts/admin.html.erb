@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="ROBOTS" content="NOODP" />
+  <meta name="viewport" content="initial-scale=1" />
+  <%#
+    Configure default and controller-, and view-specific titles in
+    config/locales/en.yml. For more see:
+    https://github.com/calebthompson/title#usage
+  %>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+  <title><%= title %></title>
+  <%= stylesheet_link_tag :application, media: "all" %>
+  <%= csrf_meta_tags %>
+
+  <link rel="stylesheet" type="text/css" href="css/custom.css.scss">
+</head>
+
+
+
+
+
+<!-- HEADER -->
+<div id="top-nav" class="navbar navbar-inverse navbar-static-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" data-position="fixed" top="0px">
+      <span class="icon-toggle"></span>
+    </button>
+    <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-user"> </span>    <%= current_user.first_name %>'s Dashboard</a>
+  </div>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav pull-right">
+      
+      <li class="dropdown">
+        <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
+          <strong>Tools</strong> <span class="caret"></span></a>
+        <ul id="g-account-menu" class="dropdown-menu" role="menu">
+
+          <!-- / TOOLS Drop Down Menu Items-->
+          <li><a href='/users/edit'>Edit my Account</a></li>
+          <li><a href='/users/sign_out' data-method='delete'>Sign out</a></li>
+        <!-- / TOOLS Drop Down Menu Items-->
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<body class="container">
+  <%= render "flashes" -%>
+
+  <!-- Before yield -->
+  <%= yield %>
+  <!-- After yield -->
+
+  </body>
+</html>
+  
+  <%= render "javascript" %>
+  <%= render "css_overrides" %>
+
+  <footer>
+    <center>
+      2016, Dream Catcher LLC
+    </center>
+  </footer>
+
+<!-- / Footer -->

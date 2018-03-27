@@ -1,31 +1,56 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Admin Messages</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>From name</th>
-      <th>From email</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @admin_messages.each do |admin_message| %>
+<h1>Admin Messages</h1>
+<p>
+    <button>
+      <%= link_to 'New Admin message', new_admin_message_path %>
+    </button>
+  </p>
+<table class="table table-bordered table-striped" >
+    <thead>
       <tr>
-        <td><%= admin_message.from_name %></td>
-        <td><%= admin_message.from_email %></td>
-        <td><%= admin_message.content %></td>
-        <td><%= link_to 'Show', admin_message %></td>
-        <td><%= link_to 'Edit', edit_admin_message_path(admin_message) %></td>
-        <td><%= link_to 'Destroy', admin_message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>
+          Id
+        </th>
+        <th>
+          Sender
+        </th>
+        <th>
+          Email
+        </th>
+        <th>
+          Content
+        </th>
+        <th>
+          Actions
+        </th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% if @all_admin_messages != nil %>
+        <% @all_admin_messages.each do |admin_message| %>
+          <tr>
+            <th>
+              <%= admin_message.id %>
+            </th>
+            <th>
+              <%= admin_message.from_name %>
+            </th>
+            <th>
+              <%= admin_message.from_email %>
+            </th>
+            <th>
+              <%= admin_message.content %>
+            </th>
+            <th>
+              <%= link_to 'Show', admin_message %>
 
-<br>
+              <%= link_to 'Edit', edit_admin_message_path(admin_message) %>
 
-<%= link_to 'New Admin message', new_admin_message_path %>
+              <%= link_to 'Destroy', admin_message, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </th>
+          </tr> 
+        <% end %>
+      <% end %>
+    </tbody>
+    </table>

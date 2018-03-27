@@ -10,29 +10,17 @@
       </ul>
     </div>
   <% end %>
-<div class="list_coaches">
-  <br />COACHES-> <br />
-  <% @all_coaches.each do |coach| %>
-    <%= coach.id %> = <%= coach.first_name %> <%= coach.last_name %><br />
-  <% end %>
-</div>
-<div class="list_clients">
-  <br />CLIENTS-> <br />
-  <% @all_clients.each do |client| %>
-    <%= client.id %> = <%= client.first_name %> <%= client.last_name %><br />
-  <% end %>
-
-</div>
-
-  <div class="field">
-    <%= f.label :client %><br>
-    <%= f.number_field :client %>
+  <div class="row">
+    <div class="dropdown">
+      <%= f.label :coach %><br>
+      <%= f.collection_select :coach, @all_coaches, :id, :first_name, include_blank: true %>
+    </div>
+    <div class="dropdown">
+      <%= f.label :client %><br>
+      <%= f.collection_select :client, @all_clients, :id, :first_name, include_blank: true %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :coach %><br>
-    <%= f.number_field :coach %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>

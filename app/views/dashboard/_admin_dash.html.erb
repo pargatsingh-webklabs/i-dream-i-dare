@@ -1,40 +1,55 @@
-  <div class="red-text">
+<div class="red-text">
     <h1>ADMINISTRATIVE DASHBOARD</h1>
   </div>
   <div class="red-text-list">
     <h4>
       <a href="/admin_messages">|   Admin Messages   |</a>
-      <a href="/mentorships">|   Mentorships Index   |</a>
-      <a href="/plans">|   Plans Index   |</a>
-      <a href="/messages">|   All User Messages Index   |</a>
+      <a href="/mentorships">|   Mentorships   |</a>
+      <a href="/plans">|   Plans   |</a>
+      <a href="/messages">|   User Messages   |</a>
+    </h4>
+  </div>
+  <h2>All Users:</h2>
+
+  <div class="row">
+  <div class="col">col</div>
+  <div class="col">col</div>
+  <div class="w-100"></div>
+  <div class="col">col</div>
+  <div class="col">col</div>
   </div>
 
-<h2>All Users:</h2>
-  
-  <% @users.each do |u| %>
+  <div class="container">
+    <% @users.each do |u| %>
+      <div class="row">
+        <div class="col-4">
+          <%= u.id %> 
+        </div>
+        <div class="col-4">
+          <%= u.first_name %> <%= u.last_name %> 
+        </div>
+        <div class="col-4">
+          <%= u.email %> 
+        </div>
 
-  ----------------------------------<br>
-
-    <li>ID: <%= u.id %></li>
-    <li><h3><%= u.first_name %> <%= u.last_name %></h3></li>
-    <li>Email: <%= u.email %></li>
-     
-    <% if u.is_a_coach == nil || u.is_an_admin == nil%>
-      <li><a href="/activate_user/<%= u.id %>"><font color="orange">ACTIVATE USER (sets both admin and coach to false)</font></a></li>
-
-    <% else %>
-      <li><%= u.first_name %> is a Coach? <%= u.is_a_coach %><a href="/toggle_coach/<%= u.id %>"><---TOGGLE</a></li>
-      <li><%= u.first_name %> is an Admin? <%= u.is_an_admin %><a href="/toggle_admin/<%= u.id %>"><---TOGGLE</a></li>
+      </div>
+    </div>
+        <div class="col-med">
+          <% if u.is_a_coach == nil || u.is_an_admin == nil%>
+            <a href="/activate_user/<%= u.id %>"><font color="orange">ACTIVATE USER (sets both admin and coach to false)</font></a>
+          <% else %>
+            <%= u.first_name %> is a Coach? <%= u.is_a_coach %><a href="/toggle_coach/<%= u.id %>"><button>TOGGLE</button></a>
+            <%= u.first_name %> is an Admin? <%= u.is_an_admin %><a href="/toggle_admin/<%= u.id %>"><button>TOGGLE</button></a>
+          <% end %>
+        </div>
+        <div class="col-med">
+          <% if u.is_an_admin? %>
+              <font color="red"><strong>WARNING: If you are <%= u.first_name %>, toggling your Admin priviliges will lock you out of the system immediately.</strong></font><br>
+          <% end %>
+        </div>
+      </div>
     <% end %>
-    
-    <% if u.is_an_admin? %>
-        <font color="red"><strong>WARNING: If you are <%= u.first_name %>, toggling your Admin priviliges<br>
-        will lock you out of the system immediately.</strong></font><br>
-    <% end %>
-  <% end %>
 
-  ----------------------------------<br>
- 
   <h2>Admin messages</h2> 
   
   <% @all_admin_messages.each do |a| %>
@@ -115,3 +130,4 @@
 
   //////////////////////////////////////////
 
+ -->
