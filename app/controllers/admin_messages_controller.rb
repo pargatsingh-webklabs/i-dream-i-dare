@@ -23,7 +23,6 @@ class AdminMessagesController < ApplicationController
     all_messages = AdminMessage.all
     all_messages.each do |m|
       @all_admin_messages << m.id
-    pry
     end
   end
 
