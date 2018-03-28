@@ -1,14 +1,11 @@
 class PlansController < ApplicationController
 
-   before_action :set_plan, only: [:show, :edit, :update, :destroy]
-   before_action :find_mentorship
-
-  # /////////////////////////////Prevents unauthorized access to others' PLANS:
+  before_action :set_plan, only: [:show, :edit, :update, :destroy]
+  before_action :find_mentorship
 
   before_filter :authorized_user, only: [:edit, :update, :show, :destroy]
-  # before_filter :authorized_coach_or_admin, only:
   before_filter :admin_user, only: [:index]
-  # /////////////////////////////
+  layout "signed-in"
 
   # GET /plans
   def index

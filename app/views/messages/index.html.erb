@@ -1,31 +1,54 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Messages</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>From</th>
-      <th>To</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @messages.each do |message| %>
+<h1>User Messages</h1>
+<p>
+    <button>
+      <%= link_to 'New Message', new_message_path %>
+    </button>
+  </p>
+<table class="table table-bordered table-striped" >
+    <thead>
       <tr>
-        <td><%= message.from %></td>
-        <td><%= message.to %></td>
-        <td><%= message.content %></td>
-        <td><%= link_to 'Show', message %></td>
-        <td><%= link_to 'Edit', edit_message_path(message) %></td>
-        <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>
+          Id
+        </th>
+        <th>
+          From
+        </th>
+        <th>
+          To
+        </th>
+        <th>
+          Content
+        </th>
+        <th>
+          Actions
+        </th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Message', new_message_path %>
+    </thead>
+    <tbody>
+      <% if @messages != nil %>
+        <% @messages.each do |message| %>
+      <tr>
+            <th>
+              <%= message.id %>
+            </th>
+            <th>
+              <%= message.from %>
+            </th>
+            <th>
+              <%= message.to %>
+            </th>
+            <th>
+              <%= message.content %>
+            </th>
+            <th>
+              <%= link_to 'Show', message %>
+              <%= link_to 'Edit', edit_message_path(message) %>
+              <%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </th>
+          </tr> 
+        <% end %>
+      <% end %>
+    </tbody>
+    </table>

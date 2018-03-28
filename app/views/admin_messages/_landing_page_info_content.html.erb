@@ -1,126 +1,67 @@
-<div class="landing-page-branding transparent-black-background">
-
-  Dream Catcher
-
-</div>
-   
-
-<!-- <div class="landing-page-logo">
-    LOGO IS HERE, 70px square
-</div> -->
-
-
-<div class="landing-page-branding-sub-line transparent-black-background">  
-
-  | i dream | i dare | i do 
-
-</div>
-
-
-<!-- DATE, IF DESIRED -->
-
- <!-- <div class="date">
-    <%= @day_of_week %> <%= @month %>/ <%= @day_number %>, <%= @year %>
+  <div class="landing-page-branding transparent-black-background">
+    Dream Catcher
   </div>
- -->
-<!-- / DATE -->
+     
+  <!-- <div class="landing-page-logo">
+      LOGO WILL LIVE HERE, 70px square ex.
+  </div> -->
 
 
-<!-- LOGOUT/IN, ETC. LINKS -->
+  <div class="landing-page-branding-sub-line transparent-black-background">  
+    | i dream | i dare | i do 
+  </div>
 
-<div class="landing-page-spacer-30">
-</div>
+  <div class="landing-page-spacer-30"></div>
 
-<div class="landing-page-links landing-content">
+  <div class="landing-page-links landing-content">
+    <% if user_signed_in? %>
+      <a href='/user/dashboard'>My Dashboard</a>
+      <div class="horizontal-spacer-6"></div>
+      <a href='/users/sign_out' data-method='delete'>Sign out</a>
+      <div class="horizontal-spacer-6"></div>
 
-  <% if user_signed_in? %>
+    <% else %>
 
-    <a href='/user/dashboard'>My Dashboard</a>
+      <a href="/users/sign_in">Sign In</a>
+      <div class="horizontal-spacer-6"></div>
+      <a href="/users/sign_up">Sign Up</a>
+      <div class="horizontal-spacer-6"></div>
 
-    <div class="horizontal-spacer-6">
+    <% end %>
+
+  <a href="/blog">Blog</a>
+
+  </div>
+
+  <div class="landing-content">
+
+    <div class="date transparent-black-background">
+      <%= @day_of_week %> <%= @month %>/ <%= @day_number %>, <%= @year %>
+    </div>
+    <hr />
+    <div class="landing-text-center-strong">
+      Why The Dream Catcher Experience?
+    </div>
+    <div class="landing-text-body">
+      Whether your dreams are about developing in business or about this vast experience called life, Dream Catcher has immediate actionable steps for you. 
+      There are gaps between your dreams and where you are today. Dream Catcher effectively closes those gaps. 
+      The Dream Catcher experience is an expert guided, proven and effective coaching program. It is always tailored to meet your Leadership and Life needs.
+    </div>
+    <div class="landing-text-center-strong">
+      Your Dream Catcher Experience
+    </div>
+    <div class="landing-text-body">
+      A dream is not what you wake up from.  A real dream is what wakes you up.
+      The Dream Catcher experience will furnish you and/or your business with simple actionable steps.   
+      We will propel you to realize your fullest potential, as an individual and leader. Dream Dare Do!
+    </div>
+    <div class="landing-text-center-strong">
+      We Are
+    </div>
+    <div class="landing-text-body">
+      <li>Competent specialists in Leadership and Life Coaching</li>
+      <li>Pragmatic and transparent experts</li> 
+      <li>Experienced, enthusiastic and driven professionals</li>
     </div>
 
-    <a href='/users/sign_out' data-method='delete'>Sign out</a>
-
-    <div class="horizontal-spacer-6">
-    </div>
-
-  <% else %>
-
-    <a href="/users/sign_in">Sign In</a>
-
-    <div class="horizontal-spacer-6">
-    </div>
-
-    <a href="/users/sign_up">Sign Up</a>
-
-    <div class="horizontal-spacer-6">
-    </div>
-
-  <% end %>
-
-<!-- Link below to external blog site: TODO: Build a site-integrated Blog for Nash-->
-
-<a href="/blog">Blog</a>
-
-</div>
-
-<!-- / LOGOUT/IN, ETC. LINKS -->
-
-
-<!-- MAIN CONTENT, INFO -->
-
-<div class="landing-content">
-
-
-  <div class="landing-text-center-strong">
-
-    Why The Dream Catcher Experience?
-
   </div>
-
-
-  <div class="landing-text-body">
-
-  Whether your dreams are about developing in business or about this vast experience called life, Dream Catcher has immediate actionable steps for you. 
-  There are gaps between your dreams and where you are today. Dream Catcher effectively closes those gaps. 
-  The Dream Catcher experience is an expert guided, proven and effective coaching program. It is always tailored to meet your Leadership and Life needs.
-
-  </div>
-
-
-  <div class="landing-text-center-strong">
-
-    Your Dream Catcher Experience
-
-  </div>
-
-
-  <div class="landing-text-body">
-
-    A dream is not what you wake up from.  A real dream is what wakes you up.
-  The Dream Catcher experience will furnish you and/or your business with simple actionable steps.   
-  We will propel you to realize your fullest potential, as an individual and leader. Dream Dare Do!
-
-  </div>
-
-
-  <div class="landing-text-center-strong">
-
-    We Are
-
-  </div>
-
-
-  <div class="landing-text-body">
-
-    <li>Competent specialists in Leadership and Life Coaching</li>
-    <li>Pragmatic and transparent experts</li> 
-    <li>Experienced, enthusiastic and driven professionals</li>
-
-  </div>
-
-
-</div>
-
-<!-- MAIN CONTENT, INFO -->

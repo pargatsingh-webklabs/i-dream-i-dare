@@ -226,11 +226,8 @@ class DashboardController < ApplicationController
   # SECONDARY: get "/user/dashboard/:active_user_id" => "dashboard#view"
 
   def view
-
     redirect_to "/landing_page" unless user_signed_in?
-
     # Note: We have ACCESS to params[:active_user_id], if used, from the view.
-
     #////////All Users
 
     if user_signed_in?
@@ -240,7 +237,7 @@ class DashboardController < ApplicationController
       #////////Coaches
       if current_user.is_a_coach? 
         get_all_mentorships_and_active_client_plans_and_messages_for_coach
-
+        render layout: "signed-in"
       #////////Admin:
       elsif current_user.is_an_admin?
         get_all_admin_messages
@@ -250,14 +247,14 @@ class DashboardController < ApplicationController
         get_all_plans
         get_all_messages
         get_all_users
-
+        render layout: "signed-in"
       #////////Clients:
       else 
         get_client_plans
         get_client_mentorships_and_coaches
         get_default_active_user_and_messages
+        render layout: "signed-in"
       end
-
     #TODO: Add Flash error message if redirected to index due to not being logged in.
     end
   end
@@ -401,6 +398,7 @@ class DashboardController < ApplicationController
       @user = User.find_by_id(params[:target_user_id])
       if @user.is_a_coach == true || @user.is_a_coach == nil 
         @user.update_attribute :is_a_coach, false
+        Mentorship.where(coach: @user.id).destroy_all
       else 
         @user.update_attribute :is_a_coach, true
       end

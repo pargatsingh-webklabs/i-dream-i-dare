@@ -1,5 +1,5 @@
 <div class="red-text">
-    <h1>ADMINISTRATIVE DASHBOARD</h1>
+    <h1>ADMIN DASHBOARD</h1>
   </div>
   <div class="red-text-list">
     <h4>
@@ -9,125 +9,59 @@
       <a href="/messages">|   User Messages   |</a>
     </h4>
   </div>
-  <h2>All Users:</h2>
 
-  <div class="row">
-  <div class="col">col</div>
-  <div class="col">col</div>
-  <div class="w-100"></div>
-  <div class="col">col</div>
-  <div class="col">col</div>
-  </div>
+  <h1>All Users</h1>
+  <table class="table table-bordered table-striped" >
+    <thead>
+      <tr>
+        <th>
+          Id
+        </th>
+        <th>
+          Name
+        </th>
+        <th>
+          Email
+        </th>
+        <th>
+          Coach?
+        </th>
+        <th>
+          Admin?
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @users != nil %>
+        <% @users.each do |u| %>
+          <tr>
+            <th>
+              <%= u.id %>
+            </th>
+            <th>
+              <%= u.first_name %> <%= u.last_name %>
+            </th>
+            <th>
+              <%= u.email %>
+            </th>
+            <th>
+              <%= u.is_a_coach %>   <a href="/toggle_coach/<%= u.id %>"><button>Toggle</button></a>
+            </th>
+            <th>
+              <%= u.is_an_admin %>   <a href="/toggle_admin/<%= u.id %>"><button>Toggle</button></a>
+            </th>
+          </tr> 
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+<h2 class="red-text">
+  WARNINGS: 
+</h2>
+  <hr>
+    <p class="red-text" style="text-align: left;">
+      1. Toggling your own Admin priviliges will lock you out of the system immediately.
+        <br>
+      2. Disabling Coach permissions for a User will delete any and all Mentorship records listing that User as 'Coach'.
+    </p>
 
-  <div class="container">
-    <% @users.each do |u| %>
-      <div class="row">
-        <div class="col-4">
-          <%= u.id %> 
-        </div>
-        <div class="col-4">
-          <%= u.first_name %> <%= u.last_name %> 
-        </div>
-        <div class="col-4">
-          <%= u.email %> 
-        </div>
-
-      </div>
-    </div>
-        <div class="col-med">
-          <% if u.is_a_coach == nil || u.is_an_admin == nil%>
-            <a href="/activate_user/<%= u.id %>"><font color="orange">ACTIVATE USER (sets both admin and coach to false)</font></a>
-          <% else %>
-            <%= u.first_name %> is a Coach? <%= u.is_a_coach %><a href="/toggle_coach/<%= u.id %>"><button>TOGGLE</button></a>
-            <%= u.first_name %> is an Admin? <%= u.is_an_admin %><a href="/toggle_admin/<%= u.id %>"><button>TOGGLE</button></a>
-          <% end %>
-        </div>
-        <div class="col-med">
-          <% if u.is_an_admin? %>
-              <font color="red"><strong>WARNING: If you are <%= u.first_name %>, toggling your Admin priviliges will lock you out of the system immediately.</strong></font><br>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
-
-  <h2>Admin messages</h2> 
-  
-  <% @all_admin_messages.each do |a| %>
-    <li>From: <%= a.from_name %></li>
-    <li>Email: <%= a.from_email %></li>
-    <li>Message: <%= a.content %></li>
-
-    ----------------------------------<br>
-
-  <% end %>
-
-  <a href="/admin_messages">Admin Messages Index</a><br>
-
-  //////////////////////////////////////////
-
-  <h2>All coaches</h2>
-
-  <% @all_coaches.each do |x| %>
-    <li>ID:<%= x.id %>, <%= x.first_name %> <%= x.last_name %><%= x.email %></li>
-
-    ----------------------------------<br>
-
-  <% end %>
-
-
-  <h2>All clients</h2>
-  
-  <% @all_clients.each do |y| %>
-    <li>ID:<%= y.id %>, <%= y.first_name %> <%= y.last_name %><%= y.email %></li>
-
-    ----------------------------------<br>
-
-  <% end %>
-
-  //////////////////////////////////////////
-
-  <h2>All mentorships</h2>
-  
-  <% @all_mentorships.each do |z| %>
-    <li>Coach # <%= z.coach %> & Client # <%= z.client %></li>
-
-    ----------------------------------<br>
-
-  <% end %>
-
-  <a href="/mentorships">Mentorships Index</a><br>
-
-  //////////////////////////////////////////
-
-
-  <h2>All plans</h2>
-  
-  <% @all_plans.each do |z| %>
-    <li>Client # <%= z.client %></li>
-    <li>Title: <%= z.title %></li>
-    <li>Content: <%= z.content %></li>
-
-    ----------------------------------<br>
-
-  <% end %>
-
-  <a href="/plans">Plans Index</a><br>
-
-  //////////////////////////////////////////
-
-  <h2>All messages</h2>
-  
-  <% @all_messages.each do |m| %>
-    <li>From User # <%= m.from %></li>
-    <li>To User # <%= m.to %></li>
-    <li>Message: <%= m.content %></li>
-
-    ----------------------------------<br>
-
-  <% end %>
-
-  <a href="/messages">All User Messages Index</a><br>
-
-  //////////////////////////////////////////
-
- -->

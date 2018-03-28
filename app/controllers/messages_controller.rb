@@ -1,17 +1,15 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
 
-  # /////////////////////////////Prevents unauthorized access to others' MESSAGES:
-
   before_filter :authorized_user_or_admin, only: [:show, :edit, :update]
   before_filter :admin_user, only: [:index, :destroy]
-
   
-  # /////////////////////////////
+  layout "signed-in"
 
   # GET /messages
   def index
     @messages = Message.all
+    render layout: "signed-in"
   end
 
   # GET /messages/1

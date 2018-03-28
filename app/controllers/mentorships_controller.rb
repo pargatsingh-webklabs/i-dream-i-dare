@@ -1,7 +1,7 @@
 class MentorshipsController < ApplicationController
   before_action :set_mentorship, only: [:show, :edit, :update, :destroy]
   before_filter :admin_user
-  layout "admin"
+  layout "signed-in"
 
   # GET /mentorships
   def index

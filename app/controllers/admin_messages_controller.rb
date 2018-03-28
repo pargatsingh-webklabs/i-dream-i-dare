@@ -14,29 +14,33 @@ class AdminMessagesController < ApplicationController
     @day_number = time.day
     @year = time.year
     @admin_message = AdminMessage.new
+
   end
 
   # GET /admin_messages
   def index
-    render layout: "admin"
     @all_admin_messages = []
     all_messages = AdminMessage.all
     all_messages.each do |m|
-      @all_admin_messages << m.id
+      @all_admin_messages << m
     end
+    render layout: "signed-in"
   end
 
   # GET /admin_messages/1
   def show
+    render layout: "signed-in"
   end
 
   # GET /admin_messages/new
   def new
     @admin_message = AdminMessage.new
+    render layout: "signed-in"
   end
 
   # GET /admin_messages/1/edit
   def edit
+    render layout: "signed-in"
   end
 
   # POST /admin_messages
@@ -56,6 +60,7 @@ class AdminMessagesController < ApplicationController
       redirect_to @admin_message, notice: 'Admin message was successfully updated.'
     else
       render :edit
+      render layout: "signed-in"
     end
   end
 
@@ -63,6 +68,7 @@ class AdminMessagesController < ApplicationController
   def destroy
     @admin_message.destroy
     redirect_to admin_messages_url, notice: 'Admin message was successfully destroyed.'
+    render layout: "signed-in"
   end
 
 # /////////////This is my before filter that prevents unauth access to view admin messages.////////////////////

@@ -1,31 +1,56 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Plans</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Client</th>
-      <th>Title</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @plans.each do |plan| %>
+<h1>Plans</h1>
+<p>
+    <button>
+      <%= link_to 'New Plan', new_plan_path %>
+    </button>
+  </p>
+<table class="table table-bordered table-striped" >
+    <thead>
       <tr>
-        <td><%= plan.client %></td>
-        <td><%= plan.title %></td>
-        <td><%= plan.content %></td>
-        <td><%= link_to 'Show', plan %></td>
-        <td><%= link_to 'Edit', edit_plan_path(plan) %></td>
-        <td><%= link_to 'Destroy', plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>
+          Id
+        </th>
+        <th>
+          Client
+        </th>
+        <th>
+          Title
+        </th>
+        <th>
+          Content
+        </th>
+        <th>
+          Actions
+        </th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% if @plans != nil %>
+        <% @plans.each do |plan| %>
+          <tr>
+            <th>
+              <%= plan.id %>
+            </th>
+            <th>
+              <%= plan.client %>
+            </th>
+            <th>
+              <%= plan.title %>
+            </th>
+            <th>
+              <%= plan.content %>
+            </th>
+            <th>
+              <%= link_to 'Show', plan %>
 
-<br>
+              <%= link_to 'Edit', edit_plan_path(plan) %>
 
-<%= link_to 'New Plan', new_plan_path %>
+              <%= link_to 'Destroy', plan, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </th>
+          </tr> 
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
