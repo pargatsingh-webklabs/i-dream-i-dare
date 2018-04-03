@@ -1,6 +1,6 @@
 class AlertsController < ApplicationController
   skip_before_filter :verify_authenticity_token
- skip_before_filter :authenticate_user!, :only => "reply"
+ skip_before_filter :authenticate_user!  #, :only => "reply"
  
   def create_alert
     my_alert = Alert.new
@@ -42,9 +42,6 @@ class AlertsController < ApplicationController
   end
 
 # def reply
-
-#   account_sid = "AC7f31bedb178e5c29681712d702181f29" # Your Account SID from www.twilio.com/console
-#   auth_token = "0b67f2ae87cae02e784c98378a806368"   # Your Auth Token from www.twilio.com/console
 
 #   @client = Twilio::REST::Client.new account_sid, auth_token
 #   message = @client.account.messages.create(:body => "Hello from Ruby",
