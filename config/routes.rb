@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'alerts/reply'
+  post 'alerts/reply'
 
   resource :alerts do
     collection do

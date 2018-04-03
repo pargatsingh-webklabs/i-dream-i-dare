@@ -28,7 +28,7 @@ class AlertsController < ApplicationController
     sms = @client.messages.create(
       from: Rails.application.secrets.twilio_number,
       to: from_number,
-      body: "Hello, this is a test of the Dreamcatcher alert system. Your number is #{from_number}. Please text (402)769-2709 to re-test this application's reply."
+      body: "Hello, this is a test of the Dreamcatcher alert system. Your number is #{from_number}. Please text (531) 201-8196 to re-test this application's reply."
     )
     
   end
