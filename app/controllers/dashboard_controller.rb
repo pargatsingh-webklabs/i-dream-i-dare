@@ -22,6 +22,7 @@ class DashboardController < ApplicationController
     get_all_network_members_through_groups # -- Gets entire list of @group_network_members (an Array of Arrays, each of which consist of (at indexes): [ [0] = id, [1] = first_name, [2] = last_name ] )
     get_members_of_active_group # -- Gets entire list of @active_group_members (an Array of Arrays, each of which consist of (at indexes): [ [0] = id, [1] = first_name, [2] = last_name ] )
     get_new_message
+    render layout: "signed-in"
   end
   
   def get_members_of_active_group
