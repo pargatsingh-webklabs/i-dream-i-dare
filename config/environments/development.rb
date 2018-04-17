@@ -4,12 +4,7 @@ Rails.application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
   config.action_mailer.raise_delivery_errors = true
-  config.after_initialize do
-    Bullet.enable = true
-    Bullet.bullet_logger = true
-    Bullet.rails_logger = true
-  end
-  config.action_mailer.delivery_method = :file
+  # config.action_mailer.delivery_method = :file
   config.active_support.deprecation = :log
   config.active_record.migration_error = :page_load
   config.assets.debug = true
@@ -18,4 +13,19 @@ Rails.application.configure do
   config.action_view.raise_on_missing_translations = true
   config.action_mailer.default_url_options = { host: "localhost:3000" }
   ActiveModelSerializers.config.adapter = :json_api
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: ENV["GMAIL_DOMAIN"],
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: ENV["GMAIL_USERNAME"],
+    password: ENV["GMAIL_PASSWORD"]
+  }
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.bullet_logger = true
+    Bullet.rails_logger = true
+  end
 end
