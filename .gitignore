@@ -14,3 +14,4 @@
 /tags
 /tmp/*
 /config/secrets
+sendgrid.env

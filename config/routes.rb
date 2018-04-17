@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   
   root to: "dashboard#view" 
 
+  get "/alerts/send_email" => "alerts#send_email"
+  
   get "/landing_page" => "admin_messages#landing_page"
 
   get "/blog" => "home#blog"

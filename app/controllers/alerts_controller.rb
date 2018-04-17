@@ -1,4 +1,6 @@
 class AlertsController < ApplicationController
+  require 'sendgrid-ruby'
+  include SendGrid
   skip_before_filter :verify_authenticity_token
  skip_before_filter :authenticate_user!  #, :only => "reply"
  
@@ -32,6 +34,21 @@ class AlertsController < ApplicationController
     )
     
   end
+
+  def send_email
+    from = Email.new(email: 'idreamidare@gmail.com')
+    to = Email.new(email: 'jeremys@volanosolutions.com')
+    subject = 'SendGrid is Fun-ish'
+    content = Content.new(type: 'text/plain', value: 'and easy to do anywhere, even with Ruby..?')
+    mail = Mail.new(from, subject, to, content)
+
+    sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
+    response = sg.client.mail._('send').post(request_body: mail.to_json)
+    puts response.status_code
+    puts response.body
+    puts response.headers
+  end
+
 
   private
  
