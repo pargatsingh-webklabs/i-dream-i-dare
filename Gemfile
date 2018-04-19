@@ -26,31 +26,6 @@ gem "uglifier"
 gem "twilio-ruby"
 gem 'active_model_serializers', '~> 0.10.0'
 gem "sendgrid-ruby"
-# --------------------------
-  # gem "quiet_assets"
-  # gem "spring"
-  # gem "spring-commands-rspec"
-  # gem "web-console"
-  # gem "awesome_print"
-  # gem "bullet"
-  # gem "bundler-audit", ">= 0.5.0", require: false
-  # gem "dotenv-rails"
-  # gem "factory_girl_rails", require: false
-  # gem "pry-byebug"
-  # gem "pry-rails"
-  # gem "rspec-rails", "~> 3.4.0"
-  # gem "rack-mini-profiler", require: false
-  # gem "database_cleaner"
-  # gem "formulaic"
-  # gem "launchy"
-  # gem "shoulda-matchers"
-  # gem "simplecov", require: false
-  # gem "timecop"
-  # gem "webmock"
-  # gem "rails_stdout_logging"
-  # gem "rack-timeout"
-  # gem "rails_12factor"
-  #----------------------------------
 
 group :development do
   gem "quiet_assets"

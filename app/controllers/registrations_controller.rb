@@ -4,19 +4,12 @@
 
 class RegistrationsController < Devise::RegistrationsController
 
-  # The following line prevents new sign-ups for everyone. 
   # TODO: Make a pop-up alert that accepts a password to sign up for a user account.
-  # For now, there are open sign-ups.
 
-  # ////////////////////////////////////////Uncomment this if you want to close all sign-ups.
-
+  # --Uncomment next line if you want to close all sign-ups.
   # prepend_before_filter :authenticate_scope!, :except => [:cancel]
 
-  # ///////////////////////////// 
-
   before_filter :admin_or_current_user, only: [:show, :index, :update, :destroy]
-
-  # /////////////////////////////
 
   protected
     def after_sign_up_path_for(resource)
@@ -26,13 +19,8 @@ class RegistrationsController < Devise::RegistrationsController
     def after_update_path_for(resource)
       signed_in_root_path(resource)
     end
-    
-  # ///////////////////////////
-
+  
   private
-
-  # Taken from each of the following actions (sign_up_params, and account_update_params): 
-  #             :is_a_coach, :is_an_admin,
 
   def admin_or_current_user
     if current_user != nil
