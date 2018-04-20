@@ -22,7 +22,7 @@ class AlertsController < ApplicationController
       body: my_alert.alert_body)
   end
 
-  # For testing the Alert System
+  # All incoming SMS traffic to Twilio # hits this.
   def reply
     message_body = params["Body"]
     from_number = params["From"]
@@ -48,7 +48,6 @@ class AlertsController < ApplicationController
     puts response.body
     puts response.headers
   end
-
 
   private
  

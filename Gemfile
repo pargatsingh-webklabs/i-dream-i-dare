@@ -26,6 +26,7 @@ gem "uglifier"
 gem "twilio-ruby"
 gem 'active_model_serializers', '~> 0.10.0'
 gem "sendgrid-ruby"
+gem "ngrok"
 
 group :development do
   gem "quiet_assets"
