@@ -24,6 +24,7 @@ class AlertsController < ApplicationController
 
   # All incoming SMS traffic to Twilio # hits this.
   def reply
+    binding.pry
     message_body = params["Body"]
     from_number = params["From"]
     boot_twilio

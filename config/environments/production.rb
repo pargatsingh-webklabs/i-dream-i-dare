@@ -1,5 +1,6 @@
-# require Rails.root.join("config/smtp")
 Rails.application.configure do
+  # Settings specified here will take precedence over those in config/application.rb.
+  # FROM Previous Rails version:
   if ENV.fetch("HEROKU_APP_NAME", "").include?("staging-pr-")
     ENV["APPLICATION_HOST"] = ENV["HEROKU_APP_NAME"] + ".herokuapp.com" #FIX THESE, BY LOOKING AT OTHER MACHINE
   end
@@ -38,5 +39,5 @@ Rails.application.configure do
     user_name: ENV["GMAIL_USERNAME"],
     password: ENV["GMAIL_PASSWORD"]
   }
+  Rack::Timeout.timeout = (ENV["RACK_TIMEOUT"] || 10).to_i
 end
-Rack::Timeout.timeout = (ENV["RACK_TIMEOUT"] || 10).to_i

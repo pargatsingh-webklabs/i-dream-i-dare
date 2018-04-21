@@ -12,7 +12,7 @@ gem "high_voltage"
 gem "honeybadger"
 gem "jquery-rails"
 gem "newrelic_rpm", ">= 3.9.8"
-gem "pg"
+gem 'pg', '~> 0.21'
 gem "puma"
 gem "rack-canonical-host"
 gem "rails", "~> 4.2.0"
