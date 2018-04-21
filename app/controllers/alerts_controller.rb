@@ -22,18 +22,16 @@ class AlertsController < ApplicationController
       body: my_alert.alert_body)
   end
 
-  # All incoming SMS traffic to Twilio # hits this.
   def reply
     binding.pry
     message_body = params["Body"]
     from_number = params["From"]
     boot_twilio
     sms = @client.messages.create(
-      from: Rails.application.secrets.twilio_number,
+      from: ENV['TWILIO_NUMBER'],
       to: from_number,
       body: "Hello, this is a test of the Dreamcatcher alert system. Your number is #{from_number}. Please text (531) 201-8196 to re-test this application's reply."
     )
-    
   end
 
   def send_email
@@ -53,9 +51,10 @@ class AlertsController < ApplicationController
   private
  
   def boot_twilio
-    account_sid = Rails.application.secrets.twilio_sid 
-    auth_token = Rails.application.secrets.twilio_token 
+    account_sid = ENV['TWILIO_SID'] 
+    auth_token = ENV['TWILIO_TOKEN'] 
     @client = Twilio::REST::Client.new account_sid, auth_token
+    binding.pry
   end
 
 # def reply
