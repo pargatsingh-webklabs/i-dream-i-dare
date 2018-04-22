@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :notification_preferences
   post 'alerts/reply'
 
   resource :alerts do

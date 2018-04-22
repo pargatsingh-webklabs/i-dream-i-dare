@@ -22,8 +22,19 @@ class AlertsController < ApplicationController
       body: my_alert.alert_body)
   end
 
-  def reply
-    binding.pry
+  def send_SMS
+    message_body = params["Body"]
+    message_to = params["To"]
+    boot_twilio
+    sms = @client.messages.create(
+      from: ENV['TWILIO_NUMBER'],
+      to: message_to,
+      body: message_body
+    )
+  end
+
+  # ALL TRAFFIC FROM TWILIO HITS HERE FIRST
+  def reply_SMS
     message_body = params["Body"]
     from_number = params["From"]
     boot_twilio
@@ -34,6 +45,7 @@ class AlertsController < ApplicationController
     )
   end
 
+  # TODO - Update this to use SMTP system instead (REPLACE).
   def send_email
     from = Email.new(email: 'idreamidare@gmail.com')
     to = Email.new(email: 'jeremys@volanosolutions.com')
@@ -54,7 +66,6 @@ class AlertsController < ApplicationController
     account_sid = ENV['TWILIO_SID'] 
     auth_token = ENV['TWILIO_TOKEN'] 
     @client = Twilio::REST::Client.new account_sid, auth_token
-    binding.pry
   end
 
 # def reply

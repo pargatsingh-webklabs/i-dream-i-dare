@@ -1,0 +1,29 @@
+<%= form_for(@notification_preference) do |f| %>
+  <% if @notification_preference.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@notification_preference.errors.count, "error") %> prohibited this notification_preference from being saved:</h2>
+
+      <ul>
+      <% @notification_preference.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :notification_reason %><br>
+    <%= f.text_field :notification_reason %>
+  </div>
+  <div class="field">
+    <%= f.label :notification_type %><br>
+    <%= f.text_field :notification_type %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Notification Preferences</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Notification reason</th>
+      <th>Notification type</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @notification_preferences.each do |notification_preference| %>
+      <tr>
+        <td><%= notification_preference.notification_reason %></td>
+        <td><%= notification_preference.notification_type %></td>
+        <td><%= notification_preference.user_id %></td>
+        <td><%= link_to 'Show', notification_preference %></td>
+        <td><%= link_to 'Edit', edit_notification_preference_path(notification_preference) %></td>
+        <td><%= link_to 'Destroy', notification_preference, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Notification preference', new_notification_preference_path %>

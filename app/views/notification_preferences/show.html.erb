@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Notification reason:</strong>
+  <%= @notification_preference.notification_reason %>
+</p>
+
+<p>
+  <strong>Notification type:</strong>
+  <%= @notification_preference.notification_type %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @notification_preference.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_notification_preference_path(@notification_preference) %> |
+<%= link_to 'Back', notification_preferences_path %>
