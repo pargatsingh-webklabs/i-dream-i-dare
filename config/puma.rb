@@ -20,6 +20,11 @@ preload_app!
 
 rackup DefaultRackup
 environment ENV.fetch("RACK_ENV", "development")
+environment ENV['RACK_ENV'] || 'development'
+
+if ENV['RACK_ENV'] == 'development'
+  worker_timeout 7200
+end
 
 on_worker_boot do
   # Worker specific setup for Rails 4.1+

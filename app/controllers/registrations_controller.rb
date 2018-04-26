@@ -40,6 +40,6 @@ class RegistrationsController < Devise::RegistrationsController
 
   def account_update_params
     # See above for removed parameters
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password, :is_an_admin, :is_a_coach)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password, :is_an_admin, :is_a_coach, :sms_phone_number)
   end
 end

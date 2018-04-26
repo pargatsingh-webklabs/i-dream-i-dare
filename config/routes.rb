@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :notification_preferences
   post 'alerts/reply'
 
   resource :alerts do
@@ -10,6 +9,7 @@ Rails.application.routes.draw do
     end
   end
 
+  # resources :notification_preferences
   resources :group_messages
   resources :groups
   resources :group_memberships
@@ -20,8 +20,11 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'registrations'}
 
   root to: "dashboard#view"
+  get "/notification_preferences" => "notification_preferences#index"
+  post '/notification_preferences/enable_notification/:reason/:type' => 'notification_preferences#enable_notification'
+  post '/notification_preferences/disable_notification/:reason/:type' => 'notification_preferences#disable_notification'
 
-  post 'twilio/voice' => 'twilio#voice'
+  post '/twilio/voice' => 'twilio#voice'
 
   get "/alerts/send_email" => "alerts#send_email"
   get "/landing_page" => "admin_messages#landing_page"

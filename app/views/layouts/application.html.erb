@@ -9,6 +9,9 @@
   <%= stylesheet_link_tag :application, media: "all" %>
   <%= csrf_meta_tags %>
 
+  <!-- Rich Text Editor CSS/Scripts -->
+  <link rel="stylesheet" type="text/css" href="trix.css">
+  <script type="text/javascript" src="trix.js"></script>
 </head>
 
   <body>
@@ -21,7 +24,7 @@
   <%= render "javascript" %>
   <%= render "css_overrides" %>
 
-  <footer>
+  <footer style="margin-top: 100px;">
     <center>
       2018, Dream Catcher LLC
     </center>

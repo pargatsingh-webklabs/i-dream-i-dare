@@ -306,4 +306,23 @@ gm4.group_id = g3.id
 gm4.content = "Yeah, it kinda is!"
 gm4.save
 
-# /////////
+# ///////// NOTIFICATION PREFERENCES
+
+np = NotificationPreference.new
+np.notification_reason = 'plan created'
+np.notification_type = 'sms'
+np.user_id = a.id
+np.save
+
+np2 = NotificationPreference.new
+np2.notification_reason = 'message received'
+np2.notification_type = 'sms'
+np2.user_id = b.id
+np2.save
+
+np3 = NotificationPreference.new
+np3.notification_reason = 'group message received'
+np3.notification_type = 'sms'
+np3.user_id = c.id
+np3.save
+

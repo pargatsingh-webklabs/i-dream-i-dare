@@ -1,57 +1,39 @@
 class NotificationPreferencesController < ApplicationController
-  before_action :set_notification_preference, only: [:show, :edit, :update, :destroy]
+  layout "signed-in"
 
   # GET /notification_preferences
   def index
-    @notification_preferences = NotificationPreference.all
-  end
-
-  # GET /notification_preferences/1
-  def show
-  end
-
-  # GET /notification_preferences/new
-  def new
+    notification_preferences = NotificationPreference.select{|p| p.user_id == current_user.id}
+    @plan_created_notifications_sms = notification_preferences.select{|p| p.notification_reason == 'plan_created' && p.notification_type == 'sms'}
+    @msg_received_notifications_sms = notification_preferences.select{|p| p.notification_reason == 'msg_received' && p.notification_type == 'sms'}
+    @grp_msg_received_notifications_sms = notification_preferences.select{|p| p.notification_reason == 'grp_msg_received' && p.notification_type == 'sms'}
+    @plan_created_notifications_email = notification_preferences.select{|p| p.notification_reason == 'plan_created' && p.notification_type == 'email'}
+    @msg_received_notifications_email = notification_preferences.select{|p| p.notification_reason == 'msg_received' && p.notification_type == 'email'}
+    @grp_msg_received_notifications_email = notification_preferences.select{|p| p.notification_reason == 'grp_msg_received' && p.notification_type == 'email'}
+    @plan_reminders_sms = notification_preferences.select{|p| p.notification_reason == 'plan_reminder' && p.notification_type == 'sms'}
+    @plan_reminders_email = notification_preferences.select{|p| p.notification_reason == 'plan_reminder' && p.notification_type == 'email'}
     @notification_preference = NotificationPreference.new
   end
 
-  # GET /notification_preferences/1/edit
-  def edit
+  def enable_notification
+    reason = params[:reason]
+    type = params[:type]
+    make = NotificationPreference.new
+    make.user_id = current_user.id
+    make.notification_reason = reason
+    make.notification_type = type
+    make.save
+    redirect_to notification_preferences_url #, notice: 'Notification preference was successfully updated.'
   end
 
-  # POST /notification_preferences
-  def create
-    @notification_preference = NotificationPreference.new(notification_preference_params)
-
-    if @notification_preference.save
-      redirect_to @notification_preference, notice: 'Notification preference was successfully created.'
-    else
-      render :new
-    end
+  def disable_notification
+    reason = params[:reason]
+    type = params[:type]
+    kill = NotificationPreference.where("user_id = ? AND notification_reason = ? AND notification_type = ?", current_user.id, reason, type)
+    NotificationPreference.destroy(kill)
+    redirect_to notification_preferences_url #, notice: 'Notification preference was successfully updated.'
   end
 
-  # PATCH/PUT /notification_preferences/1
-  def update
-    if @notification_preference.update(notification_preference_params)
-      redirect_to @notification_preference, notice: 'Notification preference was successfully updated.'
-    else
-      render :edit
-    end
-  end
-
-  # DELETE /notification_preferences/1
-  def destroy
-    @notification_preference.destroy
-    redirect_to notification_preferences_url, notice: 'Notification preference was successfully destroyed.'
-  end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_notification_preference
-      @notification_preference = NotificationPreference.find(params[:id])
-    end
-
-    # Only allow a trusted parameter "white list" through.
     def notification_preference_params
       params.require(:notification_preference).permit(:notification_reason, :notification_type, :user_id)
     end
