@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'registrations'}
 
   root to: "dashboard#view"
+
   get "/notification_preferences" => "notification_preferences#index"
   post '/notification_preferences/enable_notification/:reason/:type' => 'notification_preferences#enable_notification'
   post '/notification_preferences/disable_notification/:reason/:type' => 'notification_preferences#disable_notification'
@@ -27,6 +28,8 @@ Rails.application.routes.draw do
   post '/twilio/voice' => 'twilio#voice'
 
   get "/alerts/send_email" => "alerts#send_email"
+  post "/alerts/send_notifications/:event/:createdModelId" => "alerts#send_notifications"
+
   get "/landing_page" => "admin_messages#landing_page"
   get "/blog" => "home#blog"
 

@@ -31,9 +31,16 @@ class PlansController < ApplicationController
     @plan = Plan.new(plan_params)
     if current_user.is_an_admin = false && current_user.is_a_coach = false
       @plan.client = current_user.id
+
     end
     if @plan.save
 
+        id = @plan.id
+        alerts = AlertsController.new
+        alerts.request = request
+        alerts.response = response
+        alerts.send_notifications("plan_created", id)
+      
       redirect_to "/user/dashboard", notice: 'Plan was successfully created.'
     else
       render :new
@@ -60,7 +67,6 @@ class PlansController < ApplicationController
 
   def authorized_user
     if (@plan.client == current_user.id || @plan.coach == current_user.id)
-      binding.pry
 
     elsif @mentorship.present?
       redirect_to "/hit_auth_user_filter_on_client_check" unless @plan.client == current_user.id || @clientsIds.include?(@plan.client) 
