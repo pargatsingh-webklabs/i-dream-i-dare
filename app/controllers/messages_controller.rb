@@ -30,6 +30,13 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
 
     if @message.save
+
+      id = @message.id
+        alerts = AlertsController.new
+        alerts.request = request
+        alerts.response = response
+        alerts.send_notifications("msg_received", id)
+
       redirect_to "/user/dashboard/#{@message.to}", notice: 'Message was successfully created.'
     else
       render :new

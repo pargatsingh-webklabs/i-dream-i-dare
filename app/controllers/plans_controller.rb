@@ -50,6 +50,13 @@ class PlansController < ApplicationController
   # PATCH/PUT /plans/1
   def update
     if @plan.update(plan_params)
+      
+      id = @plan.id
+        alerts = AlertsController.new
+        alerts.request = request
+        alerts.response = response
+        alerts.send_notifications("plan_created", id)
+      
       redirect_to "/user/dashboard", notice: 'Plan was successfully updated.'
     else
       render :edit
