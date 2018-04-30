@@ -109,9 +109,9 @@
                     </div>
 
                     <div class="panel-body">
-
-                      <%= plan.content %>
-
+                      <% if plan.content != nil %>
+                        <%= plan.content.html_safe %>
+                      <% end %>
                     </div>
                   </div>
                  <% end %>

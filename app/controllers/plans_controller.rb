@@ -29,9 +29,9 @@ class PlansController < ApplicationController
   # POST /plans
   def create
     @plan = Plan.new(plan_params)
+    binding.pry # What is plan_params ?
     if current_user.is_an_admin = false && current_user.is_a_coach = false
       @plan.client = current_user.id
-
     end
     if @plan.save
 
@@ -50,7 +50,7 @@ class PlansController < ApplicationController
   # PATCH/PUT /plans/1
   def update
     if @plan.update(plan_params)
-      
+
       id = @plan.id
         alerts = AlertsController.new
         alerts.request = request

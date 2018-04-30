@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 ruby "2.5.1"
 
+gem 'trix'
 gem 'heroku-postgres'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
