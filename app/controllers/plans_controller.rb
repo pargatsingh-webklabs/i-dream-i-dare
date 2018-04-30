@@ -29,7 +29,6 @@ class PlansController < ApplicationController
   # POST /plans
   def create
     @plan = Plan.new(plan_params)
-    binding.pry # What is plan_params ?
     if current_user.is_an_admin = false && current_user.is_a_coach = false
       @plan.client = current_user.id
     end

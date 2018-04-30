@@ -16,7 +16,6 @@ class AlertsController < ApplicationController
       if user_notifications_sms.empty? == false
         user_notifications_sms.each do |note|
           user = User.find(note.user_id)
-          binding.pry
           body = "A Plan was created for " + user.first_name + " " + user.last_name + ". Title: " + plan.title + ". Go to the I Dream I Dare website to see your new plan."
           to = user.sms_phone_number
           send_SMS(body, to)
@@ -38,7 +37,6 @@ class AlertsController < ApplicationController
       msg = Message.find_by_id(createdModelId)
       fromUser = User.find(msg.from)
       toUser = User.find(msg.to)
-      binding.pry
       user_notifications_sms = NotificationPreference.where(notification_reason: "msg_received", notification_type: "sms", user_id: msg.to)
       user_notifications_email = NotificationPreference.where(notification_reason: "msg_received", notification_type: "email", user_id: msg.to)
 
@@ -99,7 +97,6 @@ class AlertsController < ApplicationController
   end
 
   def send_email(body, to)
-    binding.pry
     # Need to create this
   end
 
