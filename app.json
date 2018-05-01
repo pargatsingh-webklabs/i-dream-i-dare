@@ -44,7 +44,6 @@
     }
   },
   "addons":[
-    "heroku-postgresql",
-    "sendgrid"
+    "heroku-postgresql"
   ]
 }
