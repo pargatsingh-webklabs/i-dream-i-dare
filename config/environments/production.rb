@@ -1,9 +1,10 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   # FROM Previous Rails version:
-  if ENV.fetch("HEROKU_APP_NAME", "").include?("staging-pr-")
-    ENV["APPLICATION_HOST"] = ENV["HEROKU_APP_NAME"] + ".herokuapp.com" #FIX THESE, BY LOOKING AT OTHER MACHINE
-  end
+  
+  # if ENV.fetch("HEROKU_APP_NAME", "").include?("staging-pr-")
+  #   ENV["APPLICATION_HOST"] = ENV["HEROKU_APP_NAME"] + ".herokuapp.com" 
+  # end
   ActiveModelSerializers.config.adapter = :json_api
   config.middleware.use Rack::CanonicalHost, ENV.fetch("APPLICATION_HOST")
   config.cache_classes = true
@@ -23,8 +24,10 @@ Rails.application.configure do
   config.log_formatter = ::Logger::Formatter.new
   config.active_record.dump_schema_after_migration = false
   # config.action_mailer.default_url_options = { host: ENV.fetch("APPLICATION_HOST") }
-  config.action_mailer.default_url_options = { :host => 'i-dream-i-dare.herokuapp.com' }
-  Rails.application.routes.default_url_options[:host] = 'i-dream-i-dare.herokuapp.com'
+
+  # -----------
+  # config.action_mailer.default_url_options = { :host => 'i-dream-i-dare.herokuapp.com' }
+  # Rails.application.routes.default_url_options[:host] = 'i-dream-i-dare.herokuapp.com'
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
@@ -39,5 +42,7 @@ Rails.application.configure do
     user_name: ENV["GMAIL_USERNAME"],
     password: ENV["GMAIL_PASSWORD"]
   }
+  # ---------------
+
   Rack::Timeout.timeout = (ENV["RACK_TIMEOUT"] || 10).to_i
 end
