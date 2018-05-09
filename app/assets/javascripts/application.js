@@ -10,8 +10,10 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require trix
+
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require_tree .
+//= require trix_attachments
+//= require trix

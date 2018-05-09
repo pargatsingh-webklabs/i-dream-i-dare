@@ -105,8 +105,11 @@ class AlertsController < ApplicationController
     message_body = params["Body"]
     from_number = params["From"]
     body = "Hello, this is a test of the Dreamcatcher alert system. Your number is #{from_number}. Please text (531) 201-8196 to re-test this application's reply."
-    if message_body.include "STOP"
+    if message_body.downcase.include?("stop")
       # Do Something, change records, save stuff.
+      user = User.where(sms_phone_number: from_number)
+      user.sms_phone_number = ''
+      user.save
     end
     boot_twilio
     sms = @client.messages.create(

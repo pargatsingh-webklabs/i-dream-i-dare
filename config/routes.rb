@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       post 'create_alert'
     end
   end
-
+  resources :images, only: [:create]
   # resources :notification_preferences
   resources :group_messages
   resources :groups
