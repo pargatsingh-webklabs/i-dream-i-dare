@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :content_fields
   post 'alerts/reply'
 
   resource :alerts do

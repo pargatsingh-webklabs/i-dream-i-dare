@@ -336,6 +336,8 @@ class DashboardController < ApplicationController
     @all_active_user_messages_sorted_by_timestamp << @outgoing
     @all_active_user_messages_sorted_by_timestamp << @incoming
     @all_active_user_messages_sorted_by_timestamp = @all_active_user_messages_sorted_by_timestamp.flatten.sort
+
+    @coachDashHeadLine = ContentField.where(:name => "Coach Dashboard Headline")[0]
   end
 
  # //////////////////////////////////////////////////////
@@ -350,7 +352,8 @@ class DashboardController < ApplicationController
     @mentorships_for_client.each do |x|
       @coaches_for_client << User.where(:id => x.coach)
       @coaches_for_client = @coaches_for_client.flatten
-      end
+    end
+    @clientDashHeadLine = ContentField.where(:name => "Client Dashboard Headline")[0]
   end
 
   def get_default_active_user_and_messages
