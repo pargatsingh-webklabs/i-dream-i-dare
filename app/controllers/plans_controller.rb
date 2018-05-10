@@ -72,7 +72,7 @@ class PlansController < ApplicationController
   protected 
 
   def authorized_user
-    if (@plan.client == current_user.id || @plan.coach == current_user.id)
+    if (@plan.client == current_user.id)
 
     elsif @mentorship.present?
       redirect_to "/hit_auth_user_filter_on_client_check" unless @plan.client == current_user.id || @clientsIds.include?(@plan.client) 
