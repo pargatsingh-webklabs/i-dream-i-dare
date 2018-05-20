@@ -1,23 +1,67 @@
 class ImagesController < ApplicationController
-  respond_to :json
+  # TODO: ADD DEVISE AUTH TO INDEX of Images
+
+  #-------------------------------------
+  #respond_to :json ??
+
+  # def create
+  #   image_params[:image].open if image_params[:image].tempfile.closed?
+
+  #   @image = Image.new(image_params)
+
+  #   respond_to do |format|
+  #     if @image.save
+  #       format.json { render json: { url: @image.image_url }, status: :ok }
+  #     else
+  #       format.json { render json: @image.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
+
+  #-------------------------------------
+  def show
+    @images = Image.where.not(:image_data => nil)
+  end
+
+  def index
+    @images = Image.where.not(:image_data => nil)
+  end
+
+  def new
+    @image = Image.new
+  end
 
   def create
-    image_params[:image].open if image_params[:image].tempfile.closed?
-
     @image = Image.new(image_params)
+    if @image.save
+      flash[:success] = 'Image Added!'
+      @images = Image.where.not(:image_data => nil)
+      render 'index'
+    else
+      @image = Image.new
+      render 'new'
+    end
+  end
 
-    respond_to do |format|
-      if @image.save
-        format.json { render json: { url: @image.image_url }, status: :ok }
-      else
-        format.json { render json: @image.errors, status: :unprocessable_entity }
-      end
+  def edit 
+    @image = Image.find(params[:id])
+  end
+
+  def update 
+    @image = Image.find(params[:id])
+    if @image.update_attributes(image_params)
+      flash[:success] = 'Image Edited!'
+      @images = Image.where.not(:image_data => nil)
+      render 'index'
+    else
+      render 'edit'
     end
   end
 
   private
 
   def image_params
-    params.require(:image).permit(:image)
+    params.require(:image).permit(:image, :remove_image)
   end
+
 end

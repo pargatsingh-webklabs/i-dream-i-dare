@@ -11,6 +11,7 @@ db/*.sqlite3
 log/*
 public/system
 public/assets
+public/uploads
 tags
 tmp/*
 config/secrets
