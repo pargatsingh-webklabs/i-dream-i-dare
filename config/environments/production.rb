@@ -5,6 +5,20 @@ Rails.application.configure do
   # if ENV.fetch("HEROKU_APP_NAME", "").include?("staging-pr-")
   #   ENV["APPLICATION_HOST"] = ENV["HEROKU_APP_NAME"] + ".herokuapp.com" 
   # end
+  require "shrine/storage/s3"
+
+  config.s3_options = {
+    bucket:            ENV['S3_BUCKET_NAME'], # required
+    access_key_id:     ENV['AWS_ACCESS_KEY_ID'],
+    secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+    # region:            ENV[''],
+  }
+
+  Shrine.storages = {
+  cache: Shrine::Storage::S3.new(prefix: "cache", **s3_options),
+  store: Shrine::Storage::S3.new(**s3_options)
+  }
+
   ActiveModelSerializers.config.adapter = :json_api
   config.middleware.use Rack::CanonicalHost, ENV.fetch("APPLICATION_HOST")
   config.cache_classes = true

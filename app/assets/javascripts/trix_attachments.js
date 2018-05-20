@@ -5,11 +5,11 @@ $(document).ready(function() {
   };
 
   function uploadAttachment(attachment) {
+    debugger;
     var csrfToken = $('meta[name="csrf-token"]').attr('content');
     var file = attachment.file;
     var form = new FormData;
-    // var endpoint = "/images"; // Use for local save
-    var endpoint = "/images.json"
+    var endpoint = "/assets/images"; // Use for local save
     form.append("Content-Type", file.type);
     form.append("image[image]", file);
 

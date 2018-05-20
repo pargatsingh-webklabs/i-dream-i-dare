@@ -15,5 +15,6 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require_tree .
-//= require trix_attachments
+
 //= require trix
+//= require trix_attachments
