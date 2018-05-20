@@ -3,6 +3,7 @@ source "https://rubygems.org"
 ruby "2.5.1"
 
 gem 'trix'
+gem "aws-sdk-s3", "~> 1.2"
 gem 'heroku-postgres'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'

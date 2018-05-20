@@ -8,6 +8,6 @@ Shrine.storages = {
   # permanent storage
   store: Shrine::Storage::FileSystem.new('public', prefix: 'uploads/store'),
 }
-
+ 
 Shrine.plugin :activerecord
 Shrine.plugin :cached_attachment_data # for forms

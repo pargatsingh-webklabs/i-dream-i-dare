@@ -5,6 +5,10 @@
   <meta name="ROBOTS" content="NOODP" />
   <meta name="viewport" content="initial-scale=1" />
 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
   <title><%= title %></title>
   <%= stylesheet_link_tag :application, media: "all" %>
   <%= csrf_meta_tags %>
@@ -28,7 +32,8 @@
         <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
          <h3 class="glyphicon glyphicon-menu-hamburger" style="margin:0px;"></h3></a>
         <ul id="g-account-menu" class="dropdown-menu" role="menu">
-
+          <li><a href="/user/dashboard">Main Dashboard</a></li>
+          <li><a href="/user/group-dashboard">Group Dashboard</a></li>
           <li><a href='/users/edit'>Edit my Account</a></li>
           <li><a href='/users/sign_out' data-method='delete'>Sign out</a></li>
 

@@ -8,7 +8,8 @@ $(document).ready(function() {
     var csrfToken = $('meta[name="csrf-token"]').attr('content');
     var file = attachment.file;
     var form = new FormData;
-    var endpoint = "/images";
+    // var endpoint = "/images"; // Use for local save
+    var endpoint = "/images.json"
     form.append("Content-Type", file.type);
     form.append("image[image]", file);
 
@@ -41,3 +42,4 @@ $(document).ready(function() {
     }
   });
 });
+

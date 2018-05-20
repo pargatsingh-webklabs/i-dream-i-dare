@@ -68,7 +68,6 @@ class PlansController < ApplicationController
     redirect_to "/user/dashboard/", notice: 'Plan was successfully destroyed.'
   end
 
-  # Can only be called within this controller////////////////
   protected 
 
   def authorized_user
