@@ -1,0 +1,13 @@
+<%= form_for @image do |i| %>
+
+	<%= i.label :image %>
+	<%= i.file_field :image %>
+	
+	<% if @image.image_data? %>
+		Delete Image: 
+		<%= i.check_box :remove_image %>
+	<% end %>
+
+	<%= i.submit %>
+
+<% end %>

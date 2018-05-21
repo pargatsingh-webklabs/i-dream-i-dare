@@ -9,7 +9,8 @@ Rails.application.routes.draw do
       post 'create_alert'
     end
   end
-  resources :images, only: [:create]
+  resources :images, only: [:new, :create, :index, :edit, :update]
+
   # resources :notification_preferences
   resources :group_messages
   resources :groups
@@ -21,6 +22,10 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'registrations'}
 
   root to: "dashboard#view"
+
+  # mount ImageUploader::UploadEndpoint => "/upload"
+
+  get "/images/index" => "images#index"
 
   get "/notification_preferences" => "notification_preferences#index"
   post '/notification_preferences/enable_notification/:reason/:type' => 'notification_preferences#enable_notification'
