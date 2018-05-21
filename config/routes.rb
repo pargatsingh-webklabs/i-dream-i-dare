@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'registrations'}
 
   root to: "dashboard#view"
+
+  # mount ImageUploader::UploadEndpoint => "/upload"
+
   get "/images/index" => "images#index"
 
   get "/notification_preferences" => "notification_preferences#index"
