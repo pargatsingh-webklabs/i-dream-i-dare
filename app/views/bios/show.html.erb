@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @bio.user_id %>
+</p>
+
+<p>
+  <strong>Profile text:</strong>
+  <%= @bio.profile_text %>
+</p>
+
+<p>
+  <strong>Style text:</strong>
+  <%= @bio.style_text %>
+</p>
+
+<p>
+  <strong>Expertise:</strong>
+  <%= @bio.expertise %>
+</p>
+
+<%= link_to 'Edit', edit_bio_path(@bio) %> |
+<%= link_to 'Back', bios_path %>

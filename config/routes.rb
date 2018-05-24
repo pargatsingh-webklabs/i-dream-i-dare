@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :bios
   Shrine.plugin :upload_endpoint
 
   resources :content_fields
