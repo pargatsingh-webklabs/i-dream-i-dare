@@ -1,9 +1,11 @@
 class BiosController < ApplicationController
+  skip_before_filter :authenticate_user!, only: [:root_path]
   before_action :set_bio, only: [:show, :edit, :update, :destroy]
 
   # GET /bios
   def index
     @bios = Bio.all
+    render layout: "application"
   end
 
   # GET /bios/1
