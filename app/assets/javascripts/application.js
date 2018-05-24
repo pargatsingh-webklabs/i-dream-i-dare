@@ -11,10 +11,10 @@
 // about supported directives.
 //
 
+//= require trix
+//= require trix_attachments
+
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require_tree .
-
-//= require trix
-//= require trix_attachments

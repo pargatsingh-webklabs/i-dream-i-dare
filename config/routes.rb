@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  Shrine.plugin :upload_endpoint
 
   resources :content_fields
   post 'alerts/reply'
@@ -22,8 +23,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'registrations'}
 
   root to: "dashboard#view"
-
-  # mount ImageUploader::UploadEndpoint => "/upload"
+  mount ImageUploader.upload_endpoint(:cache) => "/images/upload"
 
   get "/images/index" => "images#index"
 

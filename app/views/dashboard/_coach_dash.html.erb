@@ -5,7 +5,9 @@
 <div class="container">
 
   <div class="container content-field" id="coachDashHeadline">
-    <%= raw @coachDashHeadLine.value %>
+    <% if @coachDashHeadLine != nil %>
+      <%= raw @coachDashHeadLine.value %>
+    <% end %>
   </div>
 
   <div class="row">
@@ -31,27 +33,14 @@
           <% if @clients.nil? == false %>
         
             <% @clients.each do |c| %>
-
-          <!-- If active user, changes background color of pill. -->
-
-              <% if @active_user_id != nil && @active_user.id == c.id %>
-                <li class="btn-default" id="active-user-in-list">
-                  <a href="/user/dashboard/<%=c.id%>">
-                    <%= c.first_name %> <%= c.last_name %>
-                  </a>
-                </li>
-
+              <% if @active_user_id != nil && @active_user_id == c.id.to_s %>
+                <a class="btn"><div class="glyphicon glyphicon-chevron-right"></div><%= c.first_name %> <%= c.last_name %></a>
               <% else %>
-                <li class="btn-default">
-                  <a href="/user/dashboard/<%=c.id%>">
-                    <%= c.first_name %> <%= c.last_name %>
-                  </a>
-                </li>
+                <a class="btn" href="/user/dashboard/<%=c.id%>"><div class="glyphicon glyphicon-chevron-right" style="color:white;"></div><%= c.first_name %> <%= c.last_name %></a>
               <% end %>
-              
-              <li class="divider"></li>
-
             <% end %>
+          
+              <li class="divider"></li>
 
           <% else %>
             You have no Clients.

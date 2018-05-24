@@ -338,6 +338,7 @@ class DashboardController < ApplicationController
     @all_active_user_messages_sorted_by_timestamp = @all_active_user_messages_sorted_by_timestamp.flatten.sort
 
     @coachDashHeadLine = ContentField.where(:name => "Coach Dashboard Headline")[0]
+    binding.pry
   end
 
  # //////////////////////////////////////////////////////
@@ -346,13 +347,14 @@ class DashboardController < ApplicationController
 #//////////////Clients:
 
   def get_client_mentorships_and_coaches
-
     @coaches_for_client = []
     @mentorships_for_client = Mentorship.where(:client => current_user.id)
     @mentorships_for_client.each do |x|
       @coaches_for_client << User.where(:id => x.coach)
       @coaches_for_client = @coaches_for_client.flatten
+
     end
+    @coaches_for_client = @coaches_for_client.uniq
     @clientDashHeadLine = ContentField.where(:name => "Client Dashboard Headline")[0]
   end
 
@@ -447,6 +449,10 @@ class DashboardController < ApplicationController
 
   def get_all_messages
     @all_messages = Message.all
+  end
+
+  def get_all_bios
+    @bios = Bios.all
   end
 
   # ADMIN ACTION ONLY!

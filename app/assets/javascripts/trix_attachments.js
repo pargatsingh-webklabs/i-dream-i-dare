@@ -5,7 +5,7 @@ $(document).ready(function() {
   };
 
   function uploadAttachment(attachment) {
-    debugger;
+
     var csrfToken = $('meta[name="csrf-token"]').attr('content');
     var file = attachment.file;
     var form = new FormData;
