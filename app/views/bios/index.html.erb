@@ -1,6 +1,41 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p>
+ -->
 
-<h1>Meet Us</h1>
+<h1>Our Team!</h1>
+
+<div class="container">
+
+  <% @bios.each do |bio| %> 
+    <div class="panel panel-default">
+        <div class="bio-pic" style="float:left;">
+          <img src="<%=bio.profile_image%>" class="img-rounded" alt="Cinque Terre" height="200" width="200">
+        </div>
+
+        <div class="bio-name">
+          <%= @bio_users.select{|u| u.id == bio.user_id}[0].first_name %> <%= @bio_users.select{|u| u.id == bio.user_id}[0].last_name %>
+        </div>
+
+        <div class="bio-profile">
+          <%= bio.profile_text %>
+        </div>
+
+        <div class="bio-style">
+          <%= bio.style_text %>
+        </div>
+
+        <div class="bio-expertise">
+          <%= bio.expertise %>
+        </div>
+          
+  <% end %>
+
+    </div>
+<!--     <br /> -->
+
+  <% #end %>
+
+</div>
+
 
 <table>
   <thead>
@@ -27,7 +62,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Bio', new_bio_path %>

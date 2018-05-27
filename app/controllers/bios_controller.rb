@@ -4,7 +4,14 @@ class BiosController < ApplicationController
 
   # GET /bios
   def index
-    @bios = Bio.all
+    @bios = Bio.where(:profile_active => true)
+    @bio_users = []
+
+    @bios.each do |bio|
+      binding.pry
+      @bio_users << User.find(bio.user_id)
+    end
+
     render layout: "application"
   end
 

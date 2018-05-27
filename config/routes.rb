@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :bios
+  
   Shrine.plugin :upload_endpoint
 
   resources :content_fields
@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :plans
   resources :mentorships
   resources :messages
+  resources :bios
   devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'registrations'}
 
   root to: "dashboard#view"
