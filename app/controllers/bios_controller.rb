@@ -1,18 +1,23 @@
 class BiosController < ApplicationController
-  skip_before_filter :authenticate_user!, only: [:root_path]
+  skip_before_filter :authenticate_user!, only: [:meet_us]
   before_action :set_bio, only: [:show, :edit, :update, :destroy]
 
-  # GET /bios
-  def index
+  # GET /bios/meet_us
+  def meet_us
     @bios = Bio.where(:profile_active => true)
     @bio_users = []
 
     @bios.each do |bio|
-      binding.pry
+      # binding.pry
       @bio_users << User.find(bio.user_id)
     end
 
     render layout: "application"
+  end
+
+  # GET /bios
+  def index
+    @bios = Bio.all
   end
 
   # GET /bios/1

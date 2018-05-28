@@ -1,0 +1,50 @@
+<h1>Meet Us</h1>
+
+<div class="container">
+
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="img1.jpg" alt="Jane" style="width:100%">
+      <div class="container">
+        <h2>Jane Doe</h2>
+        <p class="title">CEO &amp; Founder</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>example@example.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <% @bios.each do |bio| %> 
+    <div class="panel panel-default">
+        <div class="bio-pic" style="float:left; padding: 20px;">
+          <img src="<%=bio.profile_image%>" class="img-rounded" height="350px" alt="Cinque Terre">
+        </div>
+
+        <div class="bio-name" style="float:left; padding: 20px;">
+          <h1><%= @bio_users.select{|u| u.id == bio.user_id}[0].first_name %> <%= @bio_users.select{|u| u.id == bio.user_id}[0].last_name %></h1>
+        </div>
+
+        <div class="bio-profile" style="float:left; padding: 20px;">
+          <%= bio.profile_text %>
+        </div>
+
+        <div class="bio-style" style="float:left; padding: 20px;">
+          <%= bio.style_text %>
+        </div>
+
+        <div class="bio-expertise" style="float:left; padding: 20px;">
+          <%= bio.expertise %>
+        </div>
+          
+  <% end %>
+
+    </div>
+<!--     <br /> -->
+
+  <% #end %>
+
+</div>

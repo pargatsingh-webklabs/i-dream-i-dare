@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     end
   end
   resources :images, only: [:new, :create, :index, :edit, :update]
+  
+  get "/bios/meet_us" => "bios#meet_us"
 
   # resources :notification_preferences
   resources :group_messages
