@@ -109,6 +109,28 @@
             <% end %>
           </tr>
 
+          <tr>
+            <td>Helpful Reminders</td>
+
+            <% if @helpful_reminders_sms.empty? == true %>
+              <td> NO     <a data-method="post" href="/notification_preferences/enable_notification/helpful_reminder/sms" rel="nofollow"><button>Toggle</button></a>
+              </td>
+
+            <% else %>
+              <td> YES    <a data-method="post" href="/notification_preferences/disable_notification/helpful_reminder/sms" rel="nofollow"><button>Toggle</button></a>
+              </td>            
+            <% end %>
+
+            <% if @helpful_reminders_email.empty? == true %>
+              <td> NO     <a data-method="post" href="/notification_preferences/enable_notification/helpful_reminder/email" rel="nofollow"><button>Toggle</button></a>
+              </td>
+
+            <% else %>
+              <td> YES    <a data-method="post" href="/notification_preferences/disable_notification/helpful_reminder/email" rel="nofollow"><button>Toggle</button></a>
+              </td>            
+            <% end %>
+          </tr>
+
       </tbody>
     </table>
   </div>

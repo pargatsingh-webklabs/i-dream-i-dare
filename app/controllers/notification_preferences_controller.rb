@@ -12,6 +12,8 @@ class NotificationPreferencesController < ApplicationController
     @grp_msg_received_notifications_email = notification_preferences.select{|p| p.notification_reason == 'grp_msg_received' && p.notification_type == 'email'}
     @plan_reminders_sms = notification_preferences.select{|p| p.notification_reason == 'plan_reminder' && p.notification_type == 'sms'}
     @plan_reminders_email = notification_preferences.select{|p| p.notification_reason == 'plan_reminder' && p.notification_type == 'email'}
+    @helpful_reminders_sms = notification_preferences.select{|p| p.notification_reason == 'helpful_reminder' && p.notification_type == 'sms'}
+    @helpful_reminders_email = notification_preferences.select{|p| p.notification_reason == 'helpful_reminder' && p.notification_type == 'email'}
     @notification_preference = NotificationPreference.new
   end
 

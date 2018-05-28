@@ -13,7 +13,7 @@
 
 //= require trix
 //= require trix_attachments
-
+//= require parallax
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets

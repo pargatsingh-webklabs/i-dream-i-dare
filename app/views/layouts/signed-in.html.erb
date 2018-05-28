@@ -5,13 +5,17 @@
   <meta name="ROBOTS" content="NOODP" />
   <meta name="viewport" content="initial-scale=1" />
 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
   <%= stylesheet_link_tag :application, media: "all" %>
   <%= csrf_meta_tags %>
-  
+  <link rel="stylesheet" type="text/css" href="trix.css">
+
   <title><%= title %></title>
 </head>
 
@@ -20,7 +24,7 @@
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" data-position="fixed" top="0px">
       <span class="icon-toggle"></span>
     </button>
-    <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-dashboard"> </span>    <%= current_user.first_name %>'s Dashboard</a>
+    <a class="navbar-brand" href="/"><img src="assets/branding/DreamCatcher_Feather_Transparent_Small.png" height="35px" style="float:left;"><div style="float:right; padding-top: 5px;"><%= current_user.first_name %>'s Dashboard</div></a>
   </div>
   <div class="navbar-collapse collapse">
     <ul class="nav navbar-nav pull-right">
@@ -45,6 +49,8 @@
 </div>
 
 <body class="container">
+
+  <!-- <div>SIGNED-IN LAYOUT RENDERED</div> -->
 
   <%= yield %> 
 
