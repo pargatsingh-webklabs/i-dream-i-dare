@@ -8,10 +8,10 @@ Rails.application.configure do
   require "shrine/storage/s3"
 
   s3_options = {
-    bucket:            ENV['S3_BUCKET_NAME'], # required
-    access_key_id:     ENV['AWS_ACCESS_KEY_ID'],
-    secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
-    # region:            ENV[''],
+    bucket:            ENV['S3_BUCKET'], # required
+    access_key_id:     ENV['S3_KEY'],
+    secret_access_key: ENV['S3_SECRET'],
+    region: ENV['S3_REGION']
   }
 
   Shrine.storages = {
