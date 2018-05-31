@@ -7,7 +7,7 @@ Rails.application.configure do
   # end
   require "shrine/storage/s3"
 
-  config.s3_options = {
+  s3_options = {
     bucket:            ENV['S3_BUCKET_NAME'], # required
     access_key_id:     ENV['AWS_ACCESS_KEY_ID'],
     secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
