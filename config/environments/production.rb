@@ -7,17 +7,19 @@ Rails.application.configure do
   # end
   require "shrine/storage/s3"
 
-  s3_options = {
-    bucket:            ENV['S3_BUCKET'], # required
-    access_key_id:     ENV['S3_KEY'],
-    secret_access_key: ENV['S3_SECRET'],
-    region: ENV['S3_REGION']
-  }
+  # --------------------- Preventing Heroku Build- These need updated---------
+  # s3_options = {
+  #   bucket:            ENV['S3_BUCKET'], # required
+  #   access_key_id:     ENV['S3_KEY'],
+  #   secret_access_key: ENV['S3_SECRET'],
+  #   region: ENV['S3_REGION']
+  # }
 
-  Shrine.storages = {
-  cache: Shrine::Storage::S3.new(prefix: "cache", **s3_options),
-  store: Shrine::Storage::S3.new(**s3_options)
-  }
+  # Shrine.storages = {
+  # cache: Shrine::Storage::S3.new(prefix: "cache", **s3_options),
+  # store: Shrine::Storage::S3.new(**s3_options)
+  # }
+  # ----------------------------------------------------------------------
 
   ActiveModelSerializers.config.adapter = :json_api
   config.middleware.use Rack::CanonicalHost, ENV.fetch("APPLICATION_HOST")
