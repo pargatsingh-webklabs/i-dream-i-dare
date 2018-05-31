@@ -15,7 +15,7 @@
         <strong style="font-size: 1.6em; text-align: right;">My Coaches</strong>     
           <% if @coaches_for_client.nil? == false %>
             <% @coaches_for_client.each do |c| %>
-              <% if @active_user_id != nil && @active_user_id == c.id.to_s %>
+              <% if @active_user_id != nil && @active_user_id.to_i == c.id %>
                 <a class="btn"><div class="glyphicon glyphicon-chevron-right"></div><%= c.first_name %> <%= c.last_name %></a>
               <% else %>
                 <a class="btn" href="/user/dashboard/<%=c.id%>"><div class="glyphicon glyphicon-chevron-right" style="color:white;"></div><%= c.first_name %> <%= c.last_name %></a>

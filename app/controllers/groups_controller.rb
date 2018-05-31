@@ -1,6 +1,8 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authorized_user_or_admin, only: [:destroy, :show, :edit, :update, :new]
+  before_filter :admin_user, only: [:index]
+  layout "signed-in" # Layout Default
   # GET /groups
   def index
     @groups = Group.all
@@ -47,6 +49,15 @@ class GroupsController < ApplicationController
   end
 
   private
+
+    def authorized_user_or_admin
+      redirect_to "/422" unless (@group == nil || @group.creator == current_user.id) && user_signed_in? || current_user.is_an_admin?
+    end
+    
+    def admin_user
+      redirect_to "/422" unless current_user.is_an_admin?
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_group
       @group = Group.find(params[:id])

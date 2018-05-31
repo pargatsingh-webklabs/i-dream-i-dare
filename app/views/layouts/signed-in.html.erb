@@ -8,13 +8,15 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/assets/bios.css">
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
   <%= stylesheet_link_tag :application, media: "all" %>
   <%= csrf_meta_tags %>
-  <link rel="stylesheet" type="text/css" href="trix.css">
+  <link rel="stylesheet" type="text/css" href="/assets/trix.css">
 
   <title><%= title %></title>
 </head>
@@ -24,15 +26,15 @@
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" data-position="fixed" top="0px">
       <span class="icon-toggle"></span>
     </button>
-    <a class="navbar-brand" href="/"><img src="assets/branding/DreamCatcher_Feather_Transparent_Small.png" height="35px" style="float:left;"><div style="float:right; padding-top: 5px;"><%= current_user.first_name %>'s Dashboard</div></a>
+    <a class="navbar-brand" href="/">
+        <img src="../../assets/branding/DreamCatcher_Feather_Transparent_Small.png" style="float:left;">
+      <div style="float:right; padding-top: 5px;"><%= current_user.first_name %>'s Dashboard</div></a>
   </div>
   <div class="navbar-collapse collapse">
     <ul class="nav navbar-nav pull-right">
       <!-- Social Icons: -->
-      <a class="navbar-brand" href="/"><i class="fa fa-envelope"></i></a>
-      <a class="navbar-brand" href="/"><i class="fa fa-google-plus"></i></a>
-      <a class="navbar-brand" href="/"><i class="fa fa-twitter"></i></a>
-
+      <a class="navbar-brand" href="https://www.facebook.com/DreamCatcher-1845647825736246"><i class="fa fa-facebook"></i></a>
+      <a class="navbar-brand" href="mailto:nmahupete@qliomaha.com"><i class="fa fa-envelope"></i></a>
       <li class="dropdown pull-right">
         <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
          <h3 class="glyphicon glyphicon-menu-hamburger" style="margin:0px;"></h3></a>

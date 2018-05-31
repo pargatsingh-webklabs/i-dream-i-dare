@@ -122,9 +122,6 @@ a {
   padding-left: 20%;
   padding-right: 20%;
 }
-.client-dashboard-banner {
-  
-}
 .dashboard-banner-text {
   color: white;
   background: black;
@@ -137,15 +134,14 @@ a {
   padding: 1.2em;
   overflow: hidden;
 }
-.red-text {
-  color: red;
-  text-align: center;
-  text-style: underline;
+#content_field_name {
+  width: 50%;
 }
-.red-text-list {
-  color: aqua;
-  text-align: center;
-  text-style: underline;
+.trix-content {
+  height: 300px;
+}
+.actions {
+  margin-top: 10px;
 }
 .updated-timestamp {
   font-size: 0.6em;

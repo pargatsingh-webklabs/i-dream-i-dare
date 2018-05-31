@@ -1,5 +1,7 @@
 class ImagesController < ApplicationController
-  # TODO: ADD DEVISE AUTH TO INDEX of Images
+  skip_before_filter :authenticate_user!, only: [:show, :edit, :update, :new]
+  before_filter :admin_user, only: [:index, :destroy]
+  layout "signed-in" # Layout Default
 
   #-------------------------------------
   #respond_to :json ??
@@ -59,10 +61,13 @@ class ImagesController < ApplicationController
   end
 
   def upload
-    binding.pry # Just a test.
+    # binding.pry # Just a test.
   end
 
   private
+  def admin_user
+    redirect_to "/422" unless current_user != nil && current_user.is_an_admin?
+  end
 
   def image_params
     params.require(:image).permit(:image, :remove_image)

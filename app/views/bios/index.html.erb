@@ -1,6 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<table>
+<h1>Public Bios</h1>
+<h3>(Visible from the app's Index page, under "Meet Us" link)</h3>
+<p>
+  <button>
+    <%= link_to 'New Bio', new_bio_path %>
+  </button>
+</p>
+
+<table class="table table-bordered table-striped" >
   <thead>
     <tr>
       <th>Profile Image</th>
@@ -9,23 +17,27 @@
       <th>Profile text</th>
       <th>Style text</th>
       <th>Expertise</th>
-      <th colspan="3"></th>
+      <th>Actions</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @bios.each do |bio| %>
-      <tr>
-        <td><img src="<%= bio.profile_image %>" class="img-rounded" alt="Cinque Terre" height="50" width="50"></td>
-        <td><%= bio.profile_image %></td>
-        <td><%= bio.user_id %></td>
-        <td><%= bio.profile_text %></td>
-        <td><%= bio.style_text %></td>
-        <td><%= bio.expertise %></td>
-        <td><%= link_to 'Show', bio %></td>
-        <td><%= link_to 'Edit', edit_bio_path(bio) %></td>
-        <td><%= link_to 'Destroy', bio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% if @bios != nil %>
+      <% @bios.each do |bio| %>
+        <tr>
+          <td><img src="<%= bio.profile_image %>" class="img-rounded" alt="Cinque Terre" height="50" width="50"></td>
+          <td><%= bio.profile_image %></td>
+          <td><%= bio.user_id %></td>
+          <td><%= bio.profile_text %></td>
+          <td><%= bio.style_text %></td>
+          <td><%= bio.expertise %></td>
+          <td>
+            <%= link_to 'Show', bio %>
+            <%= link_to 'Edit', edit_bio_path(bio) %>
+            <%= link_to 'Destroy', bio, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

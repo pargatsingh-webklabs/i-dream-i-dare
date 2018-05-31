@@ -21,7 +21,7 @@
     </div>
   </div>
 
-  <div class="field">
+  <div class="field" rows="2" cols="250">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
@@ -30,7 +30,7 @@
     <%= f.label :value %><br>
     <%= f.trix_editor :value, class: 'trix-content' %>
 
-  <div class="actions">
+  <div class="actions" style="margin-top:10px;">
     <%= f.submit %>
   </div>
 <% end %>

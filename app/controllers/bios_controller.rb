@@ -1,23 +1,24 @@
 class BiosController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:meet_us]
   before_action :set_bio, only: [:show, :edit, :update, :destroy]
+  before_filter :admin_user, only: [:index, :destroy, :show, :edit, :update, :new]
+  layout "signed-in" # Layout Default
 
   # GET /bios/meet_us
-  def meet_us
+  def meet_us # THIS IS A PUBLIC-FACING VIEW. LAYOUT RENDERS AS BELOW:
     @bios = Bio.where(:profile_active => true)
     @bio_users = []
 
     @bios.each do |bio|
-      # binding.pry
       @bio_users << User.find(bio.user_id)
     end
-
     render layout: "application"
   end
 
   # GET /bios
   def index
     @bios = Bio.all
+    
   end
 
   # GET /bios/1
@@ -60,6 +61,9 @@ class BiosController < ApplicationController
   end
 
   private
+    def admin_user
+      redirect_to "/422" unless current_user != nil && current_user.is_an_admin?
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_bio
       @bio = Bio.find(params[:id])

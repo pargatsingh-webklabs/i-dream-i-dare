@@ -3,8 +3,7 @@ class MessagesController < ApplicationController
 
   before_filter :authorized_user_or_admin, only: [:show, :edit, :update]
   before_filter :admin_user, only: [:index, :destroy]
-  
-  layout "signed-in"
+  layout "signed-in" # Layout Default
 
   # GET /messages
   def index

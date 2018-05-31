@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+.bio_coach_profile {
+  margin-top: 35px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 110px 250px;
+  grid-gap: 5px;
+  grid-template-areas:
+  	". p p p p n n n n n n ."
+  	". p p p p b b b b b b .";
+}
+.name {
+	font-family:Archivo, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 4em;
+	font-weight: bold;
+	grid-area: n;
+	/*background-color: blue;*/
+}
+.pic {
+	grid-area: p;
+	/*background-color: red;*/
+}
+.body {
+	font-size:12px;
+	grid-area: b;
+	/*background-color: yellow;*/
+}

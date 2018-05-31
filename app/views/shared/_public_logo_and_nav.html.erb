@@ -1,0 +1,27 @@
+<div class="container" style="background-color:white; width:100%;">
+  <a class="landing-page-branding" href="/">
+    <img src="/assets/branding/DreamCatcherLogo01_White.png">
+  </a>
+
+  <div class="landing-page-spacer-30"></div>
+
+  <div class="landing-page-links">
+    <% if user_signed_in? %>
+      <a href="/user/dashboard" class="landing-link">My Dashboard</a>
+      <div class="horizontal-spacer-6"></div>
+      <a href='/users/sign_out' class="landing-link" data-method='delete'>Sign out</a>
+      <div class="horizontal-spacer-6"></div>
+
+    <% else %>
+      <a href="/users/sign_in" class="landing-link">Sign In</a>
+      <div class="horizontal-spacer-6"></div>
+      <a href="/users/sign_up" class="landing-link">Sign Up</a>
+      <div class="horizontal-spacer-6"></div>
+
+    <% end %>
+    <a href="/bios/meet_us" class="landing-link">Meet Us</a>
+    <div class="horizontal-spacer-6"></div>
+    <a href="/blog" class="landing-link">Blog</a>
+
+  </div>
+</div>
