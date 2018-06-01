@@ -6,19 +6,20 @@ Rails.application.configure do
   #   ENV["APPLICATION_HOST"] = ENV["HEROKU_APP_NAME"] + ".herokuapp.com" 
   # end
   require "shrine/storage/s3"
+  s3 = Aws::S3::Encryption::Client.new(encryption_key: key, region: "us-east-1")
 
   # --------------------- Preventing Heroku Build- These need updated---------
-  # s3_options = {
-  #   bucket:            ENV['S3_BUCKET'], # required
-  #   access_key_id:     ENV['S3_KEY'],
-  #   secret_access_key: ENV['S3_SECRET'],
-  #   region: ENV['S3_REGION']
-  # }
+  s3_options = {
+    bucket:            ENV['S3_BUCKET'], # required
+    access_key_id:     ENV['S3_KEY'],
+    secret_access_key: ENV['S3_SECRET'],
+    region: ENV['S3_REGION']
+  }
 
-  # Shrine.storages = {
-  # cache: Shrine::Storage::S3.new(prefix: "cache", **s3_options),
-  # store: Shrine::Storage::S3.new(**s3_options)
-  # }
+  Shrine.storages = {
+  cache: Shrine::Storage::S3.new(prefix: "cache", **s3_options),
+  store: Shrine::Storage::S3.new(**s3_options)
+  }
   # ----------------------------------------------------------------------
 
   ActiveModelSerializers.config.adapter = :json_api
