@@ -7,3 +7,4 @@ ActiveModelSerializers.config.adapter = :json_api
 Rails.application.configure do
   # ...
 end
+
