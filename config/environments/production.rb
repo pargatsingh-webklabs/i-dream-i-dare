@@ -5,6 +5,7 @@ Rails.application.configure do
   # if ENV.fetch("HEROKU_APP_NAME", "").include?("staging-pr-")
   #   ENV["APPLICATION_HOST"] = ENV["HEROKU_APP_NAME"] + ".herokuapp.com" 
   # end
+  
   require "shrine/storage/s3"
   s3 = Aws::S3::Encryption::Client.new(encryption_key: key, region: "us-east-1")
 
