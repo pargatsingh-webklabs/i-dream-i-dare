@@ -7,7 +7,7 @@ Rails.application.configure do
   # end
   
   require "shrine/storage/s3"
-  s3 = Aws::S3::Encryption::Client.new(encryption_key: key, region: "us-east-1")
+  # s3 = Aws::S3::Encryption::Client.new(encryption_key: key, region: "us-east-1")
 
   # --------------------- Preventing Heroku Build- These need updated---------
   s3_options = {
