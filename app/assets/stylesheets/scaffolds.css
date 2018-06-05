@@ -1,3 +1,10 @@
+/*
+    *= require_self
+    *= require trix 
+*/
+
+@charset "utf-8";
+
 body {
   background-color: #fff;
   color: #333;
