@@ -1,13 +1,14 @@
-*= require_self
-*= require trix 
-*= require bios
-*= require scaffolds
-
 @charset "UTF-8";
+
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "compass";
+
+*= require_self
+*= require trix 
+*= require bios
+*= require scaffolds
 
 /*!
  * Start Bootstrap - Grayscale v1.1.0 (http://startbootstrap.com/template-overviews/grayscale)
