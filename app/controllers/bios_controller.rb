@@ -28,10 +28,12 @@ class BiosController < ApplicationController
   # GET /bios/new
   def new
     @bio = Bio.new
+    get_all_coaches
   end
 
   # GET /bios/1/edit
   def edit
+    get_all_coaches
   end
 
   # POST /bios
@@ -75,5 +77,9 @@ class BiosController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def bio_params
       params.require(:bio).permit(:user_id, :profile_text, :style_text, :expertise, :profile_image)
+    end
+
+    def get_all_coaches
+      @all_coaches = User.where(:is_a_coach => true)
     end
 end
