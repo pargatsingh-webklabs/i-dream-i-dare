@@ -39,8 +39,6 @@ class BiosController < ApplicationController
   # POST /bios
   def create
     @bio = Bio.new(bio_params)
-    binding.pry
-
     @bio.profile_active = true
 
     if @bio.save
