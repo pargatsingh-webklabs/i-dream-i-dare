@@ -3,7 +3,7 @@
 .bio_coach_profile {
   margin-top: 35px;
   display: grid;
-  /*grid-template-columns: repeat(100px);*/
+  grid-template-columns: 100px;
   grid-template-rows: 110px 250px;
   grid-gap: 5px;
   grid-template-areas:
