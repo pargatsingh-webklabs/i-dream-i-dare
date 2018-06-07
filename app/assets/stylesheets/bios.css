@@ -1,15 +1,15 @@
 @charset "UTF-8";
 
-/*.bio_coach_profile {
+.bio_coach_profile {
   margin-top: 35px;
   display: grid;
-  grid-template-columns: repeat(12, 200px);
+  grid-template-columns: repeat(12, 100px);
   grid-template-rows: 110px 250px;
   grid-gap: 5px;
   grid-template-areas:
   	". p p p p n n n n n n ."
   	". p p p p b b b b b b .";
-}*/
+}
 section {
   max-width: 740px;
   margin: 0 auto;
