@@ -18,7 +18,7 @@ class MentorshipsController < ApplicationController
         mentorship_relation <<  client = @all_clients.find_by_id(m.client)
         if coach == nil || client == nil
           removeMentorship = Mentorship.find_by_id(m.id)
-          removeMentorship.deleted = 1
+          removeMentorship.active = false
           removeMentorship.save
         else @public_mentorship_data << mentorship_relation
         end
