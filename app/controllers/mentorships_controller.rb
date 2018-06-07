@@ -8,13 +8,20 @@ class MentorshipsController < ApplicationController
     get_all_coaches_and_clients
     @all_mentorships = Mentorship.all
     @public_mentorship_data = []
+
+    # TODO - Mark mentorships with invalid coaches or users as Deleted.
     if @all_mentorships.empty? == false
       @all_mentorships.each do |m|
         mentorship_relation = []
         mentorship_relation << m.id
         mentorship_relation << coach = @all_coaches.find_by_id(m.coach)
         mentorship_relation <<  client = @all_clients.find_by_id(m.client)
-      @public_mentorship_data << mentorship_relation
+        if coach == nil || client == nil
+          removeMentorship = Mentorship.find_by_id(m.id)
+          removeMentorship.deleted = 1
+          removeMentorship.save
+        else @public_mentorship_data << mentorship_relation
+        end
       end
     end
   end
