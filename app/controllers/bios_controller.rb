@@ -37,6 +37,9 @@ class BiosController < ApplicationController
   # POST /bios
   def create
     @bio = Bio.new(bio_params)
+    binding.pry
+
+    @bio.profile_active = true
 
     if @bio.save
       redirect_to @bio, notice: 'Bio was successfully created.'
@@ -71,6 +74,6 @@ class BiosController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def bio_params
-      params.require(:bio).permit(:user_id, :profile_text, :style_text, :expertise)
+      params.require(:bio).permit(:user_id, :profile_text, :style_text, :expertise, :profile_image)
     end
 end

@@ -9,7 +9,6 @@ class MentorshipsController < ApplicationController
     @all_mentorships = Mentorship.all
     @public_mentorship_data = []
 
-    # TODO - Mark mentorships with invalid coaches or users as Deleted.
     if @all_mentorships.empty? == false
       @all_mentorships.each do |m|
         mentorship_relation = []
@@ -45,7 +44,7 @@ class MentorshipsController < ApplicationController
   # POST /mentorships
   def create
     @mentorship = Mentorship.new(mentorship_params)
-
+      @mentorship.active = true
     if @mentorship.save
       redirect_to @mentorship, notice: 'Mentorship was successfully created.'
     else
