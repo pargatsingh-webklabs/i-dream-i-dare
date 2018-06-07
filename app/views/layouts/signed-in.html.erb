@@ -37,8 +37,13 @@
         <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
          <h3 class="glyphicon glyphicon-menu-hamburger" style="margin:0px;"></h3></a>
         <ul id="g-account-menu" class="dropdown-menu" role="menu">
-          <li><a href="/user/dashboard">Main Dashboard</a></li>
-          <li><a href="/user/group-dashboard">Group Dashboard</a></li>
+          <% if current_user.is_an_admin? %>
+            <li><a href="/user/dashboard">Admin Dashboard</a></li>
+          <% else %>
+            <li><a href="/user/dashboard">Main Dashboard</a></li>
+            <li><a href="/user/group-dashboard">Group Dashboard</a></li>
+          <% end %>
+
           <li><a href='/users/edit'>Edit my Account</a></li>
           <li><a href='/users/sign_out' data-method='delete'>Sign out</a></li>
 

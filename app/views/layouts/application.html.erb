@@ -16,8 +16,6 @@
   <%= stylesheet_link_tag("application") %>
 
   <%= csrf_meta_tags %>
-  
-
 
   <title><%= title %></title>
 </head>
@@ -27,13 +25,14 @@
   <%= yield %>  
 
   </body>
-</html>
   
   <%= render "javascript" %>
   <%= render "css_overrides" %>
 
-  <footer style="margin-top: 100px;">
-    <center>
-      2018, Dream Catcher LLC
-    </center>
-  </footer>
+<footer style="margin-top: 100px;">
+  <center>
+    2018, Dream Catcher LLC
+  </center>
+</footer>
+
+</html>
