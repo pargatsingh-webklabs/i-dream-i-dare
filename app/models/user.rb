@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
 
   before_save :set_default_permissions
   scope :ordered_by_name, -> { order(first_name: :asc) }
+  
+  def full_name
+    "#{first_name} #{last_name}"
+  end
  private
 
    def set_default_permissions
