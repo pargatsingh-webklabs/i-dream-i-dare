@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   before_save :set_default_permissions
   scope :ordered_by_name, -> { order(first_name: :asc) }
-  
+
   def full_name
     "#{first_name} #{last_name}"
   end
@@ -16,8 +16,8 @@ class User < ActiveRecord::Base
 
     # TODO: needs debugging:
     
-    # self.is_a_coach = false
-    # self.is_an_admin = false
+      self.is_a_coach = false
+      self.is_an_admin = false
 
    end    
    

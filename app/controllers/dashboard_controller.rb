@@ -338,7 +338,6 @@ class DashboardController < ApplicationController
     @all_active_user_messages_sorted_by_timestamp = @all_active_user_messages_sorted_by_timestamp.flatten.sort
 
     @coachDashHeadLine = ContentField.where(:name => "Coach Dashboard Headline")[0]
-    binding.pry
   end
 
  # //////////////////////////////////////////////////////
