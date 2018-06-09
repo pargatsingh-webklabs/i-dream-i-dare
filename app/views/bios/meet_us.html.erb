@@ -2,16 +2,11 @@
 
 <hr />
 
-<section>
-  <div class="column">First</div>
-  <div class="column">Second</div>
-  <div class="column">Third</div>
-</section>
-
 <% @bios.each do |bio| %> 
   <div class="bio_coach_profile">
     <div class="name">
-      <%= @bio_users.select{|u| u.id == bio.user_id}[0].first_name %> <%= @bio_users.select{|u| u.id == bio.user_id}[0].last_name %>
+      <%= @bio_users.select{|u| u.id == bio.user_id}[0].first_name %> <%= @bio_users.select{|u| u.id == bio.user_id}[0].last_name %> &ensp; <a style="font-size: 20px; color: #88b021;" href="mailto:<%= @bio_users.select{|u| u.id == bio.user_id}[0].email %>"><i class="fa fa-envelope"></i></a>
+      <br />
       <hr />
     </div>
     <div class="pic">

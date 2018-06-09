@@ -2,10 +2,11 @@
 
 .bio_coach_profile {
   margin-top: 35px;
+  margin-right: 50px;
   display: grid;
   grid-template-columns: 100px;
   grid-template-rows: 110px 250px;
-  grid-gap: 5px;
+  grid-gap: 20px;
   grid-template-areas:
   	". p p p p n n n n n n ."
   	". p p p p b b b b b b .";
