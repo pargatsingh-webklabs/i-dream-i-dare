@@ -61,7 +61,7 @@ class ImagesController < ApplicationController
   end
 
   def upload
-    # binding.pry # Just a test.
+     binding.pry # Just a test.
   end
 
   private

@@ -4,6 +4,8 @@
 @import "bootstrap";
 @import "compass";
 @import "bios";
+@import "trix";
+*= require trix
 
 /*!
  * Start Bootstrap - Grayscale v1.1.0 (http://startbootstrap.com/template-overviews/grayscale)
