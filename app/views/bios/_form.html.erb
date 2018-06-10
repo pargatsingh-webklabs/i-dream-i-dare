@@ -14,22 +14,27 @@
     <%= f.label :user_id %><br>
     <%= f.collection_select :user_id, @all_coaches, :id, :full_name, include_blank: true %>
   </div>
+  <hr>
   <div class="field">
     <%= f.label :profile_image %><br>
-    <%= f.text_field :profile_image %>
+    <%= f.text_field :profile_image, style: "width:50%;" %>
   </div>
-  <div class="field">
+  <hr>
+  <div class="field" style="width:50%;">
     <%= f.label :profile_text %><br>
-    <%= f.text_field :profile_text %>
+    <%= f.trix_editor :profile_text, class: 'trix-content' %>
   </div>
-  <div class="field">
+  <hr>
+  <div class="field" style="width:50%;">
     <%= f.label :style_text %><br>
-    <%= f.text_field :style_text %>
+    <%= f.trix_editor :style_text, class: 'trix-content' %>
   </div>
-  <div class="field">
+  <hr>
+  <div class="field" style="width:50%;">
     <%= f.label :expertise %><br>
-    <%= f.text_field :expertise %>
+    <%= f.trix_editor :expertise, class: 'trix-content' %>
   </div>
+  <hr>
   <div class="actions">
     <%= f.submit %>
   </div>
