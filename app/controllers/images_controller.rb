@@ -2,25 +2,22 @@ class ImagesController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:show, :edit, :update, :new]
   before_filter :admin_user, only: [:index, :destroy]
   layout "signed-in" # Layout Default
+  respond_to :json
 
-  #-------------------------------------
-  #respond_to :json ??
+  def create
+    image_params[:image].open if image_params[:image].tempfile.closed?
 
-  # def create
-  #   image_params[:image].open if image_params[:image].tempfile.closed?
+    @image = Image.new(image_params)
 
-  #   @image = Image.new(image_params)
+    respond_to do |format|
+      if @image.save
+        format.json { render json: { url: @image.image_url }, status: :ok }
+      else
+        format.json { render json: @image.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
-  #   respond_to do |format|
-  #     if @image.save
-  #       format.json { render json: { url: @image.image_url }, status: :ok }
-  #     else
-  #       format.json { render json: @image.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
-  #-------------------------------------
   def show
     @images = Image.where.not(:image_data => nil)
   end

@@ -40,6 +40,9 @@ $(document).ready(function() {
     if (attachment.file) {
       return uploadAttachment(attachment);
     }
+    else {
+      attachment.remove();
+    }
   });
 });
 
