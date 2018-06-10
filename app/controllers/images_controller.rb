@@ -5,14 +5,12 @@ class ImagesController < ApplicationController
   respond_to :json
 
   def create
-    binding.pry
     image_params[:image].open if image_params[:image].tempfile.closed?
 
     @image = Image.new(image_params)
 
     respond_to do |format|
       if @image.save
-        binding.pry
         format.json { render json: { url: @image.image_url }, status: :ok }
       else
         format.json { render json: @image.errors, status: :unprocessable_entity }
@@ -29,7 +27,6 @@ class ImagesController < ApplicationController
   end
 
   def new
-    binding.pry
     @image = Image.new
   end
 
@@ -47,12 +44,10 @@ class ImagesController < ApplicationController
   # end
 
   def edit 
-    binding.pry
     @image = Image.find(params[:id])
   end
 
   def update 
-    binding.pry
     @image = Image.find(params[:id])
     if @image.update_attributes(image_params)
       flash[:success] = 'Image Edited!'
@@ -64,7 +59,6 @@ class ImagesController < ApplicationController
   end
 
   def upload
-     binding.pry # Just a test.
   end
 
   private
@@ -73,7 +67,6 @@ class ImagesController < ApplicationController
   end
 
   def image_params
-    binding.pry
     params.require(:image).permit(:image, :remove_image)
   end
 

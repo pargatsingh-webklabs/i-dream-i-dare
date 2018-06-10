@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  before_save :set_default_permissions
+  # before_save :set_default_permissions
   scope :ordered_by_name, -> { order(first_name: :asc) }
 
   def full_name

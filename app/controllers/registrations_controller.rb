@@ -9,7 +9,7 @@ class RegistrationsController < Devise::RegistrationsController
   # --Uncomment next line if you want to close all sign-ups.
   # prepend_before_filter :authenticate_scope!, :except => [:cancel]
 
-  before_filter :admin_or_current_user, only: [:show, :index, :update, :destroy]
+  before_filter :admin_or_current_user, only: [:show, :index, :destroy]
 
   protected
     def after_sign_up_path_for(resource)

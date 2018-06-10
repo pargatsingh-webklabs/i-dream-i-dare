@@ -140,4 +140,48 @@
     <% end %>
   </tbody>
 </table>
+<table class="table table-bordered table-striped" >
+  <thead>
+    <tr>
+      <th>
+        Id
+      </th>
+      <th>
+        Name
+      </th>
+      <th>
+        Email
+      </th>
+      <th>
+        Coach?
+      </th>
+      <th>
+        Admin?
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @users_to_confirm != nil %>
+      <% @users_to_confirm.each do |u| %>
+        <tr>
+          <th>
+            <%= u.id %>
+          </th>
+          <th>
+            <%= u.first_name %> <%= u.last_name %>
+          </th>
+          <th>
+            <%= u.email %>
+          </th>
+          <th>
+            <%= u.is_a_coach %>   <a href="/toggle_coach/<%= u.id %>"><button>Toggle</button></a>
+          </th>
+          <th>
+            <%= u.is_an_admin %>   <a href="/toggle_admin/<%= u.id %>"><button>Toggle</button></a>
+          </th>
+        </tr> 
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
 
