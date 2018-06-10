@@ -1,55 +1,143 @@
-  <h1>All Users</h1>
-  <table class="table table-bordered table-striped" >
-    <thead>
-      <tr>
-        <th>
-          Id
-        </th>
-        <th>
-          Name
-        </th>
-        <th>
-          Email
-        </th>
-        <th>
-          Coach?
-        </th>
-        <th>
-          Admin?
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <% if @users != nil %>
-        <% @users.each do |u| %>
-          <tr>
-            <th>
-              <%= u.id %>
-            </th>
-            <th>
-              <%= u.first_name %> <%= u.last_name %>
-            </th>
-            <th>
-              <%= u.email %>
-            </th>
-            <th>
-              <%= u.is_a_coach %>   <a href="/toggle_coach/<%= u.id %>"><button>Toggle</button></a>
-            </th>
-            <th>
-              <%= u.is_an_admin %>   <a href="/toggle_admin/<%= u.id %>"><button>Toggle</button></a>
-            </th>
-          </tr> 
-        <% end %>
+<h1>Admin Users</h1>
+<table class="table table-bordered table-striped" >
+  <thead>
+    <tr>
+      <th>
+        Id
+      </th>
+      <th>
+        Name
+      </th>
+      <th>
+        Email
+      </th>
+      <th>
+        Coach?
+      </th>
+      <th>
+        Admin?
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @admins != nil %>
+      <% @admins.each do |u| %>
+        <tr>
+          <th>
+            <%= u.id %>
+          </th>
+          <th>
+            <%= u.first_name %> <%= u.last_name %>
+          </th>
+          <th>
+            <%= u.email %>
+          </th>
+          <th>
+            <%= u.is_a_coach %>   <a href="/toggle_coach/<%= u.id %>"><button>Toggle</button></a>
+          </th>
+          <th>
+            <%= u.is_an_admin %>   <a href="/toggle_admin/<%= u.id %>"><button>Toggle</button></a>
+          </th>
+        </tr> 
       <% end %>
-    </tbody>
-  </table>
-<h2 class="red-text">
-  WARNINGS: 
-</h2>
+    <% end %>
+  </tbody>
+</table>
   <hr>
-    <p class="red-text" style="text-align: left;">
-      1. Toggling your own Admin priviliges will lock you out of the system immediately.
-        <br>
-      2. Disabling Coach permissions for a User will delete any and all Mentorship records listing that User as 'Coach'.
+    <p style="color:red;" style="text-align: left;">
+      Warning: Toggling your own Admin priviliges will lock you out of the system immediately.
     </p>
+<hr>
+
+<h1>Coaches</h1>
+<table class="table table-bordered table-striped" >
+  <thead>
+    <tr>
+      <th>
+        Id
+      </th>
+      <th>
+        Name
+      </th>
+      <th>
+        Email
+      </th>
+      <th>
+        Coach?
+      </th>
+      <th>
+        Admin?
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @coaches != nil %>
+      <% @coaches.each do |u| %>
+        <tr>
+          <th>
+            <%= u.id %>
+          </th>
+          <th>
+            <%= u.first_name %> <%= u.last_name %>
+          </th>
+          <th>
+            <%= u.email %>
+          </th>
+          <th>
+            <%= u.is_a_coach %>   <a href="/toggle_coach/<%= u.id %>"><button>Toggle</button></a>
+          </th>
+          <th>
+            <%= u.is_an_admin %>   <a href="/toggle_admin/<%= u.id %>"><button>Toggle</button></a>
+          </th>
+        </tr> 
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<h1>Users</h1>
+<table class="table table-bordered table-striped" >
+  <thead>
+    <tr>
+      <th>
+        Id
+      </th>
+      <th>
+        Name
+      </th>
+      <th>
+        Email
+      </th>
+      <th>
+        Coach?
+      </th>
+      <th>
+        Admin?
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @users != nil %>
+      <% @users.each do |u| %>
+        <tr>
+          <th>
+            <%= u.id %>
+          </th>
+          <th>
+            <%= u.first_name %> <%= u.last_name %>
+          </th>
+          <th>
+            <%= u.email %>
+          </th>
+          <th>
+            <%= u.is_a_coach %>   <a href="/toggle_coach/<%= u.id %>"><button>Toggle</button></a>
+          </th>
+          <th>
+            <%= u.is_an_admin %>   <a href="/toggle_admin/<%= u.id %>"><button>Toggle</button></a>
+          </th>
+        </tr> 
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
 

@@ -456,7 +456,9 @@ class DashboardController < ApplicationController
 
   # ADMIN ACTION ONLY!
   def get_all_users
-    @users = User.all
+    @admins = User.where(:is_an_admin => true).order('first_name, last_name')
+    @coaches = User.where("is_a_coach = ? AND is_an_admin = ?", *[true, false]).order('first_name, last_name')
+    @users = User.where("is_a_coach = ? AND is_an_admin = ?", *[false, false]).order('first_name, last_name')
   end
 
 end

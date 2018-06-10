@@ -1,6 +1,7 @@
 <div>
 	<% if image.image_data? %>
 		<%= image_tag image.image_url %> <!-- image_url is a Shrine method -->
+	<p><%= image.image_data. %> | <%= link_to 'Edit', edit_image_path(image) %>
+		| <a href="<%= image.image_url %>">View on web</a></p>
 	<% end %>
-	<p><%= image.image_data %> | <%= link_to 'Edit', edit_image_path(image) %></p>
 </div>
