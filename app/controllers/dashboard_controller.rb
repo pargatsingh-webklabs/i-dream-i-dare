@@ -407,6 +407,7 @@ class DashboardController < ApplicationController
       else 
         @user.update_attribute :is_a_coach, true
       end
+      redirect_to("/")
     else    
       redirect_to("/")
     end
@@ -421,6 +422,7 @@ class DashboardController < ApplicationController
       else 
         @user.update_attribute :is_an_admin, true
       end
+      redirect_to("/")
     else 
       redirect_to("/")
     end
