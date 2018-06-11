@@ -68,7 +68,6 @@ class AdminMessagesController < ApplicationController
   def destroy
     @admin_message.destroy
     redirect_to admin_messages_url, notice: 'Admin message was successfully destroyed.'
-    render layout: "signed-in"
   end
 
 # /////////////This is my before filter that prevents unauth access to view admin messages.////////////////////
