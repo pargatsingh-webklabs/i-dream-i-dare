@@ -1,31 +1,39 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Quotes</h1>
+<h1>Quotes</h1>
+<div style="color:red">(Visible in established Content Fields, and will display in random fashion if Admin-created content is empty)</div>
+<hr>
+<p>
+  <button>
+    <%= link_to 'New Quote', new_quote_path %>
+  </button>
+</p>
 
-<table>
+<table class="table table-bordered table-striped" >
   <thead>
     <tr>
       <th>Body</th>
       <th>Author</th>
-      <th>Url for image</th>
-      <th colspan="3"></th>
+      <th>Image</th>
+      <th>Actions</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @quotes.each do |quote| %>
-      <tr>
-        <td><%= quote.body %></td>
-        <td><%= quote.author %></td>
-        <td><%= quote.url_for_image %></td>
-        <td><%= link_to 'Show', quote %></td>
-        <td><%= link_to 'Edit', edit_quote_path(quote) %></td>
-        <td><%= link_to 'Destroy', quote, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% if @quotes != nil %>
+      <% @quotes.each do |quote| %>
+        <tr>
+          
+          <td><%= raw quote.body %></td>
+          <td><%= quote.author %></td>
+          <td><img src="<%= quote.url_for_image %>" class="img-rounded" alt="None" height="50"></td> 
+          <td>
+            <%= link_to 'Show', quote %>
+            <%= link_to 'Edit', edit_quote_path(quote) %>
+            <%= link_to 'Destroy', quote, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Quote', new_quote_path %>

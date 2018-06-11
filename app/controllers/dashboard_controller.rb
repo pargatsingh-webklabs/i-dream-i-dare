@@ -232,6 +232,7 @@ class DashboardController < ApplicationController
     #////////All Users
 
     if user_signed_in?
+      get_random_quote
       get_user_messages
       get_new_message
       get_new_plan
@@ -273,14 +274,21 @@ class DashboardController < ApplicationController
     messages << b.flatten
     @user_messages = messages.flatten.sort_by {|m| m.updated_at }
   end
+
   def get_new_message
     @message = Message.new
   end
+
   def get_new_group_message
     @group_message = GroupMessage.new
   end
+
   def get_new_plan
     @plan = Plan.new
+  end
+
+  def get_random_quote
+    @quote = Quote.where(:id => rand(1..(Quote.all.count)))[0]
   end
 
 # //////////////////////////////////////////////////////

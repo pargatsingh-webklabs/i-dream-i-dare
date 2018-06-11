@@ -5,8 +5,11 @@
 <div class="container">
 
   <div class="container content-field" id="clientDashHeadline">
-    <% if @clientDashHeadLine != nil %>
+    <% if @clientDashHeadLine != nil && @clientDashHeadLine != "" %>
       <%= raw @clientDashHeadLine.value %>
+    <% else %>
+      <%= raw @quote.body %>
+      <%= @quote.author %>
     <% end %>
   </div>
 
