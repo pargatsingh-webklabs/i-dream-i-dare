@@ -8,8 +8,10 @@
     <% if @clientDashHeadLine != nil && @clientDashHeadLine != "" %>
       <%= raw @clientDashHeadLine.value %>
     <% else %>
-      <%= raw @quote.body %>
-      <%= @quote.author %>
+      <% if @quote != nil && @quote.body != nil && @quote.author != nil %>
+        <%= raw @quote.body %>
+        <%= @quote.author %>
+      <% end %>
     <% end %>
   </div>
 
