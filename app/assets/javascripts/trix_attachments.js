@@ -36,6 +36,7 @@ $(document).ready(function() {
   };
 
   document.addEventListener("trix-attachment-add", function(event) {
+    debugger;
     var attachment = event.attachment;
     if (attachment.file) {
       return uploadAttachment(attachment);

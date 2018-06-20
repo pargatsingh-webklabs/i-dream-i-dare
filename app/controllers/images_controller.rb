@@ -6,7 +6,6 @@ class ImagesController < ApplicationController
 
   def create
     image_params[:image].open if image_params[:image].tempfile.closed?
-
     @image = Image.new(image_params)
 
     respond_to do |format|
