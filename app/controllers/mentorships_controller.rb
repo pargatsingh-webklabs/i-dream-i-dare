@@ -1,6 +1,7 @@
 class MentorshipsController < ApplicationController
   before_action :set_mentorship, only: [:show, :edit, :update, :destroy]
-  before_filter :admin_user
+  before_filter :admin_user, only: [:index, :show, :edit, :update, :destroy]
+
   layout "signed-in"
 
   # GET /mentorships
@@ -63,6 +64,7 @@ class MentorshipsController < ApplicationController
 
   # DELETE /mentorships/1
   def destroy
+    binding.pry
     @mentorship.destroy
     redirect_to mentorships_url, notice: 'Mentorship was successfully destroyed.'
   end
@@ -74,6 +76,7 @@ class MentorshipsController < ApplicationController
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_mentorship
+      binding.pry
       @mentorship = Mentorship.find(params[:id])
     end
 

@@ -18,11 +18,15 @@
         <th>
           Client
         </th>
+        <th>
+          Actions
+        </th>
       </tr>
     </thead>
     <tbody>
       <% if @public_mentorship_data != nil %>
         <% @public_mentorship_data.each do |m| %>
+          <% mentorshipModel = @all_mentorships.find_by_id(m[0]) %>
           <tr>
             <th>
               <%= m[0] %>
@@ -32,6 +36,11 @@
             </th>
             <th>
               <%= m[2].first_name %> <%= m[2].last_name %>
+            </th>
+            <th>
+              <%= link_to 'Show', mentorshipModel %>
+              <%= link_to 'Edit', edit_mentorship_path(mentorshipModel) %>
+              <%= link_to 'Destroy', mentorshipModel, method: :delete, data: { confirm: 'Are you sure?' } %>
             </th>
           </tr> 
         <% end %>

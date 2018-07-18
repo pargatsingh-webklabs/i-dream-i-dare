@@ -94,8 +94,8 @@ class PlansController < ApplicationController
   end
 
   def admin_user
-    # Is the current user an admin?
-    redirect_to "/hit_auth_admin_filter" unless current_user.is_an_admin == true
+    # Is the current user an admin? If not, user is redirected to their dashboard. 
+    redirect_to "/" unless current_user.is_an_admin == true
   end
 
 # ////////////////////////////////

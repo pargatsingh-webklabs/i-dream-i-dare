@@ -14,7 +14,7 @@ class AdminMessagesController < ApplicationController
     @day_number = time.day
     @year = time.year
     @admin_message = AdminMessage.new
-
+    render layout: "application"
   end
 
   # GET /admin_messages
@@ -35,7 +35,7 @@ class AdminMessagesController < ApplicationController
   # GET /admin_messages/new
   def new
     @admin_message = AdminMessage.new
-    render layout: "signed-in"
+    # render layout: "signed-in"
   end
 
   # GET /admin_messages/1/edit

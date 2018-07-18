@@ -394,19 +394,21 @@ footer p {
 }
 ::-moz-selection {
   text-shadow: none;
-  background: #fcfcfc;
-  background: rgba(255, 255, 255, 0.2);
+  color: black;
+  background: #d3d3d3;
 }
 ::selection {
   text-shadow: none;
-  background: #fcfcfc;
-  background: rgba(255, 255, 255, 0.2);
+  color: black;
+  background: #d3d3d3;
 }
 img::selection {
-  background: transparent;
+  color: black;
+  background: #d3d3d3;
 }
 img::-moz-selection {
-  background: transparent;
+  color: black;
+  background: #d3d3d3;
 }
 body {
   webkit-tap-highlight-color: rgba(255, 255, 255, 0.2);

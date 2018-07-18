@@ -2,9 +2,9 @@
 
  <!-- MAIN -->
 
-<div class="container">
+<div class="flex-box">
 
-  <div class="container content-field" id="clientDashHeadline">
+  <div class="container content-field row" id="clientDashHeadline">
     <% if @clientDashHeadLine != nil && @clientDashHeadLine != "" %>
       <%= raw @clientDashHeadLine.value %>
     <% else %>
@@ -29,9 +29,6 @@
           <% end %>
     </div> <!-- END OF COL-2-->
 
-    <div class="col-md-5">
-    </div><!-- /col-md-3 -->
-
     <!-- Large Right Column -->
 
     <div class="col-md-9">
@@ -39,7 +36,7 @@
     <!-- Middle Column, where the PLANS live. [ @client_plans ]-->
 
     <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-6" style="float: left;">
 
             <% if @client_plans.nil? == false %>
               <% @client_plans.each do |plan| %>
@@ -62,12 +59,12 @@
                     <br>
 
                     <div class="created-timestamp">
-                      <%= localize(Time.at(plan.created_at), :format => :default) %>
+                      <%= localize(Time.at(plan.created_at), :format => :sample) %>
                     </div>
                     
                     <% if plan.created_at != plan.updated_at %>
                       <div class="updated-timestamp">
-                        UPDATED AT: <%= localize(Time.at(plan.updated_at), :format => :default) %>
+                        UPDATED: <%= localize(Time.at(plan.updated_at), :format => :sample) %>
                       </div>
                     <% end %>
 
@@ -115,11 +112,9 @@
 
 <!-- //////////////////////////////////// -->
 
-      <div class="col-md-7">
+      <div class="col-md-6" style="float:left;">
 
        <div class="row">
-        <div class="col-span">
-
           <% if @active_user != nil %>
 
             <div class="panel panel-default">
@@ -190,7 +185,6 @@
 
           <% end %> <!-- END of IF @active_user != nil -->
 
-        </div> <!-- END of Col-Span -->
       </div> <!-- END of Row -->
 
 <!-- ////////////////////////////// -->

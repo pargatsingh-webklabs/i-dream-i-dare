@@ -2,9 +2,9 @@
 
 <!-- MAIN -->
 
-<div class="container">
+<div class="flex-box">
 
-  <div class="container content-field" id="coachDashHeadline">
+  <div class="container content-field row" id="coachDashHeadline">
     <% if @coachDashHeadLine != nil && @coachDashHeadLine != ""%>
       <%= raw @coachDashHeadLine.value %>
     <% else %>
@@ -15,8 +15,8 @@
     <% end %>
   </div>
 
-  <div class="row">
-    <div class="col-md-2">
+  <div class="container">
+    <div class="col-md-2" style="float: left;">
         <!-- Left -->
         <% if @clients.nil? == false %>
           <% if @clients.count > 1 %>
@@ -57,12 +57,12 @@
 
       </div><!-- /span-3 -->
      
-      <div class="col-md-10">
+      <div class="col-md-9">
              
       <!-- Middle Column, where the PLANS live. -->
 
             <div class="row">
-              <div class="col-md-5">
+              <div class="col-md-6 style="float: left;"">
 
               <% if @all_active_user_plans_sorted_by_timestamp.nil? == false %>
                 <% @all_active_user_plans_sorted_by_timestamp.each do |plan| %>
@@ -85,12 +85,12 @@
                       <br>
 
                       <div class="created-timestamp">
-                        <%= localize(Time.at(plan.created_at), :format => :default) %>
+                        <%= localize(Time.at(plan.created_at), :format => :sample) %>
                       </div>
                       
                       <% if plan.created_at != plan.updated_at %>
                         <div class="updated-timestamp">
-                          UPDATED AT: <%= localize(Time.at(plan.updated_at), :format => :default) %>
+                          UPDATED: <%= localize(Time.at(plan.updated_at), :format => :sample) %>
                         </div>
                       <% end %>
 
@@ -144,12 +144,11 @@
   <!-- //////////////////////////////////////////////////////////// -->
 
 
-        <div class="col-md-7">
+        <div class="col-md-6" style="float:left;">
 
       <!-- THIS is a simple module, which will be used for the middle and right columns. -->
 
           <div class="row">
-            <div class="col-span">
 
               <div class="panel panel-default">
                 <div class="panel-heading">
@@ -222,9 +221,7 @@
         </div> <!-- End of COL-7 -->
 
   <!-- ////////////////////////////// -->
-                
-        </div><!--/col-->
-       
+                       
         </div><!--/row-->
 
       </div><!--/col-->
