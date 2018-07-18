@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Bio Questions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bio_questions.each do |bio_question| %>
+      <tr>
+        <td><%= link_to 'Show', bio_question %></td>
+        <td><%= link_to 'Edit', edit_bio_question_path(bio_question) %></td>
+        <td><%= link_to 'Destroy', bio_question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bio question', new_bio_question_path %>

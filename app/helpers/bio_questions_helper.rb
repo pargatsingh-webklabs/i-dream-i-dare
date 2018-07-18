@@ -1,0 +1,2 @@
+module BioQuestionsHelper
+end
