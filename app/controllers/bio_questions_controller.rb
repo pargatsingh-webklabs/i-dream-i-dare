@@ -1,5 +1,8 @@
 class BioQuestionsController < ApplicationController
   before_action :set_bio_question, only: [:show, :edit, :update, :destroy]
+  before_filter :admin_user, only: [:index, :show, :edit, :update, :destroy]
+
+  layout "signed-in"
 
   # GET /bio_questions
   def index
@@ -21,7 +24,10 @@ class BioQuestionsController < ApplicationController
 
   # POST /bio_questions
   def create
-    @bio_question = BioQuestion.new(bio_question_params)
+    @bio_question = BioQuestion.new()
+    @bio_question.question_text = bio_question_params["question_text"]
+    @bio_question.question_order_by = 0
+    @bio_question.active = false
 
     if @bio_question.save
       redirect_to @bio_question, notice: 'Bio question was successfully created.'
@@ -53,6 +59,10 @@ class BioQuestionsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def bio_question_params
-      params[:bio_question]
+      params.require(:bio_question).permit(:question_text, :question_order_by, :active)
+    end
+
+    def admin_user
+      redirect_to "/" unless current_user.is_an_admin?
     end
 end

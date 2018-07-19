@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   resources :plans
   resources :mentorships
   resources :messages
+  resources :bio_questions
+  resources :bio_answers
   resources :bios
   devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'registrations'}
 

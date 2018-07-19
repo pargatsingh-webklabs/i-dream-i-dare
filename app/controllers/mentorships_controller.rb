@@ -71,7 +71,7 @@ class MentorshipsController < ApplicationController
   private
 
     def admin_user
-      redirect_to "/hit_admin_user_filter" unless current_user.is_an_admin?
+      redirect_to "/" unless current_user.is_an_admin?
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_mentorship

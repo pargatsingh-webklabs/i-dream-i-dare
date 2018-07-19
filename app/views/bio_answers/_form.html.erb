@@ -11,6 +11,23 @@
     </div>
   <% end %>
 
+  <div class="row">
+    <div class="field">
+      <b>Bio Question Id</b><br>
+      <%= f.text_field :bio_question_id %>
+    </div>
+
+    <div class="field">
+      <b>User ID</b><br>
+      <%= f.text_field :user_id %>
+    </div>
+  </div>
+
+  <div class="row" style="width:50%;">
+      <%= f.label :answer_text %><br>
+      <%= f.trix_editor :answer_text %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

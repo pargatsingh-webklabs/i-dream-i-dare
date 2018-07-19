@@ -1,5 +1,5 @@
 <%= form_for(@bio_question) do |f| %>
-  <% if @bio_question.errors.any? %>
+  <% if @bio_question.errors.any? %> 
     <div id="error_explanation">
       <h2><%= pluralize(@bio_question.errors.count, "error") %> prohibited this bio_question from being saved:</h2>
 
@@ -10,6 +10,15 @@
       </ul>
     </div>
   <% end %>
+
+
+  <div class="row">
+    <div class="field">
+      <%= f.label :question_text %><br>
+      <%= f.text_field :question_text, style: "width:50%;" %>
+    </div>
+  </div>
+
 
   <div class="actions">
     <%= f.submit %>

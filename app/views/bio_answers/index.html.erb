@@ -1,25 +1,55 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Bio Answers</h1>
-
-<table>
+<h1>Bio Answers</h1>
+<p>
+    <button>
+      <%= link_to 'Create New', new_bio_answer_path %>
+    </button>
+  </p>
+<table class="table table-bordered table-striped" >
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th>
+          Id
+        </th>
+        <th>
+          Bio Question ID
+        </th>
+        <th>
+          Answer Text
+        </th>
+        <th>
+          User ID
+        </th>
+        <th>
+          Actions
+        </th>
     </tr>
   </thead>
 
   <tbody>
-    <% @bio_answers.each do |bio_answer| %>
-      <tr>
-        <td><%= link_to 'Show', bio_answer %></td>
-        <td><%= link_to 'Edit', edit_bio_answer_path(bio_answer) %></td>
-        <td><%= link_to 'Destroy', bio_answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+    <% if @bio_answers.count > 0 %>
+        <% @bio_answers.each do |bio_answer| %>
+          <tr>
+            <th>
+              <%= bio_answer.id %>
+            </th>
+            <th>
+              <%= bio_answer.bio_question_id %>
+            </th>
+            <th>
+              <%= bio_answer.answer_text %>
+            </th>
+            <th>
+              <%= bio_answer.user_id %>
+            </th>
+            <th>
+              <%= link_to 'Show', bio_answer %>
+              <%= link_to 'Edit', edit_bio_answer_path(bio_answer) %>
+              <%= link_to 'Destroy', bio_answer, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </th>
+          </tr> 
+        <% end %>
+      <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Bio answer', new_bio_answer_path %>

@@ -74,7 +74,7 @@ class PlansController < ApplicationController
     if (@plan.client == current_user.id)
 
     elsif @mentorship.present?
-      redirect_to "/hit_auth_user_filter_on_client_check" unless @plan.client == current_user.id || @clientsIds.include?(@plan.client) 
+      redirect_to "/" unless @plan.client == current_user.id || @clientsIds.include?(@plan.client) 
 
     elsif @coach_mentorships.present?
 
@@ -86,9 +86,9 @@ class PlansController < ApplicationController
 
       end
 
-      redirect_to "/hit_auth_user_filter_on_coach_check" unless @clients_of_coach.include?(@plan.client)
+      redirect_to "/" unless @clients_of_coach.include?(@plan.client)
       
-    else redirect_to "/hit_auth_user_filter_on_admin_check" unless current_user.is_an_admin?
+    else redirect_to "/" unless current_user.is_an_admin?
     end
 
   end

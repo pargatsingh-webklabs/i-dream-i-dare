@@ -1,6 +1,11 @@
 class BioAnswersController < ApplicationController
   before_action :set_bio_answer, only: [:show, :edit, :update, :destroy]
 
+  #UPDATE THIS TO INCLUDE COACHES, AND FILL USER_ID FIELD ON CREATE
+  before_filter :admin_user, only: [:index, :show, :edit, :update, :destroy]
+  
+  layout "signed-in"
+
   # GET /bio_answers
   def index
     @bio_answers = BioAnswer.all
@@ -22,7 +27,7 @@ class BioAnswersController < ApplicationController
   # POST /bio_answers
   def create
     @bio_answer = BioAnswer.new(bio_answer_params)
-
+      
     if @bio_answer.save
       redirect_to @bio_answer, notice: 'Bio answer was successfully created.'
     else
@@ -53,6 +58,10 @@ class BioAnswersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def bio_answer_params
-      params[:bio_answer]
+      params.require(:bio_answer).permit(:bio_question_id, :answer_text, :user_id)
+    end
+
+    def admin_user
+      redirect_to "/" unless current_user.is_an_admin?
     end
 end
