@@ -64,7 +64,6 @@ class MentorshipsController < ApplicationController
 
   # DELETE /mentorships/1
   def destroy
-    binding.pry
     @mentorship.destroy
     redirect_to mentorships_url, notice: 'Mentorship was successfully destroyed.'
   end
@@ -76,7 +75,6 @@ class MentorshipsController < ApplicationController
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_mentorship
-      binding.pry
       @mentorship = Mentorship.find(params[:id])
     end
 
