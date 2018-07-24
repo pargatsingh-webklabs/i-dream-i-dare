@@ -1,24 +1,92 @@
 <center><%= render '/shared/public_logo_and_nav' %></center>
-
+<%= stylesheet_link_tag("application") %>
 <hr />
 
-<% @bios.each do |bio| %> 
-  <div class="bio_coach_profile">
-    <div class="name">
-      <%= @bio_users.select{|u| u.id == bio.user_id}[0].first_name %> <%= @bio_users.select{|u| u.id == bio.user_id}[0].last_name %> &ensp; <a style="font-size: 20px; color: #88b021;" href="mailto:<%= @bio_users.select{|u| u.id == bio.user_id}[0].email %>"><i class="fa fa-envelope"></i></a>
-      <br />
-      <hr />
+<!-- @active_bios - Collection of BIOs
+     @active_bio_questions - Collection of BIOQUESTIONs
+      @active_bio_question_ids - Collection of IDs
+      @active_bio_answers - Collection of BIOANSWERs
+      @active_bio_users - Collection of USERs -->
+<div class="container" id="meetUs">
+  <% @active_bios.each do |bio| %> 
+    <div class="bio_coach_profile">
+
+      <div class="pic" style="margin-bottom: 75px;">
+        <img src="<%=bio.profile_image%>" class="img-rounded" height="350px" alt="/assets/branding/DreamCatcherLogo01.png">
+      </div>
+
+      <div class="profile-body">
+        <div class="name">
+          <%= @active_bio_users.select{|u| u.id == bio.user_id}[0].first_name %> 
+          <%= @active_bio_users.select{|u| u.id == bio.user_id}[0].last_name %> 
+          <br />
+          <hr />
+        </div>
+
+        <div class="main-text">
+          <a style="font-size: 20px; color: #88b021;" href="mailto:<%= @active_bio_users.select{|u| u.id == bio.user_id}[0].email %>">
+            <i class="fa fa-envelope"></i>
+          </a>
+          <br />
+          <div class=bio-profile-text">
+            <%= bio.profile_text %>
+          </div>
+          <div class="style-expertise-show-more-link">
+            <hr />
+            Style: <%= bio.style_text %>
+            <br />
+            Expertise: <%= bio.expertise %>
+            <br />
+            <a id="more-content_<%= bio.id %>" class="show-more-button">
+              <div class="glyphicon glyphicon-plus-sign"></div> Show more
+            </a>
+          </div>
+        </div>
+          
+        <div id="show-more-content_<%= bio.id %>" class="show-more-content" style="display:none;">
+          <% @active_bio_questions.each do |ques| %>
+            <% if (ques.id > 0) %>
+              <hr />
+              <div class="q-a">
+                <div class="bio-question">
+                  <%= ques.question_text.html_safe %>
+                </div>
+                <div class="bio-answer" %>
+                  <% a = @active_bio_answers.find_by_bio_question_id(ques.id) %>
+                  <%= a.answer_text.html_safe %>
+                </div>
+            </div>
+            <% end %>
+          <% end %>
+        </div>
+        
+      </div>
     </div>
-    <div class="pic">
-      <img src="<%=bio.profile_image%>" class="img-rounded" height="350px" alt="/assets/branding/DreamCatcherLogo01.png">
-    </div>
-    <div class="body">
-      <%= bio.profile_text %>
-      <hr />
-      Style: <%= bio.style_text %>
-      <br />
-      Expertise: <%= bio.expertise %>
-    </div>
-  </div>
-  <hr />
-<% end %>
+    <hr />
+    <% end %>
+</div>
+
+<script type="text/javascript">
+
+  $(document).ready(function() {
+        $('a.show-more-button').click(function() {
+            x = "#show-" + this.id
+            y = "show-" + this.id
+            moreTag = '<div class="glyphicon glyphicon-plus-sign"></div> Show more'
+            lessTag = '<div class="glyphicon glyphicon-minus-sign"></div> Show less'
+
+            if (document.getElementById(this.id).innerHTML.trim() == moreTag)
+            {
+                document.getElementById(this.id).innerHTML = lessTag
+                $(x).css({'display': 'block'});
+
+            }
+            else
+            {
+                document.getElementById(this.id).innerHTML = moreTag
+                $(x).css({'display': 'none'});
+            }
+        })
+  });
+
+</script>

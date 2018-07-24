@@ -1,45 +1,57 @@
 @charset "UTF-8";
 
-.bio_coach_profile {
-  margin-top: 35px;
-  margin-right: 50px;
-  display: grid;
-  grid-template-columns: 100px;
-  grid-template-rows: 110px 250px;
-  grid-gap: 20px;
-  grid-template-areas:
-  	". p p p p n n n n n n ."
-  	". p p p p b b b b b b .";
-}
-section {
-  max-width: 740px;
-  margin: 0 auto;
+#meetUs .container {
   display: flex;
 }
-.column {
-  margin: 10px;
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: 0;
+#meetUs .bio_coach_profile {
+  margin-top: 35px;
+  margin-right: 50px;
+  min-height: 400px;
+  clear: left;
+  font-size: 1.2em;
 }
-.column:first-of-type {
-  flex-grow: 2;
-  flex-shrink: 2;
-  flex-basis: 0;
-}
-.name {
+#meetUs .name {
 	font-family:Archivo, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 4em;
 	font-weight: bold;
-	grid-area: n;
-	/*background-color: blue;*/
+  padding-top: 30px;
 }
-.pic {
-	grid-area: p;
-	/*background-color: red;*/
+#meetUs .pic {
+	float: left;
+  margin: 4%;
 }
-.body {
-	font-size:12px;
-	grid-area: b;
-	/*background-color: yellow;*/
+#meetUs .style-expertise-show-more-link {
+  position: relative;
+  bottom: 0;
+}
+#meetUs .show-more-content{
+  display: block;
+  column-count: 2;
+  column-rule-style: solid;
+  column-rule-width: 1px;
+  column-rule-color: grey;
+  column-width: 100px;
+  column-gap: 40px;
+}
+#meetUs .bio-question {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+#meetUs .bio-answer {
+  font-style: italic;
+}
+#meetUs .q-a{
+  page-break-inside: avoid;
+  line-height: 1.5em
+}
+#meetUs .bio-profile-text{
+
+}
+#meetUs hr {
+  height: 1px;
+  background-color: grey;
+}
+#meetUs a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
 }

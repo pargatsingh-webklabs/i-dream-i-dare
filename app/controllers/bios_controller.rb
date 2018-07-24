@@ -5,12 +5,19 @@ class BiosController < ApplicationController
   layout "signed-in" # Layout Default
 
   # GET /bios/meet_us
-  def meet_us # THIS IS A PUBLIC-FACING VIEW. LAYOUT RENDERS AS BELOW:
-    @bios = Bio.where(:profile_active => true)
-    @bio_users = []
+  def meet_us
+    @active_bios = Bio.where(:profile_active => true)
+    @active_bio_questions = BioQuestion.where(:active => true).order(:question_order_by)
 
-    @bios.each do |bio|
-      @bio_users << User.find(bio.user_id)
+    @active_bio_question_ids = []
+    @active_bio_questions.each do |b|
+      @active_bio_question_ids << b.id
+    end
+    @active_bio_answers = BioAnswer.where(:bio_question_id => @active_bio_question_ids)
+
+    @active_bio_users = []
+    @active_bios.each do |bio|
+      @active_bio_users << User.find(bio.user_id)
     end
     render layout: "application"
   end
