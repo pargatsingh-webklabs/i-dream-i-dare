@@ -2,11 +2,8 @@
 <%= stylesheet_link_tag("application") %>
 <hr />
 
-<!-- @active_bios - Collection of BIOs
-     @active_bio_questions - Collection of BIOQUESTIONs
-      @active_bio_question_ids - Collection of IDs
-      @active_bio_answers - Collection of BIOANSWERs
-      @active_bio_users - Collection of USERs -->
+
+
 <div class="container" id="meetUs">
   <% @active_bios.each do |bio| %> 
     <div class="bio_coach_profile">
@@ -44,18 +41,20 @@
         </div>
           
         <div id="show-more-content_<%= bio.id %>" class="show-more-content" style="display:none;">
+          <% @users_bio_answers = @active_bio_answers.where("user_id = ?", bio.user_id) %>
           <% @active_bio_questions.each do |ques| %>
-            <% if (ques.id > 0) %>
+            <% a = @users_bio_answers.find_by_bio_question_id(ques.id) %>
+            
+            <% if (ques.id > 0 && a != nil) %>
               <hr />
               <div class="q-a">
                 <div class="bio-question">
                   <%= ques.question_text.html_safe %>
                 </div>
                 <div class="bio-answer" %>
-                  <% a = @active_bio_answers.find_by_bio_question_id(ques.id) %>
                   <%= a.answer_text.html_safe %>
                 </div>
-            </div>
+              </div>
             <% end %>
           <% end %>
         </div>
