@@ -2,8 +2,6 @@
 <%= stylesheet_link_tag("application") %>
 <hr />
 
-
-
 <div class="container" id="meetUs">
   <% @active_bios.each do |bio| %> 
     <div class="bio_coach_profile">
@@ -34,20 +32,24 @@
             <br />
             Expertise: <%= bio.expertise %>
             <br />
-            <a id="more-content_<%= bio.id %>" class="show-more-button">
-              <div class="glyphicon glyphicon-plus-sign"></div> Show more
-            </a>
+
+            <% @users_bio_answers = @active_bio_answers.where("user_id = ?", bio.user_id) %>
+
+            <% if (@users_bio_answers.count > 0) %>
+              <a id="more-content_<%= bio.id %>" class="show-more-button">
+                <div class="glyphicon glyphicon-plus-sign"></div> Show more
+              </a>
+            <% end %>
           </div>
         </div>
           
         <div id="show-more-content_<%= bio.id %>" class="show-more-content" style="display:none;">
-          <% @users_bio_answers = @active_bio_answers.where("user_id = ?", bio.user_id) %>
           <% @active_bio_questions.each do |ques| %>
             <% a = @users_bio_answers.find_by_bio_question_id(ques.id) %>
             
             <% if (ques.id > 0 && a != nil) %>
-              <hr />
               <div class="q-a">
+                <hr />
                 <div class="bio-question">
                   <%= ques.question_text.html_safe %>
                 </div>
