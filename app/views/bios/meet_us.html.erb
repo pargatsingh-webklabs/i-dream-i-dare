@@ -4,13 +4,13 @@
 
 <div class="container" id="meetUs">
   <% @active_bios.each do |bio| %> 
-    <div class="bio_coach_profile">
+    <div class="bio_coach_profile col-sm-12">
 
-      <div class="pic" style="margin-bottom: 75px;">
-        <img src="<%=bio.profile_image%>" class="img-rounded" height="350px" alt="/assets/branding/DreamCatcherLogo01.png">
+      <div class="bio-pic col-sm-8">
+        <img src="<%=bio.profile_image%>" class="img-rounded" style="max-width:100%;height:auto;" alt="/assets/branding/DreamCatcherLogo01.png">
       </div>
 
-      <div class="profile-body">
+      <div class="profile-body col-sm-4">
         <div class="name">
           <%= @active_bio_users.select{|u| u.id == bio.user_id}[0].first_name %> 
           <%= @active_bio_users.select{|u| u.id == bio.user_id}[0].last_name %> 
@@ -42,7 +42,8 @@
             <% end %>
           </div>
         </div>
-          
+      </div>
+        <div class="col-sm-12"  
         <div id="show-more-content_<%= bio.id %>" class="show-more-content" style="display:none;">
           <% @active_bio_questions.each do |ques| %>
             <% a = @users_bio_answers.find_by_bio_question_id(ques.id) %>
@@ -59,11 +60,9 @@
               </div>
             <% end %>
           <% end %>
-        </div>
-        
       </div>
     </div>
-    <hr />
+    <div class="profile-body col-sm-12" style="margin-top:1px;"></div>
     <% end %>
 </div>
 
