@@ -436,16 +436,44 @@ class DashboardController < ApplicationController
     end
   end
 
+  def admin_toggle_active
+    if current_user.is_an_admin? 
+      @user = User.find_by_id(params[:target_user_id])
+      if @user.is_active == true || @user.is_active == nil
+        @user.update_attribute :is_active, false
+      else 
+        @user.update_attribute :is_active, true
+      end
+      redirect_to("/")
+    else 
+      redirect_to("/")
+    end
+  end
+
+  def admin_toggle_deleted
+    if current_user.is_an_admin? 
+      @user = User.find_by_id(params[:target_user_id])
+      if @user.is_deleted == true || @user.is_deleted == nil
+        @user.update_attribute :is_deleted, false
+      else 
+        @user.update_attribute :is_deleted, true
+      end
+      redirect_to("/")
+    else 
+      redirect_to("/")
+    end
+  end
+
   def get_all_admin_messages
     @all_admin_messages = AdminMessage.all
   end
 
   def get_all_coaches
-    @all_coaches = User.where(:is_a_coach => true)
+    @all_coaches = User.where(:is_a_coach => true, :is_active => true, :is_deleted => false)
   end
 
   def get_all_clients 
-    @all_clients = User.where(:is_a_coach => false, :is_an_admin => false)
+    @all_clients = User.where(:is_a_coach => false, :is_an_admin => false, :is_active => true, :is_deleted => false)
   end
 
   def get_all_mentorships
@@ -466,10 +494,11 @@ class DashboardController < ApplicationController
 
   # ADMIN ACTION ONLY!
   def get_all_users
-    @admins = User.where(:is_an_admin => true).order('first_name, last_name')
-    @coaches = User.where("is_a_coach = ? AND is_an_admin = ?", *[true, false]).order('first_name, last_name')
-    @users = User.where("is_a_coach = ? AND is_an_admin = ?", *[false, false]).order('first_name, last_name')
+    @admins = User.where(:is_an_admin => true, :is_active => true, :is_deleted => false).order('first_name, last_name')
+    @coaches = User.where(:is_an_admin => false, :is_a_coach => true, :is_active => true, :is_deleted => false).order('first_name, last_name')
+    @users = User.where(:is_an_admin => false, :is_a_coach => false, :is_active => true, :is_deleted => false).order('first_name, last_name')
     @users_to_confirm = User.where(:is_a_coach => nil).order('first_name, last_name')
+    @deleted_users = User.where(:is_deleted => true).order('first_name, last_name')
   end
 
 end

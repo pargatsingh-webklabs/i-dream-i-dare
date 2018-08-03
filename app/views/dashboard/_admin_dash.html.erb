@@ -17,6 +17,12 @@
       <th>
         Admin?
       </th>
+      <th>
+        Active?
+      </th>
+      <th>
+        Deleted?
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -37,6 +43,12 @@
           </th>
           <th>
             <%= u.is_an_admin %>   <a href="/toggle_admin/<%= u.id %>"><button>Toggle</button></a>
+          </th>
+          <th>
+            <%= u.is_active %>   <a href="/toggle_active/<%= u.id %>"><button>Toggle</button></a>
+          </th>
+          <th>
+            <%= u.is_deleted %>   <a href="/toggle_deleted/<%= u.id %>"><button>Toggle</button></a>
           </th>
         </tr> 
       <% end %>
@@ -68,6 +80,12 @@
       <th>
         Admin?
       </th>
+      <th>
+        Active?
+      </th>
+      <th>
+        Deleted?
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -88,6 +106,12 @@
           </th>
           <th>
             <%= u.is_an_admin %>   <a href="/toggle_admin/<%= u.id %>"><button>Toggle</button></a>
+          </th>
+          <th>
+            <%= u.is_active %>   <a href="/toggle_active/<%= u.id %>"><button>Toggle</button></a>
+          </th>
+          <th>
+            <%= u.is_deleted %>   <a href="/toggle_deleted/<%= u.id %>"><button>Toggle</button></a>
           </th>
         </tr> 
       <% end %>
@@ -114,6 +138,12 @@
       <th>
         Admin?
       </th>
+      <th>
+        Active?
+      </th>
+      <th>
+        Deleted?
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -135,6 +165,12 @@
           <th>
             <%= u.is_an_admin %>   <a href="/toggle_admin/<%= u.id %>"><button>Toggle</button></a>
           </th>
+          <th>
+            <%= u.is_active %>   <a href="/toggle_active/<%= u.id %>"><button>Toggle</button></a>
+          </th>
+          <th>
+            <%= u.is_deleted %>   <a href="/toggle_deleted/<%= u.id %>"><button>Toggle</button></a>
+          </th>
         </tr> 
       <% end %>
     <% end %>
@@ -142,7 +178,7 @@
 </table>
 <h1>Users To Confirm (Toggle "Admin" FIRST)</h1>
 <div style="color:red;">
-  [Right now, we need to click the Toggle button on both "Coach" and "Admin" permissions to approve the user's membership. Before this step, they will not see anything on their dashboard. Toggling both permissions will result in both being set to False; then you may approve them for coach or admin priviliges]
+  [Right now, we need to click the Toggle button on both "Coach" and "Admin" permissions to approve the user's membership. Before this step, they will not see anything on their dashboard. Toggling both permissions will result in both being set to False; then you may approve them for coach or admin priviliges. Note: This will also need to be done if the user needs to be deleted without approval. Set both permissions to False, THEN toggle the Is Deleted property.]
 </div>
 <table class="table table-bordered table-striped" >
   <thead>
@@ -161,6 +197,12 @@
       </th>
       <th>
         Admin?
+      </th>
+      <th>
+        Active?
+      </th>
+      <th>
+        Deleted?
       </th>
     </tr>
   </thead>
@@ -182,6 +224,55 @@
           </th>
           <th>
             <%= u.is_an_admin %>   <a href="/toggle_admin/<%= u.id %>"><button>Toggle</button></a>
+          </th>
+          <th>
+            <%= u.is_active %>   <a href="/toggle_active/<%= u.id %>"><button>Toggle</button></a>
+          </th>
+          <th>
+            <%= u.is_deleted %>   <a href="/toggle_deleted/<%= u.id %>"><button>Toggle</button></a>
+          </th>
+        </tr> 
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<h1>Deleted Users</h1>
+<div style="color:red;">
+  [Toggling the Is Deleted property to True will place the user into the below table. Toggling Deleted to False will place the user into its proper table above for further edits. "Deleting" a user is essentially the same as making a user inactive, but a Deleted user will remain out of the way, and so is intended for more permanent removals. Note that neither status change will result in the actual destruction of records.]
+</div>
+<table class="table table-bordered table-striped" >
+  <thead>
+    <tr>
+      <th>
+        Id
+      </th>
+      <th>
+        Name
+      </th>
+      <th>
+        Email
+      </th>
+      <th>
+        Deleted?
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @deleted_users != nil %>
+      <% @deleted_users.each do |u| %>
+        <tr>
+          <th>
+            <%= u.id %>
+          </th>
+          <th>
+            <%= u.first_name %> <%= u.last_name %>
+          </th>
+          <th>
+            <%= u.email %>
+          </th>
+          <th>
+            <%= u.is_deleted %>   <a href="/toggle_deleted/<%= u.id %>"><button>Toggle</button></a>
           </th>
         </tr> 
       <% end %>

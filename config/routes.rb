@@ -53,6 +53,8 @@ Rails.application.routes.draw do
 
   get "/toggle_coach/:target_user_id" => "dashboard#admin_toggle_coach_permissions"
   get "/toggle_admin/:target_user_id" => "dashboard#admin_toggle_admin_permissions"
+  get "/toggle_active/:target_user_id" => "dashboard#admin_toggle_active"
+  get "/toggle_deleted/:target_user_id" => "dashboard#admin_toggle_deleted"
   get "/activate_user/:target_user_id" => "dashboard#admin_activate_user"
 
   get "/" => "dashboard#view"
