@@ -26,20 +26,28 @@
           <div class=bio-profile-text">
             <%= bio.profile_text %>
           </div>
-          <% @users_bio_answers = @active_bio_answers.where("user_id = ?", bio.user_id) %>
-          <% if (@users_bio_answers.count > 0) %>
           <div class="style-expertise-show-more-link">
             <hr />
-            Style: <%= bio.style_text %>
-            <br />
-            Expertise: <%= bio.expertise %>
-            <br />
 
+            <% if bio.style_text != "" %>
+              Style: <%= bio.style_text %>
+              <br />
+            <end>
+
+            <% if bio.expertise != "" %>
+              Expertise: <%= bio.expertise %>
+              <br />
+            <end>
+
+            <% @users_bio_answers = @active_bio_answers.where("user_id = ?", bio.user_id) %>
+
+            <% if (@users_bio_answers.count > 0) %>
               <a id="more-content_<%= bio.id %>" class="show-more-button">
                 <div class="glyphicon glyphicon-plus-sign"></div> Show more
               </a>
+            <% end %>
+            
           </div>
-          <% end %>
         </div>
       </div>
         <div class="col-sm-12"  
