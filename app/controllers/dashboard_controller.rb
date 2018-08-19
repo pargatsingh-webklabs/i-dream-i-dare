@@ -289,6 +289,7 @@ class DashboardController < ApplicationController
 
   def get_random_quote
     @quote = Quote.where(:id => rand(1..(Quote.all.count)))[0]
+    
   end
 
 # //////////////////////////////////////////////////////
