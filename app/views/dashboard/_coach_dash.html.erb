@@ -4,16 +4,22 @@
 
 <div class="flex-box">
 
-  <div class="container content-field row" id="coachDashHeadline">
-    <% if @coachDashHeadLine != nil && @coachDashHeadLine != ""%>
-      <%= raw @coachDashHeadLine.value %>
+  <% if @coachDashHeadLine != nil && @coachDashHeadLine.value != "" %>
+      <div class="panel panel-default">
+        <%= raw @coachDashHeadLine.value %>
+      </div>
     <% else %>
-      <% if @quote != nil && @quote.body != nil && @quote.author != nil %>
-        <%= raw @quote.body %>
-        <%= @quote.author %>
-      <% end %>
+      <div class="panel panel-default" id="dashQuote">
+        <% if @quote != nil && @quote.body != nil && @quote.author != nil %>
+          <div class="quote-body">
+            <%= raw @quote.body %>
+          </div>
+          <div class="quote-author">
+            - <%= @quote.author %>
+          </div>
+        <% end %>
+      </div>
     <% end %>
-  </div>
 
   <div class="container">
     <div class="col-md-2" style="float: left;">
