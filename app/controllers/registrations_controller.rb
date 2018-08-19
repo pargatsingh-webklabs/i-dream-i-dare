@@ -12,6 +12,7 @@ class RegistrationsController < Devise::RegistrationsController
   before_filter :admin_or_current_user, only: [:show, :index, :destroy]
 
   protected
+  
     def after_sign_up_path_for(resource)
       signed_in_root_path(resource)
     end

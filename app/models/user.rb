@@ -10,19 +10,20 @@ class User < ActiveRecord::Base
   def full_name
     "#{first_name} #{last_name}"
   end
- private
+
+  private
 
    def set_default_permissions
 
     # TODO: needs debugging:
-    
       self.is_a_coach = false
       self.is_an_admin = false
 
    end    
-   
-  # if current_user.try(:admin?)
-  # # do something
-  # end
-
+  
+  # ensure user account is active  
+  def active_for_authentication?  
+    self.is_active  
+  end  
+  
 end

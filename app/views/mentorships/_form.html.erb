@@ -13,11 +13,11 @@
   <div class="row">
     <div class="dropdown">
       <%= f.label :coach %><br>
-      <%= f.collection_select :coach, @all_coaches, :id, :first_name, include_blank: true %>
+      <%= f.collection_select :coach, @all_coaches.select { |u| u.is_active == true }, :id, :first_name, include_blank: true %>
     </div>
     <div class="dropdown">
       <%= f.label :client %><br>
-      <%= f.collection_select :client, @all_clients, :id, :first_name, include_blank: true %>
+      <%= f.collection_select :client, @all_clients.select { |u| u.is_active == true }, :id, :first_name, include_blank: true %>
     </div>
   </div>
     <div class="actions">

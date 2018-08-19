@@ -12,8 +12,9 @@ Rails.application.routes.draw do
       post 'create_alert'
     end
   end
+
   resources :images, only: [:new, :create, :index, :edit, :update]
-  
+
   get "/bios/meet_us" => "bios#meet_us"
   
   # resources :notification_preferences

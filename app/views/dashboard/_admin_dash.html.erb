@@ -28,7 +28,8 @@
   <tbody>
     <% if @admins != nil %>
       <% @admins.each do |u| %>
-        <tr>
+        <tr class="<%= u.is_active? ? '' : 'inactive_user' %>">
+
           <th>
             <%= u.id %>
           </th>
@@ -91,7 +92,7 @@
   <tbody>
     <% if @coaches != nil %>
       <% @coaches.each do |u| %>
-        <tr>
+        <tr class="<%= u.is_active? ? '' : 'inactive_user' %>">
           <th>
             <%= u.id %>
           </th>
@@ -149,7 +150,7 @@
   <tbody>
     <% if @users != nil %>
       <% @users.each do |u| %>
-        <tr>
+        <tr class="<%= u.is_active? ? '' : 'inactive_user' %>">
           <th>
             <%= u.id %>
           </th>

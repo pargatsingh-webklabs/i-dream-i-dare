@@ -469,11 +469,11 @@ class DashboardController < ApplicationController
   end
 
   def get_all_coaches
-    @all_coaches = User.where(:is_a_coach => true, :is_active => true, :is_deleted => false)
+    @all_coaches = User.where(:is_a_coach => true, :is_active => true)
   end
 
   def get_all_clients 
-    @all_clients = User.where(:is_a_coach => false, :is_an_admin => false, :is_active => true, :is_deleted => false)
+    @all_clients = User.where(:is_a_coach => false, :is_an_admin => false, :is_active => true)
   end
 
   def get_all_mentorships
@@ -494,9 +494,9 @@ class DashboardController < ApplicationController
 
   # ADMIN ACTION ONLY!
   def get_all_users
-    @admins = User.where(:is_an_admin => true, :is_active => true, :is_deleted => false).order('first_name, last_name')
-    @coaches = User.where(:is_an_admin => false, :is_a_coach => true, :is_active => true, :is_deleted => false).order('first_name, last_name')
-    @users = User.where(:is_an_admin => false, :is_a_coach => false, :is_active => true, :is_deleted => false).order('first_name, last_name')
+    @admins = User.where(:is_an_admin => true, :is_deleted => false).order('is_active desc, first_name, last_name') # Removed :is_active => true for just admin users' view
+    @coaches = User.where(:is_an_admin => false, :is_a_coach => true, :is_deleted => false).order('is_active desc, first_name, last_name') # Removed :is_active => true for just admin users' view
+    @users = User.where(:is_an_admin => false, :is_a_coach => false, :is_deleted => false).order('is_active desc, first_name, last_name') # Removed :is_active => true for just admin users' view
     @users_to_confirm = User.where(:is_a_coach => nil).order('first_name, last_name')
     @deleted_users = User.where(:is_deleted => true).order('first_name, last_name')
   end
