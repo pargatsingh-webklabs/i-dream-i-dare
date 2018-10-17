@@ -29,6 +29,9 @@ Rails.application.routes.draw do
   resources :bio_questions
   resources :bio_answers
   resources :bios
+  resources :resources
+  resources :resource_types
+  
   devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'registrations'}
 
   root to: "dashboard#view"

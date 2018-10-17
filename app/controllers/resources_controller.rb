@@ -1,5 +1,8 @@
 class ResourcesController < ApplicationController
   before_action :set_resource, only: [:show, :edit, :update, :destroy]
+  before_filter :admin_user, only: [:index, :destroy, :edit, :update, :new]
+
+  layout "signed-in" # Layout Default
 
   # GET /resources
   def index
@@ -46,6 +49,10 @@ class ResourcesController < ApplicationController
   end
 
   private
+    def admin_user
+      redirect_to 'index' unless current_user != nil && current_user.is_an_admin?
+    end
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_resource
       @resource = Resource.find(params[:id])

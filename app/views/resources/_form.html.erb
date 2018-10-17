@@ -2,7 +2,6 @@
   <% if @resource.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@resource.errors.count, "error") %> prohibited this resource from being saved:</h2>
-
       <ul>
       <% @resource.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,6 +9,15 @@
       </ul>
     </div>
   <% end %>
+
+
+  <div style="color:red">Resource Type IDs are below:
+    <br />2 - Link
+    <br />3 - File
+    <br />4 - Note
+    <br />5 - Image
+    <br />
+  </div>
 
   <div class="field">
     <%= f.label :title %><br>

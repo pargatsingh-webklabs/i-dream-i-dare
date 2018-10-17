@@ -1,8 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Resources</h1>
+<h1>Resources</h1>
+<div style="color:red">This will be enhanced to include create, edit, view capabilities for coaches. For now, this is an admin-only area. The Resource Type IDs are below:
+  <br />2 - Link
+  <br />3 - File
+  <br />4 - Note
+  <br />5 - Image
+</div>
+<hr>
+<p>
+  <button>
+    <%= link_to 'New Resource', new_resource_path %>
+  </button>
+</p>
 
-<table>
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th>Title</th>
@@ -36,4 +48,4 @@
 
 <br>
 
-<%= link_to 'New Resource', new_resource_path %>
+
