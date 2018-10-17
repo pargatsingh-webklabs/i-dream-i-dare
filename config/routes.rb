@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :resources
   resources :quotes
   Shrine.plugin :upload_endpoint
 
