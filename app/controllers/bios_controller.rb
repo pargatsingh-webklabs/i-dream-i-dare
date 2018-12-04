@@ -18,6 +18,7 @@ class BiosController < ApplicationController
     @active_bio_users = []
     @active_bios.each do |bio|
       @active_bio_users << User.find(bio.user_id)
+    @active_book_resources = BookResource.where(active: true)
     end
     render layout: "application"
   end

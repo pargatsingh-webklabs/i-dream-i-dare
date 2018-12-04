@@ -2,6 +2,7 @@
 
 ruby "2.5.1"
 
+gem 'rubyzip'
 gem 'trix'
 gem 'aws-sdk', '~> 3'
 gem 'heroku-postgres'

@@ -27,7 +27,22 @@
   </body>
   <%= javascript_include_tag "application" %>
   <%= render "css_overrides" %>
+  <script type="text/javascript">
 
+    $(document).ready(function() {
+          $("#book-resource-form").css({'display': 'none'});
+          
+          $('#expand-book-resource-form').click(function() {
+
+                  $("#book-resource-form").fadeIn("slow");
+          })
+          $('#collapse-book-resource-form').click(function() {
+            
+                  $("#book-resource-form").fadeOut("slow");
+          })
+
+    });
+  </script>
 <footer style="margin-top: 100px;">
   <center>
     2018, Dream Catcher LLC

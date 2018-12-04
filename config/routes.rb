@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :book_resources
   resources :resources
   resources :quotes
   Shrine.plugin :upload_endpoint
@@ -49,6 +50,7 @@ Rails.application.routes.draw do
   post "/alerts/send_notifications/:event/:createdModelId" => "alerts#send_notifications"
 
   get "/landing_page" => "admin_messages#landing_page"
+  get "/download_book_resources" => "admin_messages#download_book_resources"
   get "/blog" => "home#blog"
 
   get "/user/dashboard" => "dashboard#view"

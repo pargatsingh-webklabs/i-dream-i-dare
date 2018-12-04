@@ -57,11 +57,10 @@ a {
   font-weight: 400;
 }
 .whole-page {
-  background-image: url(asset-path("cloud_and_sun_bright.png"));
+  background-image: url(asset-path("cloud_and_sun_lightened_04.png"));
   background-attachment: fixed;
   background-repeat: none;
   background-size: cover;
-  text-align: center;
 }
 .date {
   font-size: 1.0em;
@@ -103,13 +102,11 @@ a {
 .landing-page-branding {
   font-size: 4em; 
 }
-.landing-text-center-strong {
-  text-align: center;
+.landing-text-center {
   padding-top: 60px;
-  font-size: 1.8em;
+  text-align: center;
 }
 .landing-text-body {
-  text-align: center;
   font-size: 1.5em;
   padding-left: 20%;
   padding-right: 20%;

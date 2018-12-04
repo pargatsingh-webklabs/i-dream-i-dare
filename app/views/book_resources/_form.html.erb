@@ -1,0 +1,37 @@
+<%= form_for(@book_resource) do |f| %>
+  <% if @book_resource.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@book_resource.errors.count, "error") %> prohibited this book_resource from being saved:</h2>
+
+      <ul>
+      <% @book_resource.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :active %><br>
+    <%= f.check_box :active %>
+  </div>
+  <div class="field">
+    <%= f.label :path %><br>
+    <div style="color:red">"Path" is not an editable field. It is set to a default value, as it pulls files directly from the server.</div>
+    <%= f.text_area :path, :readonly => true, cols: "50", rows: "1"  %> 
+  </div>
+   <div class="field">
+    <%= f.label :file_name %><br>
+    <div style="color:red">"Filename" is not an editable field. It is set when user selects a file from their machine. The file will need to be renamed, then re-uploaded, to change this.</div>
+    <%= f.text_area :file_name, cols: "50", rows: "1" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :file %><br>
+    <div style="color:red">...TEST...</div>
+    <%= f.file_field :file, cols: "50", rows: "1" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

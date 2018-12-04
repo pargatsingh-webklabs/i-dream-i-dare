@@ -11,7 +11,7 @@
   <% end %>
 
 
-  <div style="color:red">Resource Type IDs are below:
+  <div style="color:red;">Resource Type IDs are below:
     <br />2 - Link
     <br />3 - File
     <br />4 - Note
@@ -26,6 +26,9 @@
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>
+  </div>
+  <div style="color:red;">
+    Note: If this is a link or a file, you will need to use the ENTIRE url below (example: Use "http://www.google.com/" instead of just "Google") for it to be displayed and to function properly throughout the site.
   </div>
   <div class="field">
     <%= f.label :resource_string %><br>

@@ -1,3 +1,5 @@
+require 'zip'
+
 class AdminMessagesController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:root_path]
   before_action :set_admin_message, only: [:show, :edit, :update, :destroy]
@@ -13,8 +15,68 @@ class AdminMessagesController < ApplicationController
     @month = time.month
     @day_number = time.day
     @year = time.year
+
+    @active_book_resources = BookResource.where(active: true)
+
     @admin_message = AdminMessage.new
+
     render layout: "application"
+  end
+
+  def download_book_resources
+    
+    # Identify our book resources
+
+    active_book_resources = BookResource.where(active: true)
+
+    # Create a zipfile
+    filename = 'Dream_Dare_Resources.zip'
+    temp_file = Tempfile.new(filename)
+ 
+    begin
+
+      #Initialize the temp file as a zip file
+      Zip::OutputStream.open(temp_file) { |zos| }
+     
+      #Add files to the zip file as usual
+      Zip::File.open(temp_file.path, Zip::File::CREATE) do |zip|
+
+        active_book_resources.each do |res|
+        
+        # Adding static files
+        # zip.add("Compelling Vision Worksheet PDF.pdf", "app/assets/bookresources/Compelling Vision Worksheet PDF.pdf")
+        # zip.add("Coaching Contract (with tips) PDF.pdf", "app/assets/bookresources/Coaching Contract (with tips) PDF.pdf")
+        
+        # Put files in here - See above examples for formatting the contents of file_name and path fields
+        zip.add(res.file_name, res.path)
+
+        end
+
+      end
+     
+      #Read the binary data from the file
+      zip_data = File.read(temp_file.path)
+     
+      #Send the data to the browser as an attachment
+      #We do not send the file directly because it will
+      #get deleted before rails actually starts sending it
+      send_data(zip_data, :type => 'application/zip', :filename => filename)
+    ensure
+      #Close and delete the temp file
+      temp_file.close
+      temp_file.unlink
+    end
+
+    # --------------------------
+
+    # This works, but only sends one file (Use this method for the single d/l buttons).
+    # @active_book_resources.each do |r|
+    
+      # SINGLE FILE SEND:
+      # send_file(File.join("app/assets/bookresources/", "Compelling Vision Worksheet PDF.pdf"))
+
+    # end
+
   end
 
   # GET /admin_messages
