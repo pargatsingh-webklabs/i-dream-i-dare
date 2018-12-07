@@ -24,7 +24,7 @@ class AdminMessagesController < ApplicationController
   end
 
   def download_book_resources
-    
+
     # Identify our book resources
 
     active_book_resources = BookResource.where(active: true)
@@ -46,9 +46,8 @@ class AdminMessagesController < ApplicationController
         # Adding static files
         # zip.add("Compelling Vision Worksheet PDF.pdf", "app/assets/bookresources/Compelling Vision Worksheet PDF.pdf")
         # zip.add("Coaching Contract (with tips) PDF.pdf", "app/assets/bookresources/Coaching Contract (with tips) PDF.pdf")
-        
-        # Put files in here - See above examples for formatting the contents of file_name and path fields
-        zip.add(res.file_name, res.path)
+
+        zip.add(res.file_name, res.path + res.file_name)
 
         end
 

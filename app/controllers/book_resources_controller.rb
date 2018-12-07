@@ -18,16 +18,7 @@ class BookResourcesController < ApplicationController
 
     # Add defaults
     @book_resource.active = true
-    @book_resource.path = 'public/upload/'
     render layout: "signed-in"
-  end
-
-  def upload
-    binding.pry
-  uploaded_io = params[:file]
-    File.open(Rails.root.join('public/upload/', uploaded_io.original_filename), 'wb') do |file|
-      file.write(uploaded_io.read)
-    end
   end
 
   # GET /book_resources/1/edit
@@ -39,11 +30,17 @@ class BookResourcesController < ApplicationController
   def create
     @book_resource = BookResource.new(book_resource_params)
 
+    uploaded_io = params[:book_resource][:file]
+    File.open(Rails.root.join('public/upload/', uploaded_io.original_filename), 'wb') do |file|
+      file.write(uploaded_io.read)
+    end
+
+     @book_resource.path = 'public/upload/'
+     @book_resource.file_name = params[:book_resource][:file].original_filename
+     
     if @book_resource.save
-      binding.pry
       redirect_to @book_resource, notice: 'Book resource was successfully created.'
     else
-      binding.pry
       render layout: "signed-in"
     end
   end

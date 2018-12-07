@@ -35,7 +35,6 @@ class MessagesController < ApplicationController
         alerts.request = request
         alerts.response = response
         alerts.send_notifications("msg_received", id)
-binding.pry
       redirect_to "/user/dashboard/#{@message.to}", notice: 'Message was successfully created.'
     else
       render :new

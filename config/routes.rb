@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   resources :bios
   resources :resources
   resources :resource_types
+  resources :book_resources
   
   devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'registrations'}
 
