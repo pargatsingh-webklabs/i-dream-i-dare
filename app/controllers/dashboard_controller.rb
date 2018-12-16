@@ -230,8 +230,15 @@ class DashboardController < ApplicationController
     redirect_to "/landing_page" unless user_signed_in?
     # Note: We have ACCESS to params[:active_user_id], if used, from the view.
     #////////All Users
+    if user_signed_in? && current_user.is_super_admin?
+      get_random_quote
+      get_user_messages
+      get_new_message
+      get_new_plan
+      get_all_companies_and_new_signups
+      render layout: "super-admin"
 
-    if user_signed_in?
+    elsif user_signed_in?
       get_random_quote
       get_user_messages
       get_new_message
@@ -263,6 +270,11 @@ class DashboardController < ApplicationController
 
  # //////////////////////////////////////////////////////
 
+# ///////////////////// SUPER ADMIN Users:
+  def get_all_companies_and_new_signups
+    @all_companies = Company.all
+    @users_to_assign_to_company = User.where (:company_id == nil)
+  end
 #//////////////All Users:
 
   def get_user_messages

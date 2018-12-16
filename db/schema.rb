@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181122035019) do
+ActiveRecord::Schema.define(version: 20181216211203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,16 @@ ActiveRecord::Schema.define(version: 20181122035019) do
     t.datetime "updated_at", null: false
     t.string   "path"
     t.string   "file_name"
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string   "logo_path"
+    t.string   "name"
+    t.text     "description"
+    t.string   "logo_filename"
+    t.boolean  "active"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "content_fields", force: :cascade do |t|
@@ -202,6 +212,8 @@ ActiveRecord::Schema.define(version: 20181122035019) do
     t.integer  "sms_phone_number",       limit: 8
     t.boolean  "is_active"
     t.boolean  "is_deleted"
+    t.boolean  "is_super_admin"
+    t.integer  "company_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

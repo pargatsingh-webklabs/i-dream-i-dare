@@ -11,14 +11,12 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
-  private
-
    def set_default_permissions
 
     # TODO: needs debugging:
       self.is_a_coach = false
       self.is_an_admin = false
-
+      self.is_super_admin = false
    end    
   
   # ensure user account is active  

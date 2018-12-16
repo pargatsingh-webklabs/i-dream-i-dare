@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :companies
   resources :book_resources
   resources :resources
   resources :quotes

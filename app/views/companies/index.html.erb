@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Companies</h1>
+<div style="color:red">
+  Once you add a Company, it will be available to log into by logging onto the site as a SuperAdmin (This means only Nash and the dev team) and selecting a company. The SuperAdmin may also Add, Edit and Delete Companies. The "Dream" Company is our first Company, so it has all the users as of right now. Within each site, the SuperAdmin is able to add and change permissions for users (Nash will need to designate at least one Admin user for each Company, so they can manage their own users and content independently). The SuperAdmin is a designation for only one user, as they will have access to ALL data for ALL companies and users.  
+</div>
+
+<hr>
+<p>
+  <button>
+    <%= link_to 'New Company', new_company_path %>
+  </button>
+</p>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Active</th>
+      <th>Logo Path</th>
+      <th>Logo Filename</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @companies.each do |company| %>
+      <tr>
+        <td><%= company.id %></td>
+        <td><%= company.name %></td>
+        <td><%= company.description %></td>
+        <td><%= company.active %></td>
+        <td><%= company.logo_path %></td>
+        <td><%= company.logo_filename %></td>
+        <td><%= link_to 'Show', company %></td>
+        <td><%= link_to 'Edit', edit_company_path(company) %></td>
+        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
