@@ -40,6 +40,9 @@ Rails.application.routes.draw do
   root to: "dashboard#view"
   mount ImageUploader.upload_endpoint(:cache) => "/images/upload"
 
+  post "/assign_company_id/:target_user_id/:company_id" => "dashboard#super_admin_assign_company_id_to_new_user"
+  get "company_admin_login/:company_id" => "dashboard#super_admin_log_into_company"
+
   get "/images/index" => "images#index"
 
   get "/notification_preferences" => "notification_preferences#index"

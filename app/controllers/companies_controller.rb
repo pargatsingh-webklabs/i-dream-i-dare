@@ -46,7 +46,7 @@ class CompaniesController < ApplicationController
     redirect_to companies_url, notice: 'Company was successfully destroyed.'
   end
 
-  def admin_user
+  def super_admin_user
     redirect_to 'index' unless current_user != nil && current_user.is_super_admin?
   end
 

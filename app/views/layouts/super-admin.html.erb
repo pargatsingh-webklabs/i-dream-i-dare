@@ -53,20 +53,11 @@
       <h2 style="color:red; text-align: center;">SUPER ADMIN DASHBOARD</h2>
     </div>
     <div class="row" style="text-align: center;">
-      Here are our parameters:
-      @all_companies = Company.all
-
-      EXAMPLE:
-
-      Company 1 - Name - Description - Logo Image - Log Into this Company link - CRUD actions
-      Company 2 - Name - Description - Logo Image - Log Into this Company link - CRUD actions
-
-      @users_to_assign_to_company = User.where (:company_id == nil)
-
-
     </div>
-  <% end %>
   
+    <%= yield %>
+  
+  <% end %>
   
   </body>
 </html>

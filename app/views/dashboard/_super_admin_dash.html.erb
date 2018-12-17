@@ -1,0 +1,113 @@
+<h1>Companies</h1>
+
+    <% if @all_companies != nil %>
+      <p style="color:red;" style="text-align: left; margin:15px;">
+        Using a button from the list below will temporarily change your user's Company_ID.
+      </p>
+      <div class="stacked-login-button-list">
+        <% @all_companies.each do |c| %>
+          <a href="/company_admin_login/<%= c.id %>/">
+            <button class="stacked-login-button">
+              Log Into "<%= c.name %>" as an Admin User
+            </button>
+          </a>
+        <% end %>
+      </div>
+    <% end %>
+
+<table class="table table-bordered table-striped" >
+  <thead>
+    <tr>
+      <th>
+        Id
+      </th>
+      <th>
+        Name
+      </th>
+      <th>
+        Description
+      </th>
+      <th>
+        Logo Path
+      </th>
+      <th>
+        Logo Filename
+      </th>
+      <th>
+        Active?
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <% if @all_companies != nil %>
+      <% @all_companies.each do |c| %>
+        <tr class="<%= c.active? ? '' : 'inactive_table_row_item' %>">
+
+          <th>
+            <%= c.id %>
+          </th>
+          <th>
+            <%= c.name %>
+          </th>
+          <th>
+            <%= c.description %>
+          </th>
+          <th>
+            <%= c.logo_path %>
+          </th>
+          <th>
+            <%= c.logo_filename %>
+          </th>
+          <th>
+            <%= c.active %>   <a href="/company_toggle_active/<%= c.id %>"><button>Toggle</button></a>
+          </th>
+        </tr> 
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+  <hr>
+
+<h1>New Users</h1>
+    <p style="color:red;" style="text-align: left;">
+      These are the users that used the Sign Up link on the homepage. They will need to be assigned to a Company to be activated. Use the ID column above to assign a Company_ID to each new User.
+    </p>
+<table class="table table-bordered table-striped" >
+  <thead>
+    <tr>
+      <th>
+        Id
+      </th>
+      <th>
+        Name
+      </th>
+      <th>
+        Email
+      </th>
+      <th>
+        Company ID
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @users_to_assign_to_company != nil %>
+      <% @users_to_assign_to_company.each do |u| %>
+        <tr>
+          <th>
+            <%= u.id %>
+          </th>
+          <th>
+            <%= u.first_name %> <%= u.last_name %>
+          </th>
+          <th>
+            <%= u.email %>
+          </th>
+          <th>
+            <%= u.company_id %>   <a href="/assign_company_id/<%= u.id %>/PUT_THE_COMPANY_ID_HERE"><button>Assign</button></a>
+          </th>
+        </tr> 
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

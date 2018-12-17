@@ -231,12 +231,20 @@ class DashboardController < ApplicationController
     # Note: We have ACCESS to params[:active_user_id], if used, from the view.
     #////////All Users
     if user_signed_in? && current_user.is_super_admin?
-      get_random_quote
-      get_user_messages
-      get_new_message
-      get_new_plan
-      get_all_companies_and_new_signups
-      render layout: "super-admin"
+
+      # Check to see if the user wants to login under the current_user.company_id, OR to continue to the Super Admin dashboard
+      if 2 == 2
+        get_random_quote
+        get_user_messages
+        get_new_message
+        get_new_plan
+        render layout: "signed-in"
+
+      else
+        get_all_companies_and_new_signups
+        render layout: "super-admin"
+      
+      end
 
     elsif user_signed_in?
       get_random_quote
@@ -271,10 +279,27 @@ class DashboardController < ApplicationController
  # //////////////////////////////////////////////////////
 
 # ///////////////////// SUPER ADMIN Users:
+
   def get_all_companies_and_new_signups
     @all_companies = Company.all
     @users_to_assign_to_company = User.where (:company_id == nil)
   end
+
+  def super_admin_assign_company_id_to_new_user
+    u = User.find(params[:target_user_id])
+    u.company_id = params[:company_id]
+    u.save
+    binding.pry
+  end
+
+  def super_admin_log_into_company
+    u = User.find(current_user.id)
+    u.company_id = params[:company_id]
+    u.save
+    binding.pry
+    redirect_to("/")
+  end
+
 #//////////////All Users:
 
   def get_user_messages
@@ -482,11 +507,11 @@ class DashboardController < ApplicationController
   end
 
   def get_all_coaches
-    @all_coaches = User.where(:is_a_coach => true, :is_active => true)
+    @all_coaches = User.where(:is_a_coach => true, :is_active => true, :company_id => current_user.id, :is_super_admin => nil)
   end
 
   def get_all_clients 
-    @all_clients = User.where(:is_a_coach => false, :is_an_admin => false, :is_active => true)
+    @all_clients = User.where(:is_a_coach => false, :is_an_admin => false, :is_active => true, :company_id => current_user.id, :is_super_admin => nil)
   end
 
   def get_all_mentorships
@@ -507,11 +532,11 @@ class DashboardController < ApplicationController
 
   # ADMIN ACTION ONLY!
   def get_all_users
-    @admins = User.where(:is_an_admin => true, :is_deleted => false).order('is_active desc, first_name, last_name') # Removed :is_active => true for just admin users' view
-    @coaches = User.where(:is_an_admin => false, :is_a_coach => true, :is_deleted => false).order('is_active desc, first_name, last_name') # Removed :is_active => true for just admin users' view
-    @users = User.where(:is_an_admin => false, :is_a_coach => false, :is_deleted => false).order('is_active desc, first_name, last_name') # Removed :is_active => true for just admin users' view
-    @users_to_confirm = User.where(:is_a_coach => nil).order('first_name, last_name')
-    @deleted_users = User.where(:is_deleted => true).order('first_name, last_name')
+    @admins = User.where(:is_an_admin => true, :is_deleted => false, :company_id => current_user.id, :is_super_admin => nil).order('is_active desc, first_name, last_name') # Removed :is_active => true for just admin users' view
+    @coaches = User.where(:is_an_admin => false, :is_a_coach => true, :is_deleted => false, :company_id => current_user.id, :is_super_admin => nil).order('is_active desc, first_name, last_name') # Removed :is_active => true for just admin users' view
+    @users = User.where(:is_an_admin => false, :is_a_coach => false, :is_deleted => false, :company_id => current_user.id, :is_super_admin => nil).order('is_active desc, first_name, last_name') # Removed :is_active => true for just admin users' view
+    @users_to_confirm = User.where(:is_a_coach => nil, :company_id => current_user.id, :is_super_admin => nil).order('first_name, last_name')
+    @deleted_users = User.where(:is_deleted => true, :company_id => current_user.id, :is_super_admin => nil).order('first_name, last_name')
   end
 
 end
