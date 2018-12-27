@@ -3,7 +3,12 @@ class AlertsController < ApplicationController
   include SendGrid
   skip_before_filter :verify_authenticity_token
   skip_before_filter :authenticate_user!
- 
+
+  def send_email(body, to)
+    # Need to create this- see the User_Emailer controller
+    binding.pry
+  end
+
  # This comes from the event that triggers a notification (eg: Plan Created, Msg Sent, Grp Msg Sent, etc).
   def send_notifications(event, createdModelId)
     
@@ -94,10 +99,6 @@ class AlertsController < ApplicationController
       to: to,
       body: body
     )
-  end
-
-  def send_email(body, to)
-    # Need to create this
   end
 
   # ALL TRAFFIC FROM TWILIO (Text or Voice call) HITS HERE FIRST.

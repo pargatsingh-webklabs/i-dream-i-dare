@@ -1,5 +1,17 @@
 <html>
   <body>
-    <%= yield %>
+  	<div class="container" style="background-color:white; width:100%;">
+	  <a class="landing-page-branding" href="www.idreamidare.com">
+	  	
+	  	<!-- See the user_email_helper.rb for the below function -->
+	    <%= email_image_tag("branding/DreamCatcherLogo01.png") %>
+	  </a>
+  	  <div class="landing-page-spacer-30"></div>
+
+    	<%= yield %>
+    
+    </div>
   </body>
 </html>
+
+

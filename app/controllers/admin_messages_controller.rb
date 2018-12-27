@@ -55,7 +55,9 @@ class AdminMessagesController < ApplicationController
      
       #Read the binary data from the file
       zip_data = File.read(temp_file.path)
-     
+      
+      
+
       #Send the data to the browser as an attachment
       #We do not send the file directly because it will
       #get deleted before rails actually starts sending it
@@ -65,17 +67,6 @@ class AdminMessagesController < ApplicationController
       temp_file.close
       temp_file.unlink
     end
-
-    # --------------------------
-
-    # This works, but only sends one file (Use this method for the single d/l buttons).
-    # @active_book_resources.each do |r|
-    
-      # SINGLE FILE SEND:
-      # send_file(File.join("app/assets/bookresources/", "Compelling Vision Worksheet PDF.pdf"))
-
-    # end
-
   end
 
   # GET /admin_messages
