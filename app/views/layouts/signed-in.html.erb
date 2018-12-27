@@ -54,7 +54,7 @@
 </div>
 
 <body class="container">
-  <% if current_user.is_an_admin? %>
+  <% if current_user.is_an_admin? && current_user.is_super_admin? == false %>
     <div class="row">  
       <h2 style="color:red; float:left; margin-left:25%;">ADMIN DASHBOARD</h2>
       <ul class="dropdown" style="text-decoration:none; float:left;">
@@ -62,22 +62,36 @@
          <h4 style="margin:0px;">Navigate</h4></a>
         <ul id="g-account-menu" class="dropdown-menu" role="menu">
           <li><a href="/">Users</a></li>
-          <li><a href="/admin_messages">Admin Messages</a></li>
           <li><a href="/mentorships">Mentorships</a></li>
           <li><a href="/plans">Plans</a></li>
           <li><a href="/messages">User Messages</a></li>
           <li><a href="/groups">Groups</a></li>
           <li><a href="/content_fields">Content Fields</a></li>
-          <li><a href="/bios">Public Bios</a></li>
           <li><a href="/images">Images</a></li>
           <li><a href="/quotes">Quotes</a></li>
+          <li><a href="/resources">Resources</a></li>
+        </ul>
+      </ul>
+    </div>
+
+  <% elsif current_user.is_super_admin? %>
+
+    <div class="row">  
+      <h2 style="color:red; float:left; margin-left:25%;">SUPER ADMIN DASHBOARD</h2>
+      <ul class="dropdown" style="text-decoration:none; float:left;">
+        <a class="btn btn-default " role="button" data-toggle="dropdown" href="#">
+         <h4 style="margin:0px;">Navigate</h4></a>
+        <ul id="g-account-menu" class="dropdown-menu" role="menu">
+          <li><a href="/">New Users</a></li>
+          <li><a href="/admin_messages">Admin Messages</a></li>
+          <li><a href="/bios">Public Bios</a></li>
           <li><a href="/bio_questions">Bio Questions</a></li>
           <li><a href="/bio_answers">Bio Answers</a></li>
-          <li><a href="/resources">Resources</a></li>
           <li><a href="/book_resources">Book Resources</a></li>
         </ul>
       </ul>
     </div>
+
   <% end %>
   
   <!-- <div>SIGNED-IN LAYOUT RENDERED</div> -->

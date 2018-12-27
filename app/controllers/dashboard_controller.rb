@@ -231,7 +231,7 @@ class DashboardController < ApplicationController
     # Note: We have ACCESS to params[:active_user_id], if used, from the view.
     #////////All Users
     if user_signed_in? && current_user.is_super_admin?
-
+      binding.pry
       # Check to see if the user wants to login under the current_user.company_id, OR to continue to the Super Admin dashboard
       if 2 == 2
         get_random_quote
