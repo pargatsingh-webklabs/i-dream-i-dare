@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   end
 
   resources :images, only: [:new, :create, :index, :edit, :update]
+  resources :resource_requests, only: [:create]
 
   get "/bios/meet_us" => "bios#meet_us"
   
@@ -34,11 +35,14 @@ Rails.application.routes.draw do
   resources :resources
   resources :resource_types
   resources :book_resources
-  
+  resources :user_emailer
+
   devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'registrations'}
 
   root to: "dashboard#view"
   mount ImageUploader.upload_endpoint(:cache) => "/images/upload"
+
+  # post "user_emailer/send_book_resources/:email" => "user_emailer"
 
   post "/assign_company_id/:target_user_id/:company_id" => "dashboard#super_admin_assign_company_id_to_new_user"
   get "company_admin_login/:company_id" => "dashboard#super_admin_log_into_company"
@@ -57,6 +61,7 @@ Rails.application.routes.draw do
   get "/landing_page" => "admin_messages#landing_page"
   get "/download_book_resources" => "admin_messages#download_book_resources"
   get "/blog" => "home#blog"
+  get "/test" => "home#test"
 
   get "/user/dashboard" => "dashboard#view"
   get "/user/dashboard/:active_user_id" => "dashboard#view"

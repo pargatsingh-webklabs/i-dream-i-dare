@@ -231,7 +231,6 @@ class DashboardController < ApplicationController
     # Note: We have ACCESS to params[:active_user_id], if used, from the view.
     #////////All Users
     if user_signed_in? && current_user.is_super_admin?
-      binding.pry
       # Check to see if the user wants to login under the current_user.company_id, OR to continue to the Super Admin dashboard
       if 2 == 2
         get_random_quote
@@ -289,14 +288,12 @@ class DashboardController < ApplicationController
     u = User.find(params[:target_user_id])
     u.company_id = params[:company_id]
     u.save
-    binding.pry
   end
 
   def super_admin_log_into_company
     u = User.find(current_user.id)
     u.company_id = params[:company_id]
     u.save
-    binding.pry
     redirect_to("/")
   end
 

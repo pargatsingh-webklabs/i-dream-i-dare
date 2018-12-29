@@ -1,0 +1,19 @@
+<html>
+  	<div style="font-size: 2em; padding:20px; margin-left:15%; margin-right:15%; color:grey;">
+    	<center>
+    		<h2>Welcome!</h2>
+    		Unzip the attached file to view your documents.
+    		<br />
+    		<% if @password != "" %>
+	    		Your account has been created. Your temporary password is:
+	    		
+	    		<div style="color:#064b89; outline:2px solid grey; margin-top:20px; margin-left:20%; margin-right:20%;">
+	    			<h3>
+	    				<%= @password %>	
+	    		    </h3> 
+	    		</div>
+	    		Please log in (the image above is a link) to update your profile and change your password.
+	    	<% end %>
+    	</center>
+    </div>
+</html>

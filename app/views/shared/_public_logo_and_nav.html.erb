@@ -40,6 +40,7 @@
             <h3>
               Book Resources
             </h3>
+
           </div>
 
           <div class="body">
@@ -70,14 +71,46 @@
                     </div>
                   </div>  
                 <% end %>
-                <div class="row" style="padding-bottom:60px;">
-                  <a type="button" href="/download_book_resources" class="btn btn-primary btn-block" >
-                    <span class="glyphicon glyphicon-cloud-download" style="font-size:1.5em;">
-                    </span>
-                    <br />
-                    Download ZIP File
-                  </a>
+
+                <center>
+                  
+
+                    <div class="row" style="margin-top:20px;">
+
+                      
+
+                      <div class="col-md-3">
+                      </div>
+
+                      <div class="col-md-6">
+
+                        <%= form_for @book_resource_request do |f| %>
+
+                              <%= f.label :email, "Email" %>
+                              <%= f.text_field :email %>
+
+                        <%= f.submit "Submit", :disable_with => 'Submiting...' %>
+   
+                        <% end %>
+
+                      </div>
+
+                      <div class="col-md-3">
+                      </div>
+                      
+                    </div>
+
+                 
+                </center>
+
+                <br />
+
+                <div class="row" style="padding:10px; margin-bottom:20px;">
+
+                  By submitting your email address above, you are consenting to receive periodic emails from us. You may choose to opt-out at any time by changing your notification preferences, or by clicking on the "Unsubscribe" button at the bottom of any email sent to you. We will never sell, rent, or share your personal information with any third parties for marketing purposes without your express permission.
+
                 </div>
+                
               </div>
 
               <div class="col-md-3">

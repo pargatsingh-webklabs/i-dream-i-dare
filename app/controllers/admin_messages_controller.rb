@@ -17,56 +17,57 @@ class AdminMessagesController < ApplicationController
     @year = time.year
 
     @active_book_resources = BookResource.where(active: true)
+    @book_resource_request = ResourceRequest.new("")
 
     @admin_message = AdminMessage.new
 
     render layout: "application"
   end
 
-  def download_book_resources
+  def download_book_resources # See user_mailer controller for the send resources method
 
-    # Identify our book resources
+    # # Identify our book resources
 
-    active_book_resources = BookResource.where(active: true)
+    # active_book_resources = BookResource.where(active: true)
 
-    # Create a zipfile
-    filename = 'Dream_Dare_Resources.zip'
-    temp_file = Tempfile.new(filename)
+    # # Create a zipfile
+    # filename = 'Dream_Dare_Resources.zip'
+    # temp_file = Tempfile.new(filename)
  
-    begin
+    # begin
 
-      #Initialize the temp file as a zip file
-      Zip::OutputStream.open(temp_file) { |zos| }
+    #   #Initialize the temp file as a zip file
+    #   Zip::OutputStream.open(temp_file) { |zos| }
      
-      #Add files to the zip file as usual
-      Zip::File.open(temp_file.path, Zip::File::CREATE) do |zip|
+    #   #Add files to the zip file as usual
+    #   Zip::File.open(temp_file.path, Zip::File::CREATE) do |zip|
 
-        active_book_resources.each do |res|
+    #     active_book_resources.each do |res|
         
-        # Adding static files
-        # zip.add("Compelling Vision Worksheet PDF.pdf", "app/assets/bookresources/Compelling Vision Worksheet PDF.pdf")
-        # zip.add("Coaching Contract (with tips) PDF.pdf", "app/assets/bookresources/Coaching Contract (with tips) PDF.pdf")
+    #     # Adding static files
+    #     # zip.add("Compelling Vision Worksheet PDF.pdf", "app/assets/bookresources/Compelling Vision Worksheet PDF.pdf")
+    #     # zip.add("Coaching Contract (with tips) PDF.pdf", "app/assets/bookresources/Coaching Contract (with tips) PDF.pdf")
 
-        zip.add(res.file_name, res.path + res.file_name)
+    #     zip.add(res.file_name, res.path + res.file_name)
 
-        end
+    #     end
 
-      end
+    #   end
      
-      #Read the binary data from the file
-      zip_data = File.read(temp_file.path)
+    #   #Read the binary data from the file
+    #   zip_data = File.read(temp_file.path)
       
       
 
-      #Send the data to the browser as an attachment
-      #We do not send the file directly because it will
-      #get deleted before rails actually starts sending it
-      send_data(zip_data, :type => 'application/zip', :filename => filename)
-    ensure
-      #Close and delete the temp file
-      temp_file.close
-      temp_file.unlink
-    end
+    #   #Send the data to the browser as an attachment
+    #   #We do not send the file directly because it will
+    #   #get deleted before rails actually starts sending it
+    #   send_data(zip_data, :type => 'application/zip', :filename => filename)
+    # ensure
+    #   #Close and delete the temp file
+    #   temp_file.close
+    #   temp_file.unlink
+    # end
   end
 
   # GET /admin_messages
