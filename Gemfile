@@ -32,6 +32,8 @@ gem "sendgrid-ruby"
 gem "ngrok"
 gem 'shrine'
 gem 'figaro'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 group :development do
   gem "quiet_assets"

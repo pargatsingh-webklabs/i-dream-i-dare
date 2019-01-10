@@ -37,12 +37,10 @@ Rails.application.routes.draw do
   resources :book_resources
   resources :user_emailer
 
-  devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'registrations'}
+  devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'registrations', omniauth_callbacks: 'users/omniauth_callbacks'}
 
   root to: "dashboard#view"
   mount ImageUploader.upload_endpoint(:cache) => "/images/upload"
-
-  # post "user_emailer/send_book_resources/:email" => "user_emailer"
 
   post "/assign_company_id/:target_user_id/:company_id" => "dashboard#super_admin_assign_company_id_to_new_user"
   get "company_admin_login/:company_id" => "dashboard#super_admin_log_into_company"
