@@ -6,10 +6,10 @@
         <div class="light-well">
           <h2 class="page-header text-center">New User</h2>
 
-          <% binding.pry %>
           <% @first_name = "" %>
           <% @last_name = "" %>
           <% @email = "" %>
+          <%= link_to "Sign in with TEST Facebook", user_facebook_omniauth_authorize_path %>
 
           <% if session["devise.facebook_data"] != nil %>
             <% @first_name = session["devise.facebook_data"]["info"]["name"].split(" ")[0] %>

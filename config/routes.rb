@@ -36,7 +36,6 @@ Rails.application.routes.draw do
   resources :resource_types
   resources :book_resources
   resources :user_emailer
-
   devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'registrations', omniauth_callbacks: 'users/omniauth_callbacks'}
 
   root to: "dashboard#view"
