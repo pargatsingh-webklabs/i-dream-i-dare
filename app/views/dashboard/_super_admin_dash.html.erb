@@ -1,9 +1,9 @@
 <h1>Companies</h1>
   <p style="color:red;" style="text-align: left; margin:15px;">
-    Each new company will be populated with one Admin User account. The template for the login and password for this account will be:
+    Each new company will be populated with one Admin User account. The template for the login for this account will be:
     Example Company = "88 Wu-Tang Financial"
-    Login EMAIL = 88wutan@admin.admin (first 7 characters [A-Z, 0-9] of the full name, ignoring all spaces and special characters)
-    Login PASSWORD = 88wu-5up3r! (first 4 characters of EMAIL, followed by "-5up3r!", which is "SUPER!" with S=5 and E=3)
+    Login EMAIL = 88wutan1234@admin.admin (first 7 characters [A-Z, 0-9] of the full name, ignoring all spaces and special characters, followed by 4 random numbers)
+    See Dev for the Login PASSWORD.
   </p>
   <button>
     <%= link_to 'New Company', new_company_path %>
@@ -28,9 +28,6 @@
       </th>
       <th>
         Admin Username
-      </th>
-      <th>
-        Admin Password
       </th>
       <th>
         Active?
@@ -58,12 +55,7 @@
             <%= c.logo_filename %>
           </th>
           <th>
-            <% @cname = c.name.gsub(/[^0-9A-Za-z]/, '').downcase %>
-
-            <%= @cname[0,7] + "@admin.admin" %>
-          </th>
-          <th>
-            <%= @cname[0,4] + "-5up3r!" %>
+            NEED TO ADD THIS.
           </th>
           <th>
             <%= c.active %>   <a href="/company_toggle_active/<%= c.id %>"><button>Toggle</button></a>

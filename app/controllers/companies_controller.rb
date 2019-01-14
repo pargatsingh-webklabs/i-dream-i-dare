@@ -25,9 +25,8 @@ class CompaniesController < ApplicationController
     newCompany = Company.new(company_params)
 
     # ADD AN ADMIN USER WITH THE FOLLOWING LOGIN/PASSWORD:
-    n = newCompany.name.gsub(/[^0-9A-Za-z]/, '').downcase
-    newUserEmail =  n[0,7] + "@admin.admin"
-    newUserPassword = n[0,4] + "-5up3r!"
+    newUserEmail =  newCompany.name.gsub(/[^0-9A-Za-z]/, '').downcase[0,7] + rand(1e3...1e4).to_i.to_s + "@admin.admin"
+    newUserPassword = ENV['DEFAULT_PASSWORD']
 
     u = User.new
     u.email = newUserEmail
