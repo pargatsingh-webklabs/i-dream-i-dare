@@ -6,7 +6,7 @@ class ResourcesController < ApplicationController
 
   # GET /resources
   def index
-    @resources = Resource.all
+    @resources = Resource.where(:company_id => current_user.company_id)
   end
 
   # GET /resources/1
@@ -16,6 +16,7 @@ class ResourcesController < ApplicationController
   # GET /resources/new
   def new
     @resource = Resource.new
+    @resource.company_id = current_user.company_id
   end
 
   # GET /resources/1/edit
@@ -25,7 +26,7 @@ class ResourcesController < ApplicationController
   # POST /resources
   def create
     @resource = Resource.new(resource_params)
-
+    @resource.company_id = current_user.company_id
     if @resource.save
       redirect_to @resource, notice: 'Resource was successfully created.'
     else

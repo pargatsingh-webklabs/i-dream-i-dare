@@ -7,11 +7,11 @@ class MentorshipsController < ApplicationController
   # GET /mentorships
   def index
     get_all_coaches_and_clients
-    @all_mentorships = Mentorship.all
+    @all_mentorships_by_company = Mentorship.where(:company_id => current_user.company_id)
     @public_mentorship_data = []
 
-    if @all_mentorships.empty? == false
-      @all_mentorships.each do |m|
+    if @all_mentorships_by_company.empty? == false
+      @all_mentorships_by_company.each do |m|
         mentorship_relation = []
         mentorship_relation << m.id
         mentorship_relation << coach = @all_coaches.find_by_id(m.coach)
@@ -34,6 +34,7 @@ class MentorshipsController < ApplicationController
   # GET /mentorships/new
   def new
     @mentorship = Mentorship.new
+    @mentorship.company_id = current_user.company_id
     get_all_coaches_and_clients
   end
 
@@ -45,7 +46,8 @@ class MentorshipsController < ApplicationController
   # POST /mentorships
   def create
     @mentorship = Mentorship.new(mentorship_params)
-      @mentorship.active = true
+    @mentorship.company_id = current_user.company_id
+    @mentorship.active = true
     if @mentorship.save
       redirect_to @mentorship, notice: 'Mentorship was successfully created.'
     else
@@ -84,7 +86,7 @@ class MentorshipsController < ApplicationController
     end
 
     def get_all_coaches_and_clients
-      @all_coaches = User.where(:is_a_coach => true)
-      @all_clients = User.where(:is_a_coach => false, :is_an_admin => false)
+      @all_coaches = User.where(:is_a_coach => true, :company_id => current_user.company_id)
+      @all_clients = User.where(:is_a_coach => false, :is_an_admin => false, :company_id => current_user.company_id)
     end
 end

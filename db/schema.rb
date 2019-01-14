@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181229202814) do
+ActiveRecord::Schema.define(version: 20190114014111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 20181229202814) do
     t.string   "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "company_id"
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -117,6 +118,7 @@ ActiveRecord::Schema.define(version: 20181229202814) do
     t.string   "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "company_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -126,12 +128,14 @@ ActiveRecord::Schema.define(version: 20181229202814) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "company_id"
   end
 
   create_table "images", force: :cascade do |t|
     t.text     "image_data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "company_id"
   end
 
   create_table "mentorships", force: :cascade do |t|
@@ -140,6 +144,7 @@ ActiveRecord::Schema.define(version: 20181229202814) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean  "active"
+    t.integer  "company_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -148,6 +153,7 @@ ActiveRecord::Schema.define(version: 20181229202814) do
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "company_id"
   end
 
   create_table "notification_preferences", force: :cascade do |t|
@@ -164,6 +170,7 @@ ActiveRecord::Schema.define(version: 20181229202814) do
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "company_id"
   end
 
   create_table "quotes", force: :cascade do |t|
@@ -172,6 +179,7 @@ ActiveRecord::Schema.define(version: 20181229202814) do
     t.string   "url_for_image"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "company_id"
   end
 
   create_table "resource_types", force: :cascade do |t|
@@ -190,6 +198,7 @@ ActiveRecord::Schema.define(version: 20181229202814) do
     t.string   "tag_3"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "company_id"
   end
 
   create_table "users", force: :cascade do |t|

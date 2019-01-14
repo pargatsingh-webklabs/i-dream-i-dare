@@ -4,7 +4,7 @@ class ContentFieldsController < ApplicationController
   
   # GET /content_fields
   def index
-    @content_fields = ContentField.all
+    @content_fields = ContentField.where(:company_id => current_user.company_id)
   end
 
   # GET /content_fields/1
@@ -14,6 +14,7 @@ class ContentFieldsController < ApplicationController
   # GET /content_fields/new
   def new
     @content_field = ContentField.new
+    @content_field.company_id = current_user.company_id
   end
 
   # GET /content_fields/1/edit

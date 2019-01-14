@@ -5,7 +5,7 @@ class GroupsController < ApplicationController
   layout "signed-in" # Layout Default
   # GET /groups
   def index
-    @groups = Group.all
+    @groups = Group.where(:company_id => current_user.company_id)
   end
 
   # GET /groups/1
@@ -15,6 +15,7 @@ class GroupsController < ApplicationController
   # GET /groups/new
   def new
     @group = Group.new
+    @group.company_id = current_user.company_id
   end
   
 
@@ -25,7 +26,7 @@ class GroupsController < ApplicationController
   # POST /groups
   def create
     @group = Group.new(group_params)
-
+    @group.company_id = current_user.company_id
     if @group.save
       redirect_to @group, notice: 'Group was successfully created.'
     else

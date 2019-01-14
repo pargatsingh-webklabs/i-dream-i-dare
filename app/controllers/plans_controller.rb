@@ -9,7 +9,7 @@ class PlansController < ApplicationController
 
   # GET /plans
   def index
-    @plans = Plan.all
+    @plans = Plan.where(:company_id => current_user.company_id)
   end
 
   # GET /plans/1
@@ -19,6 +19,7 @@ class PlansController < ApplicationController
   # GET /plans/new
   def new
     @plan = Plan.new
+    @plan.company_id = current_user.company_id
   end
 
   # GET /plans/1/edit
@@ -29,6 +30,7 @@ class PlansController < ApplicationController
   # POST /plans
   def create
     @plan = Plan.new(plan_params)
+    @plan.company_id = current_user.company_id
     if current_user.is_an_admin = false && current_user.is_a_coach = false
       @plan.client = current_user.id
     end

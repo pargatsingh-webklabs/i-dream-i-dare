@@ -1,26 +1,5 @@
 Rails.application.routes.draw do
   
-  resources :companies
-  resources :book_resources
-  resources :resources
-  resources :quotes
-  Shrine.plugin :upload_endpoint
-
-  resources :content_fields
-  post 'alerts/reply'
-
-  resource :alerts do
-    collection do
-      post 'reply'
-      post 'create_alert'
-    end
-  end
-
-  resources :images, only: [:new, :create, :index, :edit, :update]
-  resources :resource_requests, only: [:create]
-
-  get "/bios/meet_us" => "bios#meet_us"
-  
   # resources :notification_preferences
   resources :group_messages
   resources :groups
@@ -36,13 +15,35 @@ Rails.application.routes.draw do
   resources :resource_types
   resources :book_resources
   resources :user_emailer
-  devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'registrations', omniauth_callbacks: 'users/omniauth_callbacks'}
+  resources :companies
+  resources :book_resources
+  resources :resources
+  resources :quotes
+  resources :content_fields
 
+  resource :alerts do
+    collection do
+      post 'reply'
+      post 'create_alert'
+    end
+  end
+
+  devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'registrations', omniauth_callbacks: 'users/omniauth_callbacks'}
+  Shrine.plugin :upload_endpoint
+
+  
+  post 'alerts/reply'
+
+  
+  resources :images, only: [:new, :create, :index, :edit, :update]
+  resources :resource_requests, only: [:create]
+
+  get "/bios/meet_us" => "bios#meet_us"
+  
   root to: "dashboard#view"
   mount ImageUploader.upload_endpoint(:cache) => "/images/upload"
 
   post "/assign_company_id/:target_user_id/:company_id" => "dashboard#super_admin_assign_company_id_to_new_user"
-  get "company_admin_login/:company_id" => "dashboard#super_admin_log_into_company"
 
   get "/images/index" => "images#index"
 
