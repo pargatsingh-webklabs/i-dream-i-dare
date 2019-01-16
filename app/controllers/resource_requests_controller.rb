@@ -5,7 +5,6 @@ class ResourceRequestsController < ApplicationController
   skip_before_filter :authenticate_user!
   
   def create 
-  	binding.pry
   	email = params[:resource_request][:email]
 
   	UserEmailer.send_book_resources(email).deliver_now
