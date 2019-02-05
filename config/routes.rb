@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  resources :tasks
+  resources :user_schedules
+  resources :schedules
   # resources :notification_preferences
   resources :group_messages
   resources :groups
