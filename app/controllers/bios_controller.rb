@@ -1,6 +1,6 @@
 class BiosController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:meet_us]
-  before_action :set_bio, only: [:show, :edit, :update, :destroy]
+  before_action :set_admin_message, only: [:show, :edit, :update, :destroy]
   before_filter :admin_user, only: [:index, :destroy, :show, :edit, :update, :new]
   layout "signed-in" # Layout Default
 
@@ -12,6 +12,7 @@ class BiosController < ApplicationController
     @active_bio_question_ids = []
     @active_bio_questions.each do |b|
       @active_bio_question_ids << b.id
+      
     end
     @active_bio_answers = BioAnswer.where(:bio_question_id => @active_bio_question_ids)
 
@@ -88,4 +89,5 @@ class BiosController < ApplicationController
     def get_all_coaches
       @all_coaches = User.where(:is_a_coach => true)
     end
+    
 end

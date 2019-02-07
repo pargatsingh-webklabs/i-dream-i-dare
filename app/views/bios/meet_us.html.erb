@@ -1,8 +1,7 @@
 <center><%= render '/shared/public_logo_and_nav' %></center>
-<%= stylesheet_link_tag("application") %>
 <hr />
 
-<div class="container" id="meetUs">
+<!--<div class="container" id="meetUs">
   <% @active_bios.each do |bio| %> 
     <div class="bio_coach_profile col-sm-12">
 
@@ -71,9 +70,126 @@
     </div>
     <div class="profile-body col-sm-12" style="margin-top:1px;"></div>
     <% end %>
-</div>
+</div>-->
+ <div class="container">
+        <h2>Let’s Meet and Discuss Your Possibilities</h2>
+        <div class="row">
+            <div class="col-md-4 col-sm-4">
+                <img src="/assets/NASH.png" class="margin_top" alt="">
+            </div>
+            <!--/ .col-md-4-->
+            <div class="col-md-8 col-sm-8">
+                <div class="row no-gutters">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="box text-color-white equal-height">
+                            <h3>Make an Appointment</h3>
+                            <p class="psize">
+                                Sed iaculis dapibus tellus eget condimentum. Curabitur ut tellus congue, convallis tortor
+                                et, pellentesque diam. Nullam non dolor eu ligula ultrices pellentesque placerat imperdiet
+                                metus. Etiam lobortis bibendum egestas.
+                            </p>
+                            <p class="psize">
+                                In quis massa a felis molestie consequat rhoncus vitae nisl. In pharetra posuere dictum.
+                                In eget metus eu leo rutrum venenatis vitae sit amet elit. Duis luctus enim enim.
+                            </p>
+                            <div class="bg bg-color-default"></div>
+                        </div>
+                        <!--/ .box-->
+                    </div>
+                    <!--/ .col-md-6-->
+                    <div class="col-md-6 col-sm-6">
+                        <div class="box equal-height" style="height: 411px;">
+                            <div class="calendar small text-color-white"></div>
+                            <div class="bg bg-color-default-darker"></div>
+                        </div>
+                        <!--/ .box-->
+                    </div>
+                    <!--/ .col-md-6-->
+                </div>
+                <!--/ .row-->
+            </div>
+            <!--/ .col-md-8-->
+        </div>
+        <!--/ .row-->
+    </div>
+    <!--/ .container-->
 
-<script type="text/javascript">
+    <div class="block">
+        <div class="container">
+            <div class="row">
+
+
+            
+                <div class="col-md-4 col-sm-4">
+                    <h3>Contact</h3>
+                    <address>
+                        <strong>Jane Doe</strong><br>
+                        1577 Daylene Drive<br>
+                        Southfield, MI 48075
+                        <hr>
+                        <figure>
+                            <div class="info">
+                                <i class="icon_phone"></i>
+                                <span>402-880-7575</span>
+                            </div>
+                            <div class="info">
+                                <i class="icon_mail"></i>
+                                <span><a class="psize" href="mailto:nmahupete@qliomaha.com?subject=">nmahupete@qliomaha.com</a></span>
+                            </div>
+                           <!-- <div class="info">
+                                <i class="icon_globe-2 "></i>
+                                <a href="#">www.example.com</a>
+                            </div>
+                            <div class="info">
+                                <i class="social_facebook"></i>
+                                <a href="#">jane.doe</a>
+                            </div>
+                            <div class="info">
+                                <i class="social_skype"></i>
+                                <a href="#">jane.doe.motivations</a>
+                            </div> -->
+                        </figure>
+                    </address>
+                </div>
+
+
+                
+                <div class="col-md-8 col-sm-8">
+                    <h3>Contact Form</h3>
+					  <%= form_for AdminMessage.new do |f| %>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+									<%= f.text_field :from_name, placeholder: "Customer Name", class: "form-control framed"  %>
+                                    <!-- <input type="text" class="form-control framed" id="contact-form-name" name="name" placeholder="Your Name" required> -->
+                                </div><!-- /.form-group -->
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+									<%= f.text_field :from_email, placeholder: "Customer Email", class: "form-control framed"  %>
+                                   <!-- <input type="email" class="form-control framed" id="contact-form-email" name="email" placeholder="Your E-mail" required> -->
+                                </div><!-- /.form-group -->
+                            </div>
+                        </div>
+                        <div class="form-group">
+                        <%= f.text_area :content, placeholder: "Send us a note", class: "form-control framed"  %>
+                           <!-- <textarea class="form-control framed" id="contact-form-message" rows="3" name="message" placeholder="Your Message" required></textarea> -->
+                        </div><!-- /.form-group -->
+                        <div class="form-group">
+							  <%= f.submit "Send your message" , class: "btn pull-right btn-primary" %>
+                            <!-- <button type="submit" class="btn pull-right btn-primary" id="form-contact-submit">Contact Me</button> -->
+                        </div><!-- /.form-group -->
+                        <div class="pull-left"><div class="form-status"></div></div>
+                   <% end %>
+                </div>
+            </div>
+        </div>
+        <!--/ .container-->
+        <div class="bg"></div><!--/ .bg-->
+    </div>
+    <!--/ .block-->
+
+<!-- <script type="text/javascript">
 
   $(document).ready(function() {
         $('a.show-more-button').click(function() {
@@ -96,4 +212,4 @@
         })
   });
 
-</script>
+</script>-->

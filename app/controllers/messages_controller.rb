@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
 
   # GET /messages
   def index
-    @messages = Message.where(:company_id => current_user.company_id)
+    @messages = Message.all
     render layout: "signed-in"
   end
 
@@ -18,7 +18,6 @@ class MessagesController < ApplicationController
   # GET /messages/new
   def new
     @message = Message.new
-    @message.company_id = current_user.company_id
   end
 
   # GET /messages/1/edit
@@ -28,7 +27,7 @@ class MessagesController < ApplicationController
   # POST /messages
   def create
     @message = Message.new(message_params)
-    @message.company_id = current_user.company_id
+
     if @message.save
 
       id = @message.id

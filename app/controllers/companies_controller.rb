@@ -4,7 +4,7 @@ class CompaniesController < ApplicationController
 
   # GET /companies
   def index
-    @companies = Company.all 
+    @companies = Company.all
   end
 
   # GET /companies/1
@@ -22,26 +22,10 @@ class CompaniesController < ApplicationController
 
   # POST /companies
   def create
-    newCompany = Company.new(company_params)
+    @company = Company.new(company_params)
 
-    # ADD AN ADMIN USER WITH THE FOLLOWING LOGIN/PASSWORD:
-    newUserEmail =  newCompany.name.gsub(/[^0-9A-Za-z]/, '').downcase[0,7] + rand(1e3...1e4).to_i.to_s + "@admin.admin"
-    newUserPassword = ENV['DEFAULT_PASSWORD']
-
-    u = User.new
-    u.email = newUserEmail
-    u.password = newUserPassword
-    u.is_a_coach = false
-    u.is_an_admin = true
-    u.first_name = "Admin"
-    u.last_name = "Admin"
-    u.is_active = true
-    u.is_deleted = false
-    u.company_id = newCompany.id
-
-
-    if newCompany.save and u.save
-      redirect_to "/", notice: 'Company was successfully created, along with an admin user.'
+    if @company.save
+      redirect_to @company, notice: 'Company was successfully created.'
     else
       render :new
     end

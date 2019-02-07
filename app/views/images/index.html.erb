@@ -1,8 +1,4 @@
 <h1>Images</h1>
-<hr>
-<p>
-  <button>
-    <%= link_to 'Add Image', new_image_path %>
-  </button>
-</p>
-<%= render @images.order(created_at: :desc) %>
+
+<%= link_to 'Add Image', new_image_path %>
+<%= render @images %>

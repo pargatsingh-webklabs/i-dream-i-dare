@@ -1,6 +1,7 @@
 class UserEmailer < ApplicationMailer
 
   def send_book_resources(email)
+  	binding.pry
   	# Look for the email in User records
   	@user = User.where(:email.downcase => email.downcase).first
 

@@ -8,30 +8,194 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.5/css/bootstrap-select.css" type="text/css">
+
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-  <%= stylesheet_link_tag("application") %>
-
+  <%= stylesheet_link_tag :application, :zabutocalendarmin, :style, :elegantfonts, :settings, :layers, :navigation, :bootstrap, :bootstrapselectmin  %>
+ 
   <%= csrf_meta_tags %>
 
   <title><%= title %></title>
+  <style>
+footer#footer {
+    width: 100%;
+    float: left;
+    margin-bottom: 0px !important;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+#footer .right {margin:0px !important;}
+#footer .right .bg-right {width:100% !important;}
+#footer .left {margin:0px !important;}
+body.subpage {
+    height: 100%;
+}
+.outer-wrapper {
+    min-height: 100%;
+}
+.h3color{
+	color : #37B048;
+}
+.psize{
+	font-size: 16px;
+}
+.heading_space{
+ margin-bottom: 40px;
+}
+.container_margin{
+	margin-top: 25px;
+    margin-bottom: 25px;
+}
+.contact_mrgin{
+    margin-right: 200px;
+}
+.contact_mrgin_left{
+    margin-left: 200px;
+}
+.margin_top{
+	margin-top: 110px;
+}
+ .modal-open .modal{    opacity: 1 !important;}
+ .modal-backdrop.fade {
+    filter: alpha(opacity=.66);
+    opacity: .66;
+}
+.modal.fade .modal-dialog {
+    transition: -webkit-transform .3s ease-out;
+    transition: transform .3s ease-out;
+    transition: transform .3s ease-out, -webkit-transform .3s ease-out;
+    -webkit-transform: translate(0, -0%);
+    transform: translate(0, 0%);
+}
+  </style>
 </head>
 
-  <body>
-
+  <body class="subpage">
+	  <div class="overlay"></div>
+		<div class="outer-wrapper manage-sps">
+		<div class="page-wrapper">
     <!-- TODO: Make Notices fade after 2 seconds, add them to all layouts, and remove them everywhere else. -->
   <!-- <p id="notice"><%= notice %></p> -->
 
   <%= yield %>  
- 
-  </body>
-  <%= javascript_include_tag "application" %>
+   <div class="block">
+        <div class="container">
+
+            <!--/ .row-->
+        </div>
+        <!--/ .container-->
+        <div class="bg"></div><!--/ .bg-->
+    </div>
+    <!--/ .block-->
+<!--
+ <div class="heading">
+        
+    </div>
+-->
+   
+
+</div>
+</div>
+ <footer id="footer">
+        <div class="">
+            <div class="">
+                <div class="col-md-8 col-sm-8">
+                    <div class="left">
+                        <span class="contact_mrgin_left"> 2018, Dream Catcher LLC</span>
+                        <div class="bg-left"></div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 p-0">
+                    <div class="right">
+                        <span><a href="#top" class="scroll contact_mrgin">To Top<i class="arrow_carrot-up_alt2"></i></a></span>
+                        <div class="bg-right"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ .container-->
+    </footer>
+    
+<div class="modal fade" id="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h2 class="modal-title">Make an Appointment</h2>
+                <h4>Select the Time</h4>
+            </div>
+            <div class="modal-body">
+                <div class="times">
+                    <form>
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn time-radio">
+                                <input type="radio" name="options" id="option1">08:00
+                                <span>Available</span>
+                            </label>
+                            <label class="btn time-radio">
+                                <input type="radio" name="options" id="option2">09:00
+                                <span>Available</span>
+                            </label>
+                            <label class="btn time-radio">
+                                <input type="radio" name="options" id="option3">10:00
+                                <span>Available</span>
+                            </label>
+                            <label class="btn time-radio">
+                                <input type="radio" name="options" id="option4">11:00
+                                <span>Available</span>
+                            </label>
+                            <label class="btn time-radio not-available">
+                                <input type="radio" name="options" id="option5">12:00
+                                <span>Not available</span>
+                            </label>
+                            <label class="btn time-radio">
+                                <input type="radio" name="options" id="option6">13:00
+                                <span>Available</span>
+                            </label>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control framed" name="modal-first-name" placeholder="First Name" required>
+                                </div><!-- /.form-group -->
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control framed" name="modal-last-name" placeholder="Last Name" required>
+                                </div><!-- /.form-group -->
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <input type="email" class="form-control framed" name="modal-email" placeholder="E-mail" required>
+                                </div><!-- /.form-group -->
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control framed" name="modal-number" placeholder="Number" pattern="\d*" required>
+                                </div><!-- /.form-group -->
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn pull-right btn-primary" id="modal-submit">Contact Me</button>
+                            </div><!-- /.form-group -->
+                        </div>
+                    </form>
+                </div><!-- /.times -->
+            </div><!-- /.modal-body -->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+</body>
+
+   <%= javascript_include_tag :application, :jquerymin, :bootstrapmin, :zabutocalendarmin, :jquerythemepunchtoolsmin, :jquerythemepunchrevolutionmin, :revolutionextensionvideomin, :revolutionextensionslideanimsmin, :revolutionextensionactionsmin, :revolutionextensionlayeranimationmin, :revolutionextensionkenburnmin, :revolutionextensionnavigationmin, :revolutionextensionmigrationmin, :revolutionextensionparallaxmin, :custom, :bootstrapselectmin  %>
+
   <%= render "css_overrides" %>
   <script type="text/javascript">
-
     $(document).ready(function() {
           $("#book-resource-form").css({'display': 'none'});
           
@@ -43,15 +207,6 @@
             
                   $("#book-resource-form").fadeOut("slow");
           })
-
-
-
     });
   </script>
-<footer style="margin-top: 100px;">
-  <center>
-    2018, Dream Catcher LLC
-  </center>
-</footer>
-
 </html>
