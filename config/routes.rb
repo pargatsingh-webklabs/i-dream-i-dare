@@ -1,29 +1,5 @@
 Rails.application.routes.draw do
   
-  resources :tasks
-  resources :user_schedules
-  resources :schedules
-  # resources :notification_preferences
-  resources :group_messages
-  resources :groups
-  resources :group_memberships
-  resources :admin_messages
-  resources :plans
-  resources :mentorships
-  resources :messages
-  resources :bio_questions
-  resources :bio_answers
-  resources :bios
-  resources :resources
-  resources :resource_types
-  resources :book_resources
-  resources :user_emailer
-  resources :companies
-  resources :book_resources
-  resources :resources
-  resources :quotes
-  resources :content_fields
-
   resource :alerts do
     collection do
       post 'reply'
@@ -33,15 +9,16 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {sessions: 'users/sessions', registrations: 'registrations', omniauth_callbacks: 'users/omniauth_callbacks'}
   Shrine.plugin :upload_endpoint
-
   
   post 'alerts/reply'
-
   
   resources :images, only: [:new, :create, :index, :edit, :update]
   resources :resource_requests, only: [:create]
 
-  get "/bios/meet_us" => "bios#meet_us"
+  get "/user_schedule/full_calendar" => "user_schedules#full_calendar"
+  get "/user_schedule/user_create_new" => "user_schedules#user_create_new"
+
+  get "/home/meet_us" => "home#meet_us"
   
   root to: "dashboard#view"
   mount ImageUploader.upload_endpoint(:cache) => "/images/upload"
@@ -75,7 +52,30 @@ Rails.application.routes.draw do
   get "/toggle_deleted/:target_user_id" => "dashboard#admin_toggle_deleted"
   get "/activate_user/:target_user_id" => "dashboard#admin_activate_user"
 
-  get "/" => "dashboard#view"
+  resources :tasks
+  resources :user_schedules
+  resources :schedules
+  # resources :notification_preferences
+  resources :group_messages
+  resources :groups
+  resources :group_memberships
+  resources :admin_messages
+  resources :plans
+  resources :mentorships
+  resources :messages
+  resources :bio_questions
+  resources :bio_answers
+  resources :bios
+  resources :resources
+  resources :resource_types
+  resources :book_resources
+  resources :user_emailer
+  resources :companies
+  resources :book_resources
+  resources :resources
+  resources :quotes
+  resources :content_fields
 
+  get "/" => "dashboard#view"
 
 end

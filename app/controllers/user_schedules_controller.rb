@@ -1,6 +1,16 @@
 class UserSchedulesController < ApplicationController
   before_action :set_user_schedule, only: [:show, :edit, :update, :destroy]
 
+  layout "signed-in"
+
+  def full_calendar
+    @all_my_user_schedules = UserSchedule.where(user_id: current_user.id)
+  end
+
+  def user_create_new
+    @user_schedule = UserSchedule.new
+  end
+
   # GET /user_schedules
   def index
     @user_schedules = UserSchedule.all

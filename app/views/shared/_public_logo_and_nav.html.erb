@@ -6,6 +6,7 @@
   <div class="landing-page-spacer-30"></div>
 
   <div class="landing-page-links">
+
     <% if user_signed_in? %>
       <a href="/user/dashboard" class="landing-link">My Dashboard</a>
       <div class="horizontal-spacer-6"></div>
@@ -19,16 +20,19 @@
       <div class="horizontal-spacer-6"></div>
 
     <% end %>
-    <a href="/bios/meet_us" class="landing-link">Meet Us</a>
+
+    <a href="/home/meet_us" class="landing-link">Meet Us</a>
     <div class="horizontal-spacer-6"></div>
     <a href="/blog" class="landing-link">Blog</a>
     <div class="horizontal-spacer-6"></div>
-    <% if @active_book_resources != nil %>
-    <a href="#" id="expand-book-resource-form" class="landing-link">Book Resources</a>
+    
+    <% if !@active_book_resources.empty? %>
+      <a href="#" id="expand-book-resource-form" class="landing-link">Book Resources</a>
     <% end %>
+
   </div>
 
-      <% if @active_book_resources != nil %>
+      <% if !@active_book_resources.empty? %>
         <div id="book-resource-form">
         
         <div class="book-resource-form">
@@ -123,5 +127,4 @@
 
         </div>
       <% end %>
-
 </div>

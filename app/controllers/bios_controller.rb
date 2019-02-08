@@ -4,25 +4,6 @@ class BiosController < ApplicationController
   before_filter :admin_user, only: [:index, :destroy, :show, :edit, :update, :new]
   layout "signed-in" # Layout Default
 
-  # GET /bios/meet_us
-  def meet_us
-    @active_bios = Bio.where(:profile_active => true)
-    @active_bio_questions = BioQuestion.where(:active => true).order(:question_order_by)
-
-    @active_bio_question_ids = []
-    @active_bio_questions.each do |b|
-      @active_bio_question_ids << b.id
-    end
-    @active_bio_answers = BioAnswer.where(:bio_question_id => @active_bio_question_ids)
-
-    @active_bio_users = []
-    @active_bios.each do |bio|
-      @active_bio_users << User.find(bio.user_id)
-    @active_book_resources = BookResource.where(active: true)
-    end
-    render layout: "application"
-  end
-
   # GET /bios
   def index
     @bios = Bio.all

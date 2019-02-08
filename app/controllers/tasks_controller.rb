@@ -1,6 +1,8 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
+  layout "signed-in"
+
   # GET /tasks
   def index
     @tasks = Task.all
