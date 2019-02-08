@@ -4,7 +4,7 @@ class QuotesController < ApplicationController
   layout "signed-in" # Layout Default
   # GET /quotes
   def index
-    @quotes = Quote.where(:company_id => current_user.company_id)
+    @quotes = Quote.all
   end
 
   # GET /quotes/1
@@ -14,7 +14,6 @@ class QuotesController < ApplicationController
   # GET /quotes/new
   def new
     @quote = Quote.new
-    @quote.company_id = current_user.company_id
   end
 
   # GET /quotes/1/edit
@@ -24,7 +23,7 @@ class QuotesController < ApplicationController
   # POST /quotes
   def create
     @quote = Quote.new(quote_params)
-    @quote.company_id = current_user.company_id
+
     if @quote.save
       redirect_to @quote, notice: 'Quote was successfully created.'
     else
