@@ -1,64 +1,4 @@
-  <div class="col-10  pull-right"  style="margin-top: 100px;">
-                        <div class="card">
-                            <div class="card-body">
-                              <p id="notice"><%= notice %></p>
-                                <h4 class="card-title">Mentorships</h4>
-                                 <p>
-                                 <!--   <%= link_to 'Create New', new_mentorship_path, class: "btn btn-success" %> -->
-                                  <button style="padding: 0;">
-                                    <%= link_to 'Create New', new_mentorship_path, class: "btn btn-success" %>
-                                  </button> 
-                                </p>
-                               <!--  <h6 class="card-subtitle" style="color:red;">[Toggling the Is Deleted property to True will place the user into the below table. Toggling Deleted to False will place the user into its proper table above for further edits. "Deleting" a user is essentially the same as making a user inactive, but a Deleted user will remain out of the way, and so is intended for more permanent removals. Note that neither status change will result in the actual destruction of records.]</h6> -->
-                                <div class="table-responsive">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                          <tr>
-                                            <th>
-                                              Id
-                                            </th>
-                                            <th>
-                                              Coach
-                                            </th>
-                                            <th>
-                                              Client
-                                            </th>
-                                            <th>
-                                              Actions
-                                            </th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <% if @public_mentorship_data != nil %>
-                                            <% @public_mentorship_data.each do |m| %>
-                                              <% mentorshipModel = @all_mentorships.find_by_id(m[0]) %>
-                                              <tr>
-                                                <th>
-                                                  <%= m[0] %>
-                                                </th>
-                                                <th>
-                                                  <%= m[1].first_name %> <%= m[1].last_name %>
-                                                </th>
-                                                <th>
-                                                  <%= m[2].first_name %> <%= m[2].last_name %>
-                                                </th>
-                                                <th>
-                                                  <%= link_to 'Show', mentorshipModel %>
-                                                  <%= link_to 'Edit', edit_mentorship_path(mentorshipModel) %>
-                                                  <%= link_to 'Destroy', mentorshipModel, method: :delete, data: { confirm: 'Are you sure?' } %>
-                                                </th>
-                                              </tr> 
-                                            <% end %>
-                                          <% end %>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>   
-
-
-<<!-- p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
 
   <h1>Mentorships</h1>
   <p>
@@ -106,4 +46,4 @@
         <% end %>
       <% end %>
     </tbody>
-  </table -->>
+  </table>

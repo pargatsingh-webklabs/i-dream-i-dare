@@ -12,21 +12,24 @@
     <title><%= title %></title>
     <!-- wysihtml5 CSS 
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.css" type="text/css">-->
+	<% if current_user.is_an_admin? || current_user.is_super_admin? %>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<%= stylesheet_link_tag("application") %>
 
-  <%= stylesheet_link_tag :inbox, :dataTablesbootstrap4, :stylemin, :bootstrapwysihtml5 %>
+	<% else %>
+		<%= stylesheet_link_tag :inbox, :dataTablesbootstrap4, :stylemin, :bootstrapwysihtml5 %>
+    <% end %>
   <%= csrf_meta_tags %>
 
   <title><%= title %></title>
-
-<style>
-.contact_mrgin_left{
-    margin-left: 200px;
-}
-</style>
   
 </head>
-
-<!--
+   <% if current_user.is_an_admin? || current_user.is_super_admin? %>
 <div id="top-nav" class="navbar navbar-inverse navbar-static-top">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" data-position="fixed" top="0px">
@@ -38,6 +41,7 @@
   </div>
   <div class="navbar-collapse collapse">
     <ul class="nav navbar-nav pull-right">
+      <!-- Social Icons: -->
       <a class="navbar-brand" href="https://www.facebook.com/DreamCatcher-1845647825736246"><i class="fa fa-facebook"></i></a>
       <a class="navbar-brand" href="mailto:nmahupete@qliomaha.com"><i class="fa fa-envelope"></i></a>
       <li class="dropdown pull-right">
@@ -100,18 +104,25 @@
     </div>
 
   <% end %>
-
+  <%= yield %> 
 
   </body>
 </html>
-  
+  <%= javascript_include_tag "application" %>
+  <%= render "css_overrides" %>
 
   <footer style="margin-top: 100px;">
     <center>
       2018, Dream Catcher LLC
     </center>
   </footer>
--->
+
+<% else %>
+<style>
+.contact_mrgin_left{
+    margin-left: 200px;
+}
+</style>
 <body class="skin-default-dark logo-center fixed-layout">
 	  <div class="preloader">
         <div class="loader">
@@ -123,120 +134,53 @@
     <div id="main-wrapper">
 		 <header class="topbar">
             <nav class="navbar top-navbar navbar-expand-md navbar-dark">
-                <!-- ============================================================== -->
-                <!-- Logo -->
-                <!-- ============================================================== -->
                 <div class="navbar-header">
                     <a class="navbar-brand" href="index.html">
-                       
-                            <!-- Dark Logo icon 
-                            <img src="../assets/images/DreamCatcher_Feather_Transparent_Small.png" alt="homepage" class="dark-logo" />
-                          
-                            <img src="../assets/images/DreamCatcher_Feather_Transparent_Small.png" alt="homepage" class="light-logo" />-->
                         </b>
-                       
-                        <!-- Logo text <span>
-                      
-                         <img src="../assets/images/DreamCatcher_Feather_Transparent_Small.png" alt="homepage" class="dark-logo" />
-                  
-                         <img src="../assets/images/DreamCatcher_Feather_Transparent_Small.png" class="light-logo" alt="homepage" /></span>--> </a>
+                      </a>
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Logo -->
-                <!-- ============================================================== -->
                 <div class="navbar-collapse">
-                    <!-- ============================================================== -->
-                    <!-- toggle and nav items -->
-                    <!-- ============================================================== -->
                     <ul class="navbar-nav mr-auto">
-                        <!-- This is  -->
                         <li class="nav-item"> <a class="nav-link nav-toggler d-block d-md-none waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
                         <li class="nav-item"> <a class="nav-link sidebartoggler d-none d-lg-block d-md-block waves-effect waves-dark" href="javascript:void(0)"><i class="icon-menu"></i></a> </li>
-                        <!-- ============================================================== -->
-                        <!-- Search -->
-                        <!-- ============================================================== -->
                         <li class="nav-item">
-<!--
-                            <form class="app-search d-none d-md-block d-lg-block">
-                                <input type="text" class="form-control" placeholder="Search & enter">
-                            </form>
--->
                         </li>
                         <div class="brand contact_mrgin_left"><a href="/"><img src="/assets/branding/logo.png" style="width: 180px !important;margin-top: 5px;margin-bottom: 5px;height: 60px;"></a></div>
                     </ul>
-
-                    
-                    <!-- ============================================================== -->
-                    <!-- User profile and search -->
-                    <!-- ============================================================== -->
                     <ul class="navbar-nav my-lg-0">
-                        <!-- ============================================================== -->
-                        <!-- Comment -->
-                        <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                              <a class="navbar-brand" href="https://www.facebook.com/DreamCatcher-1845647825736246"><i class="fa fa-facebook"></i></a>
                         </li>
-                        <!-- ============================================================== -->
-                        <!-- End Comment -->
-                        <!-- ============================================================== -->
-                        <!-- ============================================================== -->
-                        <!-- Messages -->
-                        <!-- ============================================================== -->
                         <li class="nav-item dropdown">
-                            <!-- <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="icon-note"></i>
-                                <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
-                            </a> -->
                             <a class="navbar-brand" href="mailto:nmahupete@qliomaha.com">
                              <i class="fa fa-envelope"></i></a>
-                           
                         </li>
-                        <!-- ============================================================== -->
-                        <!-- End Messages -->
-                        <!-- ============================================================== -->
-                       
-                        <!-- ============================================================== -->
-                        <!-- User Profile -->
-                        <!-- ============================================================== -->
                         <li class="nav-item dropdown u-pro">
                             <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../../assets/branding/DreamCatcher_Feather_Transparent_Small.png" alt="user" class=""> <span class="hidden-md-down"><%= current_user.first_name %>'s Dashboard &nbsp;<i class="fa fa-angle-down"></i></span> </a>
                             <div class="dropdown-menu dropdown-menu-right animated flipInY">
-								
-								
 								 <% if current_user.is_an_admin? %>
-                                <!-- text-->
                                 <a href="/user/dashboard" class="dropdown-item"><i class="ti-user"></i> Admin Dashboard</a>
                                  <% else %>
-                                <!-- text-->
                                 <a href="/user/dashboard" class="dropdown-item"><i class="ti-wallet"></i> Main Dashboard</a>
                                 <a href="/user/group-dashboard" class="dropdown-item"><i class="ti-wallet"></i> Group Dashboard</a>
                                  <% end %>
-                                <!-- text-->
                                 <div class="dropdown-divider"></div>
-                                <!-- text-->
                                 <a href="/users/edit" class="dropdown-item"><i class="ti-settings"></i> Edit my Account</a>
-                                <!-- text-->
+                              
                                 <div class="dropdown-divider"></div>
-                                <!-- text-->
                                 <a href="/users/sign_out" class="dropdown-item"  data-method='delete'><i class="fa fa-power-off"></i> Sign out</a>
-                                <!-- text-->
                             </div>
                         </li>
-                        <!-- ============================================================== -->
-                        <!-- End User Profile -->
-                        <!-- ============================================================== -->
-                        <!-- <li class="nav-item right-side-toggle"> <a class="nav-link  waves-effect waves-light" href="javascript:void(0)"><i class="ti-settings"></i></a></li> -->
+                       
                     </ul>
                 </div>
             </nav>
         </header>
         
+<!--
          <% if current_user.is_an_admin? && current_user.is_super_admin? == false %>
-         
 			  <aside class="left-sidebar">
-            <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
-                
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                        
@@ -252,45 +196,26 @@
 						  
                     </ul>
                 </nav>
-                <!-- End Sidebar navigation -->
             </div>
-            <!-- End Sidebar scroll-->
         </aside>
-        
            <% elsif current_user.is_super_admin? %>
          <aside class="left-sidebar">
-            <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
-                
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                       
 						  <li><a href="/"><i class="ti-layout-grid2"></i>New Users</a></li>
 						  <li><a href="/admin_messages"><i class="ti-layout-grid2"></i>Admin Messages</a></li>
 						  <li><a href="/bios"><i class="ti-layout-grid2"></i>Public Bios</a></li>
 						  <li><a href="/bio_questions"><i class="ti-layout-grid2"></i>Bio Questions</a></li>
 						  <li><a href="/bio_answers"><i class="ti-layout-grid2"></i>Bio Answers</a></li>
 						  <li><a href="/book_resources"><i class="ti-layout-grid2"></i>Book Resources</a></li>
-						  
-<!--
-                        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="icon-speedometer"></i><span class="hide-menu">Dashboard <span class="badge badge-pill badge-cyan ml-auto">4</span></span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="index.html">Minimal </a></li>
-                                <li><a href="index2.html">Analytical</a></li>
-                                <li><a href="index3.html">Demographical</a></li>
-                                <li><a href="index4.html">Modern</a></li>
-                            </ul>
-                        </li>
--->
-                       
                     </ul>
                 </nav>
-                <!-- End Sidebar navigation -->
             </div>
-            <!-- End Sidebar scroll-->
         </aside>
         <% end %>
+-->
+        
         <%= yield %>  
         <footer class="footer">
             © 2018, Dream Catcher LLC
@@ -352,3 +277,4 @@
 
     </script>
 </body>	
+<% end %>
