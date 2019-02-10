@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  before_action :collect_public_facing_variables
   skip_before_filter :authenticate_user!, only: [:meet_us]
 
   def index
@@ -15,7 +16,6 @@ class HomeController < ApplicationController
 
     # GET /bios/meet_us
   def meet_us
-    collect_public_facing_variables
   end
 
 end

@@ -9,7 +9,9 @@
           <% @first_name = "" %>
           <% @last_name = "" %>
           <% @email = "" %>
-          <%= link_to "Sign in with TEST Facebook", user_facebook_omniauth_authorize_path %>
+          <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+
+          <div class="fb-login-button" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
 
           <% if session["devise.facebook_data"] != nil %>
             <% @first_name = session["devise.facebook_data"]["info"]["name"].split(" ")[0] %>

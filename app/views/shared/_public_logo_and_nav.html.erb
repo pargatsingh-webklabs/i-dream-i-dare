@@ -5,6 +5,10 @@
 
   <div class="landing-page-spacer-30"></div>
 
+  <% if @active_book_resources == nil %>
+    <% @active_book_resources = [] %>
+  <% end %>
+
   <div class="landing-page-links">
 
     <% if user_signed_in? %>

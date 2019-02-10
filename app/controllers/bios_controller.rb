@@ -2,6 +2,7 @@ class BiosController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:meet_us]
   before_action :set_bio, only: [:show, :edit, :update, :destroy]
   before_filter :admin_user, only: [:index, :destroy, :show, :edit, :update, :new]
+  before_action :collect_public_facing_variables
   layout "signed-in" # Layout Default
 
   # GET /bios

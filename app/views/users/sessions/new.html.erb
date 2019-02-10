@@ -6,6 +6,10 @@
         <div class="light-well">
           <h2 class="page-header text-center">Welcome Back!</h2>
 
+          <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+
+          <div class="fb-login-button" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
+
           <%= form_for resource, as: resource_name, url: session_path(resource_name),
                         html: { class: "form-horizontal center"} do |f| %>
 

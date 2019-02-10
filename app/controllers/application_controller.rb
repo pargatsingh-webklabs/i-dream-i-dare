@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   # end
 
   def collect_public_facing_variables
-    binding.pry
+
     @active_bios = Bio.where(:profile_active => true)
 
     if !@active_bios.empty?
