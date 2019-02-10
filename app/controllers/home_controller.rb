@@ -14,8 +14,9 @@ class HomeController < ApplicationController
   	@active_book_resources = BookResource.where(active: true)
   end
 
-    # GET /bios/meet_us
+    # GET /meet_us
   def meet_us
+
   end
 
 end

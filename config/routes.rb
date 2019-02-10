@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get "/user_schedule/full_calendar" => "user_schedules#full_calendar"
   get "/user_schedule/user_create_new" => "user_schedules#user_create_new"
 
-  get "/home/meet_us" => "home#meet_us"
+  get "/meet_us" => "home#meet_us"
   
   root to: "dashboard#view"
   mount ImageUploader.upload_endpoint(:cache) => "/images/upload"
