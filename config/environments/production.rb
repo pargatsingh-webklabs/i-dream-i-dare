@@ -2,9 +2,9 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   # FROM Previous Rails version:
   
-     # if ENV.fetch("HEROKU_APP_NAME", "").include?("staging-pr-")
-     ENV["APPLICATION_HOST"] =  'http://206.81.14.195/i-dream-i-dare-master'
-    # end
+     if ENV.fetch("HEROKU_APP_NAME", "").include?("staging")
+        ENV["APPLICATION_HOST"] =  '/i-dream-i-dare-staging.herokuapp.com'
+     end
    config.action_mailer.default_url_options = { host: ENV.fetch("APPLICATION_HOST") }
   require "shrine/storage/s3"
   # s3 = Aws::S3::Encryption::Client.new(encryption_key: ENV['SECRET_KEY_BASE'], region: "us-east-1")
