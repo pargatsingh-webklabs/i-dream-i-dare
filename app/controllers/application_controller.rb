@@ -16,7 +16,8 @@ class ApplicationController < ActionController::Base
   def collect_public_facing_variables
 
     @active_bios = Bio.where(:profile_active => true)
-
+    @book_resource_request = ResourceRequest.new("")
+    
     if !@active_bios.empty?
       @active_bio_questions = BioQuestion.where(:active => true).order(:question_order_by)
 

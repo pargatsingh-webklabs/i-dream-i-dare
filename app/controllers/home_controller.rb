@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
-  before_action :collect_public_facing_variables
+  skip_before_filter :authenticate_user!, only: [:index, :about, :blog, :meet_us]
+  before_action :collect_public_facing_variables, only: [:index, :about, :blog, :meet_us]
   
   layout "application"
 
