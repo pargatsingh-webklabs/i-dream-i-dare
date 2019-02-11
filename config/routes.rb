@@ -17,8 +17,6 @@ Rails.application.routes.draw do
 
   get "/user_schedule/full_calendar" => "user_schedules#full_calendar"
   get "/user_schedule/user_create_new" => "user_schedules#user_create_new"
-
-  get "/meet_us" => "home#meet_us"
   
   root to: "dashboard#view"
   mount ImageUploader.upload_endpoint(:cache) => "/images/upload"
@@ -40,7 +38,7 @@ Rails.application.routes.draw do
   get "/download_book_resources" => "admin_messages#download_book_resources"
   get "/blog" => "home#blog"
   get "/test" => "home#test"
-
+  get "/meet_us" => "home#meet_us"
   get "/user/dashboard" => "dashboard#view"
   get "/user/dashboard/:active_user_id" => "dashboard#view"
   get "/user/group-dashboard" => "dashboard#group_view"
