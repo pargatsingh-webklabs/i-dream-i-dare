@@ -1,12 +1,17 @@
 
  <div class="block">
    <center><%= render '/shared/public_logo_and_nav' %></center>
+     <div class="top-sps">
         <div class="container">
             <h2 class="center">Welcome Back!</h2>
-            <div class="row">
-            <div class="col-md-2 col-sm-2"></div>
-                <div class="col-md-8 col-sm-8">
-                    <div class="box text-color-white equal-height">
+            <div class="row align-items-center h-100">
+            <div class="col-md-6 col-sm-6">
+            <div class="img-sec">
+            <img src="/assets/login.jpg">
+            </div>
+            </div>
+                <div class="col-md-6 col-sm-6 content-center">
+                    <div class="box_sign text-color-white equal-height back-design">
                     
                           <%= form_for resource, as: resource_name, url: session_path(resource_name),
                         html: { class: "form-horizontal center"} do |f| %>
@@ -19,7 +24,7 @@
                             <div class="form-group">
                              <% if devise_mapping.rememberable? -%>
 							  
-								<div class="col-sm-10">
+								<div class="col-sm-10 p-0">
 								  <div class="checkbox pull-left">
 									<label>
 									  <%= f.check_box :remember_me %> Remember me
@@ -38,13 +43,14 @@
                         <div class="bg bg-color-default"></div>
                         
                     </div>
-                    <br>
-						<br>
+                    <div class="col-md-12">
 						<%= render "devise/shared/links" %>
+						</div>
                 </div>
-            <div class="col-md-2 col-sm-2"></div>
+           
             </div>
         </div>
         <!--/ .container-->
         <div class="bg"></div><!--/ .bg-->
     </div>
+   </div>  

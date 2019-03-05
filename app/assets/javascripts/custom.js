@@ -14,7 +14,7 @@ $(document).ready(function($) {
         $(".rev-slider").revolution({
             sliderType:"standard",
             sliderLayout:"hero",
-            delay:9000,
+            delay:3000,
             gridheight:650,
             navigation: {
                 arrows:{enable:true}

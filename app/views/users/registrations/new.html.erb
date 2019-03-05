@@ -1,11 +1,14 @@
 <div class="block">
   <center><%= render '/shared/public_logo_and_nav' %></center>
+  <div class="top-sps">
 	<div class="container">
             <h2 class="center">New User</h2>
-            <div class="row">
-             <div class="col-md-3 col-sm-3"></div>
-                <div class="col-md-6 col-sm-6">
-                    <div class="box text-color-white equal-height">
+            <div class="row sign-tsps margin-btm">
+             <div class="col-md-6 col-sm-6">
+               <img src="/assets/sign_Up.jpg"> 
+             </div>
+                <div class="col-md-6 col-sm-6 anch-design">
+                    <div class="box_sign text-color-white equal-height back-design">
                          <%= form_for resource, as: resource_name, url: registration_path(resource_name),
                         html: { class: "form-horizontal center"} do |f| %>
                             <div class="form-group">
@@ -33,13 +36,12 @@
                          <% end %>	
                         <div class="bg bg-color-default"></div>
                     </div>
-                    <br>
-					<br>
+                   
 					<%= render "devise/shared/links" %>
                 </div>
-                <div class="col-md-3 col-sm-3"></div>
+               
             </div>
-
+		</div>	
 </div>
 
 

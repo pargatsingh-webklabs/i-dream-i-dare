@@ -27,43 +27,45 @@
 <div class="row">
     <div class="col-md-2" style="float: left;">
         <!-- Left -->
+        <div class="dropdown show">
         <% if @clients.nil? == false %>
           <% if @clients.count > 1 %>
-            <strong>My Clients</strong>
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           My clients
+          </a>
           <% else %>
-            <strong>My Client</strong>
+             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           My client
+          </a>
           <% end %>
         <% else %>
-          <strong>My Client</strong>
+           <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           My client
+          </a>
         <% end %>
-        
-        <hr>
+       
         <ul class="nav nav-pills nav-stacked">
           <li class="nav-header"></li>
 
-
-        <!-- Client List -->
-
-          <% if @clients.nil? == false %>
-        
-            <% @clients.each do |c| %>
-              <% if @active_user_id != nil && @active_user_id == c.id.to_s %>
-                <a class="btn"><div class="glyphicon glyphicon-chevron-right"></div><%= c.first_name %> <%= c.last_name %></a>
-              <% else %>
-                <a class="btn" href="/user/dashboard/<%=c.id%>"><div class="glyphicon glyphicon-chevron-right" style="color:white;"></div><%= c.first_name %> <%= c.last_name %></a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+             <% if @clients.nil? == false %>
+              <% @clients.each do |c| %>
+                <% if @active_user_id != nil && @active_user_id == c.id.to_s %>
+                  <!-- <a class="btn"><div class="glyphicon glyphicon-chevron-right"></div><%= c.first_name %> <%= c.last_name %></a> -->
+                   <a class="dropdown-item" href="#"><%= c.first_name %> <%= c.last_name %></a>
+                <% else %>
+                  <!--  <a class="btn" href="/user/dashboard/<%=c.id%>"><div class="glyphicon glyphicon-chevron-right" style="color:white;"></div><%= c.first_name %> <%= c.last_name %></a> -->
+                   <a class="dropdown-item" href="/user/dashboard/<%=c.id%>"><%= c.first_name %> <%= c.last_name %></a>
+                <% end %>
               <% end %>
+                <li class="divider"></li>
+            <% else %>
+              You have no Clients.
             <% end %>
-          
-              <li class="divider"></li>
-
-          <% else %>
-            You have no Clients.
-          <% end %>
-
-        <!-- / Client List -->
+          </div>
 
         </ul>
-
+        </div>
       </div><!-- /span-3 -->
 
       <div class="col-md-5 new-design">
@@ -73,20 +75,20 @@
 
       		<% if @all_active_user_plans_sorted_by_timestamp.nil? == false %>
                 <% @all_active_user_plans_sorted_by_timestamp.each do |plan| %>
-					 <div class="col-lg-12">
-                        <div class="card">
+					           <div class="col-lg-12">
+                        <div class="card coachcard">
                             <div class="card-body">
                                 <h5 class="card-title"><%= plan.title %></h5>
                                  <span class="text-muted"> <%= localize(Time.at(plan.created_at), :format => :sample) %></span>
                                  <% if plan.created_at != plan.updated_at %>
                                   <span class="text-muted"> UPDATED: <%= localize(Time.at(plan.updated_at), :format => :sample) %></span> 
 								
-							  <% end %>
+							               <% end %>
                                 <div class="edit-delete-plan-buttons">
 	                                <a data-confirm="Are you sure that you want to DELETE this Plan?"  rel="nofollow" data-method="delete" href="/plans/<%=plan.id%>">
-									  <span aria-hidden="true" class="close" aria-label="Close">&times;  </span> 
-									</a>
-								</div>
+									                <span aria-hidden="true" class="close" aria-label="Close">&times;  </span> 
+                									</a>
+                								</div>
                             </div>
                             <div class="comment-widgets">
                                 <!-- Comment Row -->
@@ -95,9 +97,8 @@
                                         <h5 class="font-medium">James Anderson</h5>
                                         <p class="m-b-10 text-muted">
                                         	<% if plan.content != nil %>
-											<%= plan.content.html_safe %>
-								  			<% end %></p>
-                                       
+                    											<%= plan.content.html_safe %>
+                    								  			<% end %></p>
                                     </div>
                                 </div>
                             </div>
