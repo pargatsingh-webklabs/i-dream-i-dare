@@ -8,6 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo">
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
     <title><%= title %></title>
     <!-- wysihtml5 CSS 
@@ -32,10 +33,10 @@
   background-color: #fff !important;
 }
 .page-wrapper {
-  background: #f7f7f7 !important;
+  background: #ffffff !important;
 }
 body {
-  background-color: #f7f7f7;
+  background-color: #ffffff;
 }
 .new-design {
   margin-bottom: 50px;
@@ -74,7 +75,7 @@ body {
   margin: 100px 20px 15px 175px;
 }
 .footer, .page-wrapper {
-  margin-left: 150px;
+ /* margin-left: 150px; */
 }
 
 .navbar-nav li {
@@ -123,6 +124,56 @@ background-color: #37b048 !important;
 .card_group {
 margin: 0px 0px 30px 135px;
 }
+.btn-success {
+	color: #fff;
+	background-color: #319d40 !important;
+	border-color: #319d40 !important;
+}
+ 
+.btn-success.focus, .btn-success:focus {
+	box-shadow: none !important;
+}
+.navbar-nav a {
+	font-family: Archivo;
+	text-transform: uppercase;
+}
+.navbar-nav a:hover {
+	color: black !important;
+	
+}
+
+#main-wrapper .navbar-nav a:active {
+	color: #fff !important;
+	background-color: #37b048 !important;
+}
+.navbar-nav li {position: relative;}
+
+.navbar-nav li a::after {
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+	opacity: 0;
+    visibility: hidden;
+	content: "";
+	height: 3px;
+	background-color: #37b048 !important;
+	position: absolute;
+	width: 100%;
+	bottom: 7px;
+	left: 0px;
+	right: 0;
+    margin: auto;
+	z-index: 9999999999 !important;
+	max-width: 141px;
+	display: block;
+}
+.navbar-nav li.active a::after {
+
+    visibility: visible;
+    filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+    opacity: 1;
+
+}
+
+body{font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;}
 @media screen and (min-device-width: 200px) and (max-device-width: 767px) { 
 .footer, .page-wrapper {
   margin-left: 0px;
@@ -168,7 +219,7 @@ margin: 0px 0px 30px 135px;
     </div>
     
     <div id="main-wrapper">
-		 <header class="topbar">
+		 <header class="topbar" style="border-bottom: 1px solid #eee;">
 			 
 			
             <nav class="navbar top-navbar navbar-expand-md navbar-dark custom-nav-mobile">
@@ -195,14 +246,14 @@ margin: 0px 0px 30px 135px;
                         <% end %>
                         
                        
-                        <li class="main-dash1">
+                        <li class="main-dash1" >
                             <a class="current-user"> <%= current_user.first_name %>'s Dashboard</a></li>
                             <% if current_user.is_an_admin? %>
-                           <li class="main-dash">
+                           <li class="<%= active_class('/user/dashboard') %> main-dash">
                              <a href="/user/dashboard"><i class="ti-user"></i> Admin Dashboard</a></li>
                                  <% else %>
-                              <li class="main-dash"> <a href="/user/dashboard" class="dropdown-item">Main Dashboard</a></li>
-                               <li class="main-dash"> <a href="/user/group-dashboard" class="dropdown-item"> Group Dashboard</a></li>
+                              <li class="<%= active_class('/user/dashboard') %> main-dash"> <a href="/user/dashboard" class="dropdown-item">Main Dashboard</a></li>
+                               <li class="<%= active_class('/user/group-dashboard') %> main-dash"> <a href="/user/group-dashboard" class="dropdown-item"> Group Dashboard</a></li>
                                  <% end %>
                                   <div class="brand "><a href="/"><img src="/assets/branding/logo.png" style="width: 100px !important;margin-top: 13px;margin-bottom: 13px;height: 40px;"></a></div>
                     </ul>
@@ -220,8 +271,8 @@ margin: 0px 0px 30px 135px;
 
 
                             
-                               <li> <div class="dropdown-divider"></div></li>
-                              <li>  <a href="/users/edit" class="dropdown-item"> Edit my Account</a></li>
+                               <li > <div class="dropdown-divider"></div></li>
+                              <li class="<%= active_class('/users/edit') %>" >  <a href="/users/edit" class="dropdown-item"> Edit my Account</a></li>
                               
                                 <div class="dropdown-divider"></div>
                               <li>  <a href="/users/sign_out" class="dropdown-item"  data-method='delete'> Sign out</a></li> 
@@ -299,7 +350,7 @@ margin: 0px 0px 30px 135px;
         
         <%= yield %>  
         <footer class="footer">
-            © 2018, Dream Catcher LLC
+            © 2019, Dream Catcher Coaching 
         </footer>
         
 	</div>	

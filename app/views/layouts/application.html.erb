@@ -68,6 +68,9 @@ body.subpage {
     filter: alpha(opacity=.66);
     opacity: .66;
 }
+.tp-bannertimer {
+	display: none;
+}
 .modal.fade .modal-dialog {
     transition: -webkit-transform .3s ease-out;
     transition: transform .3s ease-out;
@@ -94,6 +97,7 @@ body.subpage {
 	opacity: 1 !important;
 }
 .hero-slider h1 {
+	font-size: 30px;
 	color: #fff;
 }
 .hero-slider a {
@@ -407,7 +411,7 @@ dl.big {
                         <li class="<%= active_class('/bios/meet_us') %>"><a href="/bios/meet_us" class="landing-link" style="font-size: 16px;">Meet Us</a></li>
                         <li class="<%= active_class('/blog') %>"><a href="/blog" class="landing-link" style="font-size: 16px;">Blog</a></li>
                        
-						<li class="<%= active_class('#') %>"><a href="#" id="expand-book-resource-form" class="landing-link" style="font-size: 16px;">Book Resources</a></li>
+						<li id="bookresources"><a href="#" id="expand-book-resource-form" class="landing-link" style="font-size: 16px;">Book Resources</a></li>
 						<% if user_signed_in? %>
 						
 						<% else %>
@@ -429,6 +433,7 @@ dl.big {
                 <div class="col-md-4 col-sm-4 p-0">
                     <div class="right">
 						<span style="float:left"><a target="_blank" href="https://twitter.com/tinashe_claudio"><i class="fa fa-twitter fa-2" aria-hidden="true"></i></a></span>
+						<span style="float:left"><a target="_blank" href="https://twitter.com/tinashe_claudio"><i class="fa fa-linkedin fa-2" aria-hidden="true"></i></a></span>
                         <span style="float:right"><a href="#" class="scroll" style="margin-right:25px">To Top<i class="arrow_carrot-up_alt2"></i></a></span>
                         <div class="bg-right"></div>
                     </div>
@@ -516,12 +521,13 @@ dl.big {
     $(document).ready(function() {
           $("#book-resource-form").css({'display': 'none'});
           $('#expand-book-resource-form').click(function() {
-               $(".hero-slider").fadeOut("slow");
+               $(".home_page").fadeOut("slow");
+               $("#bookresources").addClass("active");
                $("#book-resource-form").fadeIn("slow");
           })
           $('#collapse-book-resource-form').click(function() {
                 $("#book-resource-form").fadeOut("slow");
-                $(".hero-slider").fadeIn("slow");
+                $(".home_page").fadeIn("slow");
           })
           $(".arrow_carrot-up_alt2").on("click", function(event) {
               event.preventDefault();
