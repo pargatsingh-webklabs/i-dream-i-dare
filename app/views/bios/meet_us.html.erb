@@ -1,0 +1,1085 @@
+<center><%= render '/shared/public_logo_and_nav' %></center>
+<hr />
+
+<!--<div class="container" id="meetUs">
+  <% @active_bios.each do |bio| %> 
+    <div class="bio_coach_profile col-sm-12">
+
+      <div class="bio-pic col-sm-8">
+        <img src="<%=bio.profile_image%>" class="img-rounded" style="max-width:100%;height:auto;" alt="/assets/branding/DreamCatcherLogo01.png">
+      </div>
+
+      <div class="profile-body col-sm-4">
+        <div class="name">
+          <%= @active_bio_users.select{|u| u.id == bio.user_id}[0].first_name %> 
+          <%= @active_bio_users.select{|u| u.id == bio.user_id}[0].last_name %> 
+          <br />
+          <hr />
+        </div>
+
+        <div class="main-text">
+          <a style="font-size: 20px; color: #88b021;" href="mailto:<%= @active_bio_users.select{|u| u.id == bio.user_id}[0].email %>">
+            <i class="fa fa-envelope"></i>
+          </a>
+          <br />
+          <div class=bio-profile-text">
+            <%= bio.profile_text %>
+          </div>
+          <div class="style-expertise-show-more-link">
+            <hr />
+
+            <% if bio.style_text != "" %>
+              Style: <%= bio.style_text %>
+              <br />
+            <% end %>
+
+            <% if bio.expertise != "" %>
+              Expertise: <%= bio.expertise %>
+              <br />
+            <% end %>
+
+            <% @users_bio_answers = @active_bio_answers.where("user_id = ?", bio.user_id) %>
+
+            <% if (@users_bio_answers.count > 0) %>
+              <a href="#" id="more-content_<%= bio.id %>" class="show-more-button">
+                <div class="glyphicon glyphicon-plus-sign"></div> Show more
+              </a>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+        <div class="col-sm-12"  
+        <div id="show-more-content_<%= bio.id %>" class="show-more-content" style="display:none;">
+          <% @active_bio_questions.each do |ques| %>
+            <% a = @users_bio_answers.find_by_bio_question_id(ques.id) %>
+            
+            <% if (ques.id > 0 && a != nil) %>
+              <div class="q-a">
+                <hr />
+                <div class="bio-question">
+                  <%= ques.question_text.html_safe %>
+                </div>
+                <div class="bio-answer" %>
+                  <%= a.answer_text.html_safe %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+      </div>
+    </div>
+    <div class="profile-body col-sm-12" style="margin-top:1px;"></div>
+    <% end %>
+</div>-->
+
+<!--/ <div class="top-sps">
+ <div class="container">
+        <h2 class="tx-design">Meet the team</h2>
+        <div class="row">
+            <div class="col-md-4 col-sm-4 paddingr-0">
+                <img src="/assets/meetus.jpeg" class="margin_top" alt="">
+            </div>
+         
+            <div class="col-md-8 col-sm-8 paddingl-0">
+                <div class="row no-gutters">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="box text-color-white equal-height">
+                            <h3>Make an Appointment</h3>
+                            <p class="psize">
+                                Sed iaculis dapibus tellus eget condimentum. Curabitur ut tellus congue, convallis tortor
+                                et, pellentesque diam. Nullam non dolor eu ligula ultrices pellentesque placerat imperdiet
+                                metus. Etiam lobortis bibendum egestas.
+                            </p>
+                            <p class="psize">
+                                In quis massa a felis molestie consequat rhoncus vitae nisl. In pharetra posuere dictum.
+                                In eget metus eu leo rutrum venenatis vitae sit amet elit. Duis luctus enim enim.
+                            </p>
+                            <div class="bg bg-color-default"></div>
+                        </div>
+                      
+                    </div>
+                  
+                    <div class="col-md-6 col-sm-6">
+                        <div class="box equal-height chg-color" style="height: 367px;">
+                            <div class="calendar small text-color-white"></div>
+                            <div class="bg bg-color-default-darker"></div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="block nw-blck">
+        <div class="container">
+            <div class="row">
+            
+                <div class="col-md-4 col-sm-4">
+                    <h3>Contact</h3>
+                    <address>
+                        <strong>Jane Doe</strong><br>
+                        1577 Daylene Drive<br>
+                        Southfield, MI 48075
+                        <hr>
+                        <figure>
+                            <div class="info">
+                                <i class="icon_phone"></i>
+                                <span>402-880-7575</span>
+                            </div>
+                            <div class="info">
+                                <i class="icon_mail"></i>
+                                <span><a class="psize" href="mailto:nmahupete@qliomaha.com?subject=">nmahupete@qliomaha.com</a></span>
+                            </div>
+                           
+                        </figure>
+                    </address>
+                </div>
+                
+                <div class="col-md-8 col-sm-8">
+                    <h3>Contact Form</h3>
+					  <%= form_for AdminMessage.new do |f| %>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+									<%= f.text_field :from_name, placeholder: "Customer Name", class: "form-control framed"  %>                         
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+									<%= f.text_field :from_email, placeholder: "Customer Email", class: "form-control framed"  %>
+                                 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                        <%= f.text_area :content, placeholder: "Send us a note", class: "form-control framed"  %>
+                          
+                        </div>
+                        <div class="form-group">
+							  <%= f.submit "Send your message" , class: "btn pull-right btn-primary" %>
+                            
+                        </div>
+                        <div class="pull-left"><div class="form-status"></div></div>
+                   <% end %>
+                </div>
+            </div>
+        </div>
+        <div class="bg"></div>
+    </div>
+    </div>
+
+    .block-->
+
+<style type="text/css">
+ a {
+    color: #5cb85c;
+}   
+a:hover, a:focus {
+    color: #5cb85c;
+}
+
+</style>
+
+<div class="top-sps">
+ <div class="block">
+        <div class="container">
+            <% @active_bios.each do |bio| %> 
+                <br>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        <img src="<%=bio.profile_image%>" style="max-width:100%;height:auto;" alt="/assets/branding/DreamCatcherLogo01.png">
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <h3 class="no-bottom-margin"><strong> <%= @active_bio_users.select{|u| u.id == bio.user_id}[0].first_name %> 
+                     <%= @active_bio_users.select{|u| u.id == bio.user_id}[0].last_name %> </strong></h3>
+                        <div class="info">
+                            <a href="mailto:<%= @active_bio_users.select{|u| u.id == bio.user_id}[0].email %>"><i class="icon_mail"></i></a>
+                        </div>
+                        <br>
+                         <h4> <%= bio.profile_text %></h4>
+                            <% if bio.style_text != "" %>
+                              Style: <%= bio.style_text %>
+                              <br />
+                            <% end %>
+
+                            <% if bio.expertise != "" %>
+                              Expertise: <%= bio.expertise %>
+                              <br />
+                            <% end %>
+                            
+                            <% @users_bio_answers = @active_bio_answers.where("user_id = ?", bio.user_id) %>
+
+                            <% if (@users_bio_answers.count > 0) %>
+                              <a href="#" id="more-content_<%= bio.id %>" class="show-more-button">
+                                <div class="glyphicon glyphicon-plus-sign"></div> Show more
+                              </a>
+                            <% end %>
+                      <div id="show-more-content_<%= bio.id %>" class="show-more-content" style="display:none;">  
+                        <% @active_bio_questions.each do |ques| %>
+                        <% a = @users_bio_answers.find_by_bio_question_id(ques.id) %>
+                            <% if (ques.id > 0 && a != nil) %>
+                                <hr />
+                               <p class="psize">
+                                  <%= ques.question_text.html_safe %>
+                               </p>
+                               <p class="psize">
+                                  <%= a.answer_text.html_safe %>
+                                </p>
+                             <% end %>
+                        <% end %>   
+                        <br>
+                      </div>  
+                    </div>
+                </div>
+              <% end %>
+            <br>
+            <br>
+            <br>
+             <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <img src="/assets/Kearns_Pat_500px.jpg" alt="">
+                   
+                </div>
+                <div class="col-md-8 col-sm-8">
+                    <h3 class="no-bottom-margin"><strong>Patricia Kearns</strong></h3>
+                    <br>
+                    <div class="info">
+                        <a href="mailto:aelson@qliomaha.com?subject="><i class="icon_mail"></i></a>
+                    </div>
+                </div>
+                <!--/ .col-md-8-->
+            </div>
+             <br>
+            <br>
+            <br>
+             <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <img src="/assets/Elson_Alicia_500px.jpg" alt="">
+                   
+                </div>
+                <div class="col-md-8 col-sm-8">
+                    <h3 class="no-bottom-margin"><strong>Alicia Elson</strong></h3>
+                    <br>
+                    <div class="info">
+                        <a href="mailto:aelson@qliomaha.com?subject="><i class="icon_mail"></i></a>
+                    </div>
+                    <br>
+                    <a href="javascript:void(0)" id="more-content_6" class="show-more-button">
+                        <div class="glyphicon glyphicon-plus-sign"></div> Show more
+                    </a>
+                     <div id="show-more-content_6" class="show-more-content" style="display:none;">
+                    <h4>  Most Proud Of :</h4>
+                    <p class="psize">
+                       
+                        Raising 3 kids by myself <br>
+                        Being employed by a great company for 28 years<br>
+                        Getting a Masters Degree<br>
+
+                    </p>
+                    <br>
+                    <h4>  Stepping Outside My Comfort Zone: </h4>
+                    <p class="psize">
+                       
+                       Giving a presentation about QLI to Young Professionals Group <br>
+                       Joining TAB and Vistage<br>
+                       Joining the Camp YouCan Board of Directors<br>
+
+                    </p>
+                    <br>
+                    <h4>  Areas I have grown the most/ Hurdles I have overcome: </h4>
+                    <p class="psize">
+                       
+                       I don’t have to be perfect at everything. <br>
+                       I can’t please everyone.<br>
+                       Worrying doesn’t help.<br>
+
+                    </p>
+                  
+                    <br>
+                    <h4>  I Need/ Use a Coach For: </h4>
+                    <p class="psize">
+                       
+                       Growing team members. <br>
+                       Diagnosing problems<br>
+                       Patience<br>
+
+                    </p>
+                    <br>
+                    <h4>  Biggest Cognitive Blunders:  </h4>
+                    <p class="psize">
+                       
+                       There has to be a pony in here somewhere! <br>
+                      Everyone must like me!<br>
+
+                    </p>
+                    <br>
+                    <h4>  Cognitive Blunders Overcome The Most: </h4>
+                    <p class="psize">
+                       
+                       They are all thinking about me. <br>
+                       Catastrophizing<br>
+                       I need to help change this person.<br>
+
+                    </p>
+                    <br>
+                    <h4>  I Exercise Curiosity By: </h4>
+                    <p class="psize">
+                       
+                       Talking to people who are smarter than me! <br>
+                       Taking classes and webinars on topics that don’t interest me but I know it is important for me to know for life and work.<br>
+
+                    </p>
+                    <br>
+                    <h4>  Most Useless Talent I Have: </h4>
+                    <p class="psize">
+                       
+                       I can roll my tongue. <br>
+                       I can remember things about people that people want me to forget!<br>
+
+                    </p>
+                    <br>
+                    <h4>  Philosophy In Life: </h4>
+                    <p class="psize">
+                       
+                       Work smart, not hard!<br>
+                       Winners never cheat, cheaters never win!<br>
+                       Treat your family and friends well because in the end, they are the one’s that will be there when the going gets tough.<br>
+
+                    </p>
+                    <br>
+                    </div>
+                </div>
+                <!--/ .col-md-8-->
+            </div>
+            <!--/ .row-->
+            <br>
+            <br>
+            <br>
+             <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <img src="/assets/Schlagenhauff_Chris_500px.jpg" alt="">
+                   
+                </div>
+                <div class="col-md-8 col-sm-8">
+                    <h3 class="no-bottom-margin"><strong>Chris Schlagenhauff </strong></h3>
+                    <br>
+                    <div class="info">
+                        <a href="mailto:cschlagenhauff@gmail.com?subject="><i class="icon_mail"></i></a>
+                    </div>
+                </div>
+                <!--/ .col-md-8-->
+            </div>
+            <!--/ .row-->
+             <br>
+            <br>
+            <br>
+             <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <img src="/assets/Elson_Alicia_500px.jpg" alt="">
+                   
+                </div>
+                <div class="col-md-8 col-sm-8">
+                    <h3 class="no-bottom-margin"><strong>Erin Lassen </strong></h3>
+                    <br>
+                    <div class="info">
+                        <a href="mailto:aelson@qliomaha.com?subject="><i class="icon_mail"></i></a>
+                    </div>
+                    <br>
+                    <a href="javascript:void(0)" id="more-content_7" class="show-more-button">
+                        <div class="glyphicon glyphicon-plus-sign"></div> Show more
+                    </a>
+                     <div id="show-more-content_7" class="show-more-content" style="display:none;">
+                    <h4>  Most Proud Of :</h4>
+                    <p class="psize">
+                       
+                        Building a strong foundation for my kids- teaching them strong values and providing a good life for them <br>
+                        Having a strong marriage<br>
+                        Completing college in 4 years<br>
+
+                    </p>
+                    <br>
+                    <h4>  Stepping Outside My Comfort Zone: </h4>
+                    <p class="psize">
+                       
+                       Facilitating Meetings <br>
+                       Giving Tours<br>
+                       Networking<br>
+                       StoryTelling Workshop<br>
+
+                    </p>
+                    <br>
+                    <h4>  Areas I have grown the most/ Hurdles I have overcome: </h4>
+                    <p class="psize">
+                       
+                       Slowing Down and Processing rather than rushing to just complete a task <br>
+                       Giving PR<br>
+                       Building Deeper Relationships<br>
+
+                    </p>
+                  
+                    <br>
+                    <h4>  I Need/ Use a Coach For: </h4>
+                    <p class="psize">
+                       
+                       Being a more effective leader- having a broader focus <br>
+                       Linking Staff-effectively<br>
+                       Facilitating Meetings<br>
+                       Adapting my approach/style<br>
+
+                    </p>
+                    <br>
+                    <h4>  Biggest Cognitive Blunders:  </h4>
+                    <p class="psize">
+                       
+                      I must be good at everything… <br>
+                      I have good reason to be upset or sad…<br>
+
+                    </p>
+                    <br>
+                    <h4>  Cognitive Blunders Overcome The Most: </h4>
+                    <p class="psize">
+                       
+                       Catastrophizing <br>
+                       I crave Justice<br>
+
+                    </p>
+                    <br>
+                    <h4>  I Exercise Curiosity By: </h4>
+                    <p class="psize">
+                       
+                       Reading blogs & articles <br>
+                       Ted Talks<br>
+                       Watching News<br>
+                       Reading Books<br>
+
+                    </p>
+                    <br>
+                    <h4>  Most Useless Talent I Have: </h4>
+                    <p class="psize">
+                       
+                       ? <br>
+
+                    </p>
+                    <br>
+                    <h4>  Philosophy In Life: </h4>
+                    <p class="psize">
+                       
+                       
+                        If you’re unhappy, Change It<br>
+                       
+                    </p>
+                    <br>
+                    </div>
+                </div>
+                <!--/ .col-md-8-->
+            </div>
+            <!--/ .row-->
+             <br>
+            <br>
+            <br>
+             <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <img src="/assets/Carbullido_Kristin_500px.jpg" alt="">
+                   
+                </div>
+                <div class="col-md-8 col-sm-8">
+                    <h3 class="no-bottom-margin"><strong>Chris Schlagenhauff </strong></h3>
+                    <br>
+                    <div class="info">
+                        <a href="mailto:kcarbullido@qliomaha.com?subject="><i class="icon_mail"></i></a>
+                    </div>
+                </div>
+                <!--/ .col-md-8-->
+            </div>
+            <!--/ .row-->
+            <br>
+            <br>
+            <br>
+             <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <img src="/assets/Kerschke_Steve_500px.jpg" alt="">
+                   
+                </div>
+                <div class="col-md-8 col-sm-8">
+                    <h3 class="no-bottom-margin"><strong>Steve Kerschke </strong></h3>
+                    <br>
+                    <div class="info">
+                        <a href="mailto:steve.kerschke@qliomaha.com?subject="><i class="icon_mail"></i></a>
+                    </div>
+                    <br>
+                    <a href="javascript:void(0)" id="more-content_8" class="show-more-button">
+                        <div class="glyphicon glyphicon-plus-sign"></div> Show more
+                    </a>
+                     <div id="show-more-content_8" class="show-more-content" style="display:none;">
+                    <h4>  Most Proud Of :</h4>
+                    <p class="psize">
+                       
+                        Winning state baseball senior year of high school – pitched 2 of 3 games over the course of two days.<br>
+                        Having the courage to make the difficult decision to leave QLI and doing it in a way that left the door open to come back.<br>
+                        Raising my two young boys.<br>
+
+                    </p>
+                    <br>
+                    <h4>  Stepping Outside My Comfort Zone: </h4>
+                    <p class="psize">
+                       
+                       Leaving QLI to start a new career in a new industry. <br>
+                       Social/networking events where I don’t know anyone.<br>
+                       Public speaking.<br>
+
+                    </p>
+                    <br>
+                    <h4>  Areas I have grown the most/ Hurdles I have overcome: </h4>
+                    <p class="psize">
+                       
+                       Being mindful of how I’m perceived by others and adjusting my behavior accordingly. <br>
+                       Being transparent and dealing with conflict.<br>
+                       Holding others accountable.<br>
+
+                    </p>
+                  
+                    <br>
+                    <h4>  I Need/ Use a Coach For: </h4>
+                    <p class="psize">
+                       
+                       Decision making. <br>
+                       Confidence and reassurance.<br>
+                       Mindfulness.<br>
+                       Relationship building – beyond surface level<br>
+
+                    </p>
+                    <br>
+                    <h4>  Biggest Cognitive Blunders:  </h4>
+                    <p class="psize">
+                       
+                      I must be good at everything… <br>
+                      If I just avoid this…<br>
+
+                    </p>
+                    <br>
+                    <h4>  Cognitive Blunders Overcome The Most: </h4>
+                    <p class="psize">
+                    
+                        I need to be loved and approved by everyone…
+                        <br>
+                       
+                    </p>
+                    <br>
+                    <h4>  I Exercise Curiosity By: </h4>
+                    <p class="psize">
+                       
+                       Reading – mainly books but also blogs & articles <br>
+                       Listening to Podcasts<br>
+
+                    </p>
+                    <br>
+                    <h4>  Most Useless Talent I Have: </h4>
+                    <p class="psize">
+                       
+                       
+                    “I’m really good at ironing and wrapping gifts...unfortunately.”
+                     <br>
+
+                    </p>
+                    <br>
+                    <h4>  Philosophy In Life: </h4>
+                    <p class="psize">
+                       
+                    “Listen to your conscience.  It will tell you what to do and how to do it.”
+                    <br>
+                       
+                    </p>
+                    <br>
+                    </div>
+                </div>
+                <!--/ .col-md-8-->
+            </div>
+            <!--/ .row-->
+             <br>
+            <br>
+            <br>
+             <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <img src="/assets/Kerschke_Taylor_500px.jpg" alt="">
+                   
+                </div>
+                <div class="col-md-8 col-sm-8">
+                    <h3 class="no-bottom-margin"><strong>Taylor Kerschke </strong></h3>
+                    <br>
+                    <div class="info">
+                        <a href="mailto:tkerschke@qliomaha.com?subject="><i class="icon_mail"></i></a>
+                    </div>
+                    <br>
+                    <a href="javascript:void(0)" id="more-content_9" class="show-more-button">
+                        <div class="glyphicon glyphicon-plus-sign"></div> Show more
+                    </a>
+                     <div id="show-more-content_9" class="show-more-content" style="display:none;">
+                    <h4>  Most Proud Of :</h4>
+                    <p class="psize">
+                       
+                        My family, experiencing/raising two boys<br>
+                        My relationships with family and friends, I place high value in this<br>
+                        Living through Europe, learning a lot about myself<br>
+                        My health<br>
+
+                    </p>
+                    <br>
+                    <h4>  Stepping Outside My Comfort Zone: </h4>
+                    <p class="psize">
+                       
+                       Writing<br>
+                       Challenging those whom I respect<br>
+                       Storytelling<br>
+
+                    </p>
+                    <br>
+                    <h4>  Areas I have grown the most/ Hurdles I have overcome: </h4>
+                    <p class="psize">
+                       
+                       I must be good at everything <br>
+                       Assuming vs. asking the questions<br>
+                       Managing being a mom, a professional, a friend, a wife, a sister, etc.<br>
+
+                    </p>
+                  
+                    <br>
+                    <h4>  I Need/ Use a Coach For: </h4>
+                    <p class="psize">
+                       
+                       To challenge my mindset and offer a different view <br>
+                       Leadership skills-leading and growing teams<br>
+                       Confidence<br>
+                       Personal Growth<br>
+
+                    </p>
+                    <br>
+                    <h4>  Biggest Cognitive Blunders:  </h4>
+                    <p class="psize">
+                       
+                      I must be good at everything… <br>
+                      I need to be loved and approved by everyone<br>
+
+                    </p>
+                    <br>
+                    <h4>  Cognitive Blunders Overcome The Most: </h4>
+                    <p class="psize">
+                        
+                        I crave justice
+
+                        <br>
+                       
+                    </p>
+                    <br>
+                    <h4>  I Exercise Curiosity By: </h4>
+                    <p class="psize">
+                       
+                       Blogs <br>
+                       Interacting with individuals not in my profession or circle of friends<br>
+                       Book/documentaries<br>
+                       Ted Talks<br>
+
+                    </p>
+                    <br>
+                    <h4>  Most Useless Talent I Have: </h4>
+                    <p class="psize">
+                        
+                    Big Hair
+
+                     <br>
+
+                    </p>
+                    <br>
+                    <h4>  Philosophy In Life: </h4>
+                    <p class="psize">
+                       (this was hard).<br>
+                       I have many philosophies.  :-)<br>
+                    Work hard always.  Nothing worthwhile is easy.  Surround yourself with people who will make you better, stronger, wiser. Drink wine.  
+                    <br>
+                       
+                    </p>
+                    <br>
+                    </div>
+                </div>
+                <!--/ .col-md-8-->
+            </div>
+            <!--/ .row-->
+             <br>
+            <br>
+            <br>
+             <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <img src="/assets/Newman_Ellie_500px.jpg" alt="">
+                   
+                </div>
+                <div class="col-md-8 col-sm-8">
+                    <h3 class="no-bottom-margin"><strong> Ellie Newman  </strong></h3>
+                    <br>
+                    <div class="info">
+                        <a href="mailto:enewman@qliomaha.com?subject="><i class="icon_mail"></i></a>
+                    </div>
+                </div>
+                <!--/ .col-md-8-->
+            </div>
+            <!--/ .row-->
+              <br>
+            <br>
+            <br>
+             <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <img src="/assets/Pearson_Jon_500px.jpg" alt="">
+                   
+                </div>
+                <div class="col-md-8 col-sm-8">
+                    <h3 class="no-bottom-margin"><strong>Jon Pearson  </strong></h3>
+                    <br>
+                    <div class="info">
+                        <a href="mailto:jpearson@qliomaha.com?subject="><i class="icon_mail"></i></a>
+                    </div>
+                    <br>
+                    <a href="javascript:void(0)" id="more-content_10" class="show-more-button">
+                        <div class="glyphicon glyphicon-plus-sign"></div> Show more
+                    </a>
+                     <div id="show-more-content_10" class="show-more-content" style="display:none;">
+                    <h4>  Most Proud Of :</h4>
+                    <p class="psize">
+                       
+                        1)    Google “Late Bloomer” and the first picture you’ll see is of me at age 28. I was pretty rudderless. No compass. No course charted. The mentorship and opportunities that QLI provided really did provide me with direction and a sense of purpose. I’m proud that I embraced these experiences and honed my skills in leadership, empathy, clinical influence, creativity and presenting.<br>
+                        2)    My growth in developing my skill as  a photographer<br>
+                        3)    Increasing my comfort and ability to handle conflict-both personally and professionally<br>
+
+                    </p>
+                    <br>
+                    <h4>  Stepping Outside My Comfort Zone: </h4>
+                    <p class="psize">
+                       
+                       1)    Seeking out, accepting and growing from helpful feedback<br>
+                       2)    Collaborating on creative projects<br>
+                       3)    Seeking out mentors to push me to grow<br>
+
+                    </p>
+                    <br>
+                    <h4>  Areas I have grown the most/ Hurdles I have overcome: </h4>
+                    <p class="psize">
+                       
+                       Handling conflict<br>
+                       public speaking-started with playing on stage for the first time in the late 90’s.<br>
+
+                    </p>
+                  
+                    <br>
+                    <h4>  I Need/ Use a Coach For: </h4>
+                    <p class="psize">
+                       
+                       Growing from criticism, <br>
+                       photography, <br>
+                       public speaking, <br>
+                       storytelling,<br>
+                       continuing to maintain a positive, optimistic outlook in times of stress<br>
+
+                    </p>
+                    <br>
+                    <h4>  Biggest Cognitive Blunders:  </h4>
+                    <p class="psize">
+                       
+                        Perfectionism, Craving Justice, Being Loved and Approved by Everyone
+                        <br>
+                      
+                    </p>
+                    <br>
+                    <h4>  Cognitive Blunders Overcome The Most: </h4>
+                    <p class="psize">
+                        
+                        Catastrophizing, Searching for the Pony
+                        <br>
+                       
+                    </p>
+                    <br>
+                    <h4>  I Exercise Curiosity By: </h4>
+                    <p class="psize">
+                       
+                        Taking my camera for a walk, reading
+                         <br>
+                       
+                    </p>
+                    <br>
+                    <h4>  Most Useless Talent I Have: </h4>
+                    <p class="psize">
+                    
+                    I can mimic a 1970’s CB radio/walkie talkie (“breaker 19..." , When I snap my fingers it sounds like a gunshot, I can play the harmonica with my nose.
+
+                     <br>
+
+                    </p>
+                    <br>
+                    <h4>  Philosophy In Life: </h4>
+                    <p class="psize">
+                       I read this recently:<br>
+                       Happiness is NOT the belief that we don’t need to change, it is the belief that we can.<br>
+                       
+                    </p>
+                    <br>
+                    </div>
+                </div>
+                <!--/ .col-md-8-->
+            </div>
+            <!--/ .row-->
+              <br>
+            <br>
+            <br>
+             <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <img src="/assets/Welch_Ronnie_500px.jpg" alt="">
+                   
+                </div>
+                <div class="col-md-8 col-sm-8">
+                    <h3 class="no-bottom-margin"><strong> Roni Welch   </strong></h3>
+                    <br>
+                    <div class="info">
+                        <a href="mailto:rwelch@qliomaha.com?subject="><i class="icon_mail"></i></a>
+                    </div>
+                    <br>
+                    <a href="javascript:void(0)" id="more-content_11" class="show-more-button">
+                        <div class="glyphicon glyphicon-plus-sign"></div> Show more
+                    </a>
+                     <div id="show-more-content_11" class="show-more-content" style="display:none;">
+                    <h4>  Most Proud Of :</h4>
+                    <p class="psize">
+                       
+                        Being the 1st person in my family to attend college.<br>
+                        Having the courage to leave Des Moines (where ALL of my family is) and truly discover who I am. <br>
+                        Having a family of my own.  I never envisioned myself as a mother and never had the desire to have children.  Now having 2 of my own, I could never envision life without them.<br>
+
+                    </p>
+                    <br>
+                    <h4>  Stepping Outside My Comfort Zone: </h4>
+                    <p class="psize">
+                       
+                       Joining the Rehab Leadership Team.  This is one that continuously pushes me outside of my comfort zone<br>
+                       Being a member of the Preschool Board (when Brody was in Preschool)<br>
+                       Presenting – Did this early on in my career and is something that still terrifies me.<br>
+
+                    </p>
+                    <br>
+                    <h4>  Areas I have grown the most/ Hurdles I have overcome: </h4>
+                    <p class="psize">
+                       
+                       Organization – still working on it but have come a long ways<br>
+                       Seeing the importance of individual meetings with team members.<br>
+                       PR – Early in my career I needed this to feel valued and to know I was doing my job well.  Over time I do not rely on this and welcome the criticism more.<br>
+
+                    </p>
+                  
+                    <br>
+                    <h4>  I Need/ Use a Coach For: </h4>
+                    <p class="psize">
+                       
+                       Staff development <br>
+                       Direction of clinical programs <br>
+                       My approach in meetings and with individual staff <br>
+                      
+                    </p>
+                    <br>
+                    <h4>  Biggest Cognitive Blunders:  </h4>
+                    <p class="psize">
+                       I crave justice<br>
+                       They’re all thinking about me
+                        <br>
+                      
+                    </p>
+                    <br>
+                    <h4>  Cognitive Blunders Overcome The Most: </h4>
+                    <p class="psize">
+                        
+                        If it’s good for her, it must be bad for me
+                        <br>
+                        I have a good reason to be mad or upset<br>
+                       
+                    </p>
+                    <br>
+                    <h4>  I Exercise Curiosity By: </h4>
+                    <p class="psize">
+                       
+                        Listen to TedX on my way into work that are passed along.
+                         <br>
+                         Listen to Audio book on my way into work<br>
+                         Read books that are recommended – this is a little harder during the summer time, however when I travel for work I get a lot of reading time in. <br>
+                       
+                    </p>
+                    <br>
+                    <h4>  Most Useless Talent I Have: </h4>
+                    <p class="psize">
+                    
+                        I can hula hoop on my foot
+
+                     <br>
+
+                    </p>
+                    <br>
+                    <h4>  Philosophy In Life: </h4>
+                    <p class="psize">
+                       
+                        “Life is what you make of it.  If you feel like the world is out to get you, then your mindset will drive this.  We may not be in control of what happens in life, but we are in control of how we react and interpret each situation. ”
+                        <br>
+                       
+                    </p>
+                    <br>
+                    </div>
+                </div>
+                <!--/ .col-md-8-->
+            </div>
+            <!--/ .row-->
+            <br>
+            <br>
+            <br>
+             <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <img src="/assets/Mahupete_500px.jpg" alt="">
+                </div>
+                <div class="col-md-8 col-sm-8">
+                    <h3 class="no-bottom-margin"><strong>  Nash Mahupete  </strong></h3>
+                    <br>
+                    <div class="info">
+                        <a href="mailto:nashty@gmail.com?subject="><i class="icon_mail"></i></a>
+                    </div>
+                </div>
+                <!--/ .col-md-8-->
+            </div>
+            <!--/ .row-->
+               <br>
+            <br>
+            <br>
+             <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <img src="/assets/Custer_Kristin_500px.jpg" alt="">
+                   
+                </div>
+                <div class="col-md-8 col-sm-8">
+                    <h3 class="no-bottom-margin"><strong>  Kristin Custer </strong></h3>
+                    <br>
+                    <div class="info">
+                        <a href="mailto:kcuster@qliomaha.com?subject="><i class="icon_mail"></i></a>
+                    </div>
+                    <br>
+                    <a href="javascript:void(0)" id="more-content_12" class="show-more-button">
+                        <div class="glyphicon glyphicon-plus-sign"></div> Show more
+                    </a>
+                     <div id="show-more-content_12" class="show-more-content" style="display:none;">
+                    <h4>  Most Proud Of :</h4>
+                    
+                    <p class="psize">
+                       
+                        1.  My experiences throughout and growth at QLI<br>
+                        2.  My relationships – building a group of strong, intelligent female friends, healthy family boundaries and strong marriage.  <br>
+                        3.  Being part of a couple organizations that raise money to scholarship or loan to women so they can continue their education. <br>
+
+                    </p>
+                    <br>
+                    <h4>  Stepping Outside My Comfort Zone: </h4>
+                    <p class="psize">
+                       
+                       1.  Every job that Kim Hoogeveen talked me into that I knew nothing about.    <br>
+                       2.  Every time I walk into a conference hall full of people.  <br>
+                       3.  Going back for a certification in Master Gardening.  <br>
+
+                    </p>
+                    <br>
+                    <h4>  Areas I have grown the most/ Hurdles I have overcome: </h4>
+                    <p class="psize">
+                       
+                       1.  Looking at situations/problems from all angles – not just how I see things<br>
+                       2.  Confidence<br>
+                       3.  Balancing clickey-click nature with processing to get the best result<br>
+
+                    </p>
+                  
+                    <br>
+                    <h4>  I Need/ Use a Coach For: </h4>
+                    <p class="psize">
+                       
+                        Perspective, when processing how to best deliver feedback
+                        <br>
+                      
+                    </p>
+                    <br>
+                    <h4>  Biggest Cognitive Blunders:  </h4>
+                    <p class="psize">
+                       Craving Justice<br>
+                       There is always a good solution if I just work hard enough
+                        <br>
+                      
+                    </p>
+                    <br>
+                    <h4>  Cognitive Blunders Overcome The Most: </h4>
+                    <p class="psize">
+                        
+                        I need to be loved/approved of by everyone.  
+                        <br>
+                        I must be good at everything<br>
+                       
+                    </p>
+                    <br>
+                    <h4>  I Exercise Curiosity By: </h4>
+                    <p class="psize">
+                       
+                         Seeking out new experiences
+                         <br>
+                         Reading, Engaging in conversations with people smarter than I am<br>
+                         Spending time with people that are different than I am.  <br>
+                       
+                    </p>
+                    <br>
+                    <h4>  Most Useless Talent I Have: </h4>
+                    <p class="psize">
+                        
+                        The Five Finger Fillet Game (but I use a pen)
+
+                     <br>
+
+                    </p>
+                    <br>
+                    <h4>  Philosophy In Life: </h4>
+                    <p class="psize">
+                        
+                        Learn, See and Do as Much as Possible
+                        <br>
+                       
+                    </p>
+                    <br>
+                    </div>
+                </div>
+                <!--/ .col-md-8-->
+            </div>
+            <!--/ .row-->
+        </div>
+        <!--/ .container-->
+    </div>
+    <!--/ .block-->
+</div>
+
+ <script type="text/javascript">
+
+  $(document).ready(function() {
+        $('a.show-more-button').click(function() {
+            x = "#show-" + this.id
+            y = "show-" + this.id
+            moreTag = '<div class="glyphicon glyphicon-plus-sign"></div> Show more'
+            lessTag = '<div class="glyphicon glyphicon-minus-sign"></div> Show less'
+
+            if (document.getElementById(this.id).innerHTML.trim() == moreTag)
+            {
+                document.getElementById(this.id).innerHTML = lessTag
+                $(x).css({'display': 'block'});
+
+            }
+            else
+            {
+                document.getElementById(this.id).innerHTML = moreTag
+                $(x).css({'display': 'none'});
+            }
+        })
+  });
+
+</script>

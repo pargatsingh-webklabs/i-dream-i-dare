@@ -1,4 +1,342 @@
+<<<<<<< HEAD
 <h1>Admin Users</h1>
+=======
+                  <div class="col-10  pull-right"  style="margin-top: 100px;">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Admin Users</h4>
+                                <!-- <h6 class="card-subtitle">Add<code>.table-bordered</code>for borders on all sides of the table and cells.</h6> -->
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                          <tr>
+                                            <th>
+                                              Id
+                                            </th>
+                                            <th>
+                                              Name
+                                            </th>
+                                            <th>
+                                              Email
+                                            </th>
+                                            <th>
+                                              Coach?
+                                            </th>
+                                            <th>
+                                              Admin?
+                                            </th>
+                                            <th>
+                                              Active?
+                                            </th>
+                                            <th>
+                                              Deleted?
+                                            </th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <% if @admins != nil %>
+                                            <% @admins.each do |u| %>
+                                              <tr class="<%= u.is_active? ? '' : 'inactive_table_row_item' %>">
+
+                                                <th>
+                                                  <%= u.id %>
+                                                </th>
+                                                <th>
+                                                  <%= u.first_name %> <%= u.last_name %>
+                                                </th>
+                                                <th>
+                                                  <%= u.email %>
+                                                </th>
+                                                <th>
+                                                  <%= u.is_a_coach %>   <a href="/toggle_coach/<%= u.id %>"><button>Toggle</button></a>
+                                                </th>
+                                                <th>
+                                                  <%= u.is_an_admin %>   <a href="/toggle_admin/<%= u.id %>"><button>Toggle</button></a>
+                                                </th>
+                                                <th>
+                                                  <%= u.is_active %>   <a href="/toggle_active/<%= u.id %>"><button>Toggle</button></a>
+                                                </th>
+                                                <th>
+                                                  <%= u.is_deleted %>   <a href="/toggle_deleted/<%= u.id %>"><button>Toggle</button></a>
+                                                </th>
+                                              </tr> 
+                                            <% end %>
+                                          <% end %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <hr>
+                                    <p style="color:red;" style="text-align: left;">
+                                      Warning: Toggling your own Admin priviliges will lock you out of the system immediately.
+                                    </p>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+  
+
+                    <div class="col-10  pull-right"  style="margin-top: 100px;">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Coaches</h4>
+                                <!-- <h6 class="card-subtitle">Add<code>.table-bordered</code>for borders on all sides of the table and cells.</h6> -->
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                          <th>
+                                            Id
+                                          </th>
+                                          <th>
+                                            Name
+                                          </th>
+                                          <th>
+                                            Email
+                                          </th>
+                                          <th>
+                                            Coach?
+                                          </th>
+                                          <th>
+                                            Admin?
+                                          </th>
+                                          <th>
+                                            Active?
+                                          </th>
+                                          <th>
+                                            Deleted?
+                                          </th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <% if @coaches != nil %>
+                                          <% @coaches.each do |u| %>
+                                            <tr class="<%= u.is_active? ? '' : 'inactive_table_row_item' %>">
+                                              <th>
+                                                <%= u.id %>
+                                              </th>
+                                              <th>
+                                                <%= u.first_name %> <%= u.last_name %>
+                                              </th>
+                                              <th>
+                                                <%= u.email %>
+                                              </th>
+                                              <th>
+                                                <%= u.is_a_coach %>   <a href="/toggle_coach/<%= u.id %>"><button>Toggle</button></a>
+                                              </th>
+                                              <th>
+                                                <%= u.is_an_admin %>   <a href="/toggle_admin/<%= u.id %>"><button>Toggle</button></a>
+                                              </th>
+                                              <th>
+                                                <%= u.is_active %>   <a href="/toggle_active/<%= u.id %>"><button>Toggle</button></a>
+                                              </th>
+                                              <th>
+                                                <%= u.is_deleted %>   <a href="/toggle_deleted/<%= u.id %>"><button>Toggle</button></a>
+                                              </th>
+                                            </tr> 
+                                          <% end %>
+                                        <% end %>
+                                      </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                     <div class="col-10  pull-right"  style="margin-top: 100px;">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Users</h4>
+                                <!-- <h6 class="card-subtitle">Add<code>.table-bordered</code>for borders on all sides of the table and cells.</h6> -->
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                       <thead>
+                                        <tr>
+                                          <th>
+                                            Id
+                                          </th>
+                                          <th>
+                                            Name
+                                          </th>
+                                          <th>
+                                            Email
+                                          </th>
+                                          <th>
+                                            Coach?
+                                          </th>
+                                          <th>
+                                            Admin?
+                                          </th>
+                                          <th>
+                                            Active?
+                                          </th>
+                                          <th>
+                                            Deleted?
+                                          </th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <% if @users != nil %>
+                                          <% @users.each do |u| %>
+                                            <tr class="<%= u.is_active? ? '' : 'inactive_table_row_item' %>">
+                                              <th>
+                                                <%= u.id %>
+                                              </th>
+                                              <th>
+                                                <%= u.first_name %> <%= u.last_name %>
+                                              </th>
+                                              <th>
+                                                <%= u.email %>
+                                              </th>
+                                              <th>
+                                                <%= u.is_a_coach %>   <a href="/toggle_coach/<%= u.id %>"><button>Toggle</button></a>
+                                              </th>
+                                              <th>
+                                                <%= u.is_an_admin %>   <a href="/toggle_admin/<%= u.id %>"><button>Toggle</button></a>
+                                              </th>
+                                              <th>
+                                                <%= u.is_active %>   <a href="/toggle_active/<%= u.id %>"><button>Toggle</button></a>
+                                              </th>
+                                              <th>
+                                                <%= u.is_deleted %>   <a href="/toggle_deleted/<%= u.id %>"><button>Toggle</button></a>
+                                              </th>
+                                            </tr> 
+                                          <% end %>
+                                        <% end %>
+                                      </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <div class="col-10  pull-right"  style="margin-top: 100px;">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Users To Confirm (Toggle "Admin" FIRST)</h4>
+                                <h6 class="card-subtitle" style="color:red;">[Right now, we need to click the Toggle button on both "Coach" and "Admin" permissions to approve the user's membership. Before this step, they will not see anything on their dashboard. Toggling both permissions will result in both being set to False; then you may approve them for coach or admin priviliges. Note: This will also need to be done if the user needs to be deleted without approval. Set both permissions to False, THEN toggle the Is Deleted property.]</h6>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                          <tr>
+                                            <th>
+                                              Id
+                                            </th>
+                                            <th>
+                                              Name
+                                            </th>
+                                            <th>
+                                              Email
+                                            </th>
+                                            <th>
+                                              Coach?
+                                            </th>
+                                            <th>
+                                              Admin?
+                                            </th>
+                                            <th>
+                                              Active?
+                                            </th>
+                                            <th>
+                                              Deleted?
+                                            </th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <% if @users_to_confirm != nil %>
+                                            <% @users_to_confirm.each do |u| %>
+                                              <tr>
+                                                <th>
+                                                  <%= u.id %>
+                                                </th>
+                                                <th>
+                                                  <%= u.first_name %> <%= u.last_name %>
+                                                </th>
+                                                <th>
+                                                  <%= u.email %>
+                                                </th>
+                                                <th>
+                                                  <%= u.is_a_coach %>   <a href="/toggle_coach/<%= u.id %>"><button>Toggle</button></a>
+                                                </th>
+                                                <th>
+                                                  <%= u.is_an_admin %>   <a href="/toggle_admin/<%= u.id %>"><button>Toggle</button></a>
+                                                </th>
+                                                <th>
+                                                  <%= u.is_active %>   <a href="/toggle_active/<%= u.id %>"><button>Toggle</button></a>
+                                                </th>
+                                                <th>
+                                                  <%= u.is_deleted %>   <a href="/toggle_deleted/<%= u.id %>"><button>Toggle</button></a>
+                                                </th>
+                                              </tr> 
+                                            <% end %>
+                                          <% end %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>   
+
+
+                  <div class="col-10  pull-right"  style="margin-top: 100px;">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Deleted Users</h4>
+                                <h6 class="card-subtitle" style="color:red;">[Toggling the Is Deleted property to True will place the user into the below table. Toggling Deleted to False will place the user into its proper table above for further edits. "Deleting" a user is essentially the same as making a user inactive, but a Deleted user will remain out of the way, and so is intended for more permanent removals. Note that neither status change will result in the actual destruction of records.]</h6>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                          <tr>
+                                            <th>
+                                              Id
+                                            </th>
+                                            <th>
+                                              Name
+                                            </th>
+                                            <th>
+                                              Email
+                                            </th>
+                                            <th>
+                                              Deleted?
+                                            </th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <% if @deleted_users != nil %>
+                                            <% @deleted_users.each do |u| %>
+                                              <tr>
+                                                <th>
+                                                  <%= u.id %>
+                                                </th>
+                                                <th>
+                                                  <%= u.first_name %> <%= u.last_name %>
+                                                </th>
+                                                <th>
+                                                  <%= u.email %>
+                                                </th>
+                                                <th>
+                                                  <%= u.is_deleted %>   <a href="/toggle_deleted/<%= u.id %>"><button>Toggle</button></a>
+                                                </th>
+                                              </tr> 
+                                            <% end %>
+                                          <% end %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>   
+
+
+<!-- 
+
+ <h1>Admin Users</h1>
+>>>>>>> 06e2df34a7097e2275e1bcb2876c3191b796f3c6
 <table class="table table-bordered table-striped" >
   <thead>
     <tr>
@@ -279,5 +617,9 @@
       <% end %>
     <% end %>
   </tbody>
+<<<<<<< HEAD
 </table>
+=======
+</table> -->
+>>>>>>> 06e2df34a7097e2275e1bcb2876c3191b796f3c6
 
