@@ -1,132 +1,35 @@
-<div class="container" style="background-color:white; width:100%;">
-  <a class="landing-page-branding" href="/">
-    <img src="/assets/branding/DreamCatcherLogo01_White.png">
-  </a>
-
-  <div class="landing-page-spacer-30"></div>
-
-  <% if @active_book_resources == nil %>
-    <% @active_book_resources = [] %>
-  <% end %>
-
-  <div class="landing-page-links">
-
-    <% if user_signed_in? %>
-      <a href="/user/dashboard" class="landing-link">My Dashboard</a>
-      <div class="horizontal-spacer-6"></div>
-      <a href='/users/sign_out' class="landing-link" data-method='delete'>Sign out</a>
-      <div class="horizontal-spacer-6"></div>
-
-    <% else %>
-      <a href="/users/sign_in" class="landing-link">Sign In</a>
-      <div class="horizontal-spacer-6"></div>
-      <a href="/users/sign_up" class="landing-link">Sign Up</a>
-      <div class="horizontal-spacer-6"></div>
-
-    <% end %>
-
-    <a href="/meet_us" class="landing-link">Meet Us</a>
-    <div class="horizontal-spacer-6"></div>
-    <a href="/blog" class="landing-link">Blog</a>
-    <div class="horizontal-spacer-6"></div>
-    
-    <% if !@active_book_resources.empty? %>
-      <a href="#" id="expand-book-resource-form" class="landing-link">Book Resources</a>
-    <% end %>
-
-  </div>
-
-      <% if !@active_book_resources.empty? %>
-        <div id="book-resource-form">
-        
-        <div class="book-resource-form">
-          <div style="text-align:center; padding-top:20px;">
-            <a href="#" id="collapse-book-resource-form" style="text-align:center;">
-              <span class="glyphicon glyphicon-remove-circle" style="font-size:2em;"></span>
-            </a>
-
-            <h3>
-              Book Resources
-            </h3>
-
-          </div>
-
-          <div class="body">
-            
-            <div class="col-lg-12">
-
-              <div class="col-md-3">
-              </div>
-
-              <div class="col-md-6">
-                
-                <% @active_book_resources.each do |resource| %>
-
-                  <div class="row">
-                    <div class="panel panel-default">
-                      <!-- <div class="panel-heading"> 
-                        <strong>
-                          <%= resource.path %>  
-                        </strong>
-                      </div> -->
-
-                      <div class="panel-body">
-                        <div class="" style="font-size: 1.5em; text-align:center;">
-                            <%= resource.file_name %>
-                          <br />
-                        </div> 
-                      </div>
-                    </div>
-                  </div>  
-                <% end %>
-
-                <center>
-                  
-
-                    <div class="row" style="margin-top:20px;">
-
-                      
-
-                      <div class="col-md-3">
-                      </div>
-
-                      <div class="col-md-6">
-
-                        <%= form_for @book_resource_request do |f| %>
-
-                              <%= f.label :email, "Email" %>
-                              <%= f.text_field :email %>
-
-                        <%= f.submit "Submit", :disable_with => 'Submiting...' %>
-   
-                        <% end %>
-
-                      </div>
-
-                      <div class="col-md-3">
-                      </div>
-                      
-                    </div>
-
-                 
-                </center>
-
-                <br />
-
-                <div class="row" style="padding:10px; margin-bottom:20px;">
-
-                  By submitting your email address above, you are consenting to receive periodic emails from us. You may choose to opt-out at any time by changing your notification preferences, or by clicking on the "Unsubscribe" button at the bottom of any email sent to you. We will never sell, rent, or share your personal information with any third parties for marketing purposes without your express permission.
-
-                </div>
-                
-              </div>
-
-              <div class="col-md-3">
-              </div>
-
+<header class="navigation" id="top">
+        <div class="container">
+            <!--/.secondary-nav-->
+            <div class="main-nav">
+                 <nav>
+                    <ul class="pull-left">
+                         <% if user_signed_in? %>
+                        <li class="<%= active_class('/users/dashboard') %>"> <a href="/user/dashboard" class="landing-link" style="font-size: 16px;">My Dashboard</a></li>
+                        <li class="<%= active_class('/users/sign_out') %>"><a href='/users/sign_out' class="landing-link" data-method='delete' style="font-size: 16px;">Sign out</a></li>
+                         <% else %>
+                        <li class="<%= active_class('/users/sign_up') %>"><a href="/users/sign_up" class="landing-link" style="font-size: 16px;">Sign Up</a></li>
+                        <li class="<%= active_class('/users/sign_in') %>"><a href="/users/sign_in" class="landing-link" style="font-size: 16px;">Sign In</a></li>
+                         <% end %>   
+                    </ul>
+                  </nav>      
+                <div class="brand brand_left"><a class="logo-centres" href="/"><img src="/assets/branding/DreamCatcherLogo01_White.png" style="width: 100px !important;"></a></div>
+                <nav>
+                    <ul>
+                         <li class="<%= active_class('/users/sign_up') %> display-cls"><a href="/users/sign_up" class="landing-link" style="font-size: 16px;">Sign Up</a></li>
+                        <li class="<%= active_class('/users/sign_in') %> display-cls" ><a href="/users/sign_in" class="landing-link" style="font-size: 16px;">Sign In</a></li>
+                        <li class="<%= active_class('/bios/meet_us') %>"><a href="/bios/meet_us" class="landing-link" style="font-size: 16px;">Meet us</a></li>
+                        <li class="<%= active_class('/blog') %>"><a href="/blog" class="landing-link" style="font-size: 16px;">Blog</a></li>
+                       
+                        <li id="bookresources" class=""><a href="/landing_page#" id="expand-book-resource-form" class="landing-link expandform" style="font-size: 16px;">Book Resources</a></li>
+                    
+                        
+                    </ul>
+                    <div class="nav-toggle"><i class="icon_menu"></i></div>
+                </nav>
             </div>
-
-          </div>
+            <!--/.main-nav-->
+            
         </div>
 
         </div>

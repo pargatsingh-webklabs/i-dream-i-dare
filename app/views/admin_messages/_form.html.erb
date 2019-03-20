@@ -11,6 +11,79 @@
     </div>
   <% end %>
 
+<style>
+.block .box.text-color-white.equal-height {
+    background: #1d4f91;
+    padding: ;
+}
+.btn.btn-primary.btn-white {
+
+    background-color: #fff;
+    color: #1d4f91;
+
+}
+.h3color_contact {
+
+    color: #1d4f91;
+
+}
+dl.big .promoted {
+    font-size: 25px;
+}
+</style>
+
+<div class="block home_page">
+ <div class="container pb-5">
+            <h2 class="center h3color_contact">Contact Dream Catcher</h2>
+            <div class="heading_space"></div>
+            <div class="row">
+			
+                <div class="col-md-6 col-sm-6">
+                    <div class="box text-color-white equal-height">
+                            <div class="form-group">
+								<%= f.text_field :from_name, placeholder: "Customer Name", class: "form-control"  %>
+                            </div><!-- /.form-group -->
+                            <div class="form-group">
+								<%= f.text_field :from_email, placeholder: "Customer Email", class: "form-control"  %>
+                            </div><!-- /.form-group -->
+                            <div class="form-group">
+								<%= f.text_area :content, placeholder: "Send us a note", class: "form-control"  %>
+                            </div><!-- /.form-group -->
+                            <div class="actions clr-btn">
+                                 <%= f.submit "Send your message" , class: "btn btn-primary btn-default btn-white" %>
+                            </div><!-- /.form-group -->
+                            <div id="form-status" class="pull-left"></div>
+                        
+                       
+                        <div class="bg bg-color-default"></div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-sm-6 margn-tp">
+                    <div class="box text-color-white equal-height equal-height-box">
+                        <h3 class="contact-us1">Contact Us </h3>
+                        <dl class="big">
+                            <dt class="promoted"><i class="icon_phone"></i></dt>
+                            <dd class="promoted contact_mrgin">(402)880-7575</dd>
+                            <dt><i class="icon_mail"></i></dt>
+                            <dd class="promoted contact_mrgin">NMahupete@qliomaha.com</dd>
+                           <!-- <dt><i class="social_facebook_circle"></i></dt>
+                            <dd><a href="">jane.doe</a></dd>
+                            <dt><i class="social_skype_circle"></i></dt>
+                            <dd><a href="">jane.doe.motivations</a></dd>
+                            <dt><i class="social_linkedin_circle"></i></dt>
+                            <dd><a href="">jane.doe</a></dd> -->
+                        </dl>
+                        <div class="bg bg-color-default-darker"></div>
+                    </div>
+                </div>  
+            </div>
+                <!--<div class="row" style="padding-top: 35px;">
+                   <img src="/assets/Feather.png"> 
+                </div>  -->
+        </div>
+        </div>
+
 <h2 style="color:white;">_</h2>
 <div style="display:block; margin-top:25px;"> </div>
 <h2>Contact Us</h2>

@@ -137,6 +137,87 @@
          <div class="row">
             <div class="col-span">
 
+    <%= render(:partial => "group_messages") %>
+      <% end %>  
+        </div>
+        </div>
+      </div>
+
+  </div>
+
+  </div> -->
+
+
+<style>
+.footer, .page-wrapper {
+  margin-left: 150px;
+  margin-top: 280px;
+}
+@media screen and (max-width:767px){
+
+.customtab li a.nav-link, .profile-tab li a.nav-link {
+    border: 0px;
+    padding: 10px 10px;
+    color: #212529;
+    font-size: 15px !important;
+
+}
+.card_group {
+
+    margin: 0px 0px 30px 0px;
+}
+
+}
+</style>
+
+
+	<div class="col-lg-12 col-xlg-12 col-md-12" style="margin-top: 80px;">
+                        <div class="card card_group">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs profile-tab" role="tablist">
+                                <!-- <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Timeline</a> </li>
+                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Profile</a> </li>
+                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#settings" role="tab">Settings</a> </li> -->
+                                 <li><a class="nav-link" href="/user/dashboard" role="tab" style="font-size: 1.6em;">HOME</a></li>
+                                 <li class="nav-item"><a class="nav-link" data-toggle="tab" href="/user/group-dashboard" role="tab" style="font-size: 1.6em;">GROUPS</a></li>
+                            </ul>
+                            <!-- Tab panes -->
+                            <div style="margin-top: 20px;"></div>
+                            <div class="tab-content">
+
+
+      <div class="col-md-2 pull-left">
+
+        <!-- Group List -->
+      <% if @my_groups == nil && @joined_groups == nil && @invited_groups == nil %>
+        <strong style="font-size: 19px;">No Groups</strong>
+        <hr>
+      <% else %>
+        <!-- My (Created by Me) Groups -->
+        <% if @my_groups.nil? == false %>
+          <strong style="font-size: 19px;">My Groups</strong>
+          <hr>
+          <ul class="nav nav-pills nav-stacked">
+            <li class="nav-header">
+            </li>
+            <% @my_groups.each do |g| %>
+              <!-- If active group, changes background color of pill. -->
+              <% if @active_group_id != nil && @active_group_id == g.id %>
+                <li class="btn-default" id="active-user-in-list">
+                  <a href="/user/group-dashboard/<%= g.id %>">
+                    <%= g.name %>
+                  </a>
+                </li>
+              <% else %>
+                <li class="btn-default">
+                  <a href="/user/group-dashboard/<%= g.id %>">
+                    <%= g.name %>
+                  </a>
+                </li>
+              <% end %>         
+                <li class="divider"></li>
+              <% end %>
+
   <!-- GROUP MESSAGES -->
 
     <%= render(:partial => "group_messages") %>
@@ -161,4 +242,4 @@
 
   </div>
 
-  <!-- / Main -->
+</script>                    

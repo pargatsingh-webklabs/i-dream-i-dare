@@ -1,4 +1,66 @@
-<p id="notice"><%= notice %></p>
+  <div class="card col-10  pull-right"  style="margin-top: 100px;">
+        <div class="card-body">
+            <p id="notice"><%= notice %></p>
+            <h4 class="card-title">Plans</h4>
+            <!-- <h6 class="card-subtitle">Data table example</h6> -->
+            <button style="padding: 0;">
+              <%= link_to 'New Plan', new_plan_path, class: "btn btn-success" %>
+            </button>
+            <div class="table-responsive m-t-40">
+                <table id="myTable" class="table table-bordered table-striped">
+                     <thead>
+                      <tr>
+                        <th>
+                          Id
+                        </th> 
+                        <th>
+                          Client
+                        </th>
+                        <th>
+                          Title
+                        </th>
+                        <th>
+                          Content
+                        </th>
+                        <th>
+                          Actions
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% if @plans != nil %>
+                        <% @plans.each do |plan| %>
+                          <tr>
+                            <th>
+                              <%= plan.id %>
+                            </th>
+                            <th>
+                              <%= plan.client %>
+                            </th>
+                            <th>
+                              <%= plan.title %>
+                            </th>
+                            <th>
+                              <%= plan.content %>
+                            </th>
+                            <th>
+                              <%= link_to 'Show', plan %>
+
+                              <%= link_to 'Edit', edit_plan_path(plan) %>
+
+                              <%= link_to 'Destroy', plan, method: :delete, data: { confirm: 'Are you sure?' } %>
+                            </th>
+                          </tr> 
+                        <% end %>
+                      <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+<!-- <p id="notice"><%= notice %></p>
 
 <h1>Plans</h1>
 <p>
@@ -53,4 +115,4 @@
         <% end %>
       <% end %>
     </tbody>
-  </table>
+  </table> -->
