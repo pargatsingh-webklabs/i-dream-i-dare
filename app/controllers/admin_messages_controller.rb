@@ -8,7 +8,7 @@ class AdminMessagesController < ApplicationController
   # /////////////////////////////
 
   # GET /
-  def landing_page
+  def landing_page 
     time = Time.new
     days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
     @day_of_week = days[time.wday] 
@@ -20,7 +20,7 @@ class AdminMessagesController < ApplicationController
     @book_resource_request = ResourceRequest.new("")
 
     @admin_message = AdminMessage.new
-
+    binding.pry
     render layout: "application"
   end
 

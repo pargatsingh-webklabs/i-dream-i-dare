@@ -11,3 +11,4 @@
 # Rails.application.config.assets.precompile += %w( trix_attachments.js )
 
 Rails.application.config.assets.precompile += %w( custom.js )
+Rails.application.config.assets.precompile += %w( jquerymin.js )
