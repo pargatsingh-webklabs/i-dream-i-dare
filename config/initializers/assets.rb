@@ -11,3 +11,4 @@
 # Rails.application.config.assets.precompile += %w( trix_attachments.js )
 
 Rails.application.config.assets.precompile += %w( custom jquerymin bootstrapmin zabutocalendarmin jquerythemepunchtoolsmin jquerythemepunchrevolutionmin revolutionextensionvideomin revolutionextensionslideanimsmin revolutionextensionactionsmin revolutionextensionlayeranimationmin revolutionextensionkenburnmin revolutionextensionnavigationmin revolutionextensionmigrationmin revolutionextensionparallaxmin bootstrapselectmin )
+

@@ -20,7 +20,7 @@ class AdminMessagesController < ApplicationController
     @book_resource_request = ResourceRequest.new("")
 
     @admin_message = AdminMessage.new
-    
+
     render layout: "application"
   end
 
