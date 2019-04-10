@@ -1,4 +1,4 @@
-require 'zip'
+# require 'zip'
 
 class AdminMessagesController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:root_path]
@@ -20,7 +20,7 @@ class AdminMessagesController < ApplicationController
     @book_resource_request = ResourceRequest.new("")
 
     @admin_message = AdminMessage.new
-    binding.pry
+    
     render layout: "application"
   end
 

@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   get "/download_book_resources" => "admin_messages#download_book_resources"
   get "/blog" => "home#blog"
   get "/test" => "home#test"
-  get "/meet_us" => "home#meet_us"
+  get "/bios/meet_us" => "home#meet_us"
   get "/user/dashboard" => "dashboard#view"
   get "/user/dashboard/:active_user_id" => "dashboard#view"
   get "/user/group-dashboard" => "dashboard#group_view"
