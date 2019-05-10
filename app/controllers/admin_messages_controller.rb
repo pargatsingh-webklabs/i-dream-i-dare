@@ -9,6 +9,7 @@ class AdminMessagesController < ApplicationController
 
   # GET /
   def landing_page 
+
     time = Time.new
     days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
     @day_of_week = days[time.wday] 
@@ -21,7 +22,7 @@ class AdminMessagesController < ApplicationController
 
     @admin_message = AdminMessage.new
 
-    render layout: "application"
+      render layout: "application"
   end
 
   def download_book_resources # See user_mailer controller for the send resources method
