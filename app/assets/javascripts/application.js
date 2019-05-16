@@ -17,6 +17,32 @@
 //= require_tree .
  //= link jquerymin.js
  //= link bootstrapmin.js
+ //= link bootstrapselectmin.js
+  //= link bootstrapwysihtml5.js
+   //= link companies.js
+  //= link custommin.js
+   //= link datatablesmin.js
+    //= link dropzone.js
+  //= link jquery-2.1.4.min.js
+   //= link jquery-migrate-1.2.1.min.js
+    //= link jquery.fitvids.js
+     //= link jquery.validate.min.js
+ //= link jquerymin.js
+  //= link jquerysparklinemin.js
+   //= link owl.carousel.min.js
+    //= link perfectscrollbarjquerymin.js
+  //= link poppermin.js
+   //= link resources.js
+    //= link revolutionextensioncarouselmin.js
+     //= link schedules.js
+      //= link sidebarmenu.js
+       //= link stickykitmin.js
+        //= link tasks.js
+         //= link trix_attachments.js
+          //= link user_schedules.js
+           //= link waves.js
+            //= link wysihtml.js
+ //= link zabuto_calendar.min.js
  //= link zabutocalendarmin.js
  //= link jquerythemepunchtoolsmin.js
  //= link jquerythemepunchrevolutionmin.js
@@ -30,3 +56,6 @@
  //= link revolutionextensionparallaxmin.js
  //= link custom.js
  //= link bootstrapselectmin.js
+ //= link book_resources.js
+
+
