@@ -56,3 +56,54 @@
                             </div>
                         </div>
                     </div>   
+
+
+<<!-- p id="notice"><%= notice %></p>
+
+  <h1>Mentorships</h1>
+  <p>
+    <button>
+      <%= link_to 'Create New', new_mentorship_path %>
+    </button>
+  </p>
+  <table class="table table-bordered table-striped" >
+    <thead>
+      <tr>
+        <th>
+          Id
+        </th>
+        <th>
+          Coach
+        </th>
+        <th>
+          Client
+        </th>
+        <th>
+          Actions
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @public_mentorship_data != nil %>
+        <% @public_mentorship_data.each do |m| %>
+          <% mentorshipModel = @all_mentorships.find_by_id(m[0]) %>
+          <tr>
+            <th>
+              <%= m[0] %>
+            </th>
+            <th>
+              <%= m[1].first_name %> <%= m[1].last_name %>
+            </th>
+            <th>
+              <%= m[2].first_name %> <%= m[2].last_name %>
+            </th>
+            <th>
+              <%= link_to 'Show', mentorshipModel %>
+              <%= link_to 'Edit', edit_mentorship_path(mentorshipModel) %>
+              <%= link_to 'Destroy', mentorshipModel, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </th>
+          </tr> 
+        <% end %>
+      <% end %>
+    </tbody>
+  </table -->>

@@ -1,10 +1,14 @@
-<div class="simple-spacer" style="margin-top: 20px;"/>
+<div class="simple-spacer" style="margin-top: 100px;"/>
 
 <!-- MAIN -->
 
-<div class="flex-box">
+<div class="page-wrapper">
 
-  <% if @coachDashHeadLine != nil && @coachDashHeadLine.value != "" %>
+ 
+
+  <div class="container-fluid">
+
+  	 <% if @coachDashHeadLine != nil && @coachDashHeadLine.value != "" %>
       <div class="panel panel-default">
         <%= raw @coachDashHeadLine.value %>
       </div>
@@ -20,8 +24,7 @@
         <% end %>
       </div>
     <% end %>
-
-  <div class="container">
+<div class="row">
     <div class="col-md-2" style="float: left;">
         <!-- Left -->
         <div class="dropdown show">
@@ -64,10 +67,11 @@
         </ul>
         </div>
       </div><!-- /span-3 -->
-     
-      <div class="col-md-9">
+
+      <div class="col-md-5 new-design">
              
       <!-- Middle Column, where the PLANS live. -->
+
 
       		<% if @all_active_user_plans_sorted_by_timestamp.nil? == false %>
                 <% @all_active_user_plans_sorted_by_timestamp.each do |plan| %>
@@ -103,20 +107,20 @@
                 <% end %>
              <% end %>  	
 
-            <div class="row">
-              <div class="col-md-6 style="float: left;"">
+				
+        
 
-              <% if @all_active_user_plans_sorted_by_timestamp.nil? == false %>
+            <div class="row">
+              <div class="col-md-12 style="float: left;"">
+
+             <!--   <% if @all_active_user_plans_sorted_by_timestamp.nil? == false %>
                 <% @all_active_user_plans_sorted_by_timestamp.each do |plan| %>
                 <div class="panel panel-default">
                     <div class="panel-heading">
 
                       <strong><%= plan.title %></strong>
                       <div class="edit-delete-plan-buttons">
-        <!-- TODO: Edit function needs work. When edited by a coach, the Plan's CLIENT attribute is reset to NULL. -->
-                        <!-- <a href="/plans/<%=plan.id%>/edit">
-                          <div class="glyphicon glyphicon-pencil"></div>
-                        </a> -->
+
                         
                         <a data-confirm="Are you sure that you want to DELETE this Plan?" rel="nofollow" data-method="delete" href="/plans/<%=plan.id%>">
                           <div class="glyphicon glyphicon-remove">
@@ -153,15 +157,15 @@
                     <div class="panel-body">
                       This client has no current plans.
                     </div>
-              <% end %>
+              <% end %> -->
 
            
 
-            <!-- //////////////"Add Plan" form.//////////////// -->
+         
 
               <div class="panel panel-default">
                 <div class="panel-heading">
-                      <strong>Create a New Plan</strong>
+                      <h3>Create a New Plan</h3>
                 </div>
 
                 <div class="panel-body">
@@ -185,14 +189,72 @@
 
   <!-- //////////////////////////////////////////////////////////// -->
 
+			
+			
+			
+			
+        
+        
+     
 
-        <div class="col-md-6" style="float:left;">
+  <!-- ////////////////////////////// -->
+                       
+        </div><!--/row-->
 
-      <!-- THIS is a simple module, which will be used for the middle and right columns. -->
+      </div><!--/col-->
+  
+  <div class="col-md-5">
+			 <% if @all_active_user_messages_sorted_by_timestamp.nil? == false %>
+			 <% @all_active_user_messages_sorted_by_timestamp.each do |m| %>
+			<div class="col-md-12" style="float:left;">
+			
+				  <div class="alert alert-success">
+					<!-- <h3 class="text-success"><i class="fa fa-check-circle"></i>  -->
+					 <% if @active_user != nil %>     
+                    <strong>Direct Messages with <%= @active_user.first_name %>:</strong>
+                  <% end %></h3> 
+                  
+                  
+                        
+                      <% if m.nil? == false %>
 
+                        <% if m.from == current_user.id %>
+
+                          <div class="outgoing-bubble">
+                            <%= m.content %>
+                          </div>
+
+                          <div class="bubble-spacer">
+                          </div>
+
+                        <% else %>
+
+                          <div class="incoming-bubble">
+                            <%= m.content %>
+                          </div>
+
+                          <div class="bubble-spacer">
+                          </div>
+                              
+                        <% end %>
+
+                      <% else %>
+                      <% end %>
+                    
+
+                  
+                 
+				</div>
+			</div>
+			<% end %>
+				  <% else %>
+                  <% end %>
+			<div class="col-md-12" style="float:left;">
+
+     
           <div class="row">
 
-              <div class="panel panel-default">
+            <!--     <div class="panel panel-default">
                 <div class="panel-heading">
                   <% if @active_user != nil %>     
                     <strong>Direct Messages with <%= @active_user.first_name %>:</strong>
@@ -238,15 +300,15 @@
                   <% else %>
                   <% end %>
                     
-                </div> <!-- End of PANEL-BODY -->
+                </div> 
 
-              </div> <!-- End of PANEL-DEFAULT -->
+              </div> -->
 
-      <!-- ////////////////////////////// -->
+    
 
-              <div class="panel panel-default">
+              <div class="col-md-12">
                 <div class="panel-heading">
-                      <strong>Create a New Direct Message</strong>
+                      <h3>Create a New Direct Message</h3>
                 </div>
 
                   <div class="panel-body">
@@ -254,19 +316,17 @@
                       <%= render template: "messages/new" %>
                     </div>
                   </div>
-              </div>    
+              </div>   
 
-  <!-- ////////////////////////////// -->
+               
+
+
 
     
-          </div> <!-- End of ROW -->
-        </div> <!-- End of COL-7 -->
+          </div> 
+        </div> 
 
-  <!-- ////////////////////////////// -->
-                       
-        </div><!--/row-->
-
-      </div><!--/col-->
+  </div>
 
   </div>
 

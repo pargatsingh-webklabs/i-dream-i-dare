@@ -1,34 +1,42 @@
 <header class="navigation" id="top">
-  <div class="container">
-    <!--/.secondary-nav-->
-    <div class="main-nav">
-     <nav>
-      <ul class="pull-left">
-       <% if user_signed_in? %>
-       <li class="<%= active_class('/users/dashboard') %>"> <a href="/user/dashboard" class="landing-link" style="font-size: 16px;">My Dashboard</a></li>
-       <li class="<%= active_class('/users/sign_out') %>"><a href='/users/sign_out' class="landing-link" data-method='delete' style="font-size: 16px;">Sign out</a></li>
-       <% else %>
-       <li class="<%= active_class('/users/sign_up') %>"><a href="/users/sign_up" class="landing-link" style="font-size: 16px;">Sign Up</a></li>
-       <li class="<%= active_class('/users/sign_in') %>"><a href="/users/sign_in" class="landing-link" style="font-size: 16px;">Sign In</a></li>
-       <% end %>   
-     </ul>
-   </nav>      
-   <div class="brand brand_left"><a class="logo-centres" href="/"><img src="/assets/branding/DreamCatcherLogo01_White.png" style="width: 100px !important;"></a></div>
-   <nav>
-    <ul>
-     <li class="<%= active_class('/users/sign_up') %> display-cls"><a href="/users/sign_up" class="landing-link" style="font-size: 16px;">Sign Up</a></li>
-     <li class="<%= active_class('/users/sign_in') %> display-cls" ><a href="/users/sign_in" class="landing-link" style="font-size: 16px;">Sign In</a></li>
-     <li class="<%= active_class('/bios/meet_us') %>"><a href="/bios/meet_us" class="landing-link" style="font-size: 16px;">Meet us</a></li>
-     <li class="<%= active_class('/blog') %>"><a href="/blog" class="landing-link" style="font-size: 16px;">Blog</a></li>
-
-     <li id="bookresources" class=""><a href="/landing_page#" id="expand-book-resource-form" class="landing-link expandform" style="font-size: 16px;">Book Resources</a></li>
-
-
-   </ul>
-   <div class="nav-toggle">
-    <i class="icon_menu"></i>
-  </div>
-</nav>
-</div>
-</div>
+        <div class="container">
+            <!--/.secondary-nav-->
+            <div class="main-nav">
+                 <nav>
+                    <ul class="pull-left">
+                         <% if user_signed_in? %>
+                        <li class="<%= active_class('/users/dashboard') %>"> <a href="/user/dashboard" class="landing-link" style="font-size: 16px;">My Dashboard</a></li>
+                        <li class="<%= active_class('/users/sign_out') %>"><a href='/users/sign_out' class="landing-link" data-method='delete' style="font-size: 16px;">Sign out</a></li>
+                         <% else %>
+                        <li class="<%= active_class('/users/sign_up') %>"><a href="/users/sign_up" class="landing-link" style="font-size: 16px;">Sign Up</a></li>
+                        <li class="<%= active_class('/users/sign_in') %>"><a href="/users/sign_in" class="landing-link" style="font-size: 16px;">Sign In</a></li>
+                         <% end %>   
+                    </ul>
+                  </nav>      
+                <div class="brand brand_left"><a class="logo-centres" href="/"><img src="/assets/branding/DreamCatcherLogo01_White.png" style="width: 100px !important;"></a></div>
+                <nav>
+                    <ul>
+                         <li class="<%= active_class('/users/sign_up') %> display-cls"><a href="/users/sign_up" class="landing-link" style="font-size: 16px;">Sign Up</a></li>
+                        <li class="<%= active_class('/users/sign_in') %> display-cls" ><a href="/users/sign_in" class="landing-link" style="font-size: 16px;">Sign In</a></li>
+                        <li class="<%= active_class('/bios/meet_us') %>"><a href="/bios/meet_us" class="landing-link" style="font-size: 16px;">Meet us</a></li>
+                        <li class="<%= active_class('/blog') %>"><a href="/blog" class="landing-link" style="font-size: 16px;">Blog</a></li>
+                       
+                        <li id="bookresources" class=""><a href="/landing_page#" id="expand-book-resource-form" class="landing-link expandform" style="font-size: 16px;">Book Resources</a></li>
+                    
+                        
+                    </ul>
+                    <div class="nav-toggle"><i class="icon_menu"></i></div>
+                </nav>
+            </div>
+            <!--/.main-nav-->
+            
+           
+            
+        </div>
+        <!--/.container-->
 </header>
+ 
+ <!--/.   <div class="heading">
+        
+    </div>
+header-->

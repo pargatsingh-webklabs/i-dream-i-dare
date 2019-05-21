@@ -2,29 +2,27 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   # FROM Previous Rails version:
   
-  # if ENV.fetch("HEROKU_APP_NAME", "").include?("staging-pr-")
-  #   ENV["APPLICATION_HOST"] = ENV["HEROKU_APP_NAME"] + ".herokuapp.com" 
-  # end
-
+     # if ENV.fetch("HEROKU_APP_NAME", "").include?("staging-pr-")
+     ENV["APPLICATION_HOST"] =  'http://206.81.14.195/i-dream-i-dare-master'
+    # end
+   config.action_mailer.default_url_options = { host: ENV.fetch("APPLICATION_HOST") }
   require "shrine/storage/s3"
   # s3 = Aws::S3::Encryption::Client.new(encryption_key: ENV['SECRET_KEY_BASE'], region: "us-east-1")
+
   s3_options = {
-    :bucket =>            ENV['S3_BUCKET'], # required
-    :access_key_id  =>   ENV['S3_KEY'],
-    :secret_access_key => ENV['S3_SECRET'],
-    :region => ENV['S3_REGION']
+    bucket:            'logimodoc', # required
+    access_key_id:     'AKIAJ4IXYHKOFJY4EP6A',
+    secret_access_key: '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',
+    region: 'us-east-1'
   }
-  
 
-  # PROBLEM:
-
-  # Shrine.storages = {
-  # cache: Shrine::Storage::S3.new(prefix: "cache", **s3_options),
-  # store: Shrine::Storage::S3.new(**s3_options)
-  # }
+  Shrine.storages = {
+  cache: Shrine::Storage::S3.new(prefix: "cache", **s3_options),
+  store: Shrine::Storage::S3.new(**s3_options)
+  }
 
   ActiveModelSerializers.config.adapter = :json_api
-  config.middleware.use Rack::CanonicalHost, ENV["APPLICATION_HOST"]
+  config.middleware.use Rack::CanonicalHost, ENV.fetch("APPLICATION_HOST")
   config.cache_classes = true
   config.eager_load = true
   config.consider_all_requests_local       = false
@@ -41,16 +39,16 @@ Rails.application.configure do
   config.active_support.deprecation = :notify
   config.log_formatter = ::Logger::Formatter.new
   config.active_record.dump_schema_after_migration = false
-  # config.action_mailer.default_url_options = { host: ENV.fetch("APPLICATION_HOST") }
+ 
 
   # -----------
-  # config.action_mailer.default_url_options = { :host => 'i-dream-i-dare.herokuapp.com' }
-  # Rails.application.routes.default_url_options[:host] = 'i-dream-i-dare.herokuapp.com'
+  # config.action_mailer.default_url_options = { :host => 'http://206.81.14.195/i-dream-i-dare-master' }
+  # Rails.application.routes.default_url_options[:host] = 'http://206.81.14.195/i-dream-i-dare-master'
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default :charset => "utf-8" 
-  config.action_mailer.default_url_options = { :host => 'i-dream-i-dare.heroku.com' }
+  config.action_mailer.default_url_options = { :host => 'http://206.81.14.195/i-dream-i-dare-master' }
 
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",

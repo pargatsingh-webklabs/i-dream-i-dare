@@ -244,15 +244,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  # ????? ----> config.omniauth :facebook, ENV['APP_ID'], ENV['APP_SECRET']
-  # config.omniauth :facebook, ENV["FB_APP_ID"], ENV["FB_APP_SECRET"], token_params: { parse: :json }
 
-  config.omniauth :facebook, ENV["FB_APP_ID"], ENV["FB_APP_SECRET"], callback_url: "http://localhost:3000/users/auth/facebook/callback"
-
-  # ==> OMNIAUTH NOTE: If you are seeing something like Could not authenticate you from Facebook 
-  # because “Invalid credentials” you many need to add token_params: { parse: :json } to your config, i.e.:
-  # config.omniauth :facebook, "APP_ID", "APP_SECRET", token_params: { parse: :json }
-  
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

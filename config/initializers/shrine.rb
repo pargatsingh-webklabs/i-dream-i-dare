@@ -8,10 +8,10 @@ Shrine.plugin :validation_helpers
 Shrine.plugin :cached_attachment_data # for forms
 
 s3_options = {
-	access_key_id:  		ENV['S3_KEY'],
-	secret_access_key:  	ENV['S3_SECRET'],
-	region:  				ENV['S3_REGION'],
-	bucket:  				ENV['S3_BUCKET']
+	access_key_id:  		'AKIAJ4IXYHKOFJY4EP6A',
+	secret_access_key:  	'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',
+	region:  				 'us-east-1',
+	bucket:  				'logimodoc'
 }
 
 Shrine.storages = {

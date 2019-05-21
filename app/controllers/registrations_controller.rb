@@ -4,9 +4,11 @@
 
 class RegistrationsController < Devise::RegistrationsController
 
+  # TODO: Make a pop-up alert that accepts a password to sign up for a user account.
+
   # --Uncomment next line if you want to close all sign-ups.
   # prepend_before_filter :authenticate_scope!, :except => [:cancel]
-  before_action :collect_public_facing_variables
+
   before_filter :admin_or_current_user, only: [:show, :index, :destroy]
 
   protected

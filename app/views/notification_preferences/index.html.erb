@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p>
 
 <h1><%= current_user.first_name %>'s Notifications</h1>
 <div class="col-sm-3"></div>
@@ -134,4 +134,149 @@
       </tbody>
     </table>
   </div>
-<br>
+<br> -->
+
+<div style="margin-top: 100px;"></div>
+
+ <p id="notice"><%= notice %></p>
+
+<div class="col-12">
+    <div class="card">
+        <div class="card-body">
+           <!--  <h4 class="card-title">Responsive Table </h4>
+            <h6 class="card-subtitle">Create responsive tables by wrapping any <code>.table</code> in <code>.table-responsive </code></h6> -->
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                      <th>Notification Event</th>
+                      <% if current_user.sms_phone_number != nil %>
+                        <th>Text ( <%= current_user.sms_phone_number %> )</th>
+                      <% else %>
+                        <th class="red-text">Please add a mobile number for <%= current_user.first_name %></th>
+                      <% end %>
+                      <% if current_user.email != nil %>
+                        <th>Email ( <%= current_user.email %> )</th>
+                      <% else %>
+                        <th class="red-text">Please add an email address for <%= current_user.first_name %></th>
+                      <% end %>
+                    </tr>
+                  </thead>
+                    <tbody>
+          
+                      <tr>
+                        <td>Creation of a New Plan</td>
+
+                        <% if @plan_created_notifications_sms.empty? == true %>
+                          <td> NO     <a data-method="post" href="/notification_preferences/enable_notification/plan_created/sms" rel="nofollow"><button>Toggle</button></a>
+                          </td>
+
+                        <% else %>
+                          <td> YES    <a data-method="post" href="/notification_preferences/disable_notification/plan_created/sms" rel="nofollow"><button>Toggle</button></a>
+                          </td>            
+                        <% end %>
+
+                        <% if @plan_created_notifications_email.empty? == true %>
+                          <td> NO     <a data-method="post" href="/notification_preferences/enable_notification/plan_created/email" rel="nofollow"><button>Toggle</button></a>
+                          </td>
+
+                        <% else %>
+                          <td> YES    <a data-method="post" href="/notification_preferences/disable_notification/plan_created/email" rel="nofollow"><button>Toggle</button></a>
+                          </td>            
+                        <% end %>
+                      </tr>
+
+                      <tr>
+                        <td>Message Received</td>
+                        
+                        <% if @msg_received_notifications_sms.empty? == true %>
+                          <td> NO     <a data-method="post" href="/notification_preferences/enable_notification/msg_received/sms" rel="nofollow"><button>Toggle</button></a>
+                          </td>
+
+                        <% else %>
+                          <td> YES    <a data-method="post" href="/notification_preferences/disable_notification/msg_received/sms" rel="nofollow"><button>Toggle</button></a>
+                          </td>            
+                        <% end %>
+
+                        <% if @msg_received_notifications_email.empty? == true %>
+                          <td> NO     <a data-method="post" href="/notification_preferences/enable_notification/msg_received/email" rel="nofollow"><button>Toggle</button></a>
+                          </td>
+
+                        <% else %>
+                          <td> YES    <a data-method="post" href="/notification_preferences/disable_notification/msg_received/email" rel="nofollow"><button>Toggle</button></a>
+                          </td>            
+                        <% end %>
+                      </tr>
+
+                      <tr>
+                        <td>Group Message Received</td>
+
+                        <% if @grp_msg_received_notifications_sms.empty? == true %>
+                          <td> NO     <a data-method="post" href="/notification_preferences/enable_notification/grp_msg_received/sms" rel="nofollow"><button>Toggle</button></a>
+                          </td>
+
+                        <% else %>
+                          <td> YES    <a data-method="post" href="/notification_preferences/disable_notification/grp_msg_received/sms" rel="nofollow"><button>Toggle</button></a>
+                          </td>            
+                        <% end %>
+
+                        <% if @grp_msg_received_notifications_email.empty? == true %>
+                          <td> NO     <a data-method="post" href="/notification_preferences/enable_notification/grp_msg_received/email" rel="nofollow"><button>Toggle</button></a>
+                          </td>
+
+                        <% else %>
+                          <td> YES    <a data-method="post" href="/notification_preferences/disable_notification/grp_msg_received/email" rel="nofollow"><button>Toggle</button></a>
+                          </td>            
+                        <% end %>
+                      </tr>
+
+                      <tr>
+                        <td>Plan Reminders</td>
+
+                        <% if @plan_reminders_sms.empty? == true %>
+                          <td> NO     <a data-method="post" href="/notification_preferences/enable_notification/plan_reminder/sms" rel="nofollow"><button>Toggle</button></a>
+                          </td>
+
+                        <% else %>
+                          <td> YES    <a data-method="post" href="/notification_preferences/disable_notification/plan_reminder/sms" rel="nofollow"><button>Toggle</button></a>
+                          </td>            
+                        <% end %>
+
+                        <% if @plan_reminders_email.empty? == true %>
+                          <td> NO     <a data-method="post" href="/notification_preferences/enable_notification/plan_reminder/email" rel="nofollow"><button>Toggle</button></a>
+                          </td>
+
+                        <% else %>
+                          <td> YES    <a data-method="post" href="/notification_preferences/disable_notification/plan_reminder/email" rel="nofollow"><button>Toggle</button></a>
+                          </td>            
+                        <% end %>
+                      </tr>
+
+                      <tr>
+                        <td>Helpful Reminders</td>
+
+                        <% if @helpful_reminders_sms.empty? == true %>
+                          <td> NO     <a data-method="post" href="/notification_preferences/enable_notification/helpful_reminder/sms" rel="nofollow"><button>Toggle</button></a>
+                          </td>
+
+                        <% else %>
+                          <td> YES    <a data-method="post" href="/notification_preferences/disable_notification/helpful_reminder/sms" rel="nofollow"><button>Toggle</button></a>
+                          </td>            
+                        <% end %>
+
+                        <% if @helpful_reminders_email.empty? == true %>
+                          <td> NO     <a data-method="post" href="/notification_preferences/enable_notification/helpful_reminder/email" rel="nofollow"><button>Toggle</button></a>
+                          </td>
+
+                        <% else %>
+                          <td> YES    <a data-method="post" href="/notification_preferences/disable_notification/helpful_reminder/email" rel="nofollow"><button>Toggle</button></a>
+                          </td>            
+                        <% end %>
+                      </tr>
+
+                  </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

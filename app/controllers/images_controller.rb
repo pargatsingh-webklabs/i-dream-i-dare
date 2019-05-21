@@ -2,30 +2,31 @@ class ImagesController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:show, :edit, :update, :new]
   before_filter :admin_user, only: [:index, :destroy]
   layout "signed-in" # Layout Default
-  # respond_to :json, :jpeg
+  respond_to :json
 
   def create
     image_params[:image].open if image_params[:image].tempfile.closed?
     @image = Image.new(image_params)
-    @image.company_id = current_user.company_id
+
+    respond_to do |format|
       if @image.save
-        redirect_to "/images", notice: 'Image was successfully created.'
-    else
-      render :new
+        format.json { render json: { url: @image.image_url }, status: :ok }
+      else
+        format.json { render json: @image.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def show
-    @images = Image.where.not(:image_data => nil).where(:company_id => current_user.company_id)
+    @images = Image.where.not(:image_data => nil)
   end
 
   def index
-    @images = Image.where.not(:image_data => nil).where(:company_id => current_user.company_id)
+    @images = Image.where.not(:image_data => nil)
   end
 
   def new
     @image = Image.new
-    @image.company_id = current_user.company_id
   end
 
   # def create

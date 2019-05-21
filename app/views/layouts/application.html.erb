@@ -11,14 +11,16 @@
   <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.5/css/bootstrap-select.css" type="text/css">
 
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+  <%= stylesheet_link_tag :application, :zabutocalendarmin, :style, :elegantfonts, :settings, :layers, :navigation, :bootstrap, :bootstrapselectmin  %>
+ 
   <%= csrf_meta_tags %>
 
   <title><%= title %></title>
-
   <style>
 footer#footer {
     width: 100%;
@@ -365,48 +367,14 @@ dl.big {
    
 </head>
 
-  <body>
-
-    <!-- The Facebook SDK -->
-  <!-- <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId            : 'your-app-id',
-        autoLogAppEvents : true,
-        xfbml            : true,
-        version          : 'v3.2'
-      });
-    };
-
-    (function(d, s, id){
-       var js, fjs = d.getElementsByTagName(s)[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement(s); js.id = id;
-       js.src = "https://connect.facebook.net/en_US/sdk.js";
-       fjs.parentNode.insertBefore(js, fjs);
-     }(document, 'script', 'facebook-jssdk'));
-  </script>
-
-  <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2';
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-  </script> -->
-
-    <!-- Use the code below on the view to insert a FB button -->
-    <!-- <div class="fb-login-button" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="true"></div> -->
-
-  <!-- / FB Stuff -->
-
+  <body class="subpage">
+	  <div class="overlay"></div>
+		<div class="outer-wrapper manage-sps">
+		<div class="page-wrapper">
     <!-- TODO: Make Notices fade after 2 seconds, add them to all layouts, and remove them everywhere else. -->
   <!-- <p id="notice"><%= notice %></p> -->
 
   <%= yield %>  
-  
    <div class="block">
         <div class="container">
 
@@ -421,7 +389,10 @@ dl.big {
         
     </div>
 -->
+   
 
+</div>
+</div>
  <footer id="footer">
         <div class="">
             <div class="">
@@ -543,9 +514,10 @@ dl.big {
 
 </body>
 
+   <%= javascript_include_tag :application, :jquerymin, :bootstrapmin, :zabutocalendarmin, :jquerythemepunchtoolsmin, :jquerythemepunchrevolutionmin, :revolutionextensionvideomin, :revolutionextensionslideanimsmin, :revolutionextensionactionsmin, :revolutionextensionlayeranimationmin, :revolutionextensionkenburnmin, :revolutionextensionnavigationmin, :revolutionextensionmigrationmin, :revolutionextensionparallaxmin, :custom, :bootstrapselectmin  %>
+
   <%= render "css_overrides" %>
   <script type="text/javascript">
-
     $(document).ready(function() {
           $("#book-resource-form").css({'display': 'none'});
           $('#expand-book-resource-form').click(function() {
@@ -557,7 +529,6 @@ dl.big {
                 $("#book-resource-form").fadeOut("slow");
                 $(".home_page").fadeIn("slow");
           })
-
           $(".arrow_carrot-up_alt2").on("click", function(event) {
               event.preventDefault();
               $("html, body").animate({ scrollTop: 0 }, "slow");
@@ -566,10 +537,4 @@ dl.big {
 
     });
   </script>
-<footer style="margin-top: 100px;">
-  <center>
-    2018, Dream Catcher LLC
-  </center>
-</footer>
-
 </html>

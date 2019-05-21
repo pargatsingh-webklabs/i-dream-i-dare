@@ -1,19 +1,15 @@
 class HomeController < ApplicationController
-  skip_before_filter :authenticate_user!, only: [:index, :about, :blog, :meet_us]
-  before_action :collect_public_facing_variables, only: [:index, :about, :blog, :meet_us]
-  
-  layout "application"
+  skip_before_filter :authenticate_user!, only: [:index]
 
   def index
+    @active_book_resources = BookResource.where(active: true)
   end
 
   def about
+    @active_book_resources = BookResource.where(active: true)
   end
 
   def blog
+  	@active_book_resources = BookResource.where(active: true)
   end
-
-  def meet_us
-  end
-  
 end

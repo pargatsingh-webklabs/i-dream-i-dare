@@ -12,7 +12,7 @@
 
 <% end %>
 
-<% if current_user.is_a_coach == false && current_user.is_an_admin == false && (current_user.is_super_admin == nil || current_user.is_super_admin == false) %>
+<% if current_user.is_a_coach == false && current_user.is_an_admin == false && current_user.is_super_admin == false %>
 
   <%= render(:partial => "client_dash") %>
 
