@@ -18,4 +18,4 @@ production: &deploy
   timeout: 5000
   url:  <%= ENV.fetch("DATABASE_URL", "") %>
 
-staging: *deploy
+staging: *deploy       
