@@ -3,18 +3,19 @@ Rails.application.configure do
   # FROM Previous Rails version:
   
      # if ENV.fetch("HEROKU_APP_NAME", "").include?("staging-pr-")
-     ENV["APPLICATION_HOST"] =  'http://206.81.14.195/i-dream-i-dare-master'
+    # ENV["APPLICATION_HOST"] =  'http://206.81.14.195/i-dream-i-dare-master'
     # end
    config.action_mailer.default_url_options = { host: ENV.fetch("APPLICATION_HOST") }
   require "shrine/storage/s3"
   # s3 = Aws::S3::Encryption::Client.new(encryption_key: ENV['SECRET_KEY_BASE'], region: "us-east-1")
 
-  s3_options = {
-    bucket:            'logimodoc', # required
-    access_key_id:     'AKIAJ4IXYHKOFJY4EP6A',
-    secret_access_key: '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',
-    region: 'us-east-1'
+ s3_options = {
+    bucket:            ENV['S3_BUCKET'], # required
+    access_key_id:     ENV['S3_KEY'],
+    secret_access_key: ENV['S3_SECRET'],
+    region: ENV['S3_REGION']
   }
+
 
   Shrine.storages = {
   cache: Shrine::Storage::S3.new(prefix: "cache", **s3_options),
@@ -48,7 +49,7 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default :charset => "utf-8" 
-  config.action_mailer.default_url_options = { :host => 'http://206.81.14.195/i-dream-i-dare-master' }
+  config.action_mailer.default_url_options = { :host => 'http://i-dream-i-dare-staging.herokuapp.com' }
 
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
