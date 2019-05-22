@@ -366,7 +366,17 @@
 
 </div>
 
+  <script type="text/javascript">
+	$.urlParam = function(name){
+		var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+		return results[1] || 0;
+	}
 
+	var param = $.urlParam('name'); 
+        if(param=='bookresource'){
+		  $('#expand-book-resource-form').trigger('click');
+	}
+</script>
 
 
         
