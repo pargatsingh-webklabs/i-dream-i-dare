@@ -1,12 +1,14 @@
-<div class="simple-spacer" style="margin-top: 20px;"/>
+<div class="simple-spacer" style="margin-top: 100px;"/>
 
- <!-- MAIN -->
+<!-- MAIN -->
 
-<div class="flex-box">
+<div class="page-wrapper">
 
-    <% if @clientDashHeadLine != nil && @clientDashHeadLine.value != "" %>
+  <div class="container-fluid">
+
+  	  <% if @clientDashHeadLine != nil && @clientDashHeadLine.value != "" %>
       <div class="panel panel-default">
-        <%= raw @clientDashHeadLine.value %>
+         <%= raw @clientDashHeadLine.value %>
       </div>
     <% else %>
       <div class="panel panel-default" id="dashQuote">
@@ -20,10 +22,10 @@
         <% end %>
       </div>
     <% end %>
-  
-
-  <div class="container">
+<div class="row">
     <div class="col-md-2" style="float: left;">
+        <!-- Left -->
+        <div class="dropdown show">
         <strong style="font-size: 1.6em; text-align: right;">My Coaches</strong>     
           <% if @coaches_for_client.nil? == false %>
             <% @coaches_for_client.each do |c| %>
@@ -34,176 +36,244 @@
               <% end %>
             <% end %>
           <% end %>
-    </div> <!-- END OF COL-2-->
+       
+        <ul class="nav nav-pills nav-stacked">
+          <li class="nav-header"></li>
 
-    <!-- Large Right Column -->
-
-    <div class="col-md-9">
-
-    <!-- Middle Column, where the PLANS live. [ @client_plans ]-->
-
-    <div class="row">
-            <div class="col-md-6" style="float: left;">
-
-            <% if @client_plans.nil? == false %>
-              <% @client_plans.each do |plan| %>
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-
-                    <strong><%= plan.title %></strong>
-                    <div class="edit-delete-plan-buttons">
-
-                      <a href="/plans/<%=plan.id%>/edit">
-                        <div class="glyphicon glyphicon-pencil"></div>
-                      </a>
-                      
-                      <a data-confirm="Are you sure that you want to DELETE this Plan?" rel="nofollow" data-method="delete" href="/plans/<%=plan.id%>">
-                        <div class="glyphicon glyphicon-remove">
-                        </div>
-                      </a>
-                      
-                    </div>
-                    <br>
-
-                    <div class="created-timestamp">
-                      <%= localize(Time.at(plan.created_at), :format => :sample) %>
-                    </div>
-                    
-                    <% if plan.created_at != plan.updated_at %>
-                      <div class="updated-timestamp">
-                        UPDATED: <%= localize(Time.at(plan.updated_at), :format => :sample) %>
-                      </div>
-                    <% end %>
-
-                  </div>
-
-                  <div class="panel-body">
-                    <% if plan.content != nil %>
-                      <%= plan.content.html_safe %>
-                    <% end %>
-                  </div>
-                </div>
-               <% end %>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+             <% if @coaches_for_client.nil? == false %>
+              <% @coaches_for_client.each do |c| %>
+                <% if @active_user_id != nil && @active_user_id == c.id.to_s %>
+                  <!-- <a class="btn"><div class="glyphicon glyphicon-chevron-right"></div><%= c.first_name %> <%= c.last_name %></a> -->
+                   <a class="dropdown-item" href="#"><%= c.first_name %> <%= c.last_name %></a>
+                <% else %>
+                  <!--  <a class="btn" href="/user/dashboard/<%=c.id%>"><div class="glyphicon glyphicon-chevron-right" style="color:white;"></div><%= c.first_name %> <%= c.last_name %></a> -->
+                   <a class="dropdown-item" href="/user/dashboard/<%=c.id%>"><%= c.first_name %> <%= c.last_name %></a>
+                <% end %>
+              <% end %>
+                <li class="divider"></li>
             <% else %>
-                  <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <br>
-                  </div>
-                  <div class="panel-body">
-                    You have no current plans.
-                  </div>
+              You have no Clients.
             <% end %>
-
-            <!-- //////////////"Add Plan" form.//////////////// -->
-
-            
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                    <strong>Create a New Plan</strong>
-              </div>
-
-              <div class="panel-body">
-                <div class="add-plan-form"> 
-                  <%= render template: "plans/new/" %>
-                </div>
-              </div>
-            </div>  
-
-          <!-- ////////////////////////////// -->
           </div>
 
+        </ul>
+        </div>
+      </div><!-- /span-3 -->
 
-<!-- THIS IS THE RIGHT COLUMN, WHERE THE ACTIVE CLIENT'S MESSAGE HISTORY LIVES -->
+      <div class="col-md-5 new-design">
+             
+      <!-- Middle Column, where the PLANS live. -->
 
-<!-- /////////////////////////////////// -->
 
-<!-- //////////////////////////////////// -->
-
-      <div class="col-md-6" style="float:left;">
-
-       <div class="row">
-          <% if @active_user != nil %>
-
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                
-                       
-                  <strong>Direct Messages with <%= @active_user.first_name %>:</strong>
-
-                
-
-              </div>
-                    
-              <div class="panel-body">
-                    
-                <% if @all_active_user_messages_sorted_by_timestamp.nil? == false %>
-
-                  <% @all_active_user_messages_sorted_by_timestamp.each do |m| %>
-                        
-                    <% if m.nil? == false %>
-
-                      <% if m.from == current_user.id %>
-
-                        <div class="outgoing-bubble">
-                          <%= m.content %>
+      		<% if @client_plans.nil? == false %>
+                <% @client_plans.each do |plan| %>
+					           <div class="col-lg-12">
+                        <div class="card coachcard">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= plan.title %></h5>
+                                 <span class="text-muted"> <%= localize(Time.at(plan.created_at), :format => :sample) %></span>
+                                 <% if plan.created_at != plan.updated_at %>
+                                  <span class="text-muted"> UPDATED: <%= localize(Time.at(plan.updated_at), :format => :sample) %></span> 
+								
+							               <% end %>
+                                <div class="edit-delete-plan-buttons">
+	                                <a data-confirm="Are you sure that you want to DELETE this Plan?"  rel="nofollow" data-method="delete" href="/plans/<%=plan.id%>">
+									                <span aria-hidden="true" class="close" aria-label="Close">&times;  </span> 
+                									</a>
+                								</div>
+                            </div>
+                            <div class="comment-widgets">
+                                <!-- Comment Row -->
+                                <div class="d-flex no-block comment-row">
+                                    <div class="comment-text w-100">
+                                        <h5 class="font-medium">James Anderson</h5>
+                                        <p class="m-b-10 text-muted">
+                                        	<% if plan.content != nil %>
+                    											<%= plan.content.html_safe %>
+                    								  			<% end %></p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="bubble-spacer">
-                        </div>
-
-                      <% else %>
-
-                        <div class="incoming-bubble">
-                        <%= m.content %>
-                        </div>
-
-                        <div class="bubble-spacer">
-                        </div>
-                              
-                      <% end %>
-
-                    <% else %>
-                    <% end %>
-
-                  <% end %>
-
-                <% else %>
+                    </div>
                 <% end %>
-                    
-              </div> <!-- END of Panel-Body -->
+             <% end %>  	
 
-            </div> <!-- END of Panel -->
-       
-<!-- ////////////////////////////// -->
+				
+        
 
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <strong>Create a New Direct Message</strong>
-              </div>
+            <div class="row">
+              <div class="col-md-12 style="float: left;"">
 
-              <div class="panel-body">
-                <div class="send-message-form"> 
-                  <%= render template: "messages/new" %>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                      <h3>Create a New Plan</h3>
                 </div>
-              </div>  
-            </div>    
 
-<!-- ////////////////////////////// -->
+                <div class="panel-body">
+                  <div class="add-plan-form"> 
+                    <%= render template: "plans/new" %>
+                  </div>
+                </div>
+              </div>    
 
-          <% end %> <!-- END of IF @active_user != nil -->
+            <!-- ////////////////////////////// -->
 
-      </div> <!-- END of Row -->
+             </div>
 
-<!-- ////////////////////////////// -->
+
+  <!-- THIS IS THE RIGHT COLUMN, WHERE THE ACTIVE CLIENT'S MESSAGE HISTORY LIVES -->
+
+  <!-- //////////////////////////////////////////////////////////// -->
+
+  <!-- OBJECTIVE, in Pseudo-Code: loop through the @incoming_messages and @outgoing_messages, and place the objects into a hash. Sort them by timestamp, and spit them out (float)LEFT for outgoing and (float)RIGHT for incoming. -->
+
+
+  <!-- //////////////////////////////////////////////////////////// -->
+
+			
+			
+			
+			
+        
+        
+     
+
+  <!-- ////////////////////////////// -->
+                       
+        </div><!--/row-->
 
       </div><!--/col-->
+  
+  <div class="col-md-5">
+			 <% if @all_active_user_messages_sorted_by_timestamp.nil? == false %>
+			 <% @all_active_user_messages_sorted_by_timestamp.each do |m| %>
+			<div class="col-md-12" style="float:left;">
+			
+				  <div class="alert alert-success">
+					<!-- <h3 class="text-success"><i class="fa fa-check-circle"></i>  -->
+					 <% if @active_user != nil %>     
+                    <strong>Direct Messages with <%= @active_user.first_name %>:</strong>
+                  <% end %></h3> 
+                  
+                  
+                        
+                      <% if m.nil? == false %>
+
+                        <% if m.from == current_user.id %>
+
+                          <div class="outgoing-bubble">
+                            <%= m.content %>
+                          </div>
+
+                          <div class="bubble-spacer">
+                          </div>
+
+                        <% else %>
+
+                          <div class="incoming-bubble">
+                            <%= m.content %>
+                          </div>
+
+                          <div class="bubble-spacer">
+                          </div>
+                              
+                        <% end %>
+
+                      <% else %>
+                      <% end %>
+                    
+
+                  
+                 
+				</div>
+			</div>
+			<% end %>
+				  <% else %>
+                  <% end %>
+			<div class="col-md-12" style="float:left;">
+
      
-      </div><!--/row-->
+          <div class="row">
 
-    </div><!--/col-->
+            <!--     <div class="panel panel-default">
+                <div class="panel-heading">
+                  <% if @active_user != nil %>     
+                    <strong>Direct Messages with <%= @active_user.first_name %>:</strong>
+                  <% end %>
+
+
+
+
+                </div>
+                    
+                <div class="panel-body">
+                    
+                  <% if @all_active_user_messages_sorted_by_timestamp.nil? == false %>
+
+                    <% @all_active_user_messages_sorted_by_timestamp.each do |m| %>
+                        
+                      <% if m.nil? == false %>
+
+                        <% if m.from == current_user.id %>
+
+                          <div class="outgoing-bubble">
+                            <%= m.content %>
+                          </div>
+
+                          <div class="bubble-spacer">
+                          </div>
+
+                        <% else %>
+
+                          <div class="incoming-bubble">
+                            <%= m.content %>
+                          </div>
+
+                          <div class="bubble-spacer">
+                          </div>
+                              
+                        <% end %>
+
+                      <% else %>
+                      <% end %>
+                    <% end %>
+
+                  <% else %>
+                  <% end %>
+                    
+                </div> 
+
+              </div> -->
+
+    
+
+              <div class="col-md-12">
+                <div class="panel-heading">
+                      <h3>Create a New Direct Message</h3>
+                </div>
+
+                  <div class="panel-body">
+                    <div class="send-message-form"> 
+                      <%= render template: "messages/new" %>
+                    </div>
+                  </div>
+              </div>   
+
+               
+
+
+
+    
+          </div> 
+        </div> 
 
   </div>
 
   </div>
-</div>
+
+  </div>
+
   <!-- / Main -->
+
