@@ -1,4 +1,4 @@
-<%= form_for(@book_resource) do |f| %>
+<!--<%= form_for(@book_resource) do |f| %>
   <% if @book_resource.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@book_resource.errors.count, "error") %> prohibited this book_resource from being saved:</h2>
@@ -22,4 +22,67 @@
   <div class="actions">
     <%= f.submit %>
   </div>
-<% end %>
+<% end %>-->
+
+
+
+
+
+<%= form_for(@book_resource) do |f| %>
+	<% if @book_resource.errors.any? %>
+		<div id="error_explanation">
+		  <h2><%= pluralize(@book_resource.errors.count, "error") %> prohibited this book_resource from being saved:</h2>
+
+		  <ul>
+		  <% @book_resource.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+		  <% end %>
+		  </ul>
+		</div>
+    <% end %>
+	<!-- begin:: Content -->
+	<div class="kt-content  kt-grid__item kt-grid__item--fluid pl-0 pr-0" id="kt_content">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="kt-portlet">
+					<div class="kt-form">
+						<div class="kt-portlet__body">
+							<div class="form-group">
+								 <%= f.label :file %>
+								<div class="custom-file">
+									<%= f.file_field :file, cols: "50", rows: "1", id: "customFile" %>
+									<label class="custom-file-label" for="customFile">Choose file</label>
+									
+								</div>
+							</div>
+						</div>
+					</div>		
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="kt-portlet">
+					<div class="kt-form">
+						<div class="kt-portlet__body">
+							<div class="form-group">
+									<div class="kt-form__actions row mt-4">
+										<span class="input-group-text col-md-12 col-sm-12 col-lg-8">
+											<label class="kt-checkbox kt-checkbox--single kt-checkbox--success">
+												
+													 <%= f.label :active %> 
+													 <%= f.check_box :active %>
+												
+												<span></span>
+											</label>
+										</span>
+										<div class="col-md-12 col-sm-12 col-lg-4 p-0">
+										<%= f.submit 'Create Book resource' , :class => "btn btn-primary new-btn" %>
+									</div>
+									</div>
+							</div>
+						</div>
+					</div>		
+				</div>
+			</div>
+		</div>
+	</div>
+<% end %>		

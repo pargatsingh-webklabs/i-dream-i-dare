@@ -1,4 +1,4 @@
-<%= form_for @image do |i| %>
+<!--<%= form_for @image do |i| %>
 
 	<%= i.label :image %>
 	<%= i.file_field :image %>
@@ -10,4 +10,66 @@
 
 	<%= i.submit %>
 
-<% end %>
+<% end %>-->
+
+
+
+
+
+<%= form_for @image, :html => {:class => 'h-100'} do |i| %>
+	<!-- begin:: Content -->
+	<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+
+		<div class="kt-portlet__head">
+ 			<div class="kt-portlet__head-label mb-5">
+	            <h3 class="kt-portlet__head-title">
+	          Add Image
+	            </h3>
+        	</div>     
+    	</div>
+
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="kt-portlet">
+					<div class="kt-form">
+						<div class="kt-portlet__body">
+							<div class="form-group">
+								<%= i.label :image %>
+								<div class="custom-file">
+									<%= i.file_field :image, id: "customFile" %>
+									<label class="custom-file-label" for="customFile">Choose file</label>
+									
+								</div>
+							</div>
+						</div>
+					</div>		
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="kt-portlet">
+					<div class="kt-form">
+						<div class="kt-portlet__body">
+							<div class="form-group">
+									<div class="kt-form__actions row  mt-2">
+										<span class="input-group-text display-on-line col-lg-8 col-md-8 col-xs-12 col-sm-12">
+											<label class="kt-checkbox mt-3">
+												<% if @image.image_data? %>
+													Delete Image: 
+													<%= i.check_box :remove_image %>
+												<% end %>
+												<span></span>
+											</label>
+										</span>
+										<div class="col-lg-4 col-md-4 col-xs-12 col-sm-12 p-0">
+										<%= i.submit 'Update Image' , :class => "btn btn-primary display-on-line-btn" %>
+									</div>
+									</div>
+							</div>
+						</div>
+					</div>		
+				</div>
+			</div>
+		</div>
+	</div>
+<% end %>		

@@ -1,6 +1,8 @@
-<h1>Editing Group</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @group %> |
-<%= link_to 'Back', groups_path %>
+<div class="kt-section">
+	<div class="kt-section__content kt-section__content--solid">
+		<%= link_to 'Show', @group, class: "btn btn-label-primary btn-pill" %> |
+		<%= link_to 'Back', groups_path, class: "btn btn-label-primary btn-pill" %>
+	</div>
+</div>

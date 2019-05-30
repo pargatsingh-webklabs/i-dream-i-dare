@@ -1,6 +1,9 @@
 <h1>Editing Book Resource</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @book_resource %> |
-<%= link_to 'Back', book_resources_path %>
+<div class="kt-section">
+	<div class="kt-section__content kt-section__content--solid">
+		<%= link_to 'Show', @book_resource, class: "btn btn-label-primary btn-pill" %> 
+		<%= link_to 'Back', book_resources_path, class: "btn btn-label-primary btn-pill" %>
+	</div>
+</div>

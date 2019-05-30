@@ -1,10 +1,8 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p>
 
 <h1>User Messages</h1>
 <p>
-  <button>
-    <%= link_to 'New Message', new_message_path %>
-  </button>
+    <%= link_to 'New Message', new_message_path, class: "btn btn-success"  %>
 </p>
 
 <table class="table table-bordered table-striped" >
@@ -35,4 +33,60 @@
         <% end %>
       <% end %>
     </tbody>
-    </table>
+    </table> -->
+
+
+
+    
+  <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
+      
+      <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+       <div class="kt-portlet kt-portlet--mobile">
+        <div class="kt-portlet__head">
+          
+           <div class="kt-portlet__head-label">
+            <h3 class="kt-portlet__head-title">
+            User Messages
+            </h3>
+           </div>
+           <p id="notice"><%= notice %></p>
+            <div class="kt-portlet__head-label">
+           <%= link_to 'New Message', new_message_path, class: "btn btn-success"  %>
+         </div>
+
+        </div>
+        
+        <div class="kt-portlet__body table-responsive p-0 mt-0">
+           <table class="table table-striped- table-bordered table-hover table-checkable mt-0" id="kt_table_7">
+            <thead>
+      <tr>
+        <th>Id</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Content</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% if @messages != nil %>
+        <% @messages.each do |message| %>
+      <tr>
+            <th><%= message.id %></th>
+            <th><%= message.from %></th>
+            <th><%= message.to %></th>
+            <th><%= message.content %></th>
+            <th>
+              <%= link_to 'Show', message %>
+              <%= link_to 'Edit', edit_message_path(message) %>
+              <%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </th>
+          </tr> 
+        <% end %>
+      <% end %>
+    </tbody>
+           </table>
+        </div>
+       </div>
+      </div>
+     </div>

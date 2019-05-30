@@ -44,6 +44,9 @@ body.subpage {
 .psize{
 	font-size: 16px;
 }
+.img_round{
+	border-radius: 50% !important;
+}
 .heading_space{
  margin-bottom: 40px;
 }
@@ -53,9 +56,6 @@ body.subpage {
 }
 .contact_mrgin{
 	text-align: left !important;
-}
-.img_round{
-	border-radius: 50% !important;
 }
 .contact_mrgin_left{
     margin-left: 200px;
@@ -522,9 +522,7 @@ dl.big {
   <%= render "css_overrides" %>
   <script type="text/javascript">
     $(document).ready(function() {
-		
-		
-		  $("#book-resource-form").css({'display': 'none'});
+          $("#book-resource-form").css({'display': 'none'});
           $('#expand-book-resource-form').click(function() {
                $(".home_page").fadeOut("slow");
                $("#bookresources").addClass("active");
@@ -534,17 +532,6 @@ dl.big {
                 $("#book-resource-form").fadeOut("slow");
                 $(".home_page").fadeIn("slow");
           })
-          
-		$.urlParam = function(name){
-			var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-			return results[1] || 0;
-		}
-
-		var param = $.urlParam('name'); 
-			if(param=='bookresource'){
-			  $('#expand-book-resource-form').trigger('click');
-		}
-          
           $(".arrow_carrot-up_alt2").on("click", function(event) {
               event.preventDefault();
               $("html, body").animate({ scrollTop: 0 }, "slow");
@@ -552,7 +539,5 @@ dl.big {
           })
 
     });
-    
-    
   </script>
 </html>

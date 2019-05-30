@@ -1,9 +1,8 @@
-                  <div class="col-10  pull-right"  style="margin-top: 100px;">
+    <!--           <div class="col-10  pull-right"  style="margin-top: 100px;">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Admin Users</h4>
-                                <!-- <h6 class="card-subtitle">Add<code>.table-bordered</code>for borders on all sides of the table and cells.</h6> -->
-                                <div class="table-responsive">
+                                 <div class="table-responsive">
                                     <table class="table table-bordered">
                                         <thead>
                                           <tr>
@@ -76,7 +75,6 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Coaches</h4>
-                                <!-- <h6 class="card-subtitle">Add<code>.table-bordered</code>for borders on all sides of the table and cells.</h6> -->
                                 <div class="table-responsive">
                                     <table class="table table-bordered">
                                         <thead>
@@ -144,8 +142,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Users</h4>
-                                <!-- <h6 class="card-subtitle">Add<code>.table-bordered</code>for borders on all sides of the table and cells.</h6> -->
-                                <div class="table-responsive">
+                                 <div class="table-responsive">
                                     <table class="table table-bordered">
                                        <thead>
                                         <tr>
@@ -327,288 +324,381 @@
                                 </div>
                             </div>
                         </div>
-                    </div>   
+                    </div>  
+-->
 
 
-<!-- 
 
- <h1>Admin Users</h1>
-<table class="table table-bordered table-striped" >
-  <thead>
-    <tr>
-      <th>
-        Id
-      </th>
-      <th>
-        Name
-      </th>
-      <th>
-        Email
-      </th>
-      <th>
-        Coach?
-      </th>
-      <th>
-        Admin?
-      </th>
-      <th>
-        Active?
-      </th>
-      <th>
-        Deleted?
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if @admins != nil %>
-      <% @admins.each do |u| %>
-        <tr class="<%= u.is_active? ? '' : 'inactive_table_row_item' %>">
+	<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor">
+		  <!-- <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+			 <div class="kt-subheader__toolbar">
+				<div class="kt-subheader__wrapper"></div>
+			 </div>
+		  </div> -->
+		  <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+			 <div class="kt-portlet kt-portlet--mobile">
+				<div class="kt-portlet__head">
+				   <div class="kt-portlet__head-label">
+					  <h3 class="kt-portlet__head-title">
+						Admin Users
+					  </h3>
+				   </div>
+				</div>
+				<div class="kt-portlet__body">
+				   <table class="table table-striped- table-bordered table-hover table-checkable" id="kt_table_2">
+					   <thead>
+						  <tr>
+							<th>
+							  Id
+							</th>
+							<th>
+							  Name
+							</th>
+							<th>
+							  Email
+							</th>
+							<th>
+							  Coach?
+							</th>
+							<th>
+							  Admin?
+							</th>
+							<th>
+							  Active?
+							</th>
+							<th>
+							  Deleted?
+							</th>
+						  </tr>
+						</thead>
+						<tbody>
+						  <% if @admins != nil %>
+							<% @admins.each do |u| %>
+							  <tr class="<%= u.is_active? ? '' : 'inactive_table_row_item' %>">
 
-          <th>
-            <%= u.id %>
-          </th>
-          <th>
-            <%= u.first_name %> <%= u.last_name %>
-          </th>
-          <th>
-            <%= u.email %>
-          </th>
-          <th>
-            <%= u.is_a_coach %>   <a href="/toggle_coach/<%= u.id %>"><button>Toggle</button></a>
-          </th>
-          <th>
-            <%= u.is_an_admin %>   <a href="/toggle_admin/<%= u.id %>"><button>Toggle</button></a>
-          </th>
-          <th>
-            <%= u.is_active %>   <a href="/toggle_active/<%= u.id %>"><button>Toggle</button></a>
-          </th>
-          <th>
-            <%= u.is_deleted %>   <a href="/toggle_deleted/<%= u.id %>"><button>Toggle</button></a>
-          </th>
-        </tr> 
-      <% end %>
-    <% end %>
-  </tbody>
-</table>  
-  
- <h1>Coaches</h1>
-<table class="table table-bordered table-striped" >
-  <thead>
-    <tr>
-      <th>
-        Id
-      </th>
-      <th>
-        Name
-      </th>
-      <th>
-        Email
-      </th>
-      <th>
-        Coach?
-      </th>
-      <th>
-        Admin?
-      </th>
-      <th>
-        Active?
-      </th>
-      <th>
-        Deleted?
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if @coaches != nil %>
-      <% @coaches.each do |u| %>
-        <tr class="<%= u.is_active? ? '' : 'inactive_table_row_item' %>">
-          <th>
-            <%= u.id %>
-          </th>
-          <th>
-            <%= u.first_name %> <%= u.last_name %>
-          </th>
-          <th>
-            <%= u.email %>
-          </th>
-          <th>
-            <%= u.is_a_coach %>   <a href="/toggle_coach/<%= u.id %>"><button>Toggle</button></a>
-          </th>
-          <th>
-            <%= u.is_an_admin %>   <a href="/toggle_admin/<%= u.id %>"><button>Toggle</button></a>
-          </th>
-          <th>
-            <%= u.is_active %>   <a href="/toggle_active/<%= u.id %>"><button>Toggle</button></a>
-          </th>
-          <th>
-            <%= u.is_deleted %>   <a href="/toggle_deleted/<%= u.id %>"><button>Toggle</button></a>
-          </th>
-        </tr> 
-      <% end %>
-    <% end %>
-  </tbody>
-</table> 
+								<th>
+								  <%= u.id %>
+								</th>
+								<th>
+								  <%= u.first_name %> <%= u.last_name %>
+								</th>
+								<th>
+								  <%= u.email %>
+								</th>
+								<th>
+								  <%= u.is_a_coach %>   <a href="/toggle_coach/<%= u.id %>"><button>Toggle</button></a>
+								</th>
+								<th>
+								  <%= u.is_an_admin %>   <a href="/toggle_admin/<%= u.id %>"><button>Toggle</button></a>
+								</th>
+								<th>
+								  <%= u.is_active %>   <a href="/toggle_active/<%= u.id %>"><button>Toggle</button></a>
+								</th>
+								<th>
+								  <%= u.is_deleted %>   <a href="/toggle_deleted/<%= u.id %>"><button>Toggle</button></a>
+								</th>
+							  </tr> 
+							<% end %>
+						  <% end %>
+						</tbody>
+				   </table>
+				</div>
+				<hr>
+				<div class="kt-portlet__head">
+					<p style="color:red;" style="text-align: left;">
+					  Warning: Toggling your own Admin priviliges will lock you out of the system immediately.
+					</p>
+				</div>	
+				<hr>
+			 </div>
+		  </div>
+		  
+		  
+		  
+		  		  <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+			 <div class="kt-portlet kt-portlet--mobile">
+				<div class="kt-portlet__head">
+				   <div class="kt-portlet__head-label">
+					  <h3 class="kt-portlet__head-title">
+						Coaches
+					  </h3>
+				   </div>
+				</div>
+				<div class="kt-portlet__body">
+				   <table class="table table-striped- table-bordered table-hover table-checkable" id="kt_table_3">
+					   <thead>
+						<tr>
+						  <th>
+							Id
+						  </th>
+						  <th>
+							Name
+						  </th>
+						  <th>
+							Email
+						  </th>
+						  <th>
+							Coach?
+						  </th>
+						  <th>
+							Admin?
+						  </th>
+						  <th>
+							Active?
+						  </th>
+						  <th>
+							Deleted?
+						  </th>
+						</tr>
+					  </thead>
+					  <tbody>
+						<% if @coaches != nil %>
+						  <% @coaches.each do |u| %>
+							<tr class="<%= u.is_active? ? '' : 'inactive_table_row_item' %>">
+							  <th>
+								<%= u.id %>
+							  </th>
+							  <th>
+								<%= u.first_name %> <%= u.last_name %>
+							  </th>
+							  <th>
+								<%= u.email %>
+							  </th>
+							  <th>
+								<%= u.is_a_coach %>   <a href="/toggle_coach/<%= u.id %>"><button>Toggle</button></a>
+							  </th>
+							  <th>
+								<%= u.is_an_admin %>   <a href="/toggle_admin/<%= u.id %>"><button>Toggle</button></a>
+							  </th>
+							  <th>
+								<%= u.is_active %>   <a href="/toggle_active/<%= u.id %>"><button>Toggle</button></a>
+							  </th>
+							  <th>
+								<%= u.is_deleted %>   <a href="/toggle_deleted/<%= u.id %>"><button>Toggle</button></a>
+							  </th>
+							</tr> 
+						  <% end %>
+						<% end %>
+					  </tbody>
+				   </table>
+				</div>
+				
+			 </div>
+		  </div>
+		  
+		  
+		  
+		  
+		  		  <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+			 <div class="kt-portlet kt-portlet--mobile">
+				<div class="kt-portlet__head">
+				   <div class="kt-portlet__head-label">
+					  <h3 class="kt-portlet__head-title">
+						Users
+					  </h3>
+				   </div>
+				</div>
+				<div class="kt-portlet__body">
+				   <table class="table table-striped- table-bordered table-hover table-checkable" id="kt_table_4">
+					    <thead>
+							<tr>
+							  <th>
+								Id
+							  </th>
+							  <th>
+								Name
+							  </th>
+							  <th>
+								Email
+							  </th>
+							  <th>
+								Coach?
+							  </th>
+							  <th>
+								Admin?
+							  </th>
+							  <th>
+								Active?
+							  </th>
+							  <th>
+								Deleted?
+							  </th>
+							</tr>
+						  </thead>
+						  <tbody>
+							<% if @users != nil %>
+							  <% @users.each do |u| %>
+								<tr class="<%= u.is_active? ? '' : 'inactive_table_row_item' %>">
+								  <th>
+									<%= u.id %>
+								  </th>
+								  <th>
+									<%= u.first_name %> <%= u.last_name %>
+								  </th>
+								  <th>
+									<%= u.email %>
+								  </th>
+								  <th>
+									<%= u.is_a_coach %>   <a href="/toggle_coach/<%= u.id %>"><button>Toggle</button></a>
+								  </th>
+								  <th>
+									<%= u.is_an_admin %>   <a href="/toggle_admin/<%= u.id %>"><button>Toggle</button></a>
+								  </th>
+								  <th>
+									<%= u.is_active %>   <a href="/toggle_active/<%= u.id %>"><button>Toggle</button></a>
+								  </th>
+								  <th>
+									<%= u.is_deleted %>   <a href="/toggle_deleted/<%= u.id %>"><button>Toggle</button></a>
+								  </th>
+								</tr> 
+							  <% end %>
+							<% end %>
+						  </tbody>
+				   </table>
+				</div>
+				
+			 </div>
+		  </div>
+		  
+		  
+		  
+		  
+		  		  <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+			 <div class="kt-portlet kt-portlet--mobile">
+				<div class="kt-portlet__head">
+				   <div class="kt-portlet__head-label">
+					  <h3 class="kt-portlet__head-title">
+						Users To Confirm (Toggle "Admin" FIRST)
+					  </h3>
+				   </div>
+				</div>
+				<div class="kt-portlet__head">
+				<h6 class="kt-portlet__head-title" style="color:red;">[Right now, we need to click the Toggle button on both "Coach" and "Admin" permissions to approve the user's membership. Before this step, they will not see anything on their dashboard. Toggling both permissions will result in both being set to False; then you may approve them for coach or admin priviliges. Note: This will also need to be done if the user needs to be deleted without approval. Set both permissions to False, THEN toggle the Is Deleted property.]</h6>
+				</div>
+				<div class="kt-portlet__body">
+				   <table class="table table-striped- table-bordered table-hover table-checkable" id="kt_table_5">
+					    <thead>
+							  <tr>
+								<th>
+								  Id
+								</th>
+								<th>
+								  Name
+								</th>
+								<th>
+								  Email
+								</th>
+								<th>
+								  Coach?
+								</th>
+								<th>
+								  Admin?
+								</th>
+								<th>
+								  Active?
+								</th>
+								<th>
+								  Deleted?
+								</th>
+							  </tr>
+							</thead>
+							<tbody>
+							  <% if @users_to_confirm != nil %>
+								<% @users_to_confirm.each do |u| %>
+								  <tr>
+									<th>
+									  <%= u.id %>
+									</th>
+									<th>
+									  <%= u.first_name %> <%= u.last_name %>
+									</th>
+									<th>
+									  <%= u.email %>
+									</th>
+									<th>
+									  <%= u.is_a_coach %>   <a href="/toggle_coach/<%= u.id %>"><button>Toggle</button></a>
+									</th>
+									<th>
+									  <%= u.is_an_admin %>   <a href="/toggle_admin/<%= u.id %>"><button>Toggle</button></a>
+									</th>
+									<th>
+									  <%= u.is_active %>   <a href="/toggle_active/<%= u.id %>"><button>Toggle</button></a>
+									</th>
+									<th>
+									  <%= u.is_deleted %>   <a href="/toggle_deleted/<%= u.id %>"><button>Toggle</button></a>
+									</th>
+								  </tr> 
+								<% end %>
+							  <% end %>
+							</tbody>
+				   </table>
+				</div>
+			 </div>
+		  </div>
+		  
+		  
+		  
+		  
+		  		  <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+			 <div class="kt-portlet kt-portlet--mobile">
+				<div class="kt-portlet__head">
+				   <div class="kt-portlet__head-label">
+					  <h3 class="kt-portlet__head-title">
+						Deleted Users
+					  </h3>
+				   </div>
+				</div>
+				<div class="kt-portlet__head">
+				 <h6 class="kt-portlet__head-title" style="color:red;">[Toggling the Is Deleted property to True will place the user into the below table. Toggling Deleted to False will place the user into its proper table above for further edits. "Deleting" a user is essentially the same as making a user inactive, but a Deleted user will remain out of the way, and so is intended for more permanent removals. Note that neither status change will result in the actual destruction of records.]</h6>
+				</div> 
+				<div class="kt-portlet__body">
+				   <table class="table table-striped- table-bordered table-hover table-checkable" id="kt_table_6">
+					 <thead>
+						  <tr>
+							<th>
+							  Id
+							</th>
+							<th>
+							  Name
+							</th>
+							<th>
+							  Email
+							</th>
+							<th>
+							  Deleted?
+							</th>
+						  </tr>
+						</thead>
+						<tbody>
+						  <% if @deleted_users != nil %>
+							<% @deleted_users.each do |u| %>
+							  <tr>
+								<th>
+								  <%= u.id %>
+								</th>
+								<th>
+								  <%= u.first_name %> <%= u.last_name %>
+								</th>
+								<th>
+								  <%= u.email %>
+								</th>
+								<th>
+								  <%= u.is_deleted %>   <a href="/toggle_deleted/<%= u.id %>"><button>Toggle</button></a>
+								</th>
+							  </tr> 
+							<% end %>
+						  <% end %>
+						</tbody>
+				   </table>
+				</div>
+				
+			 </div>
+		  </div>
+		  
+		  
+		  
+	   </div>
 
 
-<h1>Users</h1>
-<table class="table table-bordered table-striped" >
-  <thead>
-    <tr>
-      <th>
-        Id
-      </th>
-      <th>
-        Name
-      </th>
-      <th>
-        Email
-      </th>
-      <th>
-        Coach?
-      </th>
-      <th>
-        Admin?
-      </th>
-      <th>
-        Active?
-      </th>
-      <th>
-        Deleted?
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if @users != nil %>
-      <% @users.each do |u| %>
-        <tr class="<%= u.is_active? ? '' : 'inactive_table_row_item' %>">
-          <th>
-            <%= u.id %>
-          </th>
-          <th>
-            <%= u.first_name %> <%= u.last_name %>
-          </th>
-          <th>
-            <%= u.email %>
-          </th>
-          <th>
-            <%= u.is_a_coach %>   <a href="/toggle_coach/<%= u.id %>"><button>Toggle</button></a>
-          </th>
-          <th>
-            <%= u.is_an_admin %>   <a href="/toggle_admin/<%= u.id %>"><button>Toggle</button></a>
-          </th>
-          <th>
-            <%= u.is_active %>   <a href="/toggle_active/<%= u.id %>"><button>Toggle</button></a>
-          </th>
-          <th>
-            <%= u.is_deleted %>   <a href="/toggle_deleted/<%= u.id %>"><button>Toggle</button></a>
-          </th>
-        </tr> 
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
 
-<h1>Users To Confirm (Toggle "Admin" FIRST)</h1>
-<div style="color:red;">
-  [Right now, we need to click the Toggle button on both "Coach" and "Admin" permissions to approve the user's membership. Before this step, they will not see anything on their dashboard. Toggling both permissions will result in both being set to False; then you may approve them for coach or admin priviliges. Note: This will also need to be done if the user needs to be deleted without approval. Set both permissions to False, THEN toggle the Is Deleted property.]
-</div>
-<table class="table table-bordered table-striped" >
-  <thead>
-    <tr>
-      <th>
-        Id
-      </th>
-      <th>
-        Name
-      </th>
-      <th>
-        Email
-      </th>
-      <th>
-        Coach?
-      </th>
-      <th>
-        Admin?
-      </th>
-      <th>
-        Active?
-      </th>
-      <th>
-        Deleted?
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if @users_to_confirm != nil %>
-      <% @users_to_confirm.each do |u| %>
-        <tr>
-          <th>
-            <%= u.id %>
-          </th>
-          <th>
-            <%= u.first_name %> <%= u.last_name %>
-          </th>
-          <th>
-            <%= u.email %>
-          </th>
-          <th>
-            <%= u.is_a_coach %>   <a href="/toggle_coach/<%= u.id %>"><button>Toggle</button></a>
-          </th>
-          <th>
-            <%= u.is_an_admin %>   <a href="/toggle_admin/<%= u.id %>"><button>Toggle</button></a>
-          </th>
-          <th>
-            <%= u.is_active %>   <a href="/toggle_active/<%= u.id %>"><button>Toggle</button></a>
-          </th>
-          <th>
-            <%= u.is_deleted %>   <a href="/toggle_deleted/<%= u.id %>"><button>Toggle</button></a>
-          </th>
-        </tr> 
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
-
-<h1>Deleted Users</h1>
-<div style="color:red;">
-  [Toggling the Is Deleted property to True will place the user into the below table. Toggling Deleted to False will place the user into its proper table above for further edits. "Deleting" a user is essentially the same as making a user inactive, but a Deleted user will remain out of the way, and so is intended for more permanent removals. Note that neither status change will result in the actual destruction of records.]
-</div>
-<table class="table table-bordered table-striped" >
-  <thead>
-    <tr>
-      <th>
-        Id
-      </th>
-      <th>
-        Name
-      </th>
-      <th>
-        Email
-      </th>
-      <th>
-        Deleted?
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if @deleted_users != nil %>
-      <% @deleted_users.each do |u| %>
-        <tr>
-          <th>
-            <%= u.id %>
-          </th>
-          <th>
-            <%= u.first_name %> <%= u.last_name %>
-          </th>
-          <th>
-            <%= u.email %>
-          </th>
-          <th>
-            <%= u.is_deleted %>   <a href="/toggle_deleted/<%= u.id %>"><button>Toggle</button></a>
-          </th>
-        </tr> 
-      <% end %>
-    <% end %>
-  </tbody>
-</table> -->
 

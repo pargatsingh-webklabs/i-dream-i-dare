@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Client:</strong>
@@ -17,3 +17,56 @@
 
 <%= link_to 'Edit', edit_plan_path(@plan) %> |
 <%= link_to 'Back', plans_path %>
+-->
+
+
+
+
+<p id="notice"><%= notice %></p>
+<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+<!--	<div class="kt-portlet__head">
+		<div class="kt-portlet__head-label">
+			<h2 class="kt-portlet__head-title">
+				SHOW MENTORSHIP
+			</h2>
+		</div>
+	</div>
+Begin::Section-->
+<div class="kt-portlet">
+   <div class="kt-portlet__body kt-portlet__body--fit">
+      <div class="row row-no-padding row-col-separator-xl">
+         <div class="col-md-12 col-lg-12 col-xl-4">
+            <!--begin:: Widgets/Stats2-1 -->
+            <div class="kt-widget1">
+               <div class="kt-widget1__item">
+                  <div class="kt-widget1__info">
+                     <h3 class="kt-widget1__title">Client</h3>
+                     <span class="kt-widget1__desc"><%= @plan.client %></span>
+                  </div>
+               </div>
+               <div class="kt-widget1__item">
+                  <div class="kt-widget1__info">
+                     <h3 class="kt-widget1__title">Title</h3>
+                     <span class="kt-widget1__desc"> <%= @plan.title %></span>
+                  </div>
+               </div>
+               <div class="kt-widget1__item">
+                  <div class="kt-widget1__info">
+                     <h3 class="kt-widget1__title">Content</h3>
+                     <span class="kt-widget1__desc"><%= @plan.content %></span>
+                  </div>
+               </div>
+            </div>
+            <!--end:: Widgets/Stats2-1 -->     
+            <div class="kt-portlet__foot">
+					<div class="kt-form__actions">
+						<%= link_to 'Edit', edit_plan_path(@plan), class: "btn btn-label-primary btn-pill" %> 
+						<%= link_to 'Back', plans_path , class: "btn btn-label-primary btn-pill" %>
+					</div>
+				</div>       
+         </div>
+      </div>
+   </div>
+</div>
+<!--End::Section-->
+

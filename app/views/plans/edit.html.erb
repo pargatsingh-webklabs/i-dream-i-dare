@@ -1,6 +1,8 @@
-<h1>Editing Plan</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @plan %> |
-<%= link_to 'Back', plans_path %>
+<div class="kt-section">
+	<div class="kt-section__content kt-section__content--solid">
+		<%= link_to 'Show', @plan, class: "btn btn-label-primary btn-pill" %> 
+		<%= link_to 'Back', plans_path, class: "btn btn-label-primary btn-pill" %>
+	</div>
+</div>

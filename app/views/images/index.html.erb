@@ -1,4 +1,16 @@
-<h1>Images</h1>
 
-<%= link_to 'Add Image', new_image_path %>
+ <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+  <div class="kt-portlet__head">
+ 	<div class="kt-portlet__head-label">
+            <h3 class="kt-portlet__head-title">
+           Images
+            </h3>
+        </div>     
+    </div>
+  </div> 
+<div class="kt-section">
+	<div class="kt-section__content kt-section__content--solid">
+		<%= link_to 'Add Image', new_image_path, class: "btn btn-label-primary btn-pill" %>
+	</div>
+</div>		
 <%= render @images %>

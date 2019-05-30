@@ -1,4 +1,4 @@
-<%= form_for(@resource) do |f| %>
+<!--<%= form_for(@resource) do |f| %>
   <% if @resource.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@resource.errors.count, "error") %> prohibited this resource from being saved:</h2>
@@ -53,4 +53,139 @@
   <div class="actions">
     <%= f.submit %>
   </div>
-<% end %>
+<% end %>-->
+
+
+<div class="col-xl-4 p-0">
+	<div class="kt-portlet kt-portlet--height-fluid">
+		<div class="kt-portlet__head">
+			<div class="kt-portlet__head-label">
+				<h3 class="kt-portlet__head-title">
+					Editing Resource
+				</h3>
+			</div>
+		</div>
+		<div class="kt-portlet__body">
+			<div class="kt-widget4">
+				<div class="kt-widget4__item" >
+					<a href="#" class="kt-widget4__title kt-widget4__title--light">
+						<span style="color:red">Resource Type IDs are below:</span>
+					</a>
+				</div>
+				<div class="kt-widget4__item" >
+					<a href="#" class="kt-widget4__title kt-widget4__title--light">
+						<span style="color:red">2 - Link</span>
+					</a>
+				</div>
+				<div class="kt-widget4__item" >
+					<a href="#" class="kt-widget4__title kt-widget4__title--light">
+						<span style="color:red">3 - File</span>
+					</a>
+				</div>
+				<div class="kt-widget4__item" >
+					<a href="#" class="kt-widget4__title kt-widget4__title--light">
+						<span style="color:red">4 - Note</span>
+					</a>
+				</div>
+				<div class="kt-widget4__item" >
+					<a href="#" class="kt-widget4__title kt-widget4__title--light">
+						<span style="color:red">5 - Image</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+	<!-- begin:: Content -->
+<div class="kt-content  kt-grid__item kt-grid__item--fluid kt_content pl-0 pr-0" id="kt_content">
+	<div class="row">
+	<div class="col-md-12">
+		
+
+		<!--begin::Portlet-->
+		<div class="kt-portlet">
+			<!--begin::Form-->
+			<%= form_for(@resource) do |f| %>
+			  <% if @resource.errors.any? %>
+				<div id="error_explanation">
+				  <h2><%= pluralize(@resource.errors.count, "error") %> prohibited this resource from being saved:</h2>
+				  <ul>
+				  <% @resource.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+				  <% end %>
+				  </ul>
+				</div>
+			  <% end %>
+				<div class="kt-portlet__body">
+					<div class="form-group row">
+						<label for="example-text-input" class="col-2 col-form-label"><%= f.label :title %></label>
+						<div class="col-10">
+							<%= f.text_field :title, class:"form-control" %>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="exampleTextarea" class="col-2 col-form-label"><%= f.label :description %></label>
+						<div class="col-10">
+							<%= f.text_area :description, class:"form-control" %>
+						</div>
+						<div style="color:red;">
+							Note: If this is a link or a file, you will need to use the ENTIRE url below (example: Use "http://www.google.com/" instead of just "Google") for it to be displayed and to function properly throughout the site.
+						  </div>
+					</div>
+					<div class="form-group row">
+						<label for="exampleTextarea" class="col-2 col-form-label"><%= f.label :resource_string %></label>
+						<div class="col-10">
+							<%= f.text_area :resource_string, class:"form-control" %>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="example-number-input" class="col-2 col-form-label"><%= f.label :resource_type_id %></label>
+						<div class="col-10">
+						<%= f.number_field :resource_type_id, class:"form-control" %>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="example-search-input" class="col-2 col-form-label"> <%= f.label :tag_1 %></label>
+						<div class="col-10">
+							<%= f.text_field :tag_1, class:"form-control" %>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="example-search-input" class="col-2 col-form-label"> <%= f.label :tag_2 %></label>
+						<div class="col-10">
+							<%= f.text_field :tag_2, class:"form-control" %>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="example-search-input" class="col-2 col-form-label"> <%= f.label :tag_3 %></label>
+						<div class="col-10">
+							<%= f.text_field :tag_3, class:"form-control" %>
+						</div>
+					</div>
+				</div>
+				<div class="kt-portlet__foot">
+					<div class="kt-form__actions">
+						<div class="row">
+							
+							<div class="col-10">
+								 <%= f.submit 'Update Resource', :class=>"btn btn-success" %>
+							</div>
+						</div>
+					</div>
+				</div>
+			 <% end %>
+		</div>
+		<!--end::Portlet-->
+	</div>
+</div></div>

@@ -1,0 +1,16 @@
+/******************* 
+
+ CUSTOM STYLE 
+
+ ****************************/
+
+
+ .kt-menu__nav_custom li a{ margin: 0; display: block; }
+ .kt-menu__nav_custom li a h3{ margin: 0; line-height: 64px; }
+ .kt-header--fixed.kt-subheader--fixed.kt-subheader--enabled .kt-wrapper {  padding-top: 65px;}
+ a.btn.btn-success{display: block;line-height: 37px;height: 40px;padding: 0 15px;}
+ table.dataTable{margin-top: 0px !important}
+ .btn.btn-primary.display-on-line-btn { width: 100%; height: 59px;}
+.btn.btn-label-primary.btn-pill {height: 44px !important; line-height:25px;}
+.new-btn {height: 44px !important; line-height:25px;}
+trix-toolbar { white-space: inherit !important;}

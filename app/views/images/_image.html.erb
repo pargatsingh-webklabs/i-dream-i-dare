@@ -1,7 +1,44 @@
-<div>
-	<% if image.image_data? %>
-		<%= image_tag image.image_url %> <!-- image_url is a Shrine method --> 
-	<p><%= image.image_data %> | <%= link_to 'Edit', edit_image_path(image) %>
-		| <a href="<%= image.image_url %>">View on web</a></p>
-	<% end %>
+
+<!--Begin::Section-->
+<div class="row">
+	<div class="col-xl-8">
+		<!--begin:: Widgets/Best Sellers-->
+<div class="kt-portlet kt-portlet--height-fluid">
+	<div class="kt-portlet__body">
+			<div class="tab-content">
+				<div class="tab-pane active" id="kt_widget5_tab1_content" aria-expanded="true">
+					<div class="kt-widget5">
+						<div class="kt-widget5__item">
+							<div class="kt-widget5__content">
+								<div class="">
+									<% if image.image_data? %>
+										<%= image_tag image.image_url %> 
+									<p><%= image.image_data %> | </p>
+									
+									
+									<div class="kt-section">
+										<div class="kt-section__content kt-section__content--solid">
+											<%= link_to 'Edit', edit_image_path(image), class: "btn btn-label-primary btn-pill" %>
+											<a href="<%= image.image_url %>"  class = "btn btn-label-primary btn-pill" >View on web</a>
+										</div>
+									</div>	
+									
+									
+								
+									<% end %>
+								</div>
+								
+							</div>						
+							<div class="kt-widget5__content">
+								
+							</div>	
+						</div>
+			
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>			
+</div>
 </div>

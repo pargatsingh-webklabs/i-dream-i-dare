@@ -36,9 +36,19 @@
   </div>
 <% end %>-->
 
+<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
+<div class="kt-portlet__head">
+          
+           <div class="kt-portlet__head-label">
+            <h3 class="kt-portlet__head-title">
+            Editing Plans
+            </h3>
+           </div>         
+
+        </div>
 
 <%= form_for(@plan) do |f| %>
-<div class="col-xlg-12 col-lg-12 col-md-12 bg-light border-left">
+<div class="col-xlg-12 col-lg-12 col-md-12 bg-light p-0">
       <div class="card-body">
   <% if @plan.errors.any? %>
       <div id="error_explanation">
