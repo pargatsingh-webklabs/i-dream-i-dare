@@ -11,7 +11,7 @@
   <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.5/css/bootstrap-select.css" type="text/css">
 
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -35,14 +35,33 @@ footer#footer {
 body.subpage {
     height: 100%;
 }
+
+.signup-form-border{
+border-radius: 10px;
+padding: 30px;
+margin: 0px;
+border-style: solid;
+
+}
+
 .outer-wrapper {
     min-height: 100%;
 }
 .h3color{
 	color : #37B048;
 }
+#content .h3color{
+  color : #676767;
+  font-weight: 600;
+}
+#content .blog-post p {
+  padding-top: 15px;
+}
 .psize{
 	font-size: 16px;
+}
+.slightround_img{
+  border-radius: 5px !important;
 }
 .img_round{
 	border-radius: 50% !important;
@@ -66,6 +85,9 @@ body.subpage {
   max-height: 367px;
   min-height: 367px;
 }
+.signin-border {
+  padding: 20px;
+}
  .modal-open .modal{    opacity: 1 !important;}
  .modal-backdrop.fade {
     filter: alpha(opacity=.66);
@@ -84,7 +106,7 @@ body.subpage {
 .navigation {
 	position: fixed;
 	width: 100%;
-	background: #fff !important;
+	background: #f6f4f0 !important;
 	display: ;
 	border-bottom: 1px solid #eee;
 	top:0;
@@ -123,7 +145,10 @@ body.subpage {
 	list-style: none;
 	display:inline-block;
 }
-
+.img_full_width { 
+  height: 100%;
+  width: 100%;
+ }
 
 .footer-submenus {
 	padding: 0px 0;
@@ -170,15 +195,15 @@ padding-right:0px;
 	color: #333;
 	opacity: .8;
 }
+.login-button-margin { margin-left: 15px; }
 .back-design #user_remember_me {
 	margin-top: 0px;
 	margin-right: 20px !important;
 }
 .content-center{padding:60px 0px;}
-.content-center a {
-	color: #37b048;
-}
-.anch-design a{color:#5cb85c;}
+.content-center-login{ padding: 30px 30px; }
+.content-center a {	color: #37b048;}
+.anch-design a{color:#5cb85c;padding-left: 15px;}
 .paddingl-0{padding-left: 0px;}
 .paddingr-0{padding-right: 0px;}
 .chg-color {
@@ -258,8 +283,125 @@ padding-right:0px;
 	font-size: 16px !important;
 	margin-top: 16px !important;
 }
-@media screen and (min-device-width: 200px) and (max-device-width: 767px) { 
+.btn.btn-default:hover {
+  background-color: #37b05e !important;
+  color: #fff !important;
+}
+.tag.article:hover {
+  background-color: #37b05e !important;
+  color: #fff !important;
+}
+#content .blog-post header a:hover {
+  text-decoration: none !important;
+}
+#content .tags .tag.article {
+  color: #37b048 !important;
+  border-radius: 5px !important;
+}
+#content .tags .tag.article:hover{
+  color: #fff !important;
+  border-radius: 12px !important;
+}
+#content .btn.btn-default:hover{text-decoration: none !important}
+#content .btn.btn-default{font-weight: bold;padding: 4px 8px;}
+.tag.article:hover{text-decoration: none !important;}
+#content .tags{margin-top: 4px;}
+.box-border{border: 2px solid #67677f;
+padding: 2% 3%;
+float:left;
+width:100%;
+border-radius: 5px;}
+.clr-gry p span {border: 2px solid #67677f;font-size:18px;padding: 5px;border-radius: 5px;}
+.clr-gry p{margin-top: 15px;}
+.box-border .panel-body i {
+  font-size: 50px;
+  margin-bottom: 20px;
+  margin-top: 20px;
 
+}
+.box-border .panel-body i{
+ border:2px solid #fff;
+ padding:13px 20px;
+ border-radius: :5px;
+}
+.box-border .panel-body i:hover {
+  border: 2px solid #3db048;
+  padding: 13px 20px;
+  border-radius: 5px;
+  box-shadow: 0px 5px 5px 12px #f7efef;
+}
+.main-nav nav ul {
+  padding-left: 0px !important;
+}
+.main-nav nav ul li a:first-child {
+  padding-left: 0px !important;
+  margin-left:6px;
+}
+.forcefullwidth_wrapper_tp_banner .tp-bgimg.defaultimg {
+  max-height: 500px !important;
+}
+.forcefullwidth_wrapper_tp_banner {max-height:500px;}
+.forcefullwidth_wrapper_tp_banner  .tp-leftarrow.tparrows {
+  top:40% !important;
+}
+#features {
+  padding-left: 4%;
+}
+.forcefullwidth_wrapper_tp_banner .tp-rightarrow.tparrows{
+ top:40% !important;
+}
+.home_page p {
+  text-align: justify !important;
+}
+.h3_pad {
+  text-transform: inherit !important;
+}
+.ready-btn{padding-left:40px;}
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 37px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #004e81;
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+}
+.toggle-password-eye .field-icon {
+  position: absolute;
+  top: 70px;
+  bottom: 0;
+  right: 23px;
+}
+.toggle-password-eye.eye2 .field-icon {
+  position: absolute;
+  top: 125px;
+  bottom: 0;
+  right: 23px;
+}
+
+@media screen and (min-device-width: 200px) and (max-device-width: 767px) { 
+  .footer-submenus ul {
+  padding-left: 0px !important;
+}
+ .footer-menu li a {
+  line-height: 30px;
+
+}
+.footer-submenus {
+  margin-top: 20px;
+}
+.forcefullwidth_wrapper_tp_banner  .tp-leftarrow.tparrows {
+  top:50% !important;
+}
+.forcefullwidth_wrapper_tp_banner .tp-rightarrow.tparrows{
+ top:50% !important;
+}
 #top .container{padding:0px;}
 #top nav ul {text-align:left; width: 100% !important; top: 43px; background: #fff !important; border-top: 1px solid #dedede; right:0px !important; left:0px !important; display:block !important; float:left !important;}
 #top .show-nav li {
@@ -283,6 +425,7 @@ padding-right:0px;
     padding-left: 0px !important;
 
 }
+.toggle-password-eye { color: #333 !important; margin-left: 450px !important; }
 .navigation .nav-toggle {
 
   font-size: 29px;
@@ -345,6 +488,9 @@ dl.big {
 }
 .contact-us1 {
 	font-size: 22px;
+}
+.navigation .nav-toggle {
+  left: 15px !important;
 }
 }
 @media screen and (min-device-width: 200px) and (max-device-width: 420px) { 
@@ -410,16 +556,17 @@ dl.big {
                          <% else %>
                         <li class="<%= active_class('/users/sign_up') %>"><a href="/users/sign_up" class="landing-link" style="font-size: 16px;">Sign Up</a></li>
                          <% end %>
+                         <% if user_signed_in? %>
+            
+            <% else %>
+            <li class="<%= active_class('/users/sign_in') %>"><a href="/users/sign_in" class="landing-link" style="font-size: 16px;">Sign In</a></li>
+             <% end %>
                          
                         <li class="<%= active_class('/bios/meet_us') %>"><a href="/bios/meet_us" class="landing-link" style="font-size: 16px;">Meet Us</a></li>
                         <li class="<%= active_class('/blog') %>"><a href="/blog" class="landing-link" style="font-size: 16px;">Blog</a></li>
                        
 						<li id="bookresources"><a href="#" id="expand-book-resource-form" class="landing-link" style="font-size: 16px;">Book Resources</a></li>
-						<% if user_signed_in? %>
 						
-						<% else %>
-						<li class="<%= active_class('/users/sign_in') %>"><a href="/users/sign_in" class="landing-link" style="font-size: 16px;">Sign In</a></li>
-						 <% end %>
 						
                     </ul>
 
@@ -437,7 +584,8 @@ dl.big {
                     <div class="right">
 						<span style="float:left"><a target="_blank" href="https://twitter.com/tinashe_claudio"><i class="fa fa-twitter fa-2" aria-hidden="true"></i></a></span>
 						<span style="float:left"><a target="_blank" href="https://twitter.com/tinashe_claudio"><i class="fa fa-linkedin fa-2" aria-hidden="true"></i></a></span>
-                        <span style="float:right"><a href="#" class="scroll" style="margin-right:25px">To Top<i class="arrow_carrot-up_alt2"></i></a></span>
+                       <!--  <span style="float:right"><a href="#" class="scroll" style="margin-right:25px">To Top<i class="arrow_carrot-up_alt2"></i></a></span> -->
+                     <button onclick="topFunction()" id="myBtn" title="Go to top"> To Top <i class="arrow_carrot-up_alt2"></i></button>
                         <div class="bg-right"></div>
                     </div>
                 </div>
@@ -540,4 +688,23 @@ dl.big {
 
     });
   </script>
+
+  <script>
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("myBtn").style.display = "block";
+  } else {
+    document.getElementById("myBtn").style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
 </html>

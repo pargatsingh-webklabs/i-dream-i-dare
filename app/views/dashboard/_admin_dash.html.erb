@@ -376,27 +376,76 @@
 							<% @admins.each do |u| %>
 							  <tr class="<%= u.is_active? ? '' : 'inactive_table_row_item' %>">
 
-								<th>
+								<td>
 								  <%= u.id %>
-								</th>
-								<th>
+								</td>
+								<td>
 								  <%= u.first_name %> <%= u.last_name %>
-								</th>
-								<th>
+								</td>
+								<td>
 								  <%= u.email %>
-								</th>
-								<th>
-								  <%= u.is_a_coach %>   <a href="/toggle_coach/<%= u.id %>"><button>Toggle</button></a>
-								</th>
-								<th>
-								  <%= u.is_an_admin %>   <a href="/toggle_admin/<%= u.id %>"><button>Toggle</button></a>
-								</th>
-								<th>
-								  <%= u.is_active %>   <a href="/toggle_active/<%= u.id %>"><button>Toggle</button></a>
-								</th>
-								<th>
-								  <%= u.is_deleted %>   <a href="/toggle_deleted/<%= u.id %>"><button>Toggle</button></a>
-								</th>
+								</td>
+								<td>
+                   <% if u.is_a_coach == true %>
+                      <% activeadmin_coach = 'checked=checked' %>
+                   <% else %>
+                      <% activeadmin_coach = "" %>
+                   <% end %>
+
+                 <!--  <a href="/toggle_coach/<%= u.id %>"><button>Toggle</button></a> -->
+                  <span class="kt-switch kt-switch--sm kt-switch--brand toggle">
+                      <label>
+                        <input type="checkbox" name="" <%= activeadmin_coach %> class="toggle" url="/toggle_coach/<%= u.id %>">
+                           <span></span>
+                      </label>
+                  </span>
+								</td>
+								<td>
+								  
+                   <% if u.is_an_admin == true %>
+                      <% active_admin = 'checked=checked' %>
+                   <% else %>
+                      <% active_admin = "" %>
+                   <% end %>
+                   <!--  <a href="/toggle_admin/<%= u.id %>"><button>Toggle</button></a> -->
+                  <span class="kt-switch kt-switch--sm kt-switch--brand toggle">
+                      <label>
+                        <input type="checkbox" name="" <%= active_admin %> class="toggle" url="/toggle_admin/<%= u.id %>">
+                           <span></span>
+                      </label>
+                  </span>
+								</td>
+
+								<td>
+                 <% if u.is_active == true %>
+                    <% active_check = 'checked=checked' %>
+                 <% else %>
+                    <% active_check = "" %>
+                 <% end %>
+                 <!--  <a href="/toggle_active/<%= u.id %>"><button>Toggle</button></a> -->
+                  <span class="kt-switch kt-switch--sm kt-switch--brand toggle">
+                      <label>
+                        <input type="checkbox" name="" <%= active_check %> class="toggle" url="/toggle_active/<%= u.id %>">
+                           <span></span>
+                      </label>
+                  </span>
+								</td>
+
+								<td>
+                 <% if u.is_deleted == true %>
+                    <% active_delete = 'checked=checked' %>
+                 <% else %>
+                    <% active_delete = "" %>
+                 <% end %>
+                  <!--   <a href="/toggle_deleted/<%= u.id %>"><button>Toggle</button></a> -->
+                   <span class="kt-switch kt-switch--sm kt-switch--brand toggle">
+                      <label>
+                        <input type="checkbox" <%= active_delete %> name="" class="toggle" url="/toggle_deleted/<%= u.id %>">
+                           <span></span>
+                      </label>
+                  </span>
+								</td>
+
 							  </tr> 
 							<% end %>
 						  <% end %>
@@ -425,7 +474,7 @@
 				   </div>
 				</div>
 				<div class="kt-portlet__body">
-				   <table class="table table-striped- table-bordered table-hover table-checkable" id="kt_table_3">
+				   <table class="table table-striped- table-bordered table-hover table-checkable" id="kt_table_2">
 					   <thead>
 						<tr>
 						  <th>
@@ -455,27 +504,71 @@
 						<% if @coaches != nil %>
 						  <% @coaches.each do |u| %>
 							<tr class="<%= u.is_active? ? '' : 'inactive_table_row_item' %>">
-							  <th>
+							  <td>
 								<%= u.id %>
-							  </th>
-							  <th>
+							  </td>
+							  <td>
 								<%= u.first_name %> <%= u.last_name %>
-							  </th>
-							  <th>
+							  </td>
+							  <td>
 								<%= u.email %>
-							  </th>
-							  <th>
-								<%= u.is_a_coach %>   <a href="/toggle_coach/<%= u.id %>"><button>Toggle</button></a>
-							  </th>
-							  <th>
-								<%= u.is_an_admin %>   <a href="/toggle_admin/<%= u.id %>"><button>Toggle</button></a>
-							  </th>
-							  <th>
-								<%= u.is_active %>   <a href="/toggle_active/<%= u.id %>"><button>Toggle</button></a>
-							  </th>
-							  <th>
-								<%= u.is_deleted %>   <a href="/toggle_deleted/<%= u.id %>"><button>Toggle</button></a>
-							  </th>
+							  </td>
+							  <td>
+                 <% if u.is_a_coach == true %>
+                      <% active_coach = 'checked=checked' %>
+                 <% else %>
+                      <% active_coach = "" %>
+                 <% end %>
+                 <!-- <a href="/toggle_coach/<%= u.id %>"><button>Toggle</button></a> -->
+                 <span class="kt-switch kt-switch--sm kt-switch--brand toggle">
+                      <label>
+                        <input type="checkbox"  <%= active_coach %>   name="" class="toggle" url="/toggle_coach/<%= u.id %>">
+                           <span></span>
+                      </label>
+                 </span>
+							  </td>
+							  <td>
+                   <% if u.is_an_admin == true %>
+                      <% active_coach_admin = 'checked=checked' %>
+                   <% else %>
+                      <% active_coach_admin = "" %>
+                   <% end %>
+               <!--   <a href="/toggle_admin/<%= u.id %>"><button>Toggle</button></a> -->
+                 <span class="kt-switch kt-switch--sm kt-switch--brand toggle">
+                      <label>
+                        <input type="checkbox"  <%= active_coach_admin %>   name="" class="toggle" url="/toggle_admin/<%= u.id %>">
+                           <span></span>
+                      </label>
+                 </span>
+							  </td>
+							  <td>
+                 <% if u.is_active == true %>
+                      <% active_coach_coaches = 'checked=checked' %>
+                   <% else %>
+                      <% active_coach_coaches = "" %>
+                   <% end %>
+                <!--  <a href="/toggle_active/<%= u.id %>"><button>Toggle</button></a> -->
+                 <span class="kt-switch kt-switch--sm kt-switch--brand toggle">
+                      <label>
+                        <input type="checkbox" <%= active_coach_coaches %>   name="" class="toggle" url="/toggle_active/<%= u.id %>">
+                           <span></span>
+                      </label>
+                 </span>
+							  </td>
+							  <td>
+                   <% if u.is_active == true %>
+                      <% delete_coach_admin = 'checked=checked' %>
+                   <% else %>
+                      <% delete_coach_admin = "" %>
+                   <% end %>
+                <!--   <a href="/toggle_deleted/<%= u.id %>"><button>Toggle</button></a> -->
+                 <span class="kt-switch kt-switch--sm kt-switch--brand toggle">
+                      <label>
+                        <input type="checkbox" <%= delete_coach_admin %>  name="" class="toggle" url="/toggle_deleted/<%= u.id %>">
+                           <span></span>
+                      </label>
+                 </span>
+							  </td>
 							</tr> 
 						  <% end %>
 						<% end %>
@@ -529,27 +622,71 @@
 							<% if @users != nil %>
 							  <% @users.each do |u| %>
 								<tr class="<%= u.is_active? ? '' : 'inactive_table_row_item' %>">
-								  <th>
+								  <td>
 									<%= u.id %>
-								  </th>
-								  <th>
+								  </td>
+								  <td>
 									<%= u.first_name %> <%= u.last_name %>
-								  </th>
-								  <th>
+								  </td>
+								  <td>
 									<%= u.email %>
-								  </th>
-								  <th>
-									<%= u.is_a_coach %>   <a href="/toggle_coach/<%= u.id %>"><button>Toggle</button></a>
-								  </th>
-								  <th>
-									<%= u.is_an_admin %>   <a href="/toggle_admin/<%= u.id %>"><button>Toggle</button></a>
-								  </th>
-								  <th>
-									<%= u.is_active %>   <a href="/toggle_active/<%= u.id %>"><button>Toggle</button></a>
-								  </th>
-								  <th>
-									<%= u.is_deleted %>   <a href="/toggle_deleted/<%= u.id %>"><button>Toggle</button></a>
-								  </th>
+								  </td>
+								  <td>
+                   <% if u.is_a_coach == true %>
+                      <% active_user_coach = 'checked=checked' %>
+                   <% else %>
+                      <% active_user_coach = "" %>
+                   <% end %>
+                  <!--  <a href="/toggle_coach/<%= u.id %>"><button>Toggle</button></a> -->
+                  <span class="kt-switch kt-switch--sm kt-switch--brand toggle">
+                      <label>
+                        <input type="checkbox"  <%= active_user_coach %> name="" class="toggle" url="/toggle_coach/<%= u.id %>">
+                           <span></span>
+                      </label>
+                  </span>
+								  </td>
+								  <td>
+                   <% if u.is_an_admin == true %>
+                      <% active_user_admin = 'checked=checked' %>
+                   <% else %>
+                      <% active_user_admin = "" %>
+                   <% end %>
+                  <!--   <a href="/toggle_admin/<%= u.id %>"><button>Toggle</button></a> -->
+                  <span class="kt-switch kt-switch--sm kt-switch--brand toggle">
+                      <label>
+                        <input type="checkbox" <%= active_user_admin %> name="" class="toggle" url="/toggle_admin/<%= u.id %>">
+                           <span></span>
+                      </label>
+                  </span>
+								  </td>
+								  <td>
+                   <% if u.is_active == true %>
+                      <% active_user_active = 'checked=checked' %>
+                   <% else %>
+                      <% active_user_active = "" %>
+                   <% end %>
+                  <!--   <a href="/toggle_active/<%= u.id %>"><button>Toggle</button></a> -->
+                  <span class="kt-switch kt-switch--sm kt-switch--brand toggle">
+                      <label>
+                        <input type="checkbox"   <%= active_user_active %> name="" class="toggle" url="/toggle_active/<%= u.id %>">
+                           <span></span>
+                      </label>
+                  </span>
+								  </td>
+								  <td>
+                   <% if u.is_deleted == true %>
+                      <% active_user_delete = 'checked=checked' %>
+                   <% else %>
+                      <% active_user_delete = "" %>
+                   <% end %> 
+                  <!--  <a href="/toggle_deleted/<%= u.id %>"><button>Toggle</button></a> -->
+                  <span class="kt-switch kt-switch--sm kt-switch--brand toggle">
+                      <label>
+                        <input type="checkbox"  <%= active_user_delete %> name="" class="toggle" url="/toggle_deleted/<%= u.id %>">
+                           <span></span>
+                      </label>
+                  </span>
+								  </td>
 								</tr> 
 							  <% end %>
 							<% end %>
@@ -606,27 +743,72 @@
 							  <% if @users_to_confirm != nil %>
 								<% @users_to_confirm.each do |u| %>
 								  <tr>
-									<th>
+									<td>
 									  <%= u.id %>
-									</th>
-									<th>
+									</td>
+									<td>
 									  <%= u.first_name %> <%= u.last_name %>
-									</th>
-									<th>
+									</td>
+									<td>
 									  <%= u.email %>
-									</th>
-									<th>
-									  <%= u.is_a_coach %>   <a href="/toggle_coach/<%= u.id %>"><button>Toggle</button></a>
-									</th>
-									<th>
-									  <%= u.is_an_admin %>   <a href="/toggle_admin/<%= u.id %>"><button>Toggle</button></a>
-									</th>
-									<th>
-									  <%= u.is_active %>   <a href="/toggle_active/<%= u.id %>"><button>Toggle</button></a>
-									</th>
-									<th>
-									  <%= u.is_deleted %>   <a href="/toggle_deleted/<%= u.id %>"><button>Toggle</button></a>
-									</th>
+									</td>
+									<td>
+									  <%= u.is_a_coach %> 
+                     <% if u.is_a_coach == true %>
+                        <% active_user_admin_coach = 'checked=checked' %>
+                     <% else %>
+                        <% active_user_admin_coach = "" %>
+                     <% end %> 
+                    <!--   <a href="/toggle_coach/<%= u.id %>"><button>Toggle</button></a> -->
+                    <span class="kt-switch kt-switch--sm kt-switch--brand toggle">
+                      <label>
+                        <input type="checkbox" <%= active_user_admin_coach %> name="" class="toggle" url="/toggle_coach/<%= u.id %>">
+                           <span></span>
+                      </label>
+                    </span>
+									</td>
+									<td>
+                     <% if u.is_an_admin == true %>
+                        <% active_user_admin_admin = 'checked=checked' %>
+                     <% else %>
+                        <% active_user_admin_admin = "" %>
+                     <% end %> 
+                    <!--  <a href="/toggle_admin/<%= u.id %>"><button>Toggle</button></a> -->
+                     <span class="kt-switch kt-switch--sm kt-switch--brand toggle">
+                      <label>
+                        <input type="checkbox" <%= active_user_admin_admin %> name="" class="toggle" url="/toggle_admin/<%= u.id %>">
+                           <span></span>
+                      </label>
+                     </span>
+									</td>
+									<td>
+                    <% if u.is_an_admin == true %>
+                        <% active_user_admin_active = 'checked=checked' %>
+                     <% else %>
+                        <% active_user_admin_active = "" %>
+                     <% end %> 
+                    <!--   <a href="/toggle_active/<%= u.id %>"><button>Toggle</button></a> -->
+                     <span class="kt-switch kt-switch--sm kt-switch--brand toggle">
+                      <label>
+                        <input type="checkbox"  <%= active_user_admin_active %> name="" class="toggle" url="/toggle_active/<%= u.id %>">
+                           <span></span>
+                      </label>
+                     </span>
+									</td>
+									<td>
+                    <% if u.is_deleted == true %>
+                        <% active_user_admin_delete = 'checked=checked' %>
+                     <% else %>
+                        <% active_user_admin_delete = "" %>
+                     <% end %> 
+                    <!--  <a href="/toggle_deleted/<%= u.id %>"><button>Toggle</button></a> -->
+                     <span class="kt-switch kt-switch--sm kt-switch--brand toggle">
+                      <label>
+                        <input type="checkbox" <%= active_user_admin_delete %> name="" class="toggle" url="/toggle_deleted/<%= u.id %>">
+                           <span></span>
+                      </label>
+                     </span>
+									</td>
 								  </tr> 
 								<% end %>
 							  <% end %>
@@ -673,18 +855,29 @@
 						  <% if @deleted_users != nil %>
 							<% @deleted_users.each do |u| %>
 							  <tr>
-								<th>
+								<td>
 								  <%= u.id %>
-								</th>
-								<th>
+								</td>
+								<td>
 								  <%= u.first_name %> <%= u.last_name %>
-								</th>
-								<th>
+								</td>
+								<td>
 								  <%= u.email %>
-								</th>
-								<th>
-								  <%= u.is_deleted %>   <a href="/toggle_deleted/<%= u.id %>"><button>Toggle</button></a>
-								</th>
+								</td>
+								<td>
+                   <% if u.is_deleted == true %>
+                        <% active_deleted_users = 'checked=checked' %>
+                     <% else %>
+                        <% active_deleted_users = "" %>
+                     <% end %> 
+                  <!--   <a href="/toggle_deleted/<%= u.id %>"><button>Toggle</button></a> -->
+                  <span class="kt-switch kt-switch--sm kt-switch--brand toggle">
+                      <label>
+                        <input type="checkbox"  <%= active_deleted_users %> name="" class="toggle" url="/toggle_deleted/<%= u.id %>">
+                           <span></span>
+                      </label>
+                   </span>
+								</td>
 							  </tr> 
 							<% end %>
 						  <% end %>

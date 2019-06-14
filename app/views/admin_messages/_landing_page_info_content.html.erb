@@ -154,14 +154,14 @@
 
    
 
-     <% if @active_book_resources != nil %>
+    
         <div id="book-resource-form">
         
         <div class="book-resource-form">
           <div style="text-align:center; padding-top:20px;">
-            <a href="#" id="collapse-book-resource-form" style="text-align:center;">
+           <!--  <a href="#" id="collapse-book-resource-form" style="text-align:center;">
               <span class="glyphicon glyphicon-remove-circle" style="font-size:2em;"></span>
-            </a>
+            </a> -->
 
             <h3 class="h3color">
               Book Resources
@@ -176,53 +176,47 @@
              
 
               <div class="col-md-12">
-                
+                  <div class="row">
+                    <div class="box-border">
                 <% @active_book_resources.each do |resource| %>
 
-                  <div class="row">
-                    <div class="panel panel-default">
-                      <!-- <div class="panel-heading"> 
-                        <strong>
-                          <%= resource.path %>  
-                        </strong>
-                      </div> -->
+                
+                        <div class="col-md-6">
+                          <div class="panel panel-default">
+                            <!-- <div class="panel-heading"> 
+                              <strong>
+                                public/upload/  
+                              </strong>
+                            </div> -->
 
-                      <div class="panel-body">
-                        <div class="" style="font-size: 1.5em; text-align:center;">
-                            <%= resource.file_name %>
-                          <br />
-                        </div> 
+                            <div class="panel-body">
+                            <center>  <i class="glyphicon glyphicon-phone-alt" aria-hidden="true"></i> </center>
+                              <div class="" style="font-size: 1.5em; text-align:center;">
+                                  <%= resource.file_name %>
+                                  <br />
+                              </div> 
+                            </div>
+                          </div>
                       </div>
-                    </div>
-                  </div>  
                 <% end %>
-
+                  </div> 
+                  </div>
                 <center>
-                  
+                   
+                <div class="row clr-gry"><div><p><span>To receive these files in your inbox, please provide your email address. We promise never to share your information</span></p></div></div>
 
-                    <div class="row" style="margin-top:20px;">
-
-                      
+                     <div class="row" style="margin-top:20px;">
                         <div class="col-md-4"></div>
-                     
                       <div class="col-md-4">
-
                         <%= form_for @book_resource_request do |f| %>
                            <div class="form-group">
-                             <!--  <%= f.label :email, "Email" %> -->
                               <%= f.text_field :email, class: "form-control framed", placeholder: "Email" %>
                             </div>   
                         <%= f.submit "Submit", :disable_with => 'Submiting...', :class => 'btn btn-primary' %>
-   
                         <% end %>
-
                       </div>
                       <div class="col-md-4"></div>
-                     
-                      
                     </div>
-
-                 
                 </center>
 
                 <br />
@@ -243,7 +237,7 @@
         </div>
 
         </div>
-      <% end %>
+      
 
 
     
@@ -251,12 +245,12 @@
 		 <div class="row row-white">
         <div class="col-md-2"></div>
             <div class="col-md-12">
-              <h2 class="h3_pad"> WHY THE DREAM CATCHER EXPERIENCE? </h2>
+              <h2 class="h3_pad"> Why The Dream Catcher Experience? </h2>
                 <div class="story story-transparent txt-design">
                     
                         <p>Whether your dreams are about developing in business or about this vast experience called life, Dream Catcher has immediate actionable steps for you. There are gaps between your dreams and where you are today. Dream Catcher effectively closes those gaps. The Dream Catcher experience is an expert guided, proven and effective coaching program. It is always tailored to meet your Leadership and Life needs.</p>
                     <div class="form-group">
-                          <a href="/users/sign_in"><button type="submit" id="form-contact-submit" class="btn btn-primary">Sign In </button></a>
+                         <a href="/blog"><button type="submit" id="form-contact-submit" class="btn btn-default">Learn More </button></a>
                     </div>
                 </div>
                 
@@ -271,12 +265,12 @@
         <div class="row">
         <div class="col-md-2"></div>
             <div class="col-md-12">
-              <h2 class="h3_pad">YOUR DREAM CATCHER EXPERIENCE </h2>
+              <h2 class="h3_pad">Your Dream Catcher Experience</h2>
                 <div class="story story-transparent txt-design">
 
                         <p> A dream is not what you wake up from. A real dream is what wakes you up. The Dream Catcher experience will furnish you and/or your business with simple actionable steps. We will propel you to realize your fullest potential, as an individual and leader. Dream Dare Do!</p>
                    <div class="form-group">
-                          <a href="/blog"><button type="submit" id="form-contact-submit" class="btn btn-primary">Learn More </button></a>
+                          <a href="/users/sign_up"><button type="submit" id="form-contact-submit" class="btn btn-default">Sign Up </button></a>
                     </div>
                 </div>
                 
@@ -321,11 +315,11 @@
         </div>
        
     </div> -->
-   
-  <div class="block home_page" id="features">
-        <div class="container container_margin" >
+ 
+  <div class="block home_page container-fluid" id="features">
+        <div class=" container_margin" >
         <div class="heading_space h3color"> </div>
-        <h2 class="h3_pad"><center>WE ARE:</center></h2>
+        <h2 class="">Who We Are:</h2>
             <div class="row">
                
                 <div class="col-md-4 col-sm-6">
@@ -361,10 +355,10 @@
      
         <div class="bg bg-color-neutral opacity-50"></div>
     </div> 
-   
+   </div>
+  
 
 
-</div>
 
 
 

@@ -179,6 +179,97 @@ a:hover, a:focus {
     color: #5cb85c;
 }
 
+
+#myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 480px;
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+	position: absolute;
+	color: #000 !important;
+	font-size: 40px;
+	font-weight: bold;
+	transition: 0.3s;
+	padding: 70px 410px;
+	z-index: 9999;
+	right: 22px;
+	top: 24px;
+	opacity: 1;
+}
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+
+.img_fix_widh { width:100%;max-width:150px }
+
 </style>
 
 <div class="top-sps">
@@ -239,12 +330,13 @@ a:hover, a:focus {
             <br>
             <br>
              <div class="row">
-                <div class="col-md-4 col-sm-4">
-                    <img src="/assets/Kearns_Pat_500px.jpg" class="img_round" alt="">
-                   
+                <div class="col-md-2 col-sm-2">
+                    <img src="/assets/Kearns_Pat_500px.jpg" class="img_round img_fix_widh" id="pat" >
+
+                   <!--  <a><%= link_to image_tag("Kearns_Pat_500px.jpg", onMouseover: 'this.src="/assets/Kearns_Pat_500px.jpg"'), id:"pat" %></a> -->
                 </div>
-                <div class="col-md-8 col-sm-8">
-                    <h3 class="no-bottom-margin"><strong>Patricia Kearns</strong></h3>
+                <div class="col-md-10 col-sm-10">
+                    <h4 class="no-bottom-margin"><strong>Patricia Kearns</strong></h4>
                     <br>
                     <div class="info">
                         <a href="mailto:aelson@qliomaha.com?subject="><i class="icon_mail"></i></a>
@@ -256,12 +348,12 @@ a:hover, a:focus {
             <br>
             <br>
              <div class="row">
-                <div class="col-md-4 col-sm-4">
-                    <img src="/assets/Elson_Alicia_500px.jpg" class="img_round" alt="">
+                <div class="col-md-2 col-sm-2">
+                    <img src="/assets/Elson_Alicia_500px.jpg" class="img_round img_fix_widh" id="elson" alt="">
                    
                 </div>
-                <div class="col-md-8 col-sm-8">
-                    <h3 class="no-bottom-margin"><strong>Alicia Elson</strong></h3>
+                <div class="col-md-10 col-sm-10">
+                    <h4 class="no-bottom-margin"><strong>Alicia Elson</strong></h4>
                     <br>
                     <div class="info">
                         <a href="mailto:aelson@qliomaha.com?subject="><i class="icon_mail"></i></a>
@@ -359,12 +451,12 @@ a:hover, a:focus {
             <br>
             <br>
              <div class="row">
-                <div class="col-md-4 col-sm-4">
-                    <img src="/assets/Schlagenhauff_Chris_500px.jpg" class="img_round" alt="">
+                <div class="col-md-2 col-sm-2">
+                    <img src="/assets/Schlagenhauff_Chris_500px.jpg" class="img_round img_fix_widh" id="chris" alt="">
                    
                 </div>
-                <div class="col-md-8 col-sm-8">
-                    <h3 class="no-bottom-margin"><strong>Chris Schlagenhauff </strong></h3>
+                <div class="col-md-10 col-sm-10">
+                    <h4 class="no-bottom-margin"><strong>Chris Schlagenhauff </strong></h4>
                     <br>
                     <div class="info">
                         <a href="mailto:cschlagenhauff@gmail.com?subject="><i class="icon_mail"></i></a>
@@ -377,12 +469,12 @@ a:hover, a:focus {
             <br>
             <br>
              <div class="row">
-                <div class="col-md-4 col-sm-4">
-                    <img src="/assets/Elson_Alicia_500px.jpg" class="img_round" alt="">
+                <div class="col-md-2 col-sm-2">
+                    <img src="/assets/Elson_Alicia_500px.jpg" class="img_round img_fix_widh" id="alicia" alt="">
                    
                 </div>
-                <div class="col-md-8 col-sm-8">
-                    <h3 class="no-bottom-margin"><strong>Erin Lassen </strong></h3>
+                <div class="col-md-10 col-sm-10">
+                    <h4 class="no-bottom-margin"><strong>Erin Lassen </strong></h4>
                     <br>
                     <div class="info">
                         <a href="mailto:aelson@qliomaha.com?subject="><i class="icon_mail"></i></a>
@@ -481,12 +573,12 @@ a:hover, a:focus {
             <br>
             <br>
              <div class="row">
-                <div class="col-md-4 col-sm-4">
-                    <img src="/assets/Carbullido_Kristin_500px.jpg" class="img_round" alt="">
+                <div class="col-md-2 col-sm-2">
+                    <img src="/assets/Carbullido_Kristin_500px.jpg" class="img_round img_fix_widh" id="kristin" alt="">
                    
                 </div>
-                <div class="col-md-8 col-sm-8">
-                    <h3 class="no-bottom-margin"><strong>Chris Schlagenhauff </strong></h3>
+                <div class="col-md-10 col-sm-10">
+                    <h4 class="no-bottom-margin"><strong>Chris Schlagenhauff </strong></h4>
                     <br>
                     <div class="info">
                         <a href="mailto:kcarbullido@qliomaha.com?subject="><i class="icon_mail"></i></a>
@@ -499,12 +591,12 @@ a:hover, a:focus {
             <br>
             <br>
              <div class="row">
-                <div class="col-md-4 col-sm-4">
-                    <img src="/assets/Kerschke_Steve_500px.jpg" class="img_round" alt="">
+                <div class="col-md-2 col-sm-2">
+                    <img src="/assets/Kerschke_Steve_500px.jpg" class="img_round img_fix_widh" id="steve" alt="">
                    
                 </div>
-                <div class="col-md-8 col-sm-8">
-                    <h3 class="no-bottom-margin"><strong>Steve Kerschke </strong></h3>
+                <div class="col-md-10 col-sm-10">
+                    <h4 class="no-bottom-margin"><strong>Steve Kerschke </strong></h4>
                     <br>
                     <div class="info">
                         <a href="mailto:steve.kerschke@qliomaha.com?subject="><i class="icon_mail"></i></a>
@@ -602,12 +694,12 @@ a:hover, a:focus {
             <br>
             <br>
              <div class="row">
-                <div class="col-md-4 col-sm-4">
-                    <img src="/assets/Kerschke_Taylor_500px.jpg" class="img_round" alt="">
+                <div class="col-md-2 col-sm-2">
+                    <img src="/assets/Kerschke_Taylor_500px.jpg" class="img_round img_fix_widh" id="taylor" alt="">
                    
                 </div>
-                <div class="col-md-8 col-sm-8">
-                    <h3 class="no-bottom-margin"><strong>Taylor Kerschke </strong></h3>
+                <div class="col-md-10 col-sm-10">
+                    <h4 class="no-bottom-margin"><strong>Taylor Kerschke </strong></h4>
                     <br>
                     <div class="info">
                         <a href="mailto:tkerschke@qliomaha.com?subject="><i class="icon_mail"></i></a>
@@ -710,12 +802,12 @@ a:hover, a:focus {
             <br>
             <br>
              <div class="row">
-                <div class="col-md-4 col-sm-4">
-                    <img src="/assets/Newman_Ellie_500px.jpg" class="img_round" alt="">
+                <div class="col-md-2 col-sm-2">
+                    <img src="/assets/Newman_Ellie_500px.jpg" class="img_round img_fix_widh" id="ellie" alt="">
                    
                 </div>
-                <div class="col-md-8 col-sm-8">
-                    <h3 class="no-bottom-margin"><strong> Ellie Newman  </strong></h3>
+                <div class="col-md-10 col-sm-10">
+                    <h4 class="no-bottom-margin"><strong> Ellie Newman  </strong></h4>
                     <br>
                     <div class="info">
                         <a href="mailto:enewman@qliomaha.com?subject="><i class="icon_mail"></i></a>
@@ -728,12 +820,12 @@ a:hover, a:focus {
             <br>
             <br>
              <div class="row">
-                <div class="col-md-4 col-sm-4">
-                    <img src="/assets/Pearson_Jon_500px.jpg" class="img_round" alt="">
+                <div class="col-md-2 col-sm-2">
+                    <img src="/assets/Pearson_Jon_500px.jpg" class="img_round img_fix_widh" id="jon" alt="">
                    
                 </div>
-                <div class="col-md-8 col-sm-8">
-                    <h3 class="no-bottom-margin"><strong>Jon Pearson  </strong></h3>
+                <div class="col-md-10 col-sm-10">
+                    <h4 class="no-bottom-margin"><strong>Jon Pearson  </strong></h4>
                     <br>
                     <div class="info">
                         <a href="mailto:jpearson@qliomaha.com?subject="><i class="icon_mail"></i></a>
@@ -830,11 +922,12 @@ a:hover, a:focus {
             <br>
             <br>
              <div class="row">
-                <div class="col-md-4 col-sm-4">
-                    <img src="/assets/Welch_Ronnie_500px.jpg" class="img_round" alt="">
+                <div class="col-md-2 col-sm-2">
+                    <img src="/assets/Welch_Ronnie_500px.jpg" class="img_round img_fix_widh" id="ronnie" alt="">
+
                    
                 </div>
-                <div class="col-md-8 col-sm-8">
+                <div class="col-md-10 col-sm-10">
                     <h3 class="no-bottom-margin"><strong> Roni Welch   </strong></h3>
                     <br>
                     <div class="info">
@@ -935,11 +1028,11 @@ a:hover, a:focus {
             <br>
             <br>
              <div class="row">
-                <div class="col-md-4 col-sm-4">
-                    <img src="/assets/Mahupete_500px.jpg" class="img_round" alt="">
+                <div class="col-md-2 col-sm-2">
+                    <img src="/assets/Mahupete_500px.jpg" class="img_round img_fix_widh" id="mahupete" alt="">
                 </div>
-                <div class="col-md-8 col-sm-8">
-                    <h3 class="no-bottom-margin"><strong>  Nash Mahupete  </strong></h3>
+                <div class="col-md-10 col-sm-10">
+                    <h4 class="no-bottom-margin"><strong>  Nash Mahupete  </strong></h4>
                     <br>
                     <div class="info">
                         <a href="mailto:nashty@gmail.com?subject="><i class="icon_mail"></i></a>
@@ -952,12 +1045,12 @@ a:hover, a:focus {
             <br>
             <br>
              <div class="row">
-                <div class="col-md-4 col-sm-4">
-                    <img src="/assets/Custer_Kristin_500px.jpg" class="img_round" alt="">
+                <div class="col-md-2 col-sm-2">
+                    <img src="/assets/Custer_Kristin_500px.jpg" class="img_round img_fix_widh" id="kristin" alt="">
                    
                 </div>
-                <div class="col-md-8 col-sm-8">
-                    <h3 class="no-bottom-margin"><strong>  Kristin Custer </strong></h3>
+                <div class="col-md-10 col-sm-10">
+                    <h4 class="no-bottom-margin"><strong>  Kristin Custer </strong></h4>
                     <br>
                     <div class="info">
                         <a href="mailto:kcuster@qliomaha.com?subject="><i class="icon_mail"></i></a>
@@ -1059,6 +1152,13 @@ a:hover, a:focus {
     <!--/ .block-->
 </div>
 
+
+	<div id="myModal" class="modal">
+		  <span class="close">&times;</span>
+		  <img class="modal-content" id="img01">
+		  <div id="caption"></div>
+	</div>
+
  <script type="text/javascript">
 
   $(document).ready(function() {
@@ -1081,5 +1181,63 @@ a:hover, a:focus {
             }
         })
   });
+
+
+
+	 $('.img_round').click(function() {
+	 	var img_id = this.id;
+		  // Get the modal
+		var modal = document.getElementById("myModal");
+		// Get the image and insert it inside the modal - use its "alt" text as a caption
+		var img = document.getElementById(img_id);
+		var modalImg = document.getElementById("img01");
+		var captionText = document.getElementById("caption");
+		/*img.onclick = function(){*/
+		  modal.style.display = "block";
+		  modalImg.src = this.src;
+		  captionText.innerHTML = this.alt;
+		/*}*/
+
+		var span = document.getElementsByClassName("close")[0];
+		span.onclick = function() { 
+		  modal.style.display = "none";
+		}
+	});
+
+/*	$('.img_round').hover(function() {
+	 	var img_id = this.id;
+		
+		var modal = document.getElementById("myModal");
+	
+		var img = document.getElementById(img_id);
+		var modalImg = document.getElementById("img01");
+		var captionText = document.getElementById("caption");
+	
+		  modal.style.display = "block";
+		  modalImg.src = this.src;
+		  captionText.innerHTML = this.alt;
+	
+
+		var span = document.getElementsByClassName("close")[0];
+		span.onclick = function() { 
+		  modal.style.display = "none";
+		}
+	});*/
+
+	/*$('.img_round').mouseleave(function() {
+	 	var img_id = this.id;
+		var modal = document.getElementById("myModal");
+		var img = document.getElementById(img_id);
+		var modalImg = document.getElementById("img01");
+		var captionText = document.getElementById("caption");
+		  modal.style.display = "block";
+		  modalImg.src = this.src;
+		  captionText.innerHTML = this.alt;
+		var span = document.getElementsByClassName("close")[0];
+		span.onclick = function() { 
+		  modal.style.display = "none";
+		}
+	});*/
+	 
 
 </script>

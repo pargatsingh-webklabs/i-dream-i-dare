@@ -35,15 +35,13 @@
 
 
 
-<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
-  <div class="kt-portlet__head">
-          
+<div class=" kt-grid__item kt-grid__item--fluid" id="kt_content">
+       <div class="kt-portlet__head">
            <div class="kt-portlet__head-label">
             <h3 class="kt-portlet__head-title">
            Editing Message
             </h3>
-           </div>         
-
+           </div>   
         </div>
 
 <%= form_for(@message) do |f| %>
@@ -62,12 +60,12 @@
 	  <% end %>
 		<div class="hide-this">
 			 <div class="row">
-				 <div class="col-md-6">
+				 <div class="col-md-12">
 					<div class="form-group">
 						 <%= f.text_area :to, :value => @active_user_id, class:"textarea_editor form-control" %>
 					</div>
 				 </div> 
-				 <div class="col-md-6">
+				 <div class="col-md-12">
 					<div class="form-group">	
 						<%= f.text_area :from, :value => current_user.id, class:"textarea_editor form-control" %>
 					</div>

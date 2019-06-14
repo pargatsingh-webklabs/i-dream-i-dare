@@ -2,48 +2,65 @@
   <center><%= render '/shared/public_logo_and_nav' %></center>
   <div class="top-sps">
 	<div class="container">
-            <h2 class="center">New User</h2>
+            <h2 class="center">Ready To Be Inspired?</h2>
             <div class="row sign-tsps margin-btm">
-             <div class="col-md-6 col-sm-6">
-               <img src="/assets/sign_Up.jpg"> 
-             </div>
-                <div class="col-md-6 col-sm-6 anch-design">
-                    <div class="box_sign text-color-white equal-height back-design">
-                         <%= form_for resource, as: resource_name, url: registration_path(resource_name),
-                        html: { class: "form-horizontal center"} do |f| %>
-                            <div class="form-group">
-                               <%= f.text_field :first_name, autofocus: true, placeholder: "First Name", class: "form-control" %>
-                            </div><!-- /.form-group -->
-                            <div class="form-group">
-                                <%= f.text_field :last_name, placeholder: "Last Name", class: "form-control" %>
-                            </div><!-- /.form-group -->
-                            <div class="form-group">
-                               <%= f.email_field :email, placeholder: "Email Address", class: "form-control" %>
-                            </div><!-- /.form-group -->
-                            <div class="form-group">
-                               <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control" %>
-                            </div><!-- /.form-group -->
-                            <div class="form-group">
-                                  <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password", class: "form-control" %>
-								  <% if @validatable %>
-									<p class="help-block"><%= @minimum_password_length %> characters minimum</p>
-								  <% end %>
-                            </div><!-- /.form-group -->
-                            <div class="actions">
-                                <%= f.submit "Sign up", class: "btn btn-success btn-lg btn-block" %>
-                            </div><!-- /.form-group -->
-                             <%= devise_error_messages! %>
-                         <% end %>	
-                        <div class="bg bg-color-default"></div>
+            <!--  <div class="col-md-6 col-sm-6">
+               <img class="slightround_img" src="/assets/sign_Up.jpg"> 
+             </div> -->
+                 <div class="col-md-3 col-sm-3">  </div>
+                    <div class="col-md-6 col-sm-6 anch-design signup-form-border">
+                        <div class="box_sign text-color-white equal-height back-design">
+                             <%= form_for resource, as: resource_name, url: registration_path(resource_name),
+                            html: { class: "form-horizontal center"} do |f| %>
+                               <!--  <div class="form-group">
+                                   <%= f.text_field :first_name, autofocus: true, placeholder: "First Name", class: "form-control slightround_img" %>
+                                </div> -->
+                                <!-- <div class="form-group">
+                                    <%= f.text_field :last_name, placeholder: "Last Name", class: "form-control slightround_img" %>
+                                </div> -->
+                                <div class="form-group">
+                                   <%= f.email_field :email, placeholder: "Email Address", class: "form-control slightround_img" %>
+                                </div><!-- /.form-group -->
+                                <div class="form-group">
+                                   <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control slightround_img", id:"password-field" %>
+                                   <div class="toggle-password-eye" style="color: #333;"><span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span></div>
+                                </div><!-- /.form-group -->
+                                <div class="form-group">
+                                      <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password", class: "form-control", id:"repassword-field" %>
+                                      <div class="toggle-password-eye eye2" style="color: #333;"><span toggle="#repassword-field" class="fa fa-fw fa-eye field-icon toggle-password"></span></div>
+    								  <% if @validatable %>
+    									   <p class="help-block"><%= @minimum_password_length %> characters minimum</p>
+    								  <% end %>
+                                </div><!-- /.form-group -->
+                                <div class="form-group actions">
+                                    <%= f.submit "Sign up", class: "btn btn-success btn-lg btn-block" %>
+                                </div><!-- /.form-group -->
+                                 <%= devise_error_messages! %>
+                             <% end %>	
+                            <div class="bg bg-color-default"></div>
+                        </div>
+                       
+                        <a class="btn btn-default login-button-margin" href="/users/sign_in">Log in</a>
                     </div>
-                   
-					<%= render "devise/shared/links" %>
-                </div>
-               
+                 <div class="col-md-3 col-sm-3"> </div>
             </div>
 		</div>	
 </div>
 
+<script type="text/javascript">
+    
+    $(".toggle-password").click(function() {
+
+      $(this).toggleClass("fa-eye fa-eye-slash");
+      var input = $($(this).attr("toggle"));
+      if (input.attr("type") == "password") {
+        input.attr("type", "text");
+      } else {
+        input.attr("type", "password");
+      }
+    });
+
+</script>
 
 
 

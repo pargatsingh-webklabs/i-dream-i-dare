@@ -36,15 +36,13 @@
   </div>
 <% end %>-->
 
-<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
-<div class="kt-portlet__head">
-          
+<div class=" kt-grid__item kt-grid__item--fluid" id="kt_content">
+        <div class="kt-portlet__head">
            <div class="kt-portlet__head-label">
-            <h3 class="kt-portlet__head-title">
-            Editing Plans
-            </h3>
-           </div>         
-
+              <h3 class="kt-portlet__head-title">
+                Editing Plans
+              </h3>
+           </div>   
         </div>
 
 <%= form_for(@plan) do |f| %>
@@ -61,7 +59,7 @@
       </ul>
     </div>
   <% end %>
-    <div class="hide-this">
+  <div class="hide-this">
     <div class="form-group">
       <% if current_user.is_a_coach? || current_user.is_an_admin? %>
         <%= f.number_field :client, :value => @active_user_id %>

@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:index]
-
+  skip_before_action :verify_authenticity_token
 
   # /////////////////////////// GROUP DASHBOARD /////////////////////////////
 

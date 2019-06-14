@@ -1,4 +1,4 @@
- <% if current_user.is_an_admin? || current_user.is_super_admin? %>
+
 	
 <!DOCTYPE html>
 <html lang="en" >
@@ -17,7 +17,7 @@
              }
          });
       </script>
-      <%= stylesheet_link_tag :datatablesbundle, :vendorsbundle, :stylebundle, :light, :lights, :dark, :darks, :custom_style %>
+      <%= stylesheet_link_tag :datatablesbundle, :vendorsbundle, :stylebundle, :light, :lights, :dark, :darks, :custom_style, :bootstrapwysihtml5 %>
     <%= csrf_meta_tags %>
       <link rel="shortcut icon" href="/assets/images/favicon.ico" />
 
@@ -56,11 +56,12 @@
       <div class="kt-grid kt-grid--hor kt-grid--root">
          <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
             <button class="kt-aside-close " id="kt_aside_close_btn"><i class="la la-close"></i></button>
-            <div class="kt-aside  kt-aside--fixed  kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop" id="kt_aside">
-               <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
+
+        <div class="kt-aside  kt-aside--fixed  kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop" id="kt_aside">
+               <div class="kt-aside__brand kt-grid__item pl-0-logo" id="kt_aside_brand">
                   <div class="kt-aside__brand-logo">
                     
-                     <img style="height: 60px;width: 200px;" alt="Logo" src="/assets/DreamCatcherLogo01_White.png"/>
+                     <img style="height: 80px;width: 254px;margin-top: 15px" alt="Logo" src="/assets/DreamCatcherLogo01_White.png"/>
                   </div>
                   <div class="kt-aside__brand-tools">
                      <button class="kt-aside__brand-aside-toggler" id="kt_aside_toggler">
@@ -86,7 +87,7 @@
                   </div>
                </div>
                
-               
+       
           <% if current_user.is_an_admin? && current_user.is_super_admin? == false %>
                <div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
                   <div id="kt_aside_menu"
@@ -96,47 +97,47 @@
                      <ul class="kt-menu__nav ">
                         <li class="kt-menu__item " aria-haspopup="true" >
                            <a  href="/" class="kt-menu__link ">
-                           <span class="kt-menu__link-text">Users</span>
+                           <span class="kt-menu__link-text <%= active_class('/') %>">Users</span>
                            </a>
                         </li>
                         <li class="kt-menu__item " aria-haspopup="true" >
                            <a  href="/mentorships" class="kt-menu__link ">
-                           <span class="kt-menu__link-text">Mentorships</span>
+                           <span class="kt-menu__link-text <%= active_class('/mentorships') %>">Mentorships</span>
                            </a>
                         </li>
                         <li class="kt-menu__item " aria-haspopup="true" >
                            <a  href="/plans" class="kt-menu__link ">
-                           <span class="kt-menu__link-text">Plans</span>
+                           <span class="kt-menu__link-text <%= active_class('/plans') %>">Plans</span>
                            </a>
                         </li>
                         <li class="kt-menu__item " aria-haspopup="true" >
                            <a  href="/messages" class="kt-menu__link ">
-                           <span class="kt-menu__link-text">User Messages</span>
+                           <span class="kt-menu__link-text <%= active_class('/messages') %>">User Messages</span>
                            </a>
                         </li>
                         <li class="kt-menu__item " aria-haspopup="true" >
                            <a  href="/groups" class="kt-menu__link ">
-                           <span class="kt-menu__link-text">Groups</span>
+                           <span class="kt-menu__link-text <%= active_class('/groups') %>">Groups</span>
                            </a>
                         </li>
                         <li class="kt-menu__item " aria-haspopup="true" >
                            <a  href="/content_fields" class="kt-menu__link ">
-                           <span class="kt-menu__link-text">Content Fields</span>
+                           <span class="kt-menu__link-text <%= active_class('/content_fields') %>">Content Fields</span>
                            </a>
                         </li>
                         <li class="kt-menu__item " aria-haspopup="true" >
                            <a  href="/images" class="kt-menu__link ">
-                           <span class="kt-menu__link-text">Images</span>
+                           <span class="kt-menu__link-text <%= active_class('/images') %>">Images</span>
                            </a>
                         </li>
                         <li class="kt-menu__item " aria-haspopup="true" >
                            <a  href="/quotes" class="kt-menu__link ">
-                           <span class="kt-menu__link-text">Quotes</span>
+                           <span class="kt-menu__link-text <%= active_class('/quotes') %>">Quotes</span>
                            </a>
                         </li>
                         <li class="kt-menu__item " aria-haspopup="true" >
                            <a  href="/resources" class="kt-menu__link ">
-                           <span class="kt-menu__link-text">Resources</span>
+                           <span class="kt-menu__link-text <%= active_class('/resources') %>">Resources</span>
                            </a>
                         </li>
                      </ul>
@@ -151,42 +152,42 @@
                      <ul class="kt-menu__nav ">
                         <li class="kt-menu__item " aria-haspopup="true" >
                            <a  href="/" class="kt-menu__link ">
-                           <span class="kt-menu__link-text">Dashboard</span>
+                           <span class="kt-menu__link-text <%= active_class('/') %>">Dashboard</span>
                            </a>
                         </li>
                         <li class="kt-menu__item " aria-haspopup="true" >
                            <a  href="/" class="kt-menu__link ">
-                           <span class="kt-menu__link-text">New users</span>
+                           <span class="kt-menu__link-text <%= active_class('/') %>">New users</span>
                            </a>
                         </li>
                         <li class="kt-menu__item " aria-haspopup="true" >
                            <a  href="/employees" class="kt-menu__link ">
-                           <span class="kt-menu__link-text">New Employees</span>
+                           <span class="kt-menu__link-text <%= active_class('/employees') %>">New Employees</span>
                            </a>
                         </li>
                         <li class="kt-menu__item " aria-haspopup="true" >
                            <a  href="/admin_messages" class="kt-menu__link ">
-                           <span class="kt-menu__link-text">Admin Messages</span>
+                           <span class="kt-menu__link-text <%= active_class('/admin_messages') %>">Admin Messages</span>
                            </a>
                         </li>
                         <li class="kt-menu__item " aria-haspopup="true" >
                            <a  href="/bios" class="kt-menu__link ">
-                           <span class="kt-menu__link-text">Public Bios</span>
+                           <span class="kt-menu__link-text <%= active_class('/bios') %>">Public Bios</span>
                            </a>
                         </li>
                         <li class="kt-menu__item " aria-haspopup="true" >
                            <a  href="/bio_questions" class="kt-menu__link ">
-                           <span class="kt-menu__link-text">Bio Questions</span>
+                           <span class="kt-menu__link-text <%= active_class('/bio_questions') %>">Bio Questions</span>
                            </a>
                         </li>
                         <li class="kt-menu__item " aria-haspopup="true" >
                            <a  href="/bio_answers" class="kt-menu__link ">
-                           <span class="kt-menu__link-text">Bio Answers</span>
+                           <span class="kt-menu__link-text <%= active_class('/bio_answers') %>">Bio Answers</span>
                            </a>
                         </li>
                         <li class="kt-menu__item " aria-haspopup="true" >
                            <a  href="/book_resources" class="kt-menu__link ">
-                           <span class="kt-menu__link-text">Book Resources</span>
+                           <span class="kt-menu__link-text <%= active_class('/book_resources') %>">Book Resources</span>
                            </a>
                         </li>
                      </ul>
@@ -213,6 +214,9 @@
                         </ul>
                      </div>
                   </div>
+                  <div class="notifications-icon">
+                <a href="javascript-void(0)"> <i class="fa fa-bell" aria-hidden="true"></i></a>
+                  </div>
                   <div class="kt-header__topbar">
                      <div class="kt-header__topbar-item kt-header__topbar-item--user">
                         <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="0px,0px">
@@ -234,7 +238,8 @@
                            <div class="kt-notification">
                               <span  class="kt-notification__item">
                                  <div class="kt-notification__item-icon">
-                                    <i class="flaticon2-calendar-3 kt-font-success"></i>
+                                    <!-- <i class="flaticon2-calendar-3 kt-font-success"></i> -->
+                                    <i class="fas fa-user-circle"></i>
                                  </div>
                                  <div class="kt-notification__item-details">
                                     <div class="kt-notification__item-title kt-font-bold">
@@ -245,9 +250,21 @@
                                     </div>
                                  </div>
                               </span>
-                              <div class="kt-notification__custom">
-                                 <a href="/users/sign_out" class="btn btn-label-brand btn-sm btn-bold">Sign Out</a>
+                              <div class="row">
+                                 <div class="col-md-6">
+                                 <div class="kt-notification__custom">
+                                 <a href="/users/edit" class="btn btn-label-brand btn-sm btn-bold">Edit</a>
                               </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                   <div class="kt-notification__custom" style="float:right;">
+                                 <a href="/users/sign_out" class="btn btn-label-brand btn-sm btn-bold">Sign Out</a>
+                              </div> 
+                                 </div>
+
+                              </div>
+                              
+                              
                            </div>
                         </div>
                      </div>
@@ -256,13 +273,12 @@
                 <%= yield %>  
                <div class="kt-footer kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop">
                   <div class="kt-footer__copyright">
-                     2019&nbsp;&copy;&nbsp;<a href="#" target="_blank" class="kt-link">Keenthemes</a>
+                     © 2019&nbsp;&copy;&nbsp;<a href="#" target="_blank" class="kt-link">Dream Catcher Coaching</a>
                   </div>
                </div>
             </div>
          </div>
       </div>
-  
       <div id="kt_scrolltop" class="kt-scrolltop">
          <i class="fa fa-arrow-up"></i>
       </div>
@@ -270,375 +286,32 @@
          var KTAppOptions = {"colors":{"state":{"brand":"#5d78ff","dark":"#282a3c","light":"#ffffff","primary":"#5867dd","success":"#34bfa3","info":"#36a3f7","warning":"#ffb822","danger":"#fd3995"},"base":{"label":["#c5cbe3","#a1a8c3","#3d4465","#3e4466"],"shape":["#f0f3ff","#d9dffa","#afb4d4","#646c9a"]}}};
       </script>
       
-      <%= javascript_include_tag :application ,:jquerymin, :vendorsbundle,  :scriptsbundle, :datatablesbundle, :scrollable, :appbundle %>
-    <%= render "css_overrides" %>
-      
-   </body>
-</html>
+      <%= javascript_include_tag :application ,:jquerymin, :bootstrapmin, :vendorsbundle,  :scriptsbundle, :datatablesbundle, :scrollable, :appbundle, :wysihtml, :bootstrapwysihtml5 %>
 
-
- <% else %>
- 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- Favicon icon -->
-     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo">
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
-    <title><%= title %></title>
-    <!-- wysihtml5 CSS 
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.css" type="text/css">-->
-
-		<%= stylesheet_link_tag :inbox, :dataTablesbootstrap4, :stylemin, :bootstrapwysihtml5 %>
-    <%= csrf_meta_tags %>
-
-  <title><%= title %></title>
-  <style>
-.dropdown-menu .dropdown-item:active {
-  background: transparent;
-  color: #333;
-}
-.border-left {
-  border: 1px solid #eee !important;
-}
-.bg-light {
-  background-color: #fff !important;
-}
-.new-design .card-body {
-  background-color: #fff !important;
-}
-.page-wrapper {
-  background: #ffffff !important;
-}
-body {
-  background-color: #ffffff;
-}
-.new-design {
-  margin-bottom: 50px;
-}
-.simple-spacer h3 {
-  margin-bottom: 15px;
-}
-.navbar-nav li {
-  line-height: 47px;
-  padding: 0px;
-}
-.navbar-nav a {
-  color: #fff !important;
-  font-weight: bold;
-  font-size: 16px;
-  padding: 0px 15px;
-}
-.navbar-nav a:hover {
-  background: transparent;
-}
-.current-user{line-height:65px;}
-.close {
-  float: right;
-  font-size: 1.3125rem;
-  font-weight: 700;
-  line-height: 1;
-  color: #000;
-  text-shadow: 0 1px 0 #fff;
-  opacity: .5;
-  top: 10px;
-  bottom: 0px;
-  position: absolute;
-  right: 15px;
-}
-.card {
-  margin: 100px 20px 15px 175px;
-}
-.footer, .page-wrapper {
- /* margin-left: 150px; */
-}
-
-.navbar-nav li {
-    line-height: 45px;margin-right: 10px;
-}
-.coachcard { margin: 30px 0px; } 
-.navbar-nav a {
-  color: #676767 !important;
-  font-weight: bold;
-  font-size: 16px;
-  padding: 0px 15px;
-}
-.navbar-nav a:hover {
-  color: #000 !important;
-  background-color: #faf9f6;
-  border-radius: 0px;
- 
-}
-.navbar-nav a:active {
-  color: #000 !important;
-border-radius: 0px;
- 
-background-color: #37b048 !important;
-}
-
-.skin-default-dark .topbar {
-  background: #fff ;
-}
-.main-dash {
-  margin-top: 10px;
-}
-.main-dash1 {
- margin-top: 10px;
-}
-.current-user {
-  line-height: 45px;
-}
-.main-dash1 a:hover {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-.main-dash1 a:active {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-.card_group {
-margin: 0px 0px 30px 135px;
-}
-.btn-success {
-	color: #fff;
-	background-color: #319d40 !important;
-	border-color: #319d40 !important;
-}
- 
-.btn-success.focus, .btn-success:focus {
-	box-shadow: none !important;
-}
-.navbar-nav a {
-	font-family: Archivo;
-	text-transform: uppercase;
-}
-.navbar-nav a:hover {
-	color: black !important;
-	
-}
-
-#main-wrapper .navbar-nav a:active {
-	color: #fff !important;
-	background-color: #37b048 !important;
-}
-.navbar-nav li {position: relative;}
-
-.navbar-nav li a::after {
-	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
-	opacity: 0;
-    visibility: hidden;
-	content: "";
-	height: 3px;
-	background-color: #37b048 !important;
-	position: absolute;
-	width: 100%;
-	bottom: 7px;
-	left: 0px;
-	right: 0;
-    margin: auto;
-	z-index: 9999999999 !important;
-	max-width: 141px;
-	display: block;
-}
-.navbar-nav li.active a::after {
-
-    visibility: visible;
-    filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
-    opacity: 1;
-
-}
-
-body{font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;}
-@media screen and (min-device-width: 200px) and (max-device-width: 767px) { 
-.footer, .page-wrapper {
-  margin-left: 0px;
-}
-}
-</style>
-</head>
- 
-<style>
-.contact_mrgin_left{
-    margin-left: 200px;
-}
-#dashboard-menu{
-	display:none !important;
-}
-@media screen and (min-width: 100px) and (max-width: 768px) { 
-   #dashboard-menu{
-	display:block  !important;
-	}	
-  .desktop-nav{display:none !important;}
-  .custom-nav-mobile .navbar-header{width: 100% !important;padding-right: 10px !important; min-width: 100% !important;}
-  .custom-nav-mobile .navbar-header .navbar-brand{ float:left;}
-  .custom-nav-mobile .navbar-header .navbar-toggle{ float: right;background: transparent;border: 0px;font-size: 29px;color: #000;}
-  .custom-nav-mobile .navbar-header .navbar-toggle:hover{ color: #004b84;}  
-  .custom-nav-mobile #dashboard-menu.collapse:not(.show) {  display: none !important;}
-  .topbar .top-navbar .navbar-collapse { display: flex; width: 100%;  position: absolute;  top: 65px;  background: #fff; border-top:1px solid #dedede}
-  .mobile-nav{list-style: none;padding: 0;margin: 0;width: 100%;float: left;}
-  .mobile-nav li{ float:left; width:100%; padding:0; border-bottom:1px solid #dedede}
-  .mobile-nav li a{ display:block; padding: 0 15px; line-height:45px; color: #676767 !important;font-weight: bold;font-size: 16px;}
-  .mobile-nav li a:hover{ border-radius:0; background-color: #f8f9fa;}  
-  .navbar-header {text-align: center;}
-.navbar-brand {float: none !important; margin: 0 auto; text-align: center;}
-}
-
-
-</style>
-<body class="skin-default-dark logo-center fixed-layout">
-	  <div class="preloader">
-        <div class="loader">
-            <div class="loader__figure"></div>
-            <p class="loader__label"><%= title %></p>
-        </div>
-    </div>
-    
-    <div id="main-wrapper">
-		 <header class="topbar" style="border-bottom: 1px solid #eee;">
-			 
-			
-            <nav class="navbar top-navbar navbar-expand-md navbar-dark custom-nav-mobile">
-                <div class="navbar-header col-xs-12 d-md-none">
-                    <a class="navbar-brand" href="/">
-						<img src="/assets/branding/logo.png" style="width: 100px !important;margin-top: 13px;margin-bottom: 13px;height: 40px;">
-                        
-                    </a>
-                    <button type="button" class="navbar-toggle d-block d-md-none waves-effect waves-dark" data-toggle="collapse" data-target="#dashboard-menu">
-					<i class="ti-menu"></i>
-				  </button>
-                </div>
-                <div class="navbar-collapse desktop-nav">
-                    <ul class="navbar-nav mr-auto">
-<!--dashboard-menu
-                        <li class="nav-item"> 
-							<a class="nav-link nav-toggler d-block d-md-none waves-effect waves-dark">
-								<i class="ti-menu"></i>
-							</a> 
-							</li>
--->
-                          <% if current_user.is_an_admin? || current_user.is_super_admin? %>
-                        <li class="nav-item"> <a class="nav-link sidebartoggler d-none d-lg-block d-md-block waves-effect waves-dark" href="javascript:void(0)"><i class="icon-menu"></i></a> </li>
-                        <% end %>
-                        
-                       
-                     <li class="main-dash1" > <a class="current-user"> <%= current_user.first_name %>'s Dashboard</a></li>
-						   <% if current_user.is_an_admin? %>
-								<li class="<%= active_class('/user/dashboard') %> main-dash"> <a href="/user/dashboard"><i class="ti-user"></i> Admin Dashboard</a></li>
-                           <% else %>
-								<li class="<%= active_class('/user/dashboard') %> main-dash"> <a href="/user/dashboard" class="dropdown-item">Main Dashboard</a></li>
-								<li class="<%= active_class('/user/group-dashboard') %> main-dash"> <a href="/user/group-dashboard" class="dropdown-item"> Group Dashboard</a></li>
-                           <% end %>
-								<div class="brand "><a href="/"><img src="/assets/branding/logo.png" style="width: 100px !important;margin-top: 13px;margin-bottom: 13px;height: 40px;"></a></div>
-                    </ul>
-                    <ul class="navbar-nav my-lg-0">
-                       <!--  <li class="nav-item dropdown">
-                             <a class="navbar-brand" href="https://www.facebook.com/DreamCatcher-1845647825736246"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="navbar-brand" href="mailto:nmahupete@qliomaha.com">
-                             <i class="fa fa-envelope"></i></a>
-                        </li> -->
-                       
-
-
-
-
-                            
-                               <li > <div class="dropdown-divider"></div></li>
-                              <li class="<%= active_class('/users/edit') %>" >  <a href="/users/edit" class="dropdown-item"> Edit my Account</a></li>
-                              
-                                <div class="dropdown-divider"></div>
-                              <li>  <a href="/users/sign_out" class="dropdown-item"  data-method='delete'> Sign out</a></li> 
-
-
-
-                          <!--   <div class="dropdown-menu dropdown-menu-right animated flipInY">
-							
-
-
-                              
-                            </div> -->
-                        </li>
-                       
-                    </ul>
-                </div>
-                
-                <div class="collapse navbar-collapse d-md-none d-ld-none  d-xl-none" id="dashboard-menu" >
-					<ul class="mobile-nav">
-						<li>
-                            <a class="current-user"> <%= current_user.first_name %>'s Dashboard</a></li>
-                            <% if current_user.is_an_admin? %>
-                           <li>
-                             <a href="/user/dashboard"><i class="ti-user"></i> Admin Dashboard</a></li>
-                                 <% else %>
-                              <li > <a href="/user/dashboard" class="dropdown-item">Main Dashboard</a></li>
-                               <li > <a href="/user/group-dashboard" class="dropdown-item"> Group Dashboard</a></li>
-                                 <% end %>
-					 <li>  <a href="/users/edit" class="dropdown-item"> Edit my Account</a></li>
-					  <li>  <a href="/users/sign_out" class="dropdown-item"  data-method='delete'> Sign out</a></li> 
-					</ul>
-				</div>
-            </nav>
-        </header>
-        
-
-         <% if current_user.is_an_admin? && current_user.is_super_admin? == false %>
-			  <aside class="left-sidebar">
-            <div class="scroll-sidebar">
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                       
-						<li><a href="/"><i class="ti-layout-grid2">Users</a></li>
-						  <li><a href="/mentorships"><i class="ti-layout-grid2">Mentorships</a></li>
-						  <li><a href="/plans"><i class="ti-palette">Plans</a></li>
-						  <li><a href="/messages"><i class="ti-email">User Messages</a></li>
-						  <li><a href="/groups"><i class="ti-layout-grid2">Groups</a></li>
-						  <li><a href="/content_fields"><i class="ti-files">Content Fields</a></li>
-						  <li><a href="/images"><i class="ti-layout-grid2">Images</a></li>
-						  <li><a href="/quotes"><i class="ti-light-bulb">Quotes</a></li>
-						  <li><a href="/resources"><i class="ti-layout-media-right-alt">Resources</a></li>
-						  
-                    </ul>
-                </nav>
-            </div>
-        </aside>
-           <% elsif current_user.is_super_admin? %>
-         <aside class="left-sidebar">
-            <div class="scroll-sidebar">
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-						  <li><a href="/"><i class="icon-speedometer"></i>Dashboard</a></li>
-              <li><a href="/"><i class="ti-layout-grid2"></i>New users</a></li>
-              <li><a href="/employees"><i class="ti-layout-media-right-alt"></i>New Employees</a></li>
-						  <li><a href="/admin_messages"><i class="ti-email"></i>Admin Messages</a></li>
-						  <li><a href="/bios"><i class="ti-palette"></i>Public Bios</a></li>
-						  <li><a href="/bio_questions"><i class="ti-files"></i>Bio Questions</a></li>
-						  <li><a href="/bio_answers"><i class="ti-light-bulb"></i>Bio Answers</a></li>
-						  <li><a href="/book_resources"><i class="ti-layout-media-right-alt"></i>Book Resources</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </aside>
-        <% end %>
-        
-        <%= yield %>  
-        <footer class="footer">
-            © 2019, Dream Catcher Coaching 
-        </footer>
-        
-	</div>	
-   
-	<%= javascript_include_tag :application ,:jquerymin, :poppermin,  :bootstrapmin, :perfectscrollbarjquerymin, :waves, :sidebarmenu ,:stickykitmin, :jquerysparklinemin, :custommin, :datatablesmin, :wysihtml, :bootstrapwysihtml5, :dropzone %>
     <%= render "css_overrides" %>
 
-    <script>
-    $(document).ready(function() {
+ <!-- <script>
+
+        $(".toggle").on('change',function(){
+         var checked;
+         var toggle_url = $(this).attr("url");
+            $.ajax({
+            url:toggle_url,
+            type:'POST',
+            beforeSend: function (){
+            },
+            success:function(data){
+                   location.reload();
+            }
+            }); 
+            return true;
+        })
+
+      </script> -->
+
+      <script type="text/javascript">
+         
+         $(document).ready(function() {
      $('.textarea_editor').wysihtml5();
      $('#myTable').DataTable();
      $('#myTables').DataTable();
@@ -679,14 +352,8 @@ body{font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;}
             });
         });
     });
-    $('#example23').DataTable({
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    });
-    $('.buttons-copy, .buttons-csv, .buttons-print, .buttons-pdf, .buttons-excel').addClass('btn btn-primary mr-1');
 
-    </script>
-</body>	
-<% end %>  
+      </script>
+
+   </body>
+</html>

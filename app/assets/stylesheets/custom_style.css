@@ -14,3 +14,43 @@
 .btn.btn-label-primary.btn-pill {height: 44px !important; line-height:25px;}
 .new-btn {height: 44px !important; line-height:25px;}
 trix-toolbar { white-space: inherit !important;}
+.hideth{  display: none !important; }
+.pl-0-logo{padding-left:0px;}
+.dataTables_length {
+	padding-left: 15px;
+	padding-top: 15px;
+}
+.dataTables_filter {
+padding-top: 15px;
+padding-right: 15px;
+
+}
+.dataTables_info {
+	padding-left: 15px;
+	padding-bottom: 15px;
+}
+.dataTables_wrapper div.dataTables_paginate ul.pagination {
+	padding-right: 5px;
+}
+.p-l-24{padding-left:24px;}
+.bg-light .dropdown-menu.show {
+    padding-left: 15px;
+}
+#kt_header_menu .kt-menu__nav_custom li a h3 {
+	padding-right: 20px;
+}
+.notifications-icon {
+	width: 100%;
+	float: right;
+	text-align: right;
+}
+.notifications-icon i {
+	padding-top: 27px;
+	padding-right: 6px;
+}
+#kt_header_menu_wrapper {
+	width: 100%;
+}
+.kt-menu__link-text.active {
+	color: #fff !important;
+}
